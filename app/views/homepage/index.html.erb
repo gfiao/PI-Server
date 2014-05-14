@@ -1,3 +1,25 @@
+<div class="container">
+  <div class="page-header">
+    <h1 class="headerTitle">LINKS USER</h1>
+  </div>
+
+  <div class="row">
+    <!-- Com o servidor feito, inserir aqui informação da TV -->
+    <% if user_signed_in? %>
+        <div class="col-xs-12">
+          <%= button_to 'Sign out', destroy_user_session_path, :method => :delete %>
+        </div>
+    <% else %>
+        <div class="col-xs-6">
+          <%= button_to 'Sign in', new_user_session_path, :method => :get %>
+        </div>
+        <div class="col-xs-6">
+          <%= button_to 'Sign up', new_user_registration_path, :method => :get %>
+        </div>
+    <% end %>
+  </div>
+</div>
+
 <div id="cont1" class="container">
   <div class="page-header">
     <h1 class="headerTitle">Agora na TV</h1>
