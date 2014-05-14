@@ -35,32 +35,43 @@
           </ul>
         </li>
         <li><a href="#contact">Games</a></li>
-        <li id="profileLink"><%= link_to 'Sign up', new_user_registration_path, :method => :get, :id => "profileLink" %></li>
-
+        <% if user_signed_in? %>
+            <li id="profileLink">
+              Bem vindo <%= current_user.email %>
+              . <%= link_to 'Sign out', destroy_user_session_path, :method => :delete, :id => "profileLink" %>
+            </li>
+        <% else %>
+            <li id="profileLink">
+              <p>
+                <%= link_to 'Sign up', new_user_registration_path, :method => :get %> /
+                <%= link_to 'Sign in', new_user_session_path, :method => :get %>
+              </p>
+            </li>
+        <% end %>
       </ul>
     </div>
 
   </div>
 </div>
 
-<div class="container">
-  <div class="page-header">
-    <h1 class="headerTitle">LINKS USER</h1>
-  </div>
+<!--<div class="container">-->
+  <!--<div class="page-header">-->
+    <!--<h1 class="headerTitle">LINKS USER</h1>-->
+  <!--</div>-->
 
-  <div class="row">
-    <!-- Com o servidor feito, inserir aqui informação da TV -->
-    <div class="col-xs-4">
+  <!--<div class="row">-->
+    <!--&lt;!&ndash; Com o servidor feito, inserir aqui informação da TV &ndash;&gt;-->
+    <!--<div class="col-xs-4">-->
 
-    </div>
-    <div class="col-xs-4">
-      <%= button_to 'Sign in', new_user_session_path, :method => :get %>
-    </div>
-    <div class="col-xs-4">
+    <!--</div>-->
+    <!--<div class="col-xs-4">-->
+      <!--<%= button_to 'Sign in', new_user_session_path, :method => :get %>-->
+    <!--</div>-->
+    <!--<div class="col-xs-4">-->
 
-    </div>
-  </div>
-</div>
+    <!--</div>-->
+  <!--</div>-->
+<!--</div>-->
 
 
 <%= yield %>
