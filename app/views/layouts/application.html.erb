@@ -20,6 +20,7 @@
       <%= image_tag "campus-tv.png", :class => "navbar-brand", :id => "logo" %>
 
     </div>
+
     <div class="collapse navbar-collapse">
       <ul id="links" class="navbar-right nav navbar-nav">
         <li class="active"><a href="#">Home</a></li>
@@ -37,8 +38,10 @@
         <li><a href="#contact">Games</a></li>
         <% if user_signed_in? %>
             <li id="profileLink">
-              Bem vindo <%= current_user.email %>
-              . <%= link_to 'Sign out', destroy_user_session_path, :method => :delete, :id => "profileLink" %>
+              <p>
+                Bem vindo <%= link_to current_user.email, current_user, :method => :get %>
+                . <%= link_to 'Sign out', destroy_user_session_path, :method => :delete %>
+              </p>
             </li>
         <% else %>
             <li id="profileLink">
@@ -53,26 +56,6 @@
 
   </div>
 </div>
-
-<!--<div class="container">-->
-  <!--<div class="page-header">-->
-    <!--<h1 class="headerTitle">LINKS USER</h1>-->
-  <!--</div>-->
-
-  <!--<div class="row">-->
-    <!--&lt;!&ndash; Com o servidor feito, inserir aqui informação da TV &ndash;&gt;-->
-    <!--<div class="col-xs-4">-->
-
-    <!--</div>-->
-    <!--<div class="col-xs-4">-->
-      <!--<%= button_to 'Sign in', new_user_session_path, :method => :get %>-->
-    <!--</div>-->
-    <!--<div class="col-xs-4">-->
-
-    <!--</div>-->
-  <!--</div>-->
-<!--</div>-->
-
 
 <%= yield %>
 
