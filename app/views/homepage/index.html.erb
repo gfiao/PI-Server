@@ -7,7 +7,7 @@
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
       </button>
-      <!--<a href="#"><img id="logo" class="navbar-brand" src="../../assets/images/imagem_iycr2014.jpg" alt="logo"/></a>-->
+      <!--<a href="#"><img id="logo" class="navbar-brand" src="../../images/images/imagem_iycr2014.jpg" alt="logo"/></a>-->
       <%= image_tag "campus-tv.png", :class => "navbar-brand", :id => "logo" %>
 
     </div>
@@ -65,20 +65,26 @@
         <!-- Wrapper for slides -->
         <div id="news_carousel" class="carousel-inner">
           <div id="news_1" class="item active">
-            <div class="fill" style="background-image:url('images/LeslieLamport_960.jpg');"></div>
+            <div class="fill-img">
+              <%= image_tag "http://placehold.it/1900x1080&text=Slide One" %>
+            </div>
             <!--<div class="carousel-caption">-->
             <!--<h1>Modern Business - A Bootstrap 3 Template</h1>-->
             <!--</div>-->
           </div>
           <div id="news_2" class="item">
-            <div class="fill" style="background-image:url('http://placehold.it/1900x1080&text=Slide Two');"></div>
+            <div class="fill fill-img">
+              <%= image_tag "LeslieLamport_960.jpg" %>
+            </div>
             <!--<div class="carousel-caption">-->
+
             <!--<h1>Ready to Style &amp; Add Content</h1>-->
             <!--</div>-->
           </div>
           <div id="news_3" class="item">
-            <div class="fill"
-                 style="background-image:url('http://placehold.it/1900x1080&text=Slide Three');"></div>
+            <div class="fill fill-img">
+              <%= image_tag "http://placehold.it/1900x1080&text=Slide Three" %>
+            </div>
             <!--<div class="carousel-caption">-->
             <!--<h1>Additional Layout Options at <a-->
             <!--href="http://startbootstrap.com">http://startbootstrap.com</a>-->
@@ -86,8 +92,9 @@
             <!--</div>-->
           </div>
           <div id="news_4" class="item">
-            <div class="fill"
-                 style="background-image:url('http://placehold.it/1900x1080&text=Slide Four');"></div>
+            <div class="fill fill-img">
+              <%= image_tag "http://placehold.it/1900x1080&text=Slide Four" %>
+            </div>
             <!--<div class="carousel-caption">-->
             <!--<h1>O gui curte bué de chupar umas valentes pixotas <a href="http://startbootstrap.com">hHEHEHEHEHEHEHE</a>-->
             <!--</h1>-->
@@ -136,7 +143,7 @@
   <div class="row">
     <div class="col-sm-4 col-lg-4 col-md-4 top-content">
       <div class="thumbnail">
-        <%= image_tag "fellow_ana-lobo.jpg"%>
+        <%= image_tag "fellow_ana-lobo.jpg" %>
         <!--<img src="images/fellow_ana-lobo.jpg" alt="">-->
 
         <div class="caption">
