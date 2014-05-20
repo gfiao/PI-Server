@@ -3,6 +3,8 @@
 <head lang="en">
   <meta charset="UTF-8">
   <%= stylesheet_link_tag 'tv.css' %>
+  <%= javascript_include_tag 'trabalho.js' %>
+  <%= javascript_include_tag 'jquery-2.1.1.min.js', 'application' %>
 </head>
 <body onload="init()">
 
@@ -10,7 +12,7 @@
 
   <div class="" id="video-and-lateral">
 
-    <div class="" id="logo">
+    <div class="" id="logotype">
       <h2>CampusTV</h2>
     </div>
 
@@ -34,13 +36,29 @@
         </div>
       </div>
       <div class="" id="right-panel-middle">
-        <h2>Restaurante</h2>
+
+        <!--codigo para obter a ementa -> tirar daqui e colocar na TV-->
+        <% require 'rubygems' %>
+        <% require 'nokogiri' %>
+        <% require 'open-uri' %>
+        <% page = Nokogiri::HTML(open("http://sas.unl.pt/cantina")) %>
+
+        <% ementaFCT = page.css('.cantina')[0] %>
+        <% pratosAlmoco = ementaFCT.css('.lunch').css('.dish') %>
+        <% pratosJantar = ementaFCT.css('.dinner').css('.dish') %>
+        <% macro_peixe = pratosAlmoco[2].text.split(";") %>
+
+        <!--<p>Titulo: <#%= ementa.css('.title').text.split[6] %></p>-->
+        <h2><%= ementaFCT.css('.title').text.split[6] %></h2>
+
         <ul id="ementaList">
-          <li>Item 1 Item 1 Item 1</li>
-          <li>Item 2 Item 2 Item 2</li>
-          <li>Item 3 Item 3 Item 3</li>
-          <li>Item 4 Item 4 Item 4</li>
-          <li>Item 5 Item 5 Item 5</li>
+          <li>Sopa: <%= pratosAlmoco[0].text %></li>
+
+          <li>Carne: <%= pratosAlmoco[1].text %></li>
+
+          <li>Peixe: <%= macro_peixe[0] %></li>
+
+          <li>Macro: <%= macro_peixe[1] %></li>
         </ul>
       </div>
 
