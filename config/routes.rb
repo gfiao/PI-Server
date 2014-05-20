@@ -1,5 +1,7 @@
 Rails.application.routes.draw do
 
+  get 'tv/show'
+
   devise_for :users
   resources :users
 
