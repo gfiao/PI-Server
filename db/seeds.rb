@@ -58,4 +58,41 @@ puts 'Adding 50 random Users'
   )
 end
 
+#Content title:string link_image:string description:text date:date
+puts 'Adding News Content'
+Content.create(title: 'Leslie Lamport vem à FCT!', link_image: 'LeslieLamport_960.jpg',
+               description: 'Leslie Lamport vem dar uma palestra à grandiosa FCT', date: Date.today())
+Content.create(title: 'Barbara Liskov vem à FCT!', link_image: 'top-prize.jpg',
+               description: 'Barbara Liskov, vencedora do Turing Award, vem dar uma palestra à grandiosa FCT',
+               date: Date.today())
+Content.create(title: 'Sócia da FCT ganhou prémio!', link_image: 'destaque_4.jpg',
+               description: 'Sócia da FCT ganhou 1 Milhão de Euros pela sua investigação.',
+               date: Date.today())
 
+#Tag tag:string
+puts 'Adding new Tags'
+Tag.create(tag: 'Informática')
+Tag.create(tag: 'Bioquimica')
+Tag.create(tag: 'Ambiente')
+Tag.create(tag: 'Geral')
+Tag.create(tag: 'Electrotécnica')
+Tag.create(tag: 'Matemática')
+Tag.create(tag: 'Física')
+
+#TagContent content_id:integer tag_id:integer
+puts 'Adding Tag to Contents'
+TagContent.create(content_id: 1, tag_id: 1)
+TagContent.create(content_id: 2, tag_id: 1)
+TagContent.create(content_id: 3, tag_id: 2)
+
+#Classrooms building:string classroom:string
+puts 'Adding Classrooms'
+Classroom.create(building: 'Ed.7', classroom: '2.3')
+Classroom.create(building: 'Ed.7', classroom: '1D')
+Classroom.create(building: 'Ed.7', classroom: '1.13')
+Classroom.create(building: 'Ed.2', classroom: '119')
+Classroom.create(building: 'Ed.2', classroom: '121')
+
+#FreeClassroom user_id:integer classroom_id:integer time:datetime
+puts 'Adding Free Classrooms'
+FreeClassroom.create(user_id: 1, classroom_id: 1, time: DateTime.now)
