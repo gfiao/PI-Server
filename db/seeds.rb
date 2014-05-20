@@ -25,7 +25,7 @@ last_names = ["Fião",
               "Engatatão",
               "Lopes",
               "Costa",
-              "Passos Coelho",
+              'Passos Coelho',
               "Sócrates"]
 
 genders = ["Masculino", "Feminino"]
@@ -50,7 +50,7 @@ puts "Adding 50 random Users"
       gender: genders[(r+i)%genders.length],
       course: courses[(r2+i)%courses.length],
       about_me: 'Hehe sou a pessoa número ' + i.to_s + ' e sou muita fixe, hehe',
-      email: first_names[(r+i)%first_names.length]+"#{i}"+last_names[(r2+i)%last_names.length]+"@AasdAmail.com",
+      email: first_names[(r+i)%first_names.length]+"#{i}"+last_names[(r2+i)%last_names.length]+"@gMaile.com",
       password: '123123123',
       password_confirmation: '123123123'
   )
