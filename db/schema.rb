@@ -11,7 +11,79 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140514164138) do
+ActiveRecord::Schema.define(version: 20140520142129) do
+
+  create_table "bookmarked_contents", force: true do |t|
+    t.integer  "user_id"
+    t.integer  "content_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "classrooms", force: true do |t|
+    t.string   "building"
+    t.string   "classroom"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "content_videos", force: true do |t|
+    t.integer  "content_id"
+    t.integer  "video_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "contents", force: true do |t|
+    t.string   "title"
+    t.string   "link_image"
+    t.text     "description"
+    t.date     "date"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "free_classrooms", force: true do |t|
+    t.integer  "user_id"
+    t.integer  "classroom_id"
+    t.datetime "time"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "games", force: true do |t|
+    t.string   "name"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "scores", force: true do |t|
+    t.integer  "user_id"
+    t.integer  "game_id"
+    t.integer  "score"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "tag_contents", force: true do |t|
+    t.integer  "content_id"
+    t.integer  "tag_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "tags", force: true do |t|
+    t.string   "tag"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "user_contents", force: true do |t|
+    t.integer  "user_id"
+    t.integer  "content_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "users", force: true do |t|
     t.string   "name"
@@ -35,5 +107,11 @@ ActiveRecord::Schema.define(version: 20140514164138) do
 
   add_index "users", ["email"], name: "index_users_on_email", unique: true
   add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
+
+  create_table "videos", force: true do |t|
+    t.string   "link"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
 end

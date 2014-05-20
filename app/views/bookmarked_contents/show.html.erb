@@ -1,0 +1,14 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>User:</strong>
+  <%= @bookmarked_content.user_id %>
+</p>
+
+<p>
+  <strong>Content:</strong>
+  <%= @bookmarked_content.content_id %>
+</p>
+
+<%= link_to 'Edit', edit_bookmarked_content_path(@bookmarked_content) %> |
+<%= link_to 'Back', bookmarked_contents_path %>

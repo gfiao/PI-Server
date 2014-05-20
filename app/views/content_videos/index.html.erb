@@ -1,0 +1,27 @@
+<h1>Listing content_videos</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Content</th>
+      <th>Video</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @content_videos.each do |content_video| %>
+      <tr>
+        <td><%= content_video.content_id %></td>
+        <td><%= content_video.video_id %></td>
+        <td><%= link_to 'Show', content_video %></td>
+        <td><%= link_to 'Edit', edit_content_video_path(content_video) %></td>
+        <td><%= link_to 'Destroy', content_video, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Content video', new_content_video_path %>

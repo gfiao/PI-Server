@@ -1,0 +1,2 @@
+module FreeClassroomsHelper
+end

@@ -1,0 +1,19 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>User:</strong>
+  <%= @free_classroom.user_id %>
+</p>
+
+<p>
+  <strong>Classroom:</strong>
+  <%= @free_classroom.classroom_id %>
+</p>
+
+<p>
+  <strong>Time:</strong>
+  <%= @free_classroom.time %>
+</p>
+
+<%= link_to 'Edit', edit_free_classroom_path(@free_classroom) %> |
+<%= link_to 'Back', free_classrooms_path %>

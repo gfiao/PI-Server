@@ -1,0 +1,29 @@
+<h1>Listing free_classrooms</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>User</th>
+      <th>Classroom</th>
+      <th>Time</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @free_classrooms.each do |free_classroom| %>
+      <tr>
+        <td><%= free_classroom.user_id %></td>
+        <td><%= free_classroom.classroom_id %></td>
+        <td><%= free_classroom.time %></td>
+        <td><%= link_to 'Show', free_classroom %></td>
+        <td><%= link_to 'Edit', edit_free_classroom_path(free_classroom) %></td>
+        <td><%= link_to 'Destroy', free_classroom, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Free classroom', new_free_classroom_path %>

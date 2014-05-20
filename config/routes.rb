@@ -1,5 +1,27 @@
 Rails.application.routes.draw do
 
+  resources :free_classrooms
+
+  resources :classrooms
+
+  resources :bookmarked_contents
+
+  resources :user_contents
+
+  resources :scores
+
+  resources :games
+
+  resources :content_videos
+
+  resources :videos
+
+  resources :tag_contents
+
+  resources :tags
+
+  resources :contents
+
   get 'tv/show'
 
   devise_for :users

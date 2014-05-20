@@ -1,0 +1,27 @@
+<h1>Listing tag_contents</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Content</th>
+      <th>Tag</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @tag_contents.each do |tag_content| %>
+      <tr>
+        <td><%= tag_content.content_id %></td>
+        <td><%= tag_content.tag_id %></td>
+        <td><%= link_to 'Show', tag_content %></td>
+        <td><%= link_to 'Edit', edit_tag_content_path(tag_content) %></td>
+        <td><%= link_to 'Destroy', tag_content, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Tag content', new_tag_content_path %>
