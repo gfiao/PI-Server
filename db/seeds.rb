@@ -8,16 +8,16 @@
 
 
 first_names = ['Zé',
-              'António',
-              'Carlos',
-              'Carlão',
-              'Paulo',
-              'Paulão',
-              'Leonardo',
-              'Guilherme',
-              'Rafael',
-              'Pedro',
-              'José']
+               'António',
+               'Carlos',
+               'Carlão',
+               'Paulo',
+               'Paulão',
+               'Leonardo',
+               'Guilherme',
+               'Rafael',
+               'Pedro',
+               'José']
 
 last_names = ['Fião',
               'Bizarra',
@@ -32,9 +32,9 @@ genders = ['Masculino', 'Feminino']
 
 courses = ['Mestrado Integrado em Engenharia Informatica',
            'Mestrado Integrado em Engenharia Electrotecnica',
-          'Mestrado Integrado em Engenharia do Ambiente',
-          'Licenciatura em Bioquimica',
-          'Licenciatura em Engenharia dos Materiais']
+           'Mestrado Integrado em Engenharia do Ambiente',
+           'Licenciatura em Bioquimica',
+           'Licenciatura em Engenharia dos Materiais']
 
 # USERS name:string birth_date:date gender:string course:string about_me:text
 #A data de nascimento terá de ser mudada posteriormente, para cada pessoa ter uma data realista

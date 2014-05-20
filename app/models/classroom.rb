@@ -1,6 +1,6 @@
 class Classroom < ActiveRecord::Base
 
-  has_many :users, through: :free_classrooms
+  has_many :free_classrooms
 
   validate :building, presence: true
   validate :room, presence: true

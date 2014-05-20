@@ -6,7 +6,7 @@ class User < ActiveRecord::Base
 
   has_many :contents, through: :bookmarked_contents
   has_many :contents, through: :user_contents
-  has_many :classrooms, through: :free_classrooms
+  has_many :free_classrooms
   has_many :games, through: :scores
 
   validate :name, presence: true;
