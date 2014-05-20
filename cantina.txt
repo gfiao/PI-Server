@@ -1,0 +1,33 @@
+<div class="cantina">
+     <div class="title">Faculdade de Ciências e Tecnologia<span class="separator"> | </span>Refeitório</div>
+     <div class="lunch">
+      <h1>Almoço</h1>
+      
+       <ul>
+<li>
+<span class="course">Sopa</span><span class="separator">: </span><span class="dish">Creme de Legumes C/ Vegetais</span>
+</li>
+        <li>
+<span class="course">Dieta</span><span class="separator">: </span><span class="dish">Febras Grelhadas c/ Esparguete - 509.20 Kcal </span>
+</li>
+        <li>
+<span class="course">Prato</span><span class="separator">: </span><span class="dish">Massinha de Peixe - 578,3 Kcal  ; Courgette Gratinado C/ Arroz - 716.60 Kcal</span>
+</li>
+       </ul>
+</div>
+     <div class="dinner">
+      <h1>Jantar</h1>
+      
+       <ul>
+<li>
+<span class="course">Sopa</span><span class="separator">: </span><span class="dish">Creme de Legumes C/ Vegetais</span>
+</li>
+        <li>
+<span class="course">Dieta</span><span class="separator">: </span><span class="dish">Peixe Cozido C/ Batata e Hortaliça - 576,6 kcal</span>
+</li>
+        <li>
+<span class="course">Prato</span><span class="separator">: </span><span class="dish">Empadão de Carne Salada- 766.60 Kcal </span>
+</li>
+       </ul>
+</div>
+    </div>

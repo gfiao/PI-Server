@@ -48,7 +48,9 @@
         <% pratosJantar = ementaFCT.css('.dinner').css('.dish') %>
         <% macro_peixe = pratosAlmoco[2].text.split(";") %>
 
-        <!--<p>Titulo: <#%= ementa.css('.title').text.split[6] %></p>-->
+        <!--Grava a ementa para um ficheiro, para depois tratar e mostrar no jquery-->
+        <% File.open("cantina.txt", 'w') { |file| file.write(ementaFCT) } %>
+
         <h2><%= ementaFCT.css('.title').text.split[6] %></h2>
 
         <ul id="ementaList">

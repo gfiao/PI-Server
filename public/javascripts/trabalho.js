@@ -18,12 +18,14 @@ var globalCounter;
 var countRestaurant;
 var countPublicTrans;
 var countMeteo;
+var siteCantina = "http://sas.unl.pt/cantina";
 
 function init() {
     globalCounter = 0;
     countRestaurant = 0;
     countPublicTrans = 0;
     countMeteo = 0;
+    firstTimeCantina = true;
 
     animateFooter();
     animatePanel();
@@ -166,6 +168,17 @@ function getEmenta() {
     var index = countRestaurant % 3;
     var lunch_place = restaurant[index];
     var ementaContent = ementas[index];
+
+//    if(firstTimeCantina) {
+//        $.get(siteCantina, function(data) {
+//            console.log(data);
+//        }).done(function() {
+//            alert("hehe");
+//        });
+//        firstTimeCantina = false;
+//    }
+
+
     var content = '<h2>' + lunch_place + '</h2><ul id="ementaList">';
 
 
