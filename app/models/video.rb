@@ -1,4 +1,4 @@
 class Video < ActiveRecord::Base
 
-  has_many :content_videos
+  has_many :contents, through: :content_videos
 end
