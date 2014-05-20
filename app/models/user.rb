@@ -8,4 +8,9 @@ class User < ActiveRecord::Base
   has_many :contents, through: :user_contents
   has_many :classrooms, through: :free_classrooms
   has_many :games, through: :scores
+
+  validate :name, presence: true;
+  validate :gender, presence: true;
+  validate :birth_date, presence: true;
+
 end
