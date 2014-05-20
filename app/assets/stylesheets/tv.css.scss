@@ -1,3 +1,242 @@
 // Place all the styles related to the tv controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+
+/*4 classes apenas para efeitos de teste, eliminar mais tarde*/
+.bottom_b {
+  border-bottom: 1px solid black;
+}
+
+.top_b {
+  border-top: 1px solid black;
+}
+
+.left_b {
+  border-left: 1px solid black;
+}
+
+.right_b {
+  border-right: 1px solid black;
+}
+
+
+
+
+
+/*inicio do que realmente interessa*/
+#main {
+  /*mudar a altura consoante a resolução do display*/
+  height: 752px;
+  width: 100%;
+  font-size: 30px;
+}
+
+#video-and-lateral {
+  height: 90%;
+  width: 100%;
+}
+
+#logo {
+  width: 20%;
+  height: 62px;
+  background-color: lightgreen;
+  position: absolute;
+}
+
+#logo > h2 {
+  margin: 0px;
+  padding-left: 15px;
+}
+
+
+
+/* ############# css do caixote central ############# */
+#view-area {
+  height: 100%;
+  width: 70%;
+  background-color: brown;
+  float: left;
+  /*display: inline-block;*/
+}
+
+#right-panel {
+  /*remover margens entre inline-block*/
+  /*margin-left: -4px;*/
+  height: 100%;
+  width: 30%;
+  background-color: lightgrey;
+  float: left;
+  /*display: inline-block;*/
+}
+
+
+
+/* ############# css do painel lateral - TOPO ############# */
+#right-panel-top {
+  width: 100%;
+  height: 15%;
+  background-color: deeppink;
+  display: block;
+}
+
+#hour-info {
+  width: 60%;
+  /*background-color: red;*/
+}
+
+#date-info {
+  width: 40%;
+  padding-top: 10px;
+  /*background-color: blue;*/
+}
+
+#hour-info,
+#date-info {
+  height: 100%;
+  float: left;
+}
+
+/*paragrafo das horas*/
+#hour-info > h1 {
+  margin: 0px;
+  font-size: 80px;
+}
+
+#date-info > h3 {
+  margin: 0px;
+  font-size: 35px;
+}
+
+#hour-info > h1,
+#date-info > h3 {
+  text-align: center;
+}
+
+
+
+/* ############# PAINEL LATERAL - MEIO ############# */
+#right-panel-middle {
+  width: 100%;
+  height: 60%;
+  background-color: lightgrey;
+  /*padding-left: 25px;*/
+}
+
+/*titulo do restaurante*/
+#right-panel-middle > h2 {
+  padding-left: 50px;
+  margin-bottom: 30px;
+  padding-top: 30px;
+  margin-top: 0px;
+}
+
+/*lista que contem a ementa*/
+#ementaList {
+  list-style: none;
+}
+
+#ementaList > li {
+  margin-bottom: 15px;
+  /*margin-top: 20px;*/
+}
+
+
+
+/* ############# css do painel lateral - BAIXO ############# */
+#right-panel-bottom {
+  width: 100%;
+  height: 25%;
+  background-color: lightblue;
+}
+
+
+/*parte superior do painel lateral, com as horas/tempo*/
+/*#meteo-info, #hour-date {*/
+/*height: 50%;*/
+/*}*/
+
+/*temperatura maxima/minima*/
+/*#meteo-min-temp,*/
+/*#meteo-max-temp {*/
+/*width: 50%;*/
+/*height: 100%;*/
+/*float: left;*/
+/*}*/
+
+/*temperatura minima*/
+/*#meteo-min-temp {*/
+/*background-color: blue;*/
+/*}*/
+
+/*temperatura máxima*/
+/*#meteo-max-temp {*/
+/*background-color: red;*/
+/*}*/
+
+
+
+/*#max-temp-img,*/
+/*#max-temp-value,*/
+/*#min-temp-img,*/
+/*#min-temp-value {*/
+/*float: left;*/
+/*width: 50%;*/
+/*height: 100%;*/
+/*}*/
+
+/*#max-temp-img,*/
+/*#min-temp-img {*/
+/*background-color: #ffff00;*/
+/*}*/
+
+/*#max-temp-value,*/
+/*#min-temp-value {*/
+/*background-color: green;*/
+/*}*/
+
+
+
+/* ############# FOOTER ############# */
+#footer {
+  height: 10%;
+  width: 100%;
+  background-color: red;
+}
+
+#category {
+  width: 20%;
+  height: 100%;
+  background-color: blue;
+  float: left;
+  text-align: center;
+}
+
+#news-container {
+  /*remover margens entre inline-block*/
+  /*margin-left: -4px;*/
+  width: 80%;
+  height: 100%;
+  background-color: red;
+  float: left;
+}
+
+#category > p,
+#news-container > p {
+  margin-top: 20px;
+}
+
+#news-container > p {
+  margin-left: 10px;
+}
+
+/*centra os textos do rodapé*/
+/*#footer > h1 {*/
+/*margin-top: 19px;*/
+/*margin-bottom: 19px;*/
+/*}*/
+
+/*padding para a noticia do rodapé*/
+/*#news-container > h1 {*/
+/*padding-left: 10px;*/
+/*}*/
