@@ -5,4 +5,5 @@ class Score < ActiveRecord::Base
 
   validate :score, presence: true
   validates_associated :game, :user
+  validates_presence_of :game, :user
 end

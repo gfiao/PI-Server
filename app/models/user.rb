@@ -4,10 +4,17 @@ class User < ActiveRecord::Base
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable
 
+  has_many :bookmarked_contents
   has_many :contents, through: :bookmarked_contents
+
+  has_many :user_contents
   has_many :contents, through: :user_contents
+
   has_many :free_classrooms
-  has_many :games, through: :scores
+  #has_many :classrooms, through: :free_classrooms
+
+  has_many :scores
+  #has_many :games, through: :scores
 
   validate :name, presence: true;
   validate :gender, presence: true;

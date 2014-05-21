@@ -32,6 +32,13 @@ Rails.application.routes.draw do
 
   root 'homepage#index'
 
+  resources :users do
+    resources :scores
+    resources :bookmarked_contents
+    resources :user_contents
+    resources :free_classrooms
+  end
+
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
