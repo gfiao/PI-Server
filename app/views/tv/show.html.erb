@@ -36,31 +36,6 @@
         </div>
       </div>
       <div class="" id="right-panel-middle">
-
-        <!--codigo para obter a ementa-->
-        <% require 'rubygems' %>
-        <% require 'nokogiri' %>
-        <% require 'open-uri' %>
-        <% page = Nokogiri::HTML(open("http://sas.unl.pt/cantina")) %>
-
-        <% ementaFCT = page.css('.cantina')[0] %>
-        <% pratosAlmoco = ementaFCT.css('.lunch').css('.dish') %>
-        <% pratosJantar = ementaFCT.css('.dinner').css('.dish') %>
-
-        <% almocoToFile = [] %>
-        <% jantarToFile = [] %>
-
-        <% pratosAlmoco.each do |prato| %>
-            <% almocoToFile.push(prato.text) %>
-        <% end %>
-        <% pratosJantar.each do |prato| %>
-            <% jantarToFile.push(prato.text) %>
-        <% end %>
-
-        <!--Grava a ementa para um ficheiro, para depois tratar e mostrar no jquery-->
-        <% File.open("public/ementas/cantinaAlmoco.txt", 'w') { |file| file.write(almocoToFile) } %>
-        <% File.open("public/ementas/cantinaJantar.txt", 'w') { |file| file.write(jantarToFile) } %>
-
       </div>
 
       <div class="" id="right-panel-bottom">
