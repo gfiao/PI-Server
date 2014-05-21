@@ -1,29 +1,77 @@
-<p id="notice"><%= notice %></p>
 
-<p>
-  <strong>Name:</strong>
-  <%= @user.name %>
-</p>
+<div class=" container">
+  <h1 class="page-header">O meu perfil</h1>
+  <p id="notice"><%= notice %></p>
 
-<p>
-  <strong>Birth date:</strong>
-  <%= @user.birth_date %>
-</p>
 
-<p>
-  <strong>Gender:</strong>
-  <%= @user.gender %>
-</p>
 
-<p>
-  <strong>Course:</strong>
-  <%= @user.course %>
-</p>
+  <div id="profileBookmarks" class="container">
 
-<p>
-  <strong>About me:</strong>
-  <%= @user.about_me %>
-</p>
+  </div>
+
+  <div id="userInfo row">
+    <div class="row">
+      <div class=" col-xs-5">
+        <ul>
+          <li>dfgfggfgfgfgfgfg</li>
+          <li>dfgfggfgfgfgfgfg</li>
+          <li>dfgfggfgfgfgfgfg</li>
+          <li>dfgfggfgfgfgfgfg</li>
+          <li>dfgfggfgfgfgfgfg</li>
+          <li>dfgfggfgfgfgfgfg</li>
+          <li>dfgfggfgfgfgfgfg</li>
+          <li>dfgfggfgfgfgfgfg</li>
+          <li>dfgfggfgfgfgfgfg</li>
+        </ul>
+      </div>
+      <div class="col-xs-3">
+        <strong>Nome:</strong>
+      </div>
+      <div class="col-xs-4">
+        <%= @user.name %>
+      </div>
+    </div>
+    </div>
+
+    <div class="row">
+      <div class="col-xs-3 col-md-offset-5">
+        <strong>Data de nascimento:</strong>
+      </div>
+      <div class="col-xs-4">
+        <%= @user.birth_date %>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-xs-3 col-md-offset-5">
+        <strong>Sexo:</strong>
+      </div>
+      <div class="col-xs-4">
+        <%= @user.gender %>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-xs-3 col-md-offset-5">
+        <strong>Curso:</strong>
+      </div>
+      <div class="col-xs-4">
+        <%= @user.course %>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-xs-3 col-md-offset-5">
+        <strong>Sobre mim:</strong>
+      </div>
+      <div class="col-xs-4">
+        <%= @user.about_me %>
+      </div>
+    </div>
+
+
+  </div>
+</div>
 
 <%= link_to 'Edit', edit_user_path(@user) %> |
 <%= link_to 'Back', users_path %>
