@@ -27,7 +27,9 @@
     <div class="collapse navbar-collapse">
       <ul id="links" class="navbar-right nav navbar-nav">
         <!--  <li class="active"><a href="#">Home</a></li>-->
+        <li><%= link_to 'TV', tv_path %></li>
         <li><%= link_to 'Jogo', games_path %></li>
+
         <% if user_signed_in? %>
             <li class="dropdown">
               <a href="#" class="dropdown-toggle" data-toggle="dropdown"><%= current_user.name %><b class="caret"></b></a>

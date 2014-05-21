@@ -2,22 +2,20 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
-.row div:first-child {
-}
 
 .row {
-  margin-bottom: 8px;
-
+  margin-bottom: 15px;
 }
 
-
-
-#profileBookmarks {
-
-
+.right-align {
+  text-align: right;
+//  background-color: red;
 }
 
-#userInfo {
+#bookmarks {
+  background-color: lightgray;
+}
 
-
+#links {
+  text-align: center;
 }
