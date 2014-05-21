@@ -5,13 +5,13 @@
       
        <ul>
 <li>
-<span class="course">Sopa</span><span class="separator">: </span><span class="dish">Creme de Legumes C/ Vegetais</span>
+<span class="course">Sopa</span><span class="separator">: </span><span class="dish">Cenoura C/ Arroz</span>
 </li>
         <li>
-<span class="course">Dieta</span><span class="separator">: </span><span class="dish">Febras Grelhadas c/ Esparguete - 509.20 Kcal </span>
+<span class="course">Dieta</span><span class="separator">: </span><span class="dish">Peixe Assado C/ Puré de Espinafres - 651.5 Kcal</span>
 </li>
         <li>
-<span class="course">Prato</span><span class="separator">: </span><span class="dish">Massinha de Peixe - 578,3 Kcal  ; Courgette Gratinado C/ Arroz - 716.60 Kcal</span>
+<span class="course">Prato</span><span class="separator">: </span><span class="dish">Esparguete à Bolonhesa - 663.81 Kcal  ; Esparguete C/ Vegetais Salteados - 461.10 Kcal</span>
 </li>
        </ul>
 </div>
@@ -20,13 +20,13 @@
       
        <ul>
 <li>
-<span class="course">Sopa</span><span class="separator">: </span><span class="dish">Creme de Legumes C/ Vegetais</span>
+<span class="course">Sopa</span><span class="separator">: </span><span class="dish">Cenoura C/ Arroz</span>
 </li>
         <li>
-<span class="course">Dieta</span><span class="separator">: </span><span class="dish">Peixe Cozido C/ Batata e Hortaliça - 576,6 kcal</span>
+<span class="course">Dieta</span><span class="separator">: </span><span class="dish">Frango Assado Sim/ C/ Esparguete -625.5 Kcal </span>
 </li>
         <li>
-<span class="course">Prato</span><span class="separator">: </span><span class="dish">Empadão de Carne Salada- 766.60 Kcal </span>
+<span class="course">Prato</span><span class="separator">: </span><span class="dish">Peixe Assado  c/ Batatas Assada - 635,34 Kcal </span>
 </li>
        </ul>
 </div>

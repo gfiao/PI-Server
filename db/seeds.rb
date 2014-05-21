@@ -84,6 +84,7 @@ puts 'Adding Tag to Contents'
 TagContent.create(content_id: 1, tag_id: 1)
 TagContent.create(content_id: 2, tag_id: 1)
 TagContent.create(content_id: 3, tag_id: 2)
+TagContent.create(content_id: 98, tag_id: 2)
 
 #Classrooms building:string classroom:string
 puts 'Adding Classrooms'
