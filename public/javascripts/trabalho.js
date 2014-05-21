@@ -18,7 +18,8 @@ var globalCounter;
 var countRestaurant;
 var countPublicTrans;
 var countMeteo;
-var siteCantina = "http://sas.unl.pt/cantina";
+var fileCantina = "/public/ementas/cantinaAlmoco.txt";
+var firstTimeCantina;
 
 function init() {
     globalCounter = 0;
@@ -26,11 +27,11 @@ function init() {
     countPublicTrans = 0;
     countMeteo = 0;
     firstTimeCantina = true;
+//    $.ajaxSetup({headers: {'Access-Control-Allow-Origin': '*'}});
 
+    getEmenta();
     animateFooter();
     animatePanel();
-
-    // resizeText();
 }
 
 
@@ -161,6 +162,22 @@ function fetchContent() {
         return getMeteo();
 }
 
+function createCORSRequest(method, url) {
+    var xhr = new XMLHttpRequest();
+    if ("withCredentials" in xhr) {
+
+        // Check if the XMLHttpRequest object has a "withCredentials" property.
+        // "withCredentials" only exists on XMLHTTPRequest2 objects.
+        xhr.open(method, url, true);
+
+    } else {
+
+        // Otherwise, CORS is not supported by the browser.
+        xhr = null;
+
+    }
+    return xhr;
+}
 
 function getEmenta() {
 
@@ -169,14 +186,92 @@ function getEmenta() {
     var lunch_place = restaurant[index];
     var ementaContent = ementas[index];
 
-//    if(firstTimeCantina) {
-//        $.get(siteCantina, function(data) {
-//            console.log(data);
-//        }).done(function() {
-//            alert("hehe");
+    if(firstTimeCantina) {
+
+//        $.get("../cantinaAlmoco", function (data) {
+//            var lines = data.split("\r\n");
+//            console.log(lines.length);
+//
+////            $.each(lines, function (n, elem) {
+////                var cont = elem.split(" ");
+////                info[n] = cont[1];
+////            });
+////            if (count == 0)
+////                createMap();
+////            count++;
 //        });
-//        firstTimeCantina = false;
-//    }
+
+//        $.ajax({
+//
+//            // The 'type' property sets the HTTP method.
+//            // A value of 'PUT' or 'DELETE' will trigger a preflight request.
+//            type: 'GET',
+//
+//            // The URL to make the request to.
+//            url: 'http://sas.unl.pt/cantina',
+//
+//            // The 'contentType' property sets the 'Content-Type' header.
+//            // The JQuery default for this property is
+//            // 'application/x-www-form-urlencoded; charset=UTF-8', which does not trigger
+//            // a preflight. If you set this value to anything other than
+//            // application/x-www-form-urlencoded, multipart/form-data, or text/plain,
+//            // you will trigger a preflight request.
+//            contentType: 'text/html',
+//
+//            xhrFields: {
+//                // The 'xhrFields' property sets additional fields on the XMLHttpRequest.
+//                // This can be used to set the 'withCredentials' property.
+//                // Set the value to 'true' if you'd like to pass cookies to the server.
+//                // If this is enabled, your server must respond with the header
+//                // 'Access-Control-Allow-Credentials: true'.
+//                withCredentials: false
+//            },
+//
+//            headers: {
+//                // Set any custom headers here.
+//                // If you set any non-simple headers, your server must include these
+//                // headers in the 'Access-Control-Allow-Headers' response header.
+//            },
+//
+//            success: function() {
+//                // Here's where you handle a successful response.
+//                alert("Success");
+//            },
+//
+//            error: function() {
+//                // Here's where you handle an error response.
+//                // Note that if the error was due to a CORS issue,
+//                // this function will still fire, but there won't be any additional
+//                // information about the error.
+//                alert("Error");
+//            }
+//        });
+
+
+//        // All HTML5 Rocks properties support CORS.
+//        var url = 'http://sas.unl.pt/cantina';
+//
+//        var xhr = createCORSRequest('GET', url);
+//        if (!xhr) {
+//            alert('CORS not supported');
+//            return;
+//        }
+//
+//        // Response handlers.
+//        xhr.onload = function() {
+//            var text = xhr.responseText;
+//            var title = getTitle(text);
+//            alert('Response from CORS request to ' + url + ': ' + title);
+//        };
+//
+//        xhr.onerror = function() {
+//            alert('Woops, there was an error making the request.');
+//        };
+//
+//        xhr.send();
+
+        firstTimeCantina = false;
+    }
 
 
     var content = '<h2>' + lunch_place + '</h2><ul id="ementaList">';
@@ -197,6 +292,11 @@ function getEmenta() {
     }
 
     return content;
+}
+
+// Helper method to parse the title tag from the response.
+function getTitle(text) {
+    return text.match('<title>(.*)?</title>')[1];
 }
 
 function getPublicTrans() {

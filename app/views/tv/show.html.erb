@@ -37,7 +37,7 @@
       </div>
       <div class="" id="right-panel-middle">
 
-        <!--codigo para obter a ementa -> tirar daqui e colocar na TV-->
+        <!--codigo para obter a ementa-->
         <% require 'rubygems' %>
         <% require 'nokogiri' %>
         <% require 'open-uri' %>
@@ -46,22 +46,21 @@
         <% ementaFCT = page.css('.cantina')[0] %>
         <% pratosAlmoco = ementaFCT.css('.lunch').css('.dish') %>
         <% pratosJantar = ementaFCT.css('.dinner').css('.dish') %>
-        <% macro_peixe = pratosAlmoco[2].text.split(";") %>
+
+        <% almocoToFile = [] %>
+        <% jantarToFile = [] %>
+
+        <% pratosAlmoco.each do |prato| %>
+            <% almocoToFile.push(prato.text) %>
+        <% end %>
+        <% pratosJantar.each do |prato| %>
+            <% jantarToFile.push(prato.text) %>
+        <% end %>
 
         <!--Grava a ementa para um ficheiro, para depois tratar e mostrar no jquery-->
-        <% File.open("cantina.txt", 'w') { |file| file.write(ementaFCT) } %>
+        <% File.open("public/ementas/cantinaAlmoco.txt", 'w') { |file| file.write(almocoToFile) } %>
+        <% File.open("public/ementas/cantinaJantar.txt", 'w') { |file| file.write(jantarToFile) } %>
 
-        <h2><%= ementaFCT.css('.title').text.split[6] %></h2>
-
-        <ul id="ementaList">
-          <li>Sopa: <%= pratosAlmoco[0].text %></li>
-
-          <li>Carne: <%= pratosAlmoco[1].text %></li>
-
-          <li>Peixe: <%= macro_peixe[0] %></li>
-
-          <li>Macro: <%= macro_peixe[1] %></li>
-        </ul>
       </div>
 
       <div class="" id="right-panel-bottom">

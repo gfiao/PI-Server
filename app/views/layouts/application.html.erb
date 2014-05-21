@@ -2,7 +2,7 @@
 <html>
 <head>
   <title>CampusTV</title>
-  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
   <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track' => true %>
 
   <%= javascript_include_tag 'trabalho.js' %>
@@ -26,24 +26,26 @@
 
     <div class="collapse navbar-collapse">
       <ul id="links" class="navbar-right nav navbar-nav">
-        <li class="active"><a href="#">Home</a></li>
-        <li class="dropdown">
-          <a href="#" class="dropdown-toggle" data-toggle="dropdown">Categories<b class="caret"></b></a>
-          <ul class="dropdown-menu">
-            <li><a href="portfolio-1-col.html">Conferences</a>
-            </li>
-            <li><a href="portfolio-2-col.html">Workshops</a>
-            </li>
-            <li><a href="portfolio-3-col.html">Historic</a>
-            </li>
-          </ul>
-        </li>
-        <li><a href="#contact">Games</a></li>
+        <!--  <li class="active"><a href="#">Home</a></li>-->
+        <li><%= link_to 'Jogo', games_path %></li>
         <% if user_signed_in? %>
+            <li class="dropdown">
+              <a href="#" class="dropdown-toggle" data-toggle="dropdown"><%= current_user.name %><b class="caret"></b></a>
+              <ul class="dropdown-menu">
+                <li><%= link_to 'Perfil', current_user %>
+                </li>
+                <li><%= link_to 'Conteúdo', contents_path %>
+                </li>
+                <li>
+                  <%= link_to 'Pontuações',scores_path %>
+                </li>
+                <li> <%= link_to 'Sign out', destroy_user_session_path, :method => :delete %></li>
+              </ul>
+            </li>
             <li id="profileLink">
               <p>
                 Bem vindo <%= link_to current_user.email, current_user, :method => :get %>
-                . <%= link_to 'Sign out', destroy_user_session_path, :method => :delete %>
+
               </p>
             </li>
         <% else %>
