@@ -1,5 +1,9 @@
 Rails.application.routes.draw do
 
+  #Isto tem de ficar no inicio, desta forma faz overwrite ao contents/ID
+  #Se isto estiver la em baixo nao funciona, so funciona o contents/ID
+  get 'contents/:title' => 'contents#show'
+
   resources :free_classrooms
 
   resources :classrooms
@@ -38,6 +42,8 @@ Rails.application.routes.draw do
     resources :user_contents
     resources :free_classrooms
   end
+
+  get ':name' => 'users#show', as: 'user_name'
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
