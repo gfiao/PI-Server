@@ -69,6 +69,25 @@ Content.create(title: 'Sócia da FCT ganhou prémio!', link_image: 'destaque_4.j
                description: 'Sócia da FCT ganhou 1 Milhão de Euros pela sua investigação.',
                date: Date.today())
 
+#UserContent user_id:integer content_id:integer
+puts 'Associating content to users'
+UserContent.create(user_id: 1, content_id: 1)
+UserContent.create(user_id: 10, content_id: 2)
+UserContent.create(user_id: 24, content_id: 3)
+
+#BookmarkedContent user_id:integer content_id:integer
+puts 'Adding Bookmarks'
+BookmarkedContent.create(user_id: 3, content_id: 1)
+BookmarkedContent.create(user_id: 13, content_id: 2)
+BookmarkedContent.create(user_id: 23, content_id: 3)
+BookmarkedContent.create(user_id: 35, content_id: 1)
+BookmarkedContent.create(user_id: 21, content_id: 2)
+BookmarkedContent.create(user_id: 9, content_id: 3)
+BookmarkedContent.create(user_id: 7, content_id: 1)
+BookmarkedContent.create(user_id: 31, content_id: 2)
+BookmarkedContent.create(user_id: 29, content_id: 3)
+
+
 #Tag tag:string
 puts 'Adding new Tags'
 Tag.create(tag: 'Informática')
@@ -84,7 +103,6 @@ puts 'Adding Tag to Contents'
 TagContent.create(content_id: 1, tag_id: 1)
 TagContent.create(content_id: 2, tag_id: 1)
 TagContent.create(content_id: 3, tag_id: 2)
-TagContent.create(content_id: 98, tag_id: 2)
 
 #Classrooms building:string classroom:string
 puts 'Adding Classrooms'
@@ -97,3 +115,35 @@ Classroom.create(building: 'Ed.2', classroom: '121')
 #FreeClassroom user_id:integer classroom_id:integer time:datetime
 puts 'Adding Free Classrooms'
 FreeClassroom.create(user_id: 1, classroom_id: 1, time: DateTime.now)
+FreeClassroom.create(user_id: 10, classroom_id: 4, time: DateTime.now)
+
+#Game name:string
+puts 'Adding Games'
+Game.create(name: '2048')
+Game.create(name: '4-em-linha')
+Game.create(name: 'Batalha Naval')
+
+#Score user_id:integer game_id:integer score:integer
+puts 'Adding Scores'
+Score.create(user_id: 5, game_id: 1, score: 30000)
+Score.create(user_id: 5, game_id: 3, score: 2000)
+Score.create(user_id: 1, game_id: 1, score: 20450)
+Score.create(user_id: 8, game_id: 1, score: 13056)
+Score.create(user_id: 28, game_id: 1, score: 7624)
+Score.create(user_id: 31, game_id: 1, score: 1464)
+Score.create(user_id: 13, game_id: 1, score: 506)
+Score.create(user_id: 1, game_id: 2, score: 140)
+Score.create(user_id: 6, game_id: 1, score: 43218)
+
+#Video link:string
+puts 'Adding Videos'
+Video.create(link: 'https://www.youtube.com/watch?v=iaItmiZTHP8')
+Video.create(link: 'https://www.youtube.com/watch?v=FVgZjyevTuI')
+Video.create(link: 'https://www.youtube.com/watch?v=bHwzUHSNVxg')
+Video.create(link: 'https://www.youtube.com/watch?v=mKXIXPiVk3U')
+Video.create(link: 'https://www.youtube.com/watch?v=YXCNFeeH1Ow')
+
+#ContentVideo content_id:integer video_id:integer
+puts 'Associating videos to content'
+ContentVideo.create(content_id: 1, video_id: 1)
+
