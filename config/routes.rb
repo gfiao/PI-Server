@@ -22,12 +22,13 @@ Rails.application.routes.draw do
 
   resources :contents
 
-  get 'tv/show'
-
   devise_for :users
   resources :users
 
+  get "/cantinaAlmoco" => redirect("http://localhost:3000/cantinaAlmoco.txt")
+
   get 'homepage/index'
+  get 'tv' => 'tv#show'
 
   root 'homepage#index'
 
