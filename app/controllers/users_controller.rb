@@ -1,10 +1,12 @@
 class UsersController < ApplicationController
+
+  #Corre a função set_user antes das chamadas a show, edit...
   before_action :set_user, only: [:show, :edit, :update, :destroy]
 
   # GET /users
   # GET /users.json
   def index
-    @users = User.all
+      @users = User.all
   end
 
   # GET /users/1
@@ -64,7 +66,11 @@ class UsersController < ApplicationController
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_user
-      @user = User.find(params[:id])
+     if params[:name]
+       @user = User.where(name: params[:name]).first
+     else
+       @user = User.find(params[:id])
+     end
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.
