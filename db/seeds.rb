@@ -137,11 +137,11 @@ Score.create(user_id: 6, game_id: 1, score: 43218)
 
 #Video link:string
 puts 'Adding Videos'
-Video.create(link: 'https://www.youtube.com/watch?v=iaItmiZTHP8')
-Video.create(link: 'https://www.youtube.com/watch?v=FVgZjyevTuI')
-Video.create(link: 'https://www.youtube.com/watch?v=bHwzUHSNVxg')
-Video.create(link: 'https://www.youtube.com/watch?v=mKXIXPiVk3U')
-Video.create(link: 'https://www.youtube.com/watch?v=YXCNFeeH1Ow')
+Video.create(link: 'https://www.youtube.com/embed/iaItmiZTHP8')
+Video.create(link: 'https://www.youtube.com/embed/FVgZjyevTuI')
+Video.create(link: 'https://www.youtube.com/embed/bHwzUHSNVxg')
+Video.create(link: 'https://www.youtube.com/embed/mKXIXPiVk3U')
+Video.create(link: 'https://www.youtube.com/embed/YXCNFeeH1Ow')
 
 #ContentVideo content_id:integer video_id:integer
 puts 'Associating videos to content'
