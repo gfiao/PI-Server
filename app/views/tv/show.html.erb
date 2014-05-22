@@ -3,8 +3,10 @@
 <head lang="en">
   <meta charset="UTF-8">
   <%= stylesheet_link_tag 'tv.css' %>
+  <%= stylesheet_link_tag 'mediaelementplayer.css' %>
   <%= javascript_include_tag 'trabalho.js' %>
   <%= javascript_include_tag 'jquery-2.1.1.min.js', 'application' %>
+  <%= javascript_include_tag 'mediaelement-and-player.min.js', 'application' %>
 </head>
 <body onload="init()">
 
@@ -17,7 +19,14 @@
     </div>
 
     <div class="" id="view-area">
-      <%= video_tag 'https://www.youtube.com/watch?v=vBZ5SLJmfdw', size: '600x400', controls: true, autoplay: true %>
+
+      <!--<video width="640" height="360" id="player1" autoplay>-->
+        <!--<source type="video/youtube" src="http://www.youtube.com/watch?v=nOEw9iiopwI" />-->
+      <!--</video>-->
+      <!--https://www.youtube.com/watch?v=iaItmiZTHP8-->
+      <iframe width="100%" height="100%" src="http://www.youtube.com/embed/iaItmiZTHP8" frameborder="0" autoplay></iframe>
+
+      <!--<#%= video_tag 'https://www.youtube.com/watch?v=vBZ5SLJmfdw', size: '600x400', type: "video/youtube", controls: true, autoplay: true %>-->
     </div>
 
     <div class="" id="right-panel">

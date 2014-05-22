@@ -12,10 +12,8 @@
  *
  *= require_tree .
  *= require bootstrap.min
- *= require_self
- */
-/*
  *= require mediaelement_rails
+ *= require_self
  */
 
 @font-face {
