@@ -74,7 +74,7 @@
                 height: '390',
                 width: '640',
                 //videoId: videos[counterVid].link.split('/')[4], //retorna codigo dos videos
-                playerVars: { 'autoplay': 1, 'showinfo': 0, 'rel': 0, 'modestbranding': 1}, //'controls': 0 ,
+                playerVars: { 'autoplay': 1, 'showinfo': 0, 'rel': 0, 'controls': 0, 'modestbranding': 1},
                 events: {
                     'onReady': onPlayerReady,
                     'onStateChange': onPlayerStateChange
@@ -98,7 +98,6 @@
         var done = false;
         function onPlayerStateChange(event) {
             if (event.data == YT.PlayerState.ENDED) {
-                //event.target.playVideo();
                 onPlayerReady(event); //Isto funciona, mas deixa a pagina MUITO lenta
             }
         }
