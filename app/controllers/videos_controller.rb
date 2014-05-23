@@ -10,7 +10,13 @@ class VideosController < ApplicationController
   # GET /videos/1
   # GET /videos/1.json
   def show
+    @videos = Video.all
     #@video = Video.find params[:link]
+
+    respond_to do |format|
+     #format.json { render :json => @video }
+      format.json { render :json => @videos }
+    end
   end
 
   # GET /videos/new
