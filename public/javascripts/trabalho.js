@@ -31,7 +31,7 @@ function init() {
     getEmenta();
     animateFooter();
     animatePanel();
-    startTime();
+    updateTime();
 }
 
 
@@ -319,7 +319,7 @@ function resizeText() {
 }
 
 
-function startTime()
+function updateTime()
 {
     var today=new Date();
     var h = today.getHours();
@@ -328,9 +328,10 @@ function startTime()
 
     //add a zero in front of numbers < 10
     m = checkTime(m);
-//    s = checkTime(s);
+
     $("#hour-info > h1").text(h + ":" + m);
     t = setTimeout('startTime()', 5000);
+
 }
 
 function checkTime(i)
