@@ -4,9 +4,10 @@
   <meta charset="UTF-8">
   <%= stylesheet_link_tag 'tv.css' %>
   <%= stylesheet_link_tag 'mediaelementplayer.css' %>
-  <%= javascript_include_tag 'trabalho.js' %>
   <%= javascript_include_tag 'jquery-2.1.1.min.js', 'application' %>
   <%= javascript_include_tag 'mediaelement-and-player.min.js', 'application' %>
+  <%= javascript_include_tag 'trabalho.js' %>
+
 </head>
 <body onload="init()">
 
@@ -25,38 +26,27 @@
 
     <script>
 
-        //        function getValues() {
-        //            var result = [];
-        //            $.get("/videos", function (data) {
-        //                $.each(data, function (i, value) {
-        //                    result[i] = value.link;
-        //                })
-        //            }, "json");
-        //            return result;
-        //        }
-
         var videos = [];
 
         jQuery.extend({
-                    getValues: function (url) {
-                        var result = null;
-                        $.ajax({
-                            url: url,
-                            type: 'get',
-                            dataType: 'json',
-                            async: false,
-                            cache: false,
-                            success: function (data) {
-                                result = data;
-                            }
-                        });
-                        return result;
+            getValues: function (url) {
+                var result = null;
+                $.ajax({
+                    url: url,
+                    type: 'get',
+                    dataType: 'json',
+                    async: false,
+                    cache: false,
+                    success: function (data) {
+                        result = data;
                     }
-                }
-        );
+                });
+                return result;
+            }
+        });
 
         videos = $.getValues('/videos');
-        console.log(videos);
+        // console.log(videos);
 
         //  2. This code loads the IFrame Player API code asynchronously.
         var tag = document.createElement('script');
@@ -68,7 +58,6 @@
         // 3. This function creates an <iframe> (and YouTube player)
         //    after the API code downloads.
         var player;
-        var counterVid = 0;
         function onYouTubeIframeAPIReady() {
             player = new YT.Player('view-area', {
                 height: '390',
@@ -98,7 +87,7 @@
         var done = false;
         function onPlayerStateChange(event) {
             if (event.data == YT.PlayerState.ENDED) {
-                onPlayerReady(event); //Isto funciona, mas deixa a pagina MUITO lenta
+                onPlayerReady(event); //Isto funciona, mas deixa a pagina um pouco lenta ao inicio
             }
         }
     </script>

@@ -41,24 +41,23 @@ function populateHeadlineDescription() {
     var interval_ID;
     var obj;
 
-    interval_ID = setInterval(function() {
+    interval_ID = setInterval(function () {
 
         //id da posição seleccionada actualmente
         obj = $("#news_carousel .active").attr('id');
 
         var splitted_id = obj.split("_");
-        var id = splitted_id[splitted_id.length-1]-1; //obtem o ID e normaliza-o para 0 até length-1
+        var id = splitted_id[splitted_id.length - 1] - 1; //obtem o ID e normaliza-o para 0 até length-1
 
         var toChange = $("#sideDescription > h2");
         toChange.empty();
         toChange.append(headline_description[id]);
 
         clearInterval(interval_ID);
-    },650);
+    }, 650);
 
 
 }
-
 
 
 //IDEIA BASE:
@@ -186,7 +185,7 @@ function getEmenta() {
     var lunch_place = restaurant[index];
     var ementaContent = ementas[index];
 
-    if(firstTimeCantina) {
+    if (firstTimeCantina) {
 
 //        $.get("../cantinaAlmoco", function (data) {
 //            var lines = data.split("\r\n");
@@ -319,9 +318,8 @@ function resizeText() {
 }
 
 
-function updateTime()
-{
-    var today=new Date();
+function updateTime() {
+    var today = new Date();
     var h = today.getHours();
     var m = today.getMinutes();
 //    var s = today.getSeconds();
@@ -334,11 +332,42 @@ function updateTime()
 
 }
 
-function checkTime(i)
-{
-    if (i < 10)
-    {
-        i="0" + i;
+function checkTime(i) {
+    if (i < 10) {
+        i = "0" + i;
     }
     return i;
 }
+
+
+/**************************BUSCAR NOTICIAS A BD POR REST*****************/
+
+jQuery.extend({
+    getValues: function (url) {
+        var result = null;
+        $.ajax({
+            url: url,
+            type: 'get',
+            dataType: 'json',
+            async: false,
+            cache: false,
+            success: function (data) {
+                result = data;
+            }
+        });
+        return result;
+    }
+});
+
+var rodape = $.getValues('/contents')
+console.log(rodape);
+
+var titles = [];
+function getTitles() {
+    $.each(rodape, function (i, obj) {
+        titles[i] = obj.title;
+    });
+}
+getTitles();
+
+console.log(titles);
