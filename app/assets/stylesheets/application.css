@@ -19,16 +19,11 @@
 @font-face {
     font-family: 'Glyphicons Halflings';
     src: url('../assets/glyphicons-halflings-regular.eot');
-    src: url('../assets/glyphicons-halflings-regular.eot?#iefix') format('embedded-opentype'),
-    url('../assets/glyphicons-halflings-regular.woff') format('woff'),
-    url('../assets/glyphicons-halflings-regular.ttf') format('truetype'),
-    url('../assets/glyphicons-halflings-regular.svg#glyphicons_halflingsregular') format('svg');
+    src: url('../assets/glyphicons-halflings-regular.eot?#iefix') format('embedded-opentype'), url('../assets/glyphicons-halflings-regular.woff') format('woff'), url('../assets/glyphicons-halflings-regular.ttf') format('truetype'), url('../assets/glyphicons-halflings-regular.svg#glyphicons_halflingsregular') format('svg');
 }
 
 body {
     padding-top: 50px;
-    //background-color: #dfdfdf;
-
 }
 
 /* ############# BARRA DE MENU ############# */
@@ -51,15 +46,15 @@ body {
 /* ############# AGORA NA TV ############# */
 #bookmark {
     margin: auto;
-    border: 2px solid black;
     height: 10%;
     width: 80%;
     margin-top: 20px;
     margin-bottom: 20px;
+    background-color: lightgrey;
+    border: 1px solid #000000;
 }
 
 #bookmarkButton {
-    border-left: 2px solid black;
     height: 100%;
 }
 
@@ -73,10 +68,10 @@ body {
 
 /* ############# DESTAQUES ############# */
 /*#slidingPics {*/
-    /*background-color: brown;*/
-    /*margin-top: 5px;*/
-    /*padding-top: 15px;*/
-    /*height: 500px;*/
+/*background-color: brown;*/
+/*margin-top: 5px;*/
+/*padding-top: 15px;*/
+/*height: 500px;*/
 /*}*/
 
 #slidingPics img {
@@ -89,8 +84,6 @@ body {
     padding: 0px;
 }
 
-
-
 @media (min-width: 981px) {
     .headline-description {
         background-color: lightgrey;
@@ -102,6 +95,7 @@ body {
         padding-right: 10px;
     }
 }
+
 @media (max-width: 980px) {
     .headline-description {
         background-color: lightgrey;
@@ -111,11 +105,36 @@ body {
 }
 
 /* ############# CONTEUDO + VISTO ############# */
+
 .top-content img {
     /*width: 350px;*/
     /*height: 170px;*/
     width: 100%;
     height: 175px;
+}
+
+.caption a:hover {
+    background-color: inherit;
+}
+
+.thumbnail {
+    background-color: lightgrey;
+}
+
+@media (max-width: 768px) {
+    .btn-responsive {
+        padding: 2px 4px;
+        font-size: 80%;
+        line-height: 1;
+    }
+}
+
+@media (min-width: 769px) and (max-width: 992px) {
+    .btn-responsive {
+        padding: 4px 9px;
+        font-size: 90%;
+        line-height: 1.2;
+    }
 }
 
 /* ############# cenas de teste - APAGAR ############# */
