@@ -20,25 +20,11 @@
 
     <div class="" id="view-area">
 
-      <!--<video width="640" height="360" id="player1" autoplay>-->
-        <!--<source type="video/youtube" src="http://www.youtube.com/watch?v=nOEw9iiopwI" />-->
-      <!--</video>-->
-      <!--https://www.youtube.com/watch?v=iaItmiZTHP8-->
 
-      <!--<%= Video.second.link %>?autoplay=1&controls=0&showinfo=0&rel=0
-      https://www.youtube.com/embed/M7lc1UVf-VE?autoplay=1&controls=0&showinfo=0&rel=0&modestbranding=1 -->
 
-<!--
-      <%= Video.all.each do |video| %>
-      <iframe width="100%" height="100%" src="<%= video.link %>?autoplay=1&controls=0&showinfo=0&rel=0&modestbranding=1&enablejsapi=1&playerapiid=ytplayer"
-              frameborder="0"></iframe>
-       <% end %>
--->
-          <iframe width="100%" height="100%" src="<%= Video.first.link %>?autoplay=1&controls=0&showinfo=0&rel=0"
-                  frameborder="0"></iframe>
-
-      <!--<#%= video_tag 'https://www.youtube.com/watch?v=vBZ5SLJmfdw', size: '600x400', type: "video/youtube", controls: true, autoplay: true %>-->
     </div>
+
+    <script>
 
         //        function getValues() {
         //            var result = [];
@@ -49,6 +35,8 @@
         //            }, "json");
         //            return result;
         //        }
+
+        var videos = [];
 
         jQuery.extend({
                     getValues: function (url) {
@@ -126,7 +114,7 @@
       <div class="" id="right-panel-top">
         <div id="hour-date">
           <div id="hour-info">
-            <h1>12:40</h1>
+            <h1></h1>
           </div>
           <div id="date-info">
             <h3>Sexta, 20</h3>
