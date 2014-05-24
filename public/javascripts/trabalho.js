@@ -2,6 +2,27 @@
  * Created by Rafael on 06/05/2014.
  */
 
+function Weekday(shortName, portugueseName) {
+    this.shortName = shortName;
+    this.portugueseName = portugueseName;
+}
+
+//function Month(englishName, portugueseName) {
+//    this.englishName = englishName;
+//    this.portugueseName = portugueseName;
+//}
+
+var weekdays = new Array(new Weekday("Sun", "Domingo"), new Weekday("Mon", "Segunda"), new Weekday("Tue", "Terça"),
+    new Weekday("Wed", "Quarta"), new Weekday("Thu", "Quinta"), new Weekday("Fri", "Sexta"), new Weekday("Sat", "Sábado"));
+
+//var months = new Array(new Month("January", "Janeiro"), new Month("February", "Fevereiro"), new Month("March", "Março"),
+//    new Month("April", "Abril"), new Month("May", "Maio"), new Month("June", "Junho"), new Month("July", "Julho"),
+//    new Month("August", "Agosto"), new Month("September", "Setembro"), new Month("October", "Outubro"),
+//    new Month("November", "Novembro"), new Month("December", "Dezembro"));
+
+var months = new Array("Janeiro", "Fevereiro", "Março", "Abril", "Maio", "Junho", "Julho", "Agosto", "Setembro",
+    "Outubro", "Novembro", "Dezembro");
+
 var footer_text = "Isto é um exemplo. Tou mesmo a ver que isto vai sair" +
     " fora do ecrã";
 var restaurant = new Array("Cantina", "SpotBar", "Teresa");
@@ -20,6 +41,7 @@ var countPublicTrans;
 var countMeteo;
 var fileCantina = "/public/ementas/cantinaAlmoco.txt";
 var firstTimeCantina;
+var today;
 
 function init() {
     globalCounter = 0;
@@ -32,6 +54,7 @@ function init() {
     animateFooter();
     animatePanel();
     updateTime();
+    updateDate();
 }
 
 
@@ -317,21 +340,47 @@ function resizeText() {
     $(".topContent").width($(".topContent > img").width());
 }
 
+//actualiza a data da TV
+function updateDate() {
+    today = new Date();
 
-function updateTime() {
-    var today = new Date();
-    var h = today.getHours();
-    var m = today.getMinutes();
-//    var s = today.getSeconds();
+    var fullDate = today.toLocaleDateString().split("/"); //format: dia/mes/ano
 
-    //add a zero in front of numbers < 10
-    m = checkTime(m);
+    var weekday = today.toString().split(" ")[0];
+    var day = fullDate[0];
+    var month = fullDate[1];
+//    var year = fullDate[2];
 
-    $("#hour-info > h1").text(h + ":" + m);
-    t = setTimeout('startTime()', 5000);
+    var toDisplay = "";
+    $.each(weekdays, function(i,elem) {
+        if(elem.shortName == weekday)
+            return toDisplay += elem.portugueseName;
+    });
 
+    toDisplay += ", " + day;
+    toDisplay += " " + months[month-1];
+
+    $("#date-info h3").text(toDisplay);
+    t = setTimeout('updateDate()', 1800000); //é chamado a cada 30 min
 }
 
+//actualiza a hora da TV
+function updateTime() {
+    today = new Date();
+
+    var minute = today.getMinutes();
+    var hour = today.getHours();
+
+    //add a zero in front of numbers < 10
+    hour = checkTime(hour);
+    minute = checkTime(minute);
+
+    $("#hour-info > h1").text(hour + ":" + minute);
+    t = setTimeout('updateTime()', 5000); //é chamado a cada 5 segundos
+}
+
+//funçao auxiliar para acrescentar um zero à esquerda caso o numero i
+//seja menor que 10, para evitar que fique apenas um digito
 function checkTime(i) {
     if (i < 10) {
         i = "0" + i;
@@ -370,4 +419,4 @@ function getTitles() {
 }
 getTitles();
 
-console.log(titles);
+//console.log(titles);
