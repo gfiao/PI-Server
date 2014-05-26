@@ -352,13 +352,13 @@ function updateDate() {
 //    var year = fullDate[2];
 
     var toDisplay = "";
-    $.each(weekdays, function(i,elem) {
-        if(elem.shortName == weekday)
+    $.each(weekdays, function (i, elem) {
+        if (elem.shortName == weekday)
             return toDisplay += elem.portugueseName;
     });
 
     toDisplay += ", " + day;
-    toDisplay += " " + months[month-1];
+    toDisplay += " " + months[month - 1];
 
     $("#date-info h3").text(toDisplay);
     t = setTimeout('updateDate()', 1800000); //é chamado a cada 30 min
@@ -420,3 +420,8 @@ function getTitles() {
 getTitles();
 
 //console.log(titles);
+
+
+/************************************************/
+/********INSERIR PLAYLIST DE VIDEOS NA TV********/
+/************************************************/
