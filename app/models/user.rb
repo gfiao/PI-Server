@@ -16,9 +16,10 @@ class User < ActiveRecord::Base
   has_many :scores
   #has_many :games, through: :scores
 
-  validate :name, presence: true;
-  validate :email, presence: true, uniqueness: true
-  validate :gender, presence: true;
-  validate :birth_date, presence: true;
+  validates :name, presence: true;
+  validates :email, presence: true, uniqueness: true
+  validates :gender, presence: true;
+  validates :course, presence: true;
+  validates :birth_date, presence: true;
 
 end

@@ -12,6 +12,6 @@ class Content < ActiveRecord::Base
   has_many :user_contents
   has_many :users, through: :user_contents
 
-  validate :title, presence: true;
+  validates :title, presence: true;
 
 end
