@@ -236,6 +236,34 @@
         </div>
       </div>
     </div>
+
+
+    <% Content.all.each do |content| %>
+        <div class="col-sm-4 col-lg-4 col-md-4 top-content">
+          <div class="thumbnail">
+            <%= image_tag content.link_image %>
+
+            <div class="caption">
+              <h4><%= link_to content.title, content_path(content.title) %>
+              </h4>
+
+              <p><%= content.description %></p>
+            </div>
+            <div class="ratings">
+              <p class="pull-right">18 views</p>
+
+              <p>
+                <span class="glyphicon glyphicon-star"></span>
+                <span class="glyphicon glyphicon-star"></span>
+                <span class="glyphicon glyphicon-star"></span>
+                <span class="glyphicon glyphicon-star"></span>
+                <span class="glyphicon glyphicon-star-empty"></span>
+              </p>
+            </div>
+          </div>
+        </div>
+    <% end %>
+
   </div>
 
 </div>
