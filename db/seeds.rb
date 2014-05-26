@@ -53,8 +53,8 @@ puts 'Adding 50 random Users'
       course: courses[(r2+i)%courses.length],
       about_me: 'Hehe sou a pessoa número ' + i.to_s + ' e sou muita fixe, hehe',
       email: first_names[(r+i)%first_names.length]+'#{i}'+last_names[(r2+i)%last_names.length]+'@gMaile.com',
-      password: '123123123',
-      password_confirmation: '123123123'
+      password: 'qweqweqwe',
+      password_confirmation: 'qweqweqwe'
   )
 end
 
