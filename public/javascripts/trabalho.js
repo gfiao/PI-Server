@@ -51,7 +51,7 @@ function init() {
     firstTimeCantina = true;
 
     getEmenta();
-    animateFooter();
+   // animateFooter();
     animatePanel();
     updateTime();
     updateDate();

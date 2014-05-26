@@ -3,10 +3,10 @@
 <head lang="en">
   <meta charset="UTF-8">
   <%= stylesheet_link_tag 'tv.css' %>
-  <%= stylesheet_link_tag 'mediaelementplayer.css' %>
+  <%= stylesheet_link_tag 'animate.css' %>
   <%= javascript_include_tag 'jquery-2.1.1.min.js', 'application' %>
-  <%= javascript_include_tag 'mediaelement-and-player.min.js', 'application' %>
   <%= javascript_include_tag 'trabalho.js' %>
+  <%= javascript_include_tag 'jquery.marquee.js' %>
 
 </head>
 <body onload="init()">
@@ -15,9 +15,9 @@
 
   <div class="" id="video-and-lateral">
 
-    <div class="" id="logotype">
-      <h2>CampusTV</h2>
-    </div>
+    <!--<div class="" id="logotype">-->
+    <!--<h2>CampusTV</h2>-->
+    <!--</div>-->
 
     <div class="" id="view-area">
 
@@ -77,13 +77,20 @@
       <p><b>ÚLTIMA HORA</b></p>
     </div>
 
-    <div class="" id="news-container">
-      <p>Uma pequena noticia, só para arrancar com a cena hehehehehehehehehehehehehe</p>
+    <div class="news-container-scroll" id="news-container">
+      <!--<marquee behavior="scroll" scrollamount="5" direction="left" width="1050">-->
+      <p class="">Uma pequena noticia, só para arrancar com a cena
+        heheheheheheheheheheheheheheheheheheheehehehehehehe</p>
+      <!--</marquee>-->
     </div>
 
   </div>
 
 </div>
-
+<script>
+    $('.news-container-scroll').marquee({
+        duration: 10000
+    });
+</script>
 </body>
 </html>
