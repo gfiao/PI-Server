@@ -109,161 +109,46 @@
     <h2>Conteúdos mais vistos</h2>
   </div>
 
-  <div class="row">
-    <div class="col-sm-4 col-lg-4 col-md-4 top-content">
-      <div class="thumbnail">
-        <%= image_tag "fellow_ana-lobo.jpg" %>
-
-        <div class="caption">
-          <h4><a href="#">First Product esta merda vai ficar grande comó caralho só para testar</a>
-          </h4>
-
-          <p>O Fernando e o Nando foram à praia ver as babes, mas o Fernando ficou com uma erecção logo tiveram que se
-            esconder na casa-de-banho.</p>
-        </div>
-        <div class="ratings">
-          <p class="pull-right">12 views</p>
-
-          <p>
-            <span class="glyphicon glyphicon-star"></span>
-            <span class="glyphicon glyphicon-star"></span>
-            <span class="glyphicon glyphicon-star"></span>
-            <span class="glyphicon glyphicon-star"></span>
-            <span class="glyphicon glyphicon-star"></span>
-          </p>
-        </div>
-      </div>
-    </div>
-
-    <div class="col-sm-4 col-lg-4 col-md-4 top-content">
-      <div class="thumbnail">
-        <!--<img src="images/destaque_4.jpg" alt="">-->
-        <%= image_tag "destaque_4.jpg" %>
-
-        <div class="caption">
-          <h4><a href="#">Second Product</a>
-          </h4>
-
-          <p>This is a short description. Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
-        </div>
-        <div class="ratings">
-          <p class="pull-right">12 views</p>
-
-          <p>
-            <span class="glyphicon glyphicon-star"></span>
-            <span class="glyphicon glyphicon-star"></span>
-            <span class="glyphicon glyphicon-star"></span>
-            <span class="glyphicon glyphicon-star"></span>
-            <span class="glyphicon glyphicon-star-empty"></span>
-          </p>
-        </div>
-      </div>
-    </div>
-
-    <div class="col-sm-4 col-lg-4 col-md-4 top-content">
-      <div class="thumbnail">
-        <!--<img src="images/LeslieLamport_960.jpg" alt="">-->
-        <%= image_tag "LeslieLamport_960.jpg" %>
-
-        <div class="caption">
-          <h4><a href="#">Third Product</a>
-          </h4>
-
-          <p>This is a short description. Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
-        </div>
-        <div class="ratings">
-          <p class="pull-right">31 views</p>
-
-          <p>
-            <span class="glyphicon glyphicon-star"></span>
-            <span class="glyphicon glyphicon-star"></span>
-            <span class="glyphicon glyphicon-star"></span>
-            <span class="glyphicon glyphicon-star"></span>
-            <span class="glyphicon glyphicon-star-empty"></span>
-          </p>
-        </div>
-      </div>
-    </div>
-  </div>
-  <div class="row">
-
-    <div class="col-sm-4 col-lg-4 col-md-4 top-content">
-      <div class="thumbnail">
-        <!--<img src="images/top-prize.jpg" alt="">-->
-        <%= image_tag "top-prize.jpg" %>
-
-        <div class="caption">
-          <h4><a href="#">Fourth Product</a>
-          </h4>
-
-          <p>This is a short description. Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
-        </div>
-        <div class="ratings">
-          <p class="pull-right">6 views</p>
-
-          <p>
-            <span class="glyphicon glyphicon-star"></span>
-            <span class="glyphicon glyphicon-star"></span>
-            <span class="glyphicon glyphicon-star"></span>
-            <span class="glyphicon glyphicon-star-empty"></span>
-            <span class="glyphicon glyphicon-star-empty"></span>
-          </p>
-        </div>
-      </div>
-    </div>
-
-    <div class="col-sm-4 col-lg-4 col-md-4 top-content">
-      <div class="thumbnail">
-        <!--<img src="images/destaque_6.jpg" alt="">-->
-        <%= image_tag "destaque_6.jpg" %>
-
-        <div class="caption">
-          <h4><a href="#">Fifth Product</a>
-          </h4>
-
-          <p>This is a short description. Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
-        </div>
-        <div class="ratings">
-          <p class="pull-right">18 views</p>
-
-          <p>
-            <span class="glyphicon glyphicon-star"></span>
-            <span class="glyphicon glyphicon-star"></span>
-            <span class="glyphicon glyphicon-star"></span>
-            <span class="glyphicon glyphicon-star"></span>
-            <span class="glyphicon glyphicon-star-empty"></span>
-          </p>
-        </div>
-      </div>
-    </div>
 
 
-    <% Content.all.each do |content| %>
-        <div class="col-sm-4 col-lg-4 col-md-4 top-content">
-          <div class="thumbnail">
-            <%= image_tag content.link_image %>
 
-            <div class="caption">
-              <h4><%= link_to content.title, content_path(content.title) %>
-              </h4>
+  <% i = 0 %>
+  <% Content.all.each do |content| %>
 
-              <p><%= content.description %></p>
-            </div>
-            <div class="ratings">
-              <p class="pull-right">18 views</p>
+      <% if (i % 3 == 0) %>
+          <div class="row">
+      <% end %>
 
-              <p>
-                <span class="glyphicon glyphicon-star"></span>
-                <span class="glyphicon glyphicon-star"></span>
-                <span class="glyphicon glyphicon-star"></span>
-                <span class="glyphicon glyphicon-star"></span>
-                <span class="glyphicon glyphicon-star-empty"></span>
-              </p>
-            </div>
+      <div class="col-sm-4 col-lg-4 col-md-4 top-content">
+        <div class="thumbnail">
+          <%= image_tag content.link_image %>
+
+          <div class="caption">
+            <h4><%= link_to content.title, content_path(content.title) %>
+            </h4>
+
+            <p><%= content.description %></p>
+          </div>
+          <div class="ratings">
+            <p class="pull-right">18 views</p>
+
+            <p>
+              <span class="glyphicon glyphicon-star"></span>
+              <span class="glyphicon glyphicon-star"></span>
+              <span class="glyphicon glyphicon-star"></span>
+              <span class="glyphicon glyphicon-star"></span>
+              <span class="glyphicon glyphicon-star-empty"></span>
+            </p>
           </div>
         </div>
-    <% end %>
+      </div>
 
-  </div>
+
+      <% if (i % 3 == 2) %>
+          </div>
+      <% end %>
+      <% i += 1 %>
+  <% end %>
+
 
 </div>

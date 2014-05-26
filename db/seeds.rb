@@ -68,6 +68,9 @@ Content.create(title: 'Barbara Liskov vem à FCT!', link_image: 'top-prize.jpg',
 Content.create(title: 'Sócia da FCT ganhou prémio!', link_image: 'destaque_4.jpg',
                description: 'Sócia da FCT ganhou 1 Milhão de Euros pela sua investigação.',
                date: Date.today())
+Content.create(title: 'Noticia de ultima hora! FCT a arder!', link_image: 'imagem_iycr2014.jpg',
+                description: 'FCT a arder! Edificios a ruir! Esta noticia esta aqui para termos 4 noticias!',
+                date: Date.today())
 
 #UserContent user_id:integer content_id:integer
 puts 'Associating content to users'
