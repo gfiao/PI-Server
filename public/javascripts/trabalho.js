@@ -33,13 +33,40 @@ var siteCantina = "http://sas.unl.pt/cantina";
 var firstTimeCantina;
 var today;
 
+//function handleFiles(files) {
+//    //Retrieve the first (and only!) File from the FileList object
+//    var file = files[0];
+//    alert("hehe");
+//    console.log(file);
+//
+//    if (file) {
+//        var r = new FileReader();
+//        r.onload = function(e) {
+//            var contents = e.target.result;
+//            alert( "Got the file.n"
+//                    +"name: " + file.name + "n"
+//                    +"type: " + file.type + "n"
+//                    +"size: " + file.size + " bytesn"
+//                    + "starts with: " + contents.substr(1, contents.indexOf("n"))
+//            );
+//        }
+//        r.readAsText(file);
+//    } else {
+//        alert("Failed to load file");
+//    }
+//}
+
+
 function init() {
     globalCounter = 0;
     countRestaurant = 0;
     countPublicTrans = 0;
     countMeteo = 0;
     firstTimeCantina = true;
+//    document.getElementById('fileInput').addEventListener('onclick', handleFiles, false);
+//    console.log(document.getElementById("fileInput"));
 
+//    readSingleFile();
     updateTime();
     updateDate();
     getEmenta();
@@ -195,20 +222,31 @@ function getEmenta() {
     var lunch_place = restaurant[index];
     var ementaContent = ementas[index];
 
-    alert("antes de entrar");
+//    alert("antes de entrar");
 
     if (firstTimeCantina) {
 
-        var content = "";
+//        var content = "";
+//        File file =
+//
+//        var reader = new FileReader();
+//
+//        reader.onload = function(e) {
+//            content = reader.result;
+//        }
+//
+//        reader.readAsText("/public/ementas/cantinaAlmoco.txt");
 
-        $.ajax({
-            url: "http://sas.unl.pt/cantina",
-            data: content,
-            type: "GET",
-            success: alert("sucesso"),
-            dataType: "html",
-            cache: false
-        });
+
+//        $.ajax({
+//            url: "http://localhost:3000/public/ementas/cantinaAlmoco.txt",
+//            type: "GET",
+//            dataType: "jsonp",
+//            success: function(data) {
+////                content = data;
+//                alert("sucesso: " + data.length + " linhas retornadas");
+//            }
+//        });
 
 
 //        $.get(siteCantina, function (data) {
