@@ -18,136 +18,133 @@
   <div class="page-header">
     <h2 class="headerTitle">Destaques</h2>
   </div>
+
+
   <div class="row">
     <div class="col-md-9 headline-img">
       <div id="slidingPics" class="carousel slide">
 
         <!-- Indicators -->
         <ol class="carousel-indicators">
-          <li data-target="#slidingPics" data-slide-to="0" class="active"
-              onclick="populateHeadlineDescription()"></li>
-          <li data-target="#slidingPics" data-slide-to="1" onclick="populateHeadlineDescription()"></li>
-          <li data-target="#slidingPics" data-slide-to="2" onclick="populateHeadlineDescription()"></li>
-          <li data-target="#slidingPics" data-slide-to="3" onclick="populateHeadlineDescription()"></li>
+          <% i = 0 %>
+          <% Content.all.each do |content| %>
+
+              <% if (i == 0) %>
+                  <li data-target="#slidingPics" data-slide-to="0" class="active"
+                      onclick="populateHeadlineDescription()"></li>
+              <% else %>
+                  <li data-target="#slidingPics" data-slide-to="<%= i %>" onclick="populateHeadlineDescription()"></li>
+                  <!--<li data-target="#slidingPics" data-slide-to="2" onclick="populateHeadlineDescription()"></li>-->
+                  <!--<li data-target="#slidingPics" data-slide-to="3" onclick="populateHeadlineDescription()"></li>-->
+              <% end %>
+              <% i += 1 %>
+          <% end %>
         </ol>
+
 
         <!-- Wrapper for slides -->
         <div id="news_carousel" class="carousel-inner">
-          <div id="news_1" class="item active">
-            <div class="fill-img">
-              <%= image_tag "http://placehold.it/1900x1080&text=Slide One" %>
-            </div>
-            <!--<div class="carousel-caption">-->
-            <!--<h1>Modern Business - A Bootstrap 3 Template</h1>-->
-            <!--</div>-->
+
+
+          <% i = 0 %>
+          <% Content.all.each do |content| %>
+
+              <% #Se for o primeiro item, a class tem de ser item active   %>
+              <% if (i == 0) %>
+                  <div id="news_<%= i %>" class="item active">
+              <% else %>
+                  <div id="news_<%= i %>" class="item">
+              <% end %>
+
+              <div class="fill-img">
+                <%= image_tag content.link_image %>
+              </div>
+              </div>
+
+              <% i += 1 %>
+          <% end %>
           </div>
-          <div id="news_2" class="item">
-            <div class="fill fill-img">
-              <%= image_tag "LeslieLamport_960.jpg" %>
-            </div>
-            <!--<div class="carousel-caption">-->
-
-            <!--<h1>Ready to Style &amp; Add Content</h1>-->
-            <!--</div>-->
-          </div>
-          <div id="news_3" class="item">
-            <div class="fill fill-img">
-              <%= image_tag "http://placehold.it/1900x1080&text=Slide Three" %>
-            </div>
-            <!--<div class="carousel-caption">-->
-            <!--<h1>Additional Layout Options at <a-->
-            <!--href="http://startbootstrap.com">http://startbootstrap.com</a>-->
-            <!--</h1>-->
-            <!--</div>-->
-          </div>
-          <div id="news_4" class="item">
-            <div class="fill fill-img">
-              <%= image_tag "http://placehold.it/1900x1080&text=Slide Four" %>
-            </div>
-            <!--<div class="carousel-caption">-->
-            <!--<h1>O gui curte bué de chupar umas valentes pixotas <a href="http://startbootstrap.com">hHEHEHEHEHEHEHE</a>-->
-            <!--</h1>-->
-            <!--</div>-->
-          </div>
-        </div>
-
-        <!-- Controls -->
-        <a class="left carousel-control" href="#slidingPics" data-slide="prev"
-           onclick="populateHeadlineDescription()">
-          <span class="icon-prev"></span>
-        </a>
-        <a class="right carousel-control" href="#slidingPics" data-slide="next"
-           onclick="populateHeadlineDescription()">
-          <span class="icon-next"></span>
-        </a>
-      </div>
-    </div>
-    <div id="sideDescription" class="col-md-3 headline-description no-padding">
-      <h2>Titulo inicial, não vai ficar muito tempo, aposto</h2>
-
-      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam viverra euismod odio, gravida
-        pellentesque urna varius vitae. Sed dui lorem, adipiscing in adipiscing et, interdum nec metus.
-        Mauris ultricies, justo eu convallis placerat, felis enim.</p>
-
-      <h3>Project Details</h3>
-      <ul>
-        <li>Lorem Ipsum</li>
-        <li>Dolor Sit Amet</li>
-        <li>Consectetur</li>
-        <li>Adipiscing Elit</li>
-      </ul>
-    </div>
-  </div>
-
-  <!--<marquee direction="left" loop="20" width="75%">-->
-  <!--O Badaró chupa peles!-->
-  <!--</marquee>-->
-</div>
-
-<div id="cont3" class="container">
-  <div class="page-header">
-    <h2>Conteúdos mais vistos</h2>
-  </div>
 
 
-
-
-  <% i = 0 %>
-  <% Content.all.each do |content| %>
-
-      <% if (i % 3 == 0) %>
-          <div class="row">
-      <% end %>
-
-      <div class="col-sm-4 col-lg-4 col-md-4 top-content">
-        <div class="thumbnail">
-          <%= image_tag content.link_image %>
-
-          <div class="caption">
-            <h4><%= link_to content.title, content_path(content.title) %>
-            </h4>
-
-            <p><%= content.description %></p>
-          </div>
-          <div class="ratings">
-            <p class="pull-right">18 views</p>
-
-            <p>
-              <span class="glyphicon glyphicon-star"></span>
-              <span class="glyphicon glyphicon-star"></span>
-              <span class="glyphicon glyphicon-star"></span>
-              <span class="glyphicon glyphicon-star"></span>
-              <span class="glyphicon glyphicon-star-empty"></span>
-            </p>
-          </div>
+          <!-- Controls -->
+          <a class="left carousel-control" href="#slidingPics" data-slide="prev"
+             onclick="populateHeadlineDescription()">
+            <span class="icon-prev"></span>
+          </a>
+          <a class="right carousel-control" href="#slidingPics" data-slide="next"
+             onclick="populateHeadlineDescription()">
+            <span class="icon-next"></span>
+          </a>
         </div>
       </div>
 
-      <% if (i % 3 == 2) %>
+
+      <div id="sideDescription" class="col-md-3 headline-description no-padding">
+        <h2>Titulo inicial, não vai ficar muito tempo, aposto</h2>
+
+        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam viverra euismod odio, gravida
+          pellentesque urna varius vitae. Sed dui lorem, adipiscing in adipiscing et, interdum nec metus.
+          Mauris ultricies, justo eu convallis placerat, felis enim.</p>
+
+        <h3>Project Details</h3>
+        <ul>
+          <li>Lorem Ipsum</li>
+          <li>Dolor Sit Amet</li>
+          <li>Consectetur</li>
+          <li>Adipiscing Elit</li>
+        </ul>
+      </div>
+
+
+    </div>
+
+  </div>
+
+  <div id="cont3" class="container">
+    <div class="page-header">
+      <h2>Conteúdos mais vistos</h2>
+    </div>
+
+
+
+
+    <% i = 0 %>
+    <% Content.all.each do |content| %>
+
+        <% if (i % 3 == 0) %>
+            <div class="row">
+        <% end %>
+
+        <div class="col-sm-4 col-lg-4 col-md-4 top-content">
+          <div class="thumbnail">
+            <%= image_tag content.link_image %>
+
+            <div class="caption">
+              <h4><%= link_to content.title, content_path(content.title) %>
+              </h4>
+
+              <p><%= content.description %></p>
+            </div>
+            <div class="ratings">
+              <p class="pull-right">18 views</p>
+
+              <p>
+                <span class="glyphicon glyphicon-star"></span>
+                <span class="glyphicon glyphicon-star"></span>
+                <span class="glyphicon glyphicon-star"></span>
+                <span class="glyphicon glyphicon-star"></span>
+                <span class="glyphicon glyphicon-star-empty"></span>
+              </p>
+            </div>
           </div>
-      <% end %>
-      <% i += 1 %>
-  <% end %>
+        </div>
+
+        <% if (i % 3 == 2) %>
+            </div>
+        <% end %>
+        <% i += 1 %>
+    <% end %>
 
 
-</div>
+  </div>
+    </div>
