@@ -199,19 +199,31 @@ function getEmenta() {
 
     if (firstTimeCantina) {
 
-        $.get(siteCantina, function (data) {
-            alert("hehehehe");
-            var lines = data.split("\r\n");
-            alert(lines.length);
+        var content = "";
 
-//            $.each(lines, function (n, elem) {
-//                var cont = elem.split(" ");
-//                info[n] = cont[1];
-//            });
-//            if (count == 0)
-//                createMap();
-//            count++;
-        }, 'html');
+        $.ajax({
+            url: "http://sas.unl.pt/cantina",
+            data: content,
+            type: "GET",
+            success: alert("sucesso"),
+            dataType: "html",
+            cache: false
+        });
+
+
+//        $.get(siteCantina, function (data) {
+//            alert("hehehehe");
+//            var lines = data.split("\r\n");
+//            alert(lines.length);
+//
+////            $.each(lines, function (n, elem) {
+////                var cont = elem.split(" ");
+////                info[n] = cont[1];
+////            });
+////            if (count == 0)
+////                createMap();
+////            count++;
+//        }, 'html');
 
 //        $.ajax({
 //
