@@ -365,7 +365,7 @@ function updateTime() {
     hour = checkTime(hour);
     minute = checkTime(minute);
 
-    $("#hour-info > p").text(hour + ":" + minute);
+    $("#hour-info p").text(hour + ":" + minute);
     t = setTimeout('updateTime()', 5000); //é chamado a cada 5 segundos
 }
 
