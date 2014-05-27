@@ -166,7 +166,6 @@ body {
     padding: 0px;
 }
 
-
 @media (min-width: 981px) {
     .headline-description {
         background-color: lightgrey;
@@ -187,7 +186,7 @@ body {
     }
 }
 
-.carousel-control:hover{
+.carousel-control:hover {
     opacity: .2;
 }
 
@@ -206,8 +205,8 @@ body {
     background-color: lightgrey;
 }
 
-@media (max-width: 768px) {
-    .thumbnail{
+@media handheld and (max-width: 768px) {
+    .thumbnail {
         width: 390px;
         margin: 5px auto;
         /*height: 100px;*/
