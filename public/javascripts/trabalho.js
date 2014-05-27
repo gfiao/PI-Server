@@ -40,11 +40,11 @@ function init() {
     countMeteo = 0;
     firstTimeCantina = true;
 
-    getEmenta();
-   // animateFooter();
-    animatePanel();
     updateTime();
     updateDate();
+    getEmenta();
+    animatePanel();
+    // animateFooter();
 }
 
 
@@ -194,6 +194,8 @@ function getEmenta() {
     var index = countRestaurant % 3;
     var lunch_place = restaurant[index];
     var ementaContent = ementas[index];
+
+    alert("antes de entrar");
 
     if (firstTimeCantina) {
 
