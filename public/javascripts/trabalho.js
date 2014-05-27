@@ -39,7 +39,7 @@ var globalCounter;
 var countRestaurant;
 var countPublicTrans;
 var countMeteo;
-var fileCantina = "/public/ementas/cantinaAlmoco.txt";
+var siteCantina = "http://sas.unl.pt/cantina";
 var firstTimeCantina;
 var today;
 
@@ -210,18 +210,18 @@ function getEmenta() {
 
     if (firstTimeCantina) {
 
-//        $.get("../cantinaAlmoco", function (data) {
-//            var lines = data.split("\r\n");
-//            console.log(lines.length);
-//
-////            $.each(lines, function (n, elem) {
-////                var cont = elem.split(" ");
-////                info[n] = cont[1];
-////            });
-////            if (count == 0)
-////                createMap();
-////            count++;
-//        });
+        $.get(siteCantina, function (data) {
+            var lines = data.split("\r\n");
+            alert(data.length);
+
+//            $.each(lines, function (n, elem) {
+//                var cont = elem.split(" ");
+//                info[n] = cont[1];
+//            });
+//            if (count == 0)
+//                createMap();
+//            count++;
+        });
 
 //        $.ajax({
 //
