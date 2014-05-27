@@ -7,18 +7,8 @@ function Weekday(shortName, portugueseName) {
     this.portugueseName = portugueseName;
 }
 
-//function Month(englishName, portugueseName) {
-//    this.englishName = englishName;
-//    this.portugueseName = portugueseName;
-//}
-
 var weekdays = new Array(new Weekday("Sun", "Domingo"), new Weekday("Mon", "Segunda"), new Weekday("Tue", "Terça"),
     new Weekday("Wed", "Quarta"), new Weekday("Thu", "Quinta"), new Weekday("Fri", "Sexta"), new Weekday("Sat", "Sábado"));
-
-//var months = new Array(new Month("January", "Janeiro"), new Month("February", "Fevereiro"), new Month("March", "Março"),
-//    new Month("April", "Abril"), new Month("May", "Maio"), new Month("June", "Junho"), new Month("July", "Julho"),
-//    new Month("August", "Agosto"), new Month("September", "Setembro"), new Month("October", "Outubro"),
-//    new Month("November", "Novembro"), new Month("December", "Dezembro"));
 
 var months = new Array("Janeiro", "Fevereiro", "Março", "Abril", "Maio", "Junho", "Julho", "Agosto", "Setembro",
     "Outubro", "Novembro", "Dezembro");
@@ -59,8 +49,6 @@ function init() {
 
 
 function populateHeadlineDescription() {
-//    var img = $(".active");
-//    console.log(img.attr('id'));
     var interval_ID;
     var obj;
 
@@ -78,7 +66,6 @@ function populateHeadlineDescription() {
 
         clearInterval(interval_ID);
     }, 650);
-
 
 }
 
@@ -211,8 +198,9 @@ function getEmenta() {
     if (firstTimeCantina) {
 
         $.get(siteCantina, function (data) {
+            alert("hehehehe");
             var lines = data.split("\r\n");
-            alert(data.length);
+            alert(lines.length);
 
 //            $.each(lines, function (n, elem) {
 //                var cont = elem.split(" ");
@@ -221,7 +209,7 @@ function getEmenta() {
 //            if (count == 0)
 //                createMap();
 //            count++;
-        });
+        }, 'html');
 
 //        $.ajax({
 //
