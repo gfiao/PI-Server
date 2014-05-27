@@ -205,11 +205,10 @@ body {
     background-color: lightgrey;
 }
 
-@media handheld and (max-width: 768px) {
+@media (max-width: 768px) {
     .thumbnail {
         width: 390px;
         margin: 5px auto;
-        /*height: 100px;*/
     }
 }
 
