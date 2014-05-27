@@ -360,7 +360,7 @@ function updateDate() {
     toDisplay += ", " + day;
     toDisplay += " " + months[month - 1];
 
-    $("#date-info h3").text(toDisplay);
+    $("#date-info p").text(toDisplay);
     t = setTimeout('updateDate()', 1800000); //é chamado a cada 30 min
 }
 
@@ -375,7 +375,7 @@ function updateTime() {
     hour = checkTime(hour);
     minute = checkTime(minute);
 
-    $("#hour-info > h1").text(hour + ":" + minute);
+    $("#hour-info > p").text(hour + ":" + minute);
     t = setTimeout('updateTime()', 5000); //é chamado a cada 5 segundos
 }
 
