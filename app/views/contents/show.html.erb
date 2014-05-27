@@ -7,7 +7,7 @@
 
 <p>
   <strong>Link image:</strong>
-  <%= @content.link_image %>
+  <%= image_tag @content.link_image %>
 </p>
 
 <p>
@@ -18,6 +18,11 @@
 <p>
   <strong>Date:</strong>
   <%= @content.date %>
+</p>
+
+<p>
+  <strong>Views:</strong>
+  <%= @content.views %>
 </p>
 
 <%= link_to 'Edit', edit_content_path(@content) %> |

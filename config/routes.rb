@@ -2,7 +2,7 @@ Rails.application.routes.draw do
 
   #Isto tem de ficar no inicio, desta forma faz overwrite ao contents/ID
   #Se isto estiver la em baixo nao funciona, so funciona o contents/ID
-  get 'contents/:title' => 'contents#show'
+  #get 'contents/:title' => 'contents#show'
 
   resources :free_classrooms
 

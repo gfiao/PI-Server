@@ -122,13 +122,13 @@
             <%= image_tag content.link_image %>
 
             <div class="caption">
-              <h4><%= link_to content.title, content_path(content.title) %>
+              <h4><%= link_to content.title, content %>
               </h4>
 
               <p><%= content.description %></p>
             </div>
             <div class="ratings">
-              <p class="pull-right">18 views</p>
+              <p class="pull-right"><%= content.views %> views</p>
 
               <p>
                 <span class="glyphicon glyphicon-star"></span>

@@ -61,16 +61,16 @@ end
 #Content title:string link_image:string description:text date:date
 puts 'Adding News Content'
 Content.create(title: 'Leslie Lamport vem à FCT!', link_image: 'LeslieLamport_960.jpg',
-               description: 'Leslie Lamport vem dar uma palestra à grandiosa FCT', date: Date.today())
+               description: 'Leslie Lamport vem dar uma palestra à grandiosa FCT', date: Date.today(), views: 3)
 Content.create(title: 'Barbara Liskov vem à FCT!', link_image: 'top-prize.jpg',
                description: 'Barbara Liskov, vencedora do Turing Award, vem dar uma palestra à grandiosa FCT',
-               date: Date.today())
+               date: Date.today(), views: 10)
 Content.create(title: 'Sócia da FCT ganhou prémio!', link_image: 'destaque_4.jpg',
                description: 'Sócia da FCT ganhou 1 Milhão de Euros pela sua investigação.',
-               date: Date.today())
+               date: Date.today(), views: 30)
 Content.create(title: 'Noticia de ultima hora! FCT a arder!', link_image: 'imagem_iycr2014.jpg',
-                description: 'FCT a arder! Edificios a ruir! Esta noticia esta aqui para termos 4 noticias!',
-                date: Date.today())
+               description: 'FCT a arder! Edificios a ruir! Esta noticia esta aqui para termos 4 noticias!',
+               date: Date.today(), views: 55)
 
 #UserContent user_id:integer content_id:integer
 puts 'Associating content to users'
