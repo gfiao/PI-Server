@@ -41,7 +41,33 @@
         </div>
       </div>
       <div class="" id="right-panel-middle">
+        
+        <!--codigo para obter a ementa-->
+        <% require 'rubygems' %>
+        <% require 'nokogiri' %>
+        <% require 'open-uri' %>
+        <% page = Nokogiri::HTML(open("http://sas.unl.pt/cantina")) %>
 
+        <% ementaFCT = page.css('.cantina')[0] %>
+        <% pratosAlmoco = ementaFCT.css('.lunch').css('.dish') %>
+        <% pratosJantar = ementaFCT.css('.dinner').css('.dish') %>
+
+        <% almoco_to_file = [] %>
+        <% jantar_to_file = [] %>
+
+        <% pratosAlmoco.each do |prato| %>
+            <% almoco_to_file.push(prato.text) %>
+        <% end %>
+        <% pratosJantar.each do |prato| %>
+            <% jantar_to_file.push(prato.text) %>
+        <% end %>
+
+        <% almoco_to_file.each do |prato| %>
+            <% Menu.create(meal: "almoco", dish: prato, date: Date.today()) %>
+        <% end %>
+        <% jantar_to_file.each do |prato| %>
+            <% Menu.create(meal: "jantar", dish: prato, date: Date.today()) %>
+        <% end %>
 
       </div>
 
