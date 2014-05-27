@@ -1,0 +1,19 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Category:</strong>
+  <%= @footer_news.category %>
+</p>
+
+<p>
+  <strong>News:</strong>
+  <%= @footer_news.news %>
+</p>
+
+<p>
+  <strong>Date:</strong>
+  <%= @footer_news.date %>
+</p>
+
+<%= link_to 'Edit', edit_footer_news_path(@footer_news) %> |
+<%= link_to 'Back', footer_news_index_path %>

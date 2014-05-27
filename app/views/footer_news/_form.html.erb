@@ -1,0 +1,29 @@
+<%= form_for(@footer_news) do |f| %>
+  <% if @footer_news.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@footer_news.errors.count, "error") %> prohibited this footer_news from being saved:</h2>
+
+      <ul>
+      <% @footer_news.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :category %><br>
+    <%= f.text_field :category %>
+  </div>
+  <div class="field">
+    <%= f.label :news %><br>
+    <%= f.text_field :news %>
+  </div>
+  <div class="field">
+    <%= f.label :date %><br>
+    <%= f.date_select :date %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

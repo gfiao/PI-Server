@@ -1,0 +1,29 @@
+<h1>Listing footer_news</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Category</th>
+      <th>News</th>
+      <th>Date</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @footer_news.each do |footer_news| %>
+      <tr>
+        <td><%= footer_news.category %></td>
+        <td><%= footer_news.news %></td>
+        <td><%= footer_news.date %></td>
+        <td><%= link_to 'Show', footer_news %></td>
+        <td><%= link_to 'Edit', edit_footer_news_path(footer_news) %></td>
+        <td><%= link_to 'Destroy', footer_news, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Footer news', new_footer_news_path %>

@@ -1,5 +1,9 @@
 Rails.application.routes.draw do
 
+  resources :footer_news
+
+  resources :menus
+
   #Isto tem de ficar no inicio, desta forma faz overwrite ao contents/ID
   #Se isto estiver la em baixo nao funciona, so funciona o contents/ID
   #get 'contents/:title' => 'contents#show'
