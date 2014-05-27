@@ -41,7 +41,6 @@
           <% end %>
         </ol>
 
-
         <!-- Wrapper for slides -->
         <div id="news_carousel" class="carousel-inner">
 
@@ -49,7 +48,7 @@
           <% i = 0 %>
           <% Content.all.each do |content| %>
 
-              <% #Se for o primeiro item, a class tem de ser item active   %>
+              <% #Se for o primeiro item, a class tem de ser item active     %>
               <% if (i == 0) %>
                   <div id="news_<%= i %>" class="item active">
               <% else %>
@@ -65,6 +64,9 @@
           <% end %>
           </div>
 
+          <!--<script>-->
+
+          <!--</script>-->
 
           <!-- Controls -->
           <a class="left carousel-control" href="#slidingPics" data-slide="prev"
@@ -147,4 +149,4 @@
 
 
   </div>
-    </div>
+</div>
