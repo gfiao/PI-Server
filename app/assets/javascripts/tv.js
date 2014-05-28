@@ -389,12 +389,10 @@ function fetchFooterNews() {
 
 
 function createMarquee() {
-    $('.news-container-scroll p').append("Uma pequena noticia, só para arrancar com a cena " +
-        "heheheheheheheheheheheheheheheheheheheehehehehehehe");
     $('.news-container-scroll')
         .bind('finished', populateMarquee)
         .marquee({
-        duration: 5000
+        duration: 8000
     });
 }
 
