@@ -197,7 +197,7 @@ body {
     height: 175px;
 }
 
-.caption a:hover {
+.caption:hover {
     background-color: inherit;
 }
 

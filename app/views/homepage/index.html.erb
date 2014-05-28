@@ -48,7 +48,7 @@
           <% i = 0 %>
           <% Content.all.each do |content| %>
 
-              <% #Se for o primeiro item, a class tem de ser item active       %>
+              <% #Se for o primeiro item, a class tem de ser item active            %>
               <% if (i == 0) %>
                   <div id="news_<%= i %>" class="item active">
               <% else %>
@@ -56,7 +56,7 @@
               <% end %>
 
               <div class="fill-img">
-                <%= image_tag content.link_image %>
+                <%= link_to (image_tag content.link_image), content %>
               </div>
               </div>
 
@@ -124,7 +124,7 @@
             <%= image_tag content.link_image %>
 
             <div class="caption">
-              <h4><%= link_to content.title, content %>
+              <h4><%= link_to content.title, content, class: 'caption' %>
               </h4>
 
               <p><%= content.description %></p>
