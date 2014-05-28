@@ -48,7 +48,7 @@
           <% i = 0 %>
           <% Content.all.each do |content| %>
 
-              <% #Se for o primeiro item, a class tem de ser item active     %>
+              <% #Se for o primeiro item, a class tem de ser item active       %>
               <% if (i == 0) %>
                   <div id="news_<%= i %>" class="item active">
               <% else %>
@@ -82,19 +82,21 @@
 
 
       <div id="sideDescription" class="col-md-3 headline-description no-padding">
-        <h2>Titulo inicial, não vai ficar muito tempo, aposto</h2>
+        <!--<h2>Titulo inicial, não vai ficar muito tempo, aposto</h2>-->
+        <h2><%= Content.find(1).title %></h2>
 
-        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam viverra euismod odio, gravida
-          pellentesque urna varius vitae. Sed dui lorem, adipiscing in adipiscing et, interdum nec metus.
-          Mauris ultricies, justo eu convallis placerat, felis enim.</p>
+        <!--<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam viverra euismod odio, gravida-->
+        <!--pellentesque urna varius vitae. Sed dui lorem, adipiscing in adipiscing et, interdum nec metus.-->
+        <!--Mauris ultricies, justo eu convallis placerat, felis enim.</p>-->
+        <p><%= Content.find(1).description %></p>
 
-        <h3>Project Details</h3>
-        <ul>
-          <li>Lorem Ipsum</li>
-          <li>Dolor Sit Amet</li>
-          <li>Consectetur</li>
-          <li>Adipiscing Elit</li>
-        </ul>
+        <!--<h3>Project Details</h3>-->
+        <!--<ul>-->
+        <!--<li>Lorem Ipsum</li>-->
+        <!--<li>Dolor Sit Amet</li>-->
+        <!--<li>Consectetur</li>-->
+        <!--<li>Adipiscing Elit</li>-->
+        <!--</ul>-->
       </div>
 
 
