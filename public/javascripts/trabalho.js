@@ -464,10 +464,10 @@ function getTitles() {
 }
 getTitles();
 
+
 /************************************************/
 /********INSERIR PLAYLIST DE VIDEOS NA TV********/
 /************************************************/
-
 
 var videos = [];
 
@@ -488,7 +488,7 @@ function onYouTubeIframeAPIReady() {
         height: '390',
         width: '640',
         //videoId: videos[counterVid].link.split('/')[4], //retorna codigo dos videos
-        playerVars: { 'autoplay': 1, 'showinfo': 0, 'rel': 0, 'controls': 0, 'modestbranding': 1},
+        playerVars: { 'autoplay': 0, 'showinfo': 0, 'rel': 0, 'controls': 1, 'modestbranding': 1},
         events: {
             'onReady': onPlayerReady,
             'onStateChange': onPlayerStateChange
@@ -496,32 +496,27 @@ function onYouTubeIframeAPIReady() {
     });
 }
 
-var nVid = 0;
+var counter = 0; //indica o indice do video que esta a correr de momento
 var codigos = [];
+
 // 4. The API will call this function when the video player is ready.
 function onPlayerReady(event) {
     $.each(videos, function (i, video) {
         codigos[i] = video.link.split('/')[4];
     });
 
-    playNextVideo(event);
-}
-
-function playNextVideo(event) {
-    player.loadPlaylist(codigos, nVid, 0);
-    event.target.playVideo();
+    player.loadPlaylist(codigos, 0, 0);
+    player.playVideo();
+    player.setLoop(true);
 }
 
 // 5. The API calls this function when the player's state changes.
-var done = false;
 function onPlayerStateChange(event) {
-//    alert("hehehe");
     if (event.data == YT.PlayerState.ENDED) {
-        if (nVid == codigos.length - 1)
-            nVid = 0;
-        else
-            nVid++;
-//        alert(nVid);
-        playNextVideo(event); //Isto funciona, mas deixa a pagina um pouco lenta ao inicio
+        counter++;
+        if(counter == videos.length)
+            counter = 0;
+        alert(counter);
+
     }
 }
