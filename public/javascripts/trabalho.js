@@ -516,7 +516,6 @@ function onPlayerStateChange(event) {
         counter++;
         if(counter == videos.length)
             counter = 0;
-        alert(counter);
-
+//        alert(counter);
     }
 }
