@@ -10,119 +10,120 @@
 
 </head>
 <body onload="init()">
+<div id="globalContainer">
+  <div class="" id="main">
 
-<div class="" id="main">
+    <div class="" id="video-and-lateral">
 
-  <div class="" id="video-and-lateral">
+      <!--<div class="" id="logotype">-->
+      <!--<h2>CampusTV</h2>-->
+      <!--</div>-->
 
-    <!--<div class="" id="logotype">-->
-    <!--<h2>CampusTV</h2>-->
-    <!--</div>-->
+      <div class="" id="view-area">
 
-    <div class="" id="view-area">
 
+      </div>
+
+
+      <div class="" id="right-panel">
+
+        <div class="" id="right-panel-top">
+          <div id="hour-date">
+            <div id="hour-info">
+              <p></p>
+            </div>
+            <div id="date-info">
+              <p></p>
+
+              <!--<h3 id="lastLine"></h3>-->
+            </div>
+
+          </div>
+        </div>
+        <div class="" id="right-panel-middle">
+          <div class="badjoras" id="div1">
+            Sou a div 1, e tenho aqui um peles para o gui
+          </div>
+          <div class="" id="div2">
+            Div 2, é o carlão para o leo
+          </div>
+          <div class="badjoras" id="div3">
+            Isto é a div 3, e sou a kate upton para o badaró hehe
+          </div>
+          <!--codigo para obter a ementa-->
+          <% require 'rubygems' %>
+          <% require 'nokogiri' %>
+          <% require 'open-uri' %>
+          <% page = Nokogiri::HTML(open("http://sas.unl.pt/cantina")) %>
+
+          <% ementaFCT = page.css('.cantina')[0] %>
+          <% pratosAlmoco = ementaFCT.css('.lunch').css('.dish') %>
+          <% pratosJantar = ementaFCT.css('.dinner').css('.dish') %>
+
+          <% almoco_to_file = [] %>
+          <% jantar_to_file = [] %>
+
+          <% pratosAlmoco.each do |prato| %>
+              <% almoco_to_file.push(prato.text) %>
+          <% end %>
+          <% pratosJantar.each do |prato| %>
+              <% jantar_to_file.push(prato.text) %>
+          <% end %>
+
+          <% almoco_to_file.each do |prato| %>
+              <% Menu.create(meal: "almoco", dish: prato, date: Date.today()) %>
+          <% end %>
+          <% jantar_to_file.each do |prato| %>
+              <% Menu.create(meal: "jantar", dish: prato, date: Date.today()) %>
+          <% end %>
+
+        </div>
+
+        <div class="" id="right-panel-bottom">
+          <div id="meteo-info">
+            <div id="meteo-min-temp">
+              <div id="max-temp-img">
+
+              </div>
+              <div id="max-temp-value">
+
+              </div>
+            </div>
+            <div id="meteo-max-temp">
+              <div id="min-temp-img">
+
+              </div>
+              <div id="min-temp-value">
+
+              </div>
+            </div>
+          </div>
+        </div>
+
+
+      </div>
 
     </div>
 
+    <div class="" id="footer">
 
-    <div class="" id="right-panel">
-
-      <div class="" id="right-panel-top">
-        <div id="hour-date">
-          <div id="hour-info">
-            <p></p>
-          </div>
-          <div id="date-info">
-            <p></p>
-
-            <!--<h3 id="lastLine"></h3>-->
-          </div>
-
-        </div>
-      </div>
-      <div class="" id="right-panel-middle">
-        <div class="badjoras" id="div1">
-          Sou a div 1, e tenho aqui um peles para o gui
-        </div>
-        <div class="" id="div2">
-          Div 2, é o carlão para o leo
-        </div>
-        <div class="badjoras" id="div3">
-          Isto é a div 3, e sou a kate upton para o badaró hehe
-        </div>
-        <!--codigo para obter a ementa-->
-        <% require 'rubygems' %>
-        <% require 'nokogiri' %>
-        <% require 'open-uri' %>
-        <% page = Nokogiri::HTML(open("http://sas.unl.pt/cantina")) %>
-
-        <% ementaFCT = page.css('.cantina')[0] %>
-        <% pratosAlmoco = ementaFCT.css('.lunch').css('.dish') %>
-        <% pratosJantar = ementaFCT.css('.dinner').css('.dish') %>
-
-        <% almoco_to_file = [] %>
-        <% jantar_to_file = [] %>
-
-        <% pratosAlmoco.each do |prato| %>
-            <% almoco_to_file.push(prato.text) %>
-        <% end %>
-        <% pratosJantar.each do |prato| %>
-            <% jantar_to_file.push(prato.text) %>
-        <% end %>
-
-        <% almoco_to_file.each do |prato| %>
-            <% Menu.create(meal: "almoco", dish: prato, date: Date.today()) %>
-        <% end %>
-        <% jantar_to_file.each do |prato| %>
-            <% Menu.create(meal: "jantar", dish: prato, date: Date.today()) %>
-        <% end %>
-
+      <div class="" id="category">
+        <p><b>ÚLTIMA HORA</b></p>
       </div>
 
-      <div class="" id="right-panel-bottom">
-        <div id="meteo-info">
-          <div id="meteo-min-temp">
-            <div id="max-temp-img">
-
-            </div>
-            <div id="max-temp-value">
-
-            </div>
-          </div>
-          <div id="meteo-max-temp">
-            <div id="min-temp-img">
-
-            </div>
-            <div id="min-temp-value">
-
-            </div>
-          </div>
-        </div>
+      <div class="news-container-scroll" id="news-container">
+        <p class="">Uma pequena noticia, só para arrancar com a cena
+          heheheheheheheheheheheheheheheheheheheehehehehehehe</p>
       </div>
-
 
     </div>
 
   </div>
-
-  <div class="" id="footer">
-
-    <div class="" id="category">
-      <p><b>ÚLTIMA HORA</b></p>
-    </div>
-
-    <div class="news-container-scroll" id="news-container">
-      <p class="">Uma pequena noticia, só para arrancar com a cena
-        heheheheheheheheheheheheheheheheheheheehehehehehehe</p>
-    </div>
-
-  </div>
-
+  <script>
+      $('.news-container-scroll').marquee({
+          duration: 10000
+      });
+  </script>
 </div>
-<script>
-    $('.news-container-scroll').marquee({
-        duration: 10000
-    });
-</script>
 </body>
 </html>

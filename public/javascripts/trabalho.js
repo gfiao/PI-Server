@@ -504,6 +504,10 @@ function onPlayerReady(event) {
         codigos[i] = video.link.split('/')[4];
     });
 
+    playNextVideo(event);
+}
+
+function playNextVideo(event) {
     player.loadPlaylist(codigos, nVid, 0);
     event.target.playVideo();
 }
@@ -511,11 +515,13 @@ function onPlayerReady(event) {
 // 5. The API calls this function when the player's state changes.
 var done = false;
 function onPlayerStateChange(event) {
+//    alert("hehehe");
     if (event.data == YT.PlayerState.ENDED) {
         if (nVid == codigos.length - 1)
             nVid = 0;
         else
             nVid++;
-        onPlayerReady(event); //Isto funciona, mas deixa a pagina um pouco lenta ao inicio
+//        alert(nVid);
+        playNextVideo(event); //Isto funciona, mas deixa a pagina um pouco lenta ao inicio
     }
 }
