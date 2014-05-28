@@ -58,19 +58,37 @@ puts 'Adding 50 random Users'
   )
 end
 
-#Content title:string link_image:string description:text date:date
+#Content title:string link_image:string description:text date:date news_text:text
 puts 'Adding News Content'
 Content.create(title: 'Leslie Lamport vem à FCT!', link_image: 'LeslieLamport_960.jpg',
-               description: 'Leslie Lamport vem dar uma palestra à grandiosa FCT', date: Date.today(), views: 3)
+               description: 'Leslie Lamport vem dar uma palestra à grandiosa FCT', date: Date.today(), views: 3,
+               news_text: 'Hehe placeholder!')
 Content.create(title: 'Barbara Liskov vem à FCT!', link_image: 'top-prize.jpg',
                description: 'Barbara Liskov, vencedora do Turing Award, vem dar uma palestra à grandiosa FCT',
-               date: Date.today(), views: 10)
+               date: Date.today(), views: 10, news_text: 'Inaugural Lecture "Programming the Turing Machine", by Prof. Barbara Liskov, Massachusetts Institute of Technology
+October, 3th, 2012 - 14h30m (Main Auditorium FCT/UNL)
+
+The distinguished lecture series of the Computer Science Department (DI) at FCT-UNL brings to the department some of the most influential researchers and practitioners in the field of computer science. This distinguished lecture series aims at giving students and researchers
+an opportunity to know more about some of the most groundbreaking work in computer science and the people who led this work, and will hopefully become a source of inspiration for the future career of the students in the department. The series will host only a very small
+number of talks every year, so that it can focus on outstanding computer scientists and engineers who are leaders in their fields of knowledge.
+
+"Programming the Turing Machine"
+
+Turing provided the basis for modern computer science. However there is a huge gap between a Turing machine and the kinds of applications we use today. This gap is bridged by software, and designing and implementing large programs is a difficult task. The main way we have of keeping the complexity of software under control is to make use of abstraction and modularity.
+
+This talk will discuss how abstraction and modularity are used in the design of large programs, and how these concepts are supported in modern programming languages. It will also discuss what support is needed going forward.
+
+Professor Barbara Liskov short bio:
+
+Barbara Liskov is an Institute Professor at MIT and also Associate Provost for Faculty Equity. She is a member of the National Academy of Engineering and the National Academy of Sciences, a fellow of the American Academy of Arts and Sciences, and a fellow of the ACM. She received the ACM Turing Award in 2009, the ACM SIGPLAN Programming Language Achievement Award in 2008, the IEEE Von Neumann medal in 2004, a lifetime achievement award from the Society of Women Engineers in 1996, and in 2003 was named one of the 50 most important women in science by Discover Magazine. Her research interests include
+distributed systems, replication algorithms to provide fault-tolerance, programming methodology, and programming languages. Her current research projects include
+Byzantine-fault-tolerant storage systems and online storage systems that provide confidentiality and integrity for the stored information.')
 Content.create(title: 'Sócia da FCT ganhou prémio!', link_image: 'destaque_4.jpg',
                description: 'Sócia da FCT ganhou 1 Milhão de Euros pela sua investigação.',
-               date: Date.today(), views: 30)
+               date: Date.today(), views: 30, news_text: 'Hehe placeholder!')
 Content.create(title: 'Noticia de ultima hora! FCT a arder!', link_image: 'imagem_iycr2014.jpg',
                description: 'FCT a arder! Edificios a ruir! Esta noticia esta aqui para termos 4 noticias!',
-               date: Date.today(), views: 55)
+               date: Date.today(), views: 55, news_text: 'Hehe placeholder!')
 
 #UserContent user_id:integer content_id:integer
 puts 'Associating content to users'
