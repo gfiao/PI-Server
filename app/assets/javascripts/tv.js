@@ -325,7 +325,7 @@ function onYouTubeIframeAPIReady() {
     });
 }
 
-var counter = 0; //indica o indice do video que esta a correr de momento
+var currVideoIndex = 0; //indica o indice do video que esta a correr de momento
 var codigos = [];
 
 // 4. The API will call this function when the video player is ready.
@@ -342,11 +342,20 @@ function onPlayerReady(event) {
 // 5. The API calls this function when the player's state changes.
 function onPlayerStateChange(event) {
     if (event.data == YT.PlayerState.ENDED) {
-        counter++;
-        if(counter == videos.length)
-            counter = 0;
-//        alert(counter);
+        currVideoIndex++;
+        if(currVideoIndex == videos.length)
+            currVideoIndex = 0;
+
+        currentVideoToHtml();
+//        alert(currVideoIndex);
     }
+}
+
+function currentVideoToHtml() {
+    var obj = $("#currVideoIndex");
+    obj.empty();
+    obj.append(currVideoIndex);
+    alert("heheehe");
 }
 
 
