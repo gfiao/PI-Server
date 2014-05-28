@@ -71,10 +71,10 @@
         <% end %>
 
         <% almoco_to_file.each do |prato| %>
-            <% Menu.create(meal: "almoco", dish: prato, date: Date.today()) %>
+            <% Menu.create(meal: "almoco", dish: prato, date: Date.today(), restaurant: 'Cantina') %>
         <% end %>
         <% jantar_to_file.each do |prato| %>
-            <% Menu.create(meal: "jantar", dish: prato, date: Date.today()) %>
+            <% Menu.create(meal: "jantar", dish: prato, date: Date.today(), restaurant: 'Cantina') %>
         <% end %>
 
       </div>
