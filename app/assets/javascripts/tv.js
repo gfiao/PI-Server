@@ -30,6 +30,7 @@ var countRestaurant;
 var countPublicTrans;
 var countMeteo;
 var firstTimeCantina;
+var footerNews;
 var today;
 
 
@@ -38,6 +39,7 @@ function init() {
     countRestaurant = 0;
     countPublicTrans = 0;
     countMeteo = 0;
+    footerNews = [];
     firstTimeCantina = true;
 //    document.getElementById('fileInput').addEventListener('onclick', handleFiles, false);
 //    console.log(document.getElementById("fileInput"));
@@ -45,6 +47,7 @@ function init() {
 //    readSingleFile();
     updateTime();
     updateDate();
+    fetchFooterNews();
     createMarquee();
 //    getEmenta();
 //    animatePanel();
@@ -372,6 +375,19 @@ function getTitles() {
 }
 getTitles();
 
+
+//De momento apenas se obtem as noticias uma vez.
+//Se a tabela que contem as noticias for alterada, essas noticias não serão mostradas no rodape
+//Para obter a info várias vezes ao dia, usar setTimeout
+
+var footerCounter = 0;
+
+function fetchFooterNews() {
+    footerNews = $.getValues('/footer_news');
+    console.log(footerNews);
+}
+
+
 function createMarquee() {
     $('.news-container-scroll p').append("Uma pequena noticia, só para arrancar com a cena " +
         "heheheheheheheheheheheheheheheheheheheehehehehehehe");
@@ -383,8 +399,15 @@ function createMarquee() {
 }
 
 function populateMarquee() {
-    var content = $.getValues('/footer_news');
+    var toappend = footerNews[footerCounter];
+
+    $('#category p').empty();
+    $('#category p').append(toappend.category);
     $('.news-container-scroll p').empty();
-    $('.news-container-scroll p').append(content[0].news);
-    console.log(content);
+    $('.news-container-scroll p').append(toappend.news);
+
+    if(footerCounter == footerNews.length-1)
+        footerCounter = 0;
+    else
+        footerCounter++;
 }
