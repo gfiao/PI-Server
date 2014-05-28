@@ -362,14 +362,14 @@ function getTitle(text) {
 }
 
 function getPublicTrans() {
-    var content = '<h2>' + "TRANSPORTES CRL" + '</h2>';
+    var content = '<h2>' + "TRANSPORTES" + '</h2>';
 
     globalCounter++;
     return content;
 }
 
 function getMeteo() {
-    var content = '<h2>' + "METEO CRL" + '</h2>';
+    var content = '<h2>' + "METEO" + '</h2>';
 
     globalCounter++;
     return content;
