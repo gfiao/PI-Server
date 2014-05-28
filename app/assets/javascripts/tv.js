@@ -387,13 +387,15 @@ function fetchFooterNews() {
     console.log(footerNews);
 }
 
-
 function createMarquee() {
+    $('#category p').append(footerNews[0].category);
+    $('.news-container-scroll p').append(footerNews[0].news);
     $('.news-container-scroll')
         .bind('finished', populateMarquee)
         .marquee({
-        duration: 8000
+        duration: 5000
     });
+    footerCounter++;
 }
 
 function populateMarquee() {
