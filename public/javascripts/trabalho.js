@@ -69,8 +69,8 @@ function init() {
 //    readSingleFile();
     updateTime();
     updateDate();
-    getEmenta();
-    animatePanel();
+//    getEmenta();
+//    animatePanel();
     // animateFooter();
 }
 
