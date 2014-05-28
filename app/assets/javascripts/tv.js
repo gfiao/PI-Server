@@ -45,6 +45,7 @@ function init() {
 //    readSingleFile();
     updateTime();
     updateDate();
+    createMarquee();
 //    getEmenta();
 //    animatePanel();
     // animateFooter();
@@ -343,7 +344,7 @@ function onPlayerReady(event) {
 function onPlayerStateChange(event) {
     if (event.data == YT.PlayerState.ENDED) {
         currVideoIndex++;
-        if(currVideoIndex == videos.length)
+        if (currVideoIndex == videos.length)
             currVideoIndex = 0;
 
         currentVideoToHtml();
@@ -360,7 +361,7 @@ function currentVideoToHtml() {
 
 
 /**************************BUSCAR NOTICIAS A BD POR REST*****************/
-var rodape = $.getValues('/contents')
+var rodape = $.getValues('/contents');
 //console.log(rodape);
 
 var titles = [];
@@ -371,4 +372,19 @@ function getTitles() {
 }
 getTitles();
 
+function createMarquee() {
+    $('.news-container-scroll p').append("Uma pequena noticia, só para arrancar com a cena " +
+        "heheheheheheheheheheheheheheheheheheheehehehehehehe");
+    $('.news-container-scroll')
+        .bind('finished', populateMarquee)
+        .marquee({
+        duration: 5000
+    });
+}
 
+function populateMarquee() {
+    var content = $.getValues('/footer_news');
+    $('.news-container-scroll p').empty();
+    $('.news-container-scroll p').append(content[0].news);
+    console.log(content);
+}
