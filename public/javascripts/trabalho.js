@@ -4,8 +4,7 @@
 
 
 function init() {
-
-    populateFooter();
+    
 }
 
 
@@ -55,14 +54,5 @@ function populateHeadlineDescription() {
 
         clearInterval(interval_ID);
     }, 650);
-
-}
-
-function populateFooter() {
-
-    var rodape = $.getValues('/footer_news');
-    console.log(rodape);
-
-
 
 }
