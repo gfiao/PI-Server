@@ -70,12 +70,12 @@
               <% jantar_to_file.push(prato.text) %>
           <% end %>
 
-          <#% almoco_to_file.each do |prato| %>
-              <#% Menu.create(meal: "almoco", dish: prato, date: Date.today()) %>
-          <#% end %>
-          <#% jantar_to_file.each do |prato| %>
-              <#% Menu.create(meal: "jantar", dish: prato, date: Date.today()) %>
-          <#% end %>
+          <% almoco_to_file.each do |prato| %>
+              <% Menu.create(meal: "almoco", dish: prato, date: Date.today()) %>
+          <% end %>
+          <% jantar_to_file.each do |prato| %>
+              <% Menu.create(meal: "jantar", dish: prato, date: Date.today()) %>
+          <% end %>
 
         </div>
 
