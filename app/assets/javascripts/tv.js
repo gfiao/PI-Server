@@ -38,7 +38,6 @@ function init() {
     footerNews = [];
     firstTimeCantina = true;
 
-//    populateMenu();
     updateTime();
     updateDate();
     fetchFooterNews();
@@ -202,7 +201,7 @@ function getPublicTrans() {
 
     globalCounter++;
     return content;
-} 
+}
 
 
 function getMeteo() {
