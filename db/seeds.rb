@@ -172,8 +172,8 @@ ContentVideo.create(content_id: 1, video_id: 1)
 #FooterNews category:string news:string date:date
 puts 'Adding Footer News'
 FooterNews.create(category: 'País', news: 'Pedro Passos Coelho demite-se, após ter sido publicado que este é alemão.', date: Date.today())
-FooterNews.create(category: 'Desporto', news: 'Benfica é campeão!.', date: Date.today())
+FooterNews.create(category: 'Desporto', news: 'Benfica é campeão!', date: Date.today())
 FooterNews.create(category: 'Faculdade', news: 'Após uma longa reunião com representantes dos alunos, foi anunciado uma redução das propinas.', date: Date.today())
 FooterNews.create(category: 'Faculdade', news: 'O limite para as candidaturas Erasmus acaba daqui a uma semana.', date: Date.today())
-
+FooterNews.create(category: 'Faculdade', news: 'Casas de banho do Ed.VII fechadas devido às más condições das mesmas.', date: Date.today())
 
