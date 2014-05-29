@@ -228,8 +228,12 @@ body {
   background: linear-gradient(to bottom, darkblue 0%, rgba(58, 218, 255, 0.3) 10%, rgba(58, 218, 255, 0.3) 90%, darkblue 100%);
 }
 
+#toAnimate {
+  width: 90%;
+}
+
 /*titulo do restaurante*/
-#right-panel-middle > h2 {
+#right-panel-middle h2 {
   padding-left: 50px;
   margin-bottom: 30px;
   padding-top: 30px;

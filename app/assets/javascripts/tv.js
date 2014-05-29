@@ -13,17 +13,13 @@ var weekdays = new Array(new Weekday("Sun", "Domingo"), new Weekday("Mon", "Segu
 var months = new Array("Janeiro", "Fevereiro", "Março", "Abril", "Maio", "Junho", "Julho", "Agosto", "Setembro",
     "Outubro", "Novembro", "Dezembro");
 
-var footer_text = "Isto é um exemplo. Tou mesmo a ver que isto vai sair" +
-    " fora do ecrã";
+
 var restaurant = new Array("Cantina", "SpotBar", "Teresa");
 var ementa_cantina = new Array("Sopa de couve", "Frango do deserto", "Massa com cenas", "Salada de frutas");
 var ementa_spot = new Array("Sopa de nabiças", "Strogonoff", "Massa à bolonhesa", "Caril de frango");
 var ementa_teresa = new Array("Massa com natas", "Bitoque", "Pataniscas com arroz", "Bacalhau à brás");
 var ementas = new Array(ementa_cantina, ementa_spot, ementa_teresa);
-var headline_description = new Array("Isto é o titulo da noticia 1, daquele bacano de barbas que vem cá",
-    "Olha, diz que o Gui é um mariconço e gosta de linhas redondas",
-    "Mais uma noticia, não sei para que é que queremos tantas noticias",
-    "Esta é que é mesmo a ultima noticia, caprichos do Leogay");
+
 
 var globalCounter;
 var countRestaurant;
@@ -47,7 +43,6 @@ function init() {
     fetchFooterNews();
     createMarquee();
     animatePanel();
-//    getEmenta();
 }
 
 
