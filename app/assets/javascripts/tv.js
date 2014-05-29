@@ -15,9 +15,9 @@ var months = new Array("Janeiro", "Fevereiro", "Março", "Abril", "Maio", "Junho
 
 
 var restaurant = new Array("Cantina", "SpotBar", "Teresa");
-var ementa_cantina = new Array("Sopa de couve", "Frango do deserto", "Massa com cenas", "Salada de frutas");
 var ementa_spot = new Array("Sopa de nabiças", "Strogonoff", "Massa à bolonhesa", "Caril de frango");
 var ementa_teresa = new Array("Massa com natas", "Bitoque", "Pataniscas com arroz", "Bacalhau à brás");
+var ementa_cantina = []; //vai buscar a ementa à base de dados, atraves de um pedido rest
 var ementas = new Array(ementa_cantina, ementa_spot, ementa_teresa);
 
 
@@ -38,6 +38,7 @@ function init() {
     footerNews = [];
     firstTimeCantina = true;
 
+//    populateMenu();
     updateTime();
     updateDate();
     fetchFooterNews();
@@ -149,17 +150,32 @@ function fetchContent() {
         return getMeteo();
 }
 
+//passar parametro para indicar se é almoço ou jantar
+function populateMenu() {
+
+    //conteudo obtido da base de dados
+    var menu = $.getValues('/menus');
+    var temp = [];
+
+    $.each(menu, function(i, item) {
+        if(item.meal == "almoco")
+            temp[i] = item.dish;
+    });
+
+    ementas[0] = temp;
+}
 
 function getEmenta() {
+
+    if (firstTimeCantina) {
+        populateMenu();
+        firstTimeCantina = false;
+    }
 
     //a cada iteração, mostra a ementa de cada um dos restaurantes
     var index = countRestaurant % 3;
     var lunch_place = restaurant[index];
     var ementaContent = ementas[index];
-
-    if (firstTimeCantina) {
-        firstTimeCantina = false;
-    }
 
     var content = '<h2>' + lunch_place + '</h2><ul id="ementaList">';
 
@@ -173,7 +189,6 @@ function getEmenta() {
 
     //chegou à ultima ementa, reinicializa o counter e incrementa o counter global
     if (countRestaurant == ementas.length) {
-//        getNewContent = true;
         countRestaurant = 0;
         globalCounter++;
     }
@@ -187,7 +202,8 @@ function getPublicTrans() {
 
     globalCounter++;
     return content;
-}
+} 
+
 
 function getMeteo() {
     var content = '<h2>' + "METEO" + '</h2>';
@@ -195,7 +211,6 @@ function getMeteo() {
     globalCounter++;
     return content;
 }
-
 
 //actualiza a data da TV
 function updateDate() {
@@ -330,7 +345,7 @@ var footerCounter = 0;
 
 function fetchFooterNews() {
     footerNews = $.getValues('/footer_news');
-    console.log(footerNews);
+//    console.log(footerNews);
 }
 
 function createMarquee() {
