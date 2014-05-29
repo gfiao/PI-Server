@@ -41,17 +41,13 @@ function init() {
     countMeteo = 0;
     footerNews = [];
     firstTimeCantina = true;
-//    document.getElementById('fileInput').addEventListener('onclick', handleFiles, false);
-//    console.log(document.getElementById("fileInput"));
 
-//    readSingleFile();
     updateTime();
     updateDate();
     fetchFooterNews();
     createMarquee();
+    animatePanel();
 //    getEmenta();
-//    animatePanel();
-    // animateFooter();
 }
 
 
@@ -111,13 +107,10 @@ function populateHeadlineDescription() {
 
 
 //animacao do painel lateral da ementa, meteo e transportes
-//JÁ FUNCIONA. FADE IN/OUT NAO DESLIZANTE
+//JÁ FUNCIONA.
 function animatePanel() {
     var intervalID;
     var toShow;
-
-    //0 -> ementa; 1 -> transportes; 2 -> tempo
-//        var modulus = globalCounter % 3;
 
     intervalID = setInterval(function () {
 
@@ -128,28 +121,15 @@ function animatePanel() {
         //obtem o conteudo a mostrar
         toShow = fetchContent();
 
-        $("#right-panel-middle").animate({
-            left: '1500px',
-            opacity: '0',
-            height: '406px' //alterar este valor conforme o tamanho da div
-        }, "slow");
-        setTimeout(function () { //timeout para garantir que o novo texto aparece entre os dois fades
-            $("#right-panel-middle").empty();
-            $("#right-panel-middle").append(toShow);
-//            $("#animated-panel").append("CENAS CENAS CENAS CENAS CENAS CENAS CENAS CENAS CENAS CENAS CENAS");
-        }, 650);
-        $("#right-panel-middle").animate({
-            left: '0px',
-            opacity: '1',
-            height: '406px'
-        }, "slow");
+        $('#toAnimate').removeClass('fadeInRight');
+        $('#toAnimate').addClass('animated fadeOutRight');
 
-        //não deverá ser usado, queremos que a animaçao do painel esteja sempre a correr
-//        if (stopInterval) {
-//            clearInterval(intervalID);
-//            stopInterval = false;
-//            console.log("hehehehe   ", globalCounter);
-//        }
+        setTimeout(function () { //timeout para garantir que o novo texto aparece entre os dois fades
+            $("#toAnimate").empty();
+            $("#toAnimate").append(toShow);
+            $('#toAnimate').removeClass('fadeOutRight');
+            $('#toAnimate').addClass('animated fadeInRight');
+        }, 650);
 
     }, 5000); //time in ms
 
@@ -158,32 +138,6 @@ function animatePanel() {
     //OU SEJA, É CHAMADO O CLEAR_INTERVAL, O MÉTODO TERMINA, NÃO CHEGANDO
     //A ESTE COMENTARIO NESSA ALTURA
 }
-
-
-////animar o rodape
-////com o tamanho da letra actual, o limite são 77 caracteres!!
-//function animateFooter() {
-//    var count = 0;
-//    var intervalID;
-//
-//    intervalID = setInterval(function () {
-//
-//        //exemplo 1 - usando slideup e slidedown
-//        $("#news-container").slideUp();
-//        setTimeout(function () { //timeout para garantir que o novo texto aparece entre o slideup e o slidedown
-//            $("#news-container").empty();
-//            $("#news-container").append('<p>' + footer_text + '</p>');
-//        }, 300);
-//        $("#news-container").slideDown();
-//
-//        count++;
-//
-//        //apenas para não correr infinitamente, remover isto no final
-//        if (count == 12)
-//            clearInterval(intervalID);
-//
-//    }, 5000); //alterar este valor para aumentar/diminuir o tempo que cada frase é mostrada
-//}
 
 
 //******************* FUNÇOES AUXILIARES *******************
@@ -208,11 +162,9 @@ function getEmenta() {
     var lunch_place = restaurant[index];
     var ementaContent = ementas[index];
 
-
     if (firstTimeCantina) {
         firstTimeCantina = false;
     }
-
 
     var content = '<h2>' + lunch_place + '</h2><ul id="ementaList">';
 
@@ -249,6 +201,7 @@ function getMeteo() {
     return content;
 }
 
+
 //actualiza a data da TV
 function updateDate() {
     today = new Date();
@@ -258,7 +211,6 @@ function updateDate() {
     var weekday = today.toString().split(" ")[0];
     var day = fullDate[0];
     var month = fullDate[1];
-//    var year = fullDate[2];
 
     var toDisplay = "";
     $.each(weekdays, function (i, elem) {
@@ -351,7 +303,6 @@ function onPlayerStateChange(event) {
             currVideoIndex = 0;
 
         currentVideoToHtml();
-//        alert(currVideoIndex);
     }
 }
 
@@ -359,7 +310,7 @@ function currentVideoToHtml() {
     var obj = $("#currVideoIndex");
     obj.empty();
     obj.append(currVideoIndex);
-    alert("heheehe");
+//    alert("heheehe");
 }
 
 
@@ -393,8 +344,8 @@ function createMarquee() {
     $('.news-container-scroll')
         .bind('finished', populateMarquee)
         .marquee({
-        duration: 5000
-    });
+            duration: 5000
+        });
     footerCounter++;
 }
 
@@ -406,7 +357,7 @@ function populateMarquee() {
     $('.news-container-scroll p').empty();
     $('.news-container-scroll p').append(toappend.news);
 
-    if(footerCounter == footerNews.length-1)
+    if (footerCounter == footerNews.length - 1)
         footerCounter = 0;
     else
         footerCounter++;
