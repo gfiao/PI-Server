@@ -156,8 +156,8 @@ function populateMenu() {
     var menu = $.getValues('/menus');
     var temp = [];
 
-    $.each(menu, function(i, item) {
-        if(item.meal == "almoco")
+    $.each(menu, function (i, item) {
+        if (item.meal == "almoco")
             temp[i] = item.dish;
     });
 
@@ -197,7 +197,9 @@ function getEmenta() {
 
 
 function getPublicTrans() {
-    var content = '<h2>' + "TRANSPORTES" + '</h2>';
+    var content = '<h2>' + "Transportes" + '</h2>';
+    content += '<ul>TST: <li>158 - 16h30</li><li>246 - 17h00</li></ul>';
+    content += '<ul>MTS: <li>16h30</li><li>17h00</li></ul>';
 
     globalCounter++;
     return content;
@@ -205,7 +207,8 @@ function getPublicTrans() {
 
 
 function getMeteo() {
-    var content = '<h2>' + "METEO" + '</h2>';
+    var content = '<h2>' + "Meteorologia" + '</h2>';
+    content += '<ul>Almada:<li>Máx: 22ºC</li><li>Min: 17ºC</li></ul>'
 
     globalCounter++;
     return content;
