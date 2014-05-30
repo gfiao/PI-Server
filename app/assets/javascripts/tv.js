@@ -154,6 +154,7 @@ function populateMenu() {
 
     //conteudo obtido da base de dados
     var menu = $.getValues('/menus');
+    console.log(menu);
     var temp = [];
 
     $.each(menu, function (i, item) {
@@ -285,7 +286,7 @@ function onYouTubeIframeAPIReady() {
         height: '390',
         width: '640',
         //videoId: videos[counterVid].link.split('/')[4], //retorna codigo dos videos
-        playerVars: { 'autoplay': 0, 'showinfo': 0, 'rel': 0, 'controls': 1, 'modestbranding': 1},
+        playerVars: { 'autoplay': 0, 'showinfo': 0, 'rel': 0, 'controls': 0, 'modestbranding': 1},
         events: {
             'onReady': onPlayerReady,
             'onStateChange': onPlayerStateChange

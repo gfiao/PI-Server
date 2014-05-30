@@ -53,12 +53,12 @@
 
             <% pratosAlmoco.each do |prato| %>
                 <% prato.text.split(";").each do |temp| %>
-                    <% Menu.create(meal: "almoco", dish: temp, date: Date.today()) %>
+                    <% Menu.create(meal: "almoco", dish: temp, date: Date.today(), restaurant: 'cantina') %>
                 <% end %>
             <% end %>
             <% pratosJantar.each do |prato| %>
                 <% prato.text.split(";").each do |temp| %>
-                    <% Menu.create(meal: "jantar", dish: temp, date: Date.today()) %>
+                    <% Menu.create(meal: "jantar", dish: temp, date: Date.today(), restaurant: 'cantina') %>
                 <% end %>
             <% end %>
           </div>
