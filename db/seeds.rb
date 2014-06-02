@@ -158,7 +158,8 @@ Score.create(user_id: 6, game_id: 1, score: 43218)
 
 #Video link:string
 puts 'Adding Videos'
-# Video.create(link: 'https://www.youtube.com/embed/iaItmiZTHP8')
+# Video.create(link: 'https://www.youtube.com/embed/iaItmiZTHP8') #Quim Barreiros
+Video.create(link: 'https://www.youtube.com/embed/Ci6lMQNLKZU') #Mortal Kombat X
 Video.create(link: 'https://www.youtube.com/embed/FVgZjyevTuI')
 Video.create(link: 'https://www.youtube.com/embed/bHwzUHSNVxg')
 Video.create(link: 'https://www.youtube.com/embed/mKXIXPiVk3U')
