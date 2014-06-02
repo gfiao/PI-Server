@@ -9,18 +9,13 @@
   <%= javascript_include_tag 'jquery.marquee.js' %>
 
 </head>
-<body onload="init()">
+<body onload="start()">
 <div id="globalContainer">
   <div class="" id="main">
 
     <div class="" id="video-and-lateral">
 
-      <!--<div class="" id="logotype">-->
-      <!--<h2>CampusTV</h2>-->
-      <!--</div>-->
-
       <div class="" id="view-area">
-
 
       </div>
 
@@ -34,32 +29,34 @@
             </div>
             <div id="date-info">
               <p></p>
-
-              <!--<h3 id="lastLine"></h3>-->
             </div>
 
           </div>
         </div>
         <div class="" id="right-panel-middle">
           <div class="" id="toAnimate">
-            <% require 'rubygems' %>
-            <% require 'nokogiri' %>
-            <% require 'open-uri' %>
-            <% page = Nokogiri::HTML(open("http://sas.unl.pt/cantina")) %>
+            <% i = 0 %>
+            <% if (i == 0) %>
+                <% require 'rubygems' %>
+                <% require 'nokogiri' %>
+                <% require 'open-uri' %>
+                <% page = Nokogiri::HTML(open("http://sas.unl.pt/cantina")) %>
 
-            <% ementaFCT = page.css('.cantina')[0] %>
-            <% pratosAlmoco = ementaFCT.css('.lunch').css('.dish') %>
-            <% pratosJantar = ementaFCT.css('.dinner').css('.dish') %>
+                <% ementaFCT = page.css('.cantina')[0] %>
+                <% pratosAlmoco = ementaFCT.css('.lunch').css('.dish') %>
+                <% pratosJantar = ementaFCT.css('.dinner').css('.dish') %>
 
-            <% pratosAlmoco.each do |prato| %>
-                <% prato.text.split(";").each do |temp| %>
-                    <% Menu.create(meal: "almoco", dish: temp, date: Date.today()) %>
+                <% pratosAlmoco.each do |prato| %>
+                    <% prato.text.split(";").each do |temp| %>
+                        <% Menu.create(meal: "almoco", dish: temp, date: Date.today()) %>
+                    <% end %>
                 <% end %>
-            <% end %>
-            <% pratosJantar.each do |prato| %>
-                <% prato.text.split(";").each do |temp| %>
-                    <% Menu.create(meal: "jantar", dish: temp, date: Date.today()) %>
+                <% pratosJantar.each do |prato| %>
+                    <% prato.text.split(";").each do |temp| %>
+                        <% Menu.create(meal: "jantar", dish: temp, date: Date.today()) %>
+                    <% end %>
                 <% end %>
+                <% i += 1 %>
             <% end %>
           </div>
         </div>

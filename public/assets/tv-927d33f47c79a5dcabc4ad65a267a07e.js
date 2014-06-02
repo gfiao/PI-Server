@@ -2,6 +2,7 @@
  * Created by Rafael on 28/05/2014.
  */
 
+
 function Weekday(shortName, portugueseName) {
     this.shortName = shortName;
     this.portugueseName = portugueseName;
@@ -28,22 +29,17 @@ var countMeteo;
 var firstTimeCantina;
 var footerNews;
 var today;
-var currVideoIndex = 0; //indica o indice do video que esta a correr de momento
+var currVideoIndex; //indica o indice do video que esta a correr de momento
 
-//$(document).ready(function () {
-//
-////    var t = setInterval(function() {
-//        console.log(window.CurrentVideo);
-////        window.CurrentVideo.currentIndex = currVideoIndex;
-////    }, 5000);
-//
-//
-////    var obj = {value: 0};
-////    obj.value = $('#right-panel-bottom').text;
-////
-////    obj.watch("value", function())
-//
-//});
+$(document).ready(function () {
+    currVideoIndex = 0;
+
+    var tempIndex = 0;
+    var t = setInterval(function() {
+        window.CurrVideo.currIndex = tempIndex++;
+    }, 5000);
+
+});
 
 
 function start() {
@@ -54,26 +50,12 @@ function start() {
     footerNews = [];
     firstTimeCantina = true;
 
-    var Mod = require('/trabalho');
-    Mod.alertTemp;
-
     updateTime();
     updateDate();
     fetchFooterNews();
     createMarquee();
     animatePanel();
 }
-
-
-require(['homepage'], function(badjoras) {
-
-    // jQuery loaded by foo module so free to use it
-    $('.button').on('click', function(e) {
-        badjoras.bar();
-        e.preventDefault();
-    });
-
-});
 
 
 jQuery.extend({
@@ -374,68 +356,4 @@ function populateMarquee() {
     else
         footerCounter++;
 }
-
-
-
-
-
-
-
-
-
-
-
-/*
- * object.watch polyfill
- *
- * 2012-04-03
- *
- * By Eli Grey, http://eligrey.com
- * Public Domain.
- * NO WARRANTY EXPRESSED OR IMPLIED. USE AT YOUR OWN RISK.
- */
-
-// object.watch
-if (!Object.prototype.watch) {
-    Object.defineProperty(Object.prototype, "watch", {
-        enumerable: false
-        , configurable: true
-        , writable: false
-        , value: function (prop, handler) {
-            var
-                oldval = this[prop]
-                , newval = oldval
-                , getter = function () {
-                    return newval;
-                }
-                , setter = function (val) {
-                    oldval = newval;
-                    return newval = handler.call(this, prop, oldval, val);
-                }
-                ;
-
-            if (delete this[prop]) { // can't watch constants
-                Object.defineProperty(this, prop, {
-                    get: getter
-                    , set: setter
-                    , enumerable: true
-                    , configurable: true
-                });
-            }
-        }
-    });
-}
-
-// object.unwatch
-if (!Object.prototype.unwatch) {
-    Object.defineProperty(Object.prototype, "unwatch", {
-        enumerable: false
-        , configurable: true
-        , writable: false
-        , value: function (prop) {
-            var val = this[prop];
-            delete this[prop]; // remove accessors
-            this[prop] = val;
-        }
-    });
-}
+;

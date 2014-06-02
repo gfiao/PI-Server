@@ -2,9 +2,23 @@
  * Created by Rafael on 06/05/2014.
  */
 
+//$(document).ready(function () {
+//
+//    function CreateIndex() {
+//        var ind = {currentIndex: 0};
+//        return ind; //temp = {currentIndex: '0'};
+//    }
+//    window.CurrentVideo = CreateIndex();
+////    console.log(window.CurrentVideo);
+//    window.CurrentVideo.watch("currentIndex", function(id, oldval, newval) {
+//        console.log("trabalho .js :  CurrentVideo." + id + " changed from " + oldval + " to " + newval );
+//        return newval;
+//    })
+//});
+
 
 function init() {
-    
+    populateHeadlineDescription();
 }
 
 
@@ -30,6 +44,12 @@ jQuery.extend({
         return result;
     }
 });
+
+function alertTemp() {
+    alert("hehehe isto devia estar no site");
+}
+
+module.exports.alertTemp = alertTemp;
 
 function populateHeadlineDescription() {
     var interval_ID;
