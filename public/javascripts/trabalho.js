@@ -45,11 +45,11 @@ jQuery.extend({
     }
 });
 
-function alertTemp() {
-    alert("hehehe isto devia estar no site");
-}
-
-module.exports.alertTemp = alertTemp;
+//function alertTemp() {
+//    alert("hehehe isto devia estar no site");
+//}
+//
+//module.exports.alertTemp = alertTemp;
 
 function populateHeadlineDescription() {
     var interval_ID;
