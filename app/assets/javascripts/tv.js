@@ -158,10 +158,11 @@ function populateMenu() {
 
     //conteudo obtido da base de dados
     var menu = $.getValues('/menus');
+    console.log(menu);
     var temp = [];
 
-    $.each(menu, function(i, item) {
-        if(item.meal == "almoco")
+    $.each(menu, function (i, item) {
+        if (item.meal == "almoco")
             temp[i] = item.dish;
     });
 
@@ -201,7 +202,9 @@ function getEmenta() {
 
 
 function getPublicTrans() {
-    var content = '<h2>' + "TRANSPORTES" + '</h2>';
+    var content = '<h2>' + "Transportes" + '</h2>';
+    content += '<ul>TST: <li>158 - 16h30</li><li>246 - 17h00</li></ul>';
+    content += '<ul>MTS: <li>16h30</li><li>17h00</li></ul>';
 
     globalCounter++;
     return content;
@@ -209,7 +212,8 @@ function getPublicTrans() {
 
 
 function getMeteo() {
-    var content = '<h2>' + "METEO" + '</h2>';
+    var content = '<h2>' + "Meteorologia" + '</h2>';
+    content += '<ul>Almada:<li>Máx: 22ºC</li><li>Min: 17ºC</li></ul>'
 
     globalCounter++;
     return content;
@@ -286,7 +290,7 @@ function onYouTubeIframeAPIReady() {
         height: '390',
         width: '640',
         //videoId: videos[counterVid].link.split('/')[4], //retorna codigo dos videos
-        playerVars: { 'autoplay': 0, 'showinfo': 0, 'rel': 0, 'controls': 1, 'modestbranding': 1},
+        playerVars: { 'autoplay': 0, 'showinfo': 0, 'rel': 0, 'controls': 0, 'modestbranding': 1},
         events: {
             'onReady': onPlayerReady,
             'onStateChange': onPlayerStateChange
