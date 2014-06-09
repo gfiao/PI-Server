@@ -92,6 +92,14 @@ body {
     font-family: "Myriad Pro Regular";
 }
 
+#header{
+    /*background-color: grey;*/
+}
+
+.navbar-item{
+    font-size: 150%;
+}
+
 /* ############# BARRA DE MENU ############# */
 #links {
     padding-right: 20px;
