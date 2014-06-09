@@ -1,52 +1,76 @@
-<%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
-    <%= devise_error_messages! %>
+<div id="" class="container">
+  <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
+      <%= devise_error_messages! %>
 
-    <div class="container">
       <h2>Sign up</h2>
 
-      <div class="form-group">
-        <div><%= f.label :name, class: 'form' %>
-          <br/>
-          <%= f.text_field :name, autofocus: true, class: 'form-control' %></div>
+      <div class="row">
+        <div class="form-group col-md-5">
+          <div><%= f.label :nome, class: 'form' %>
+            <br/>
+            <%= f.text_field :name, autofocus: true, class: 'form-control', placeholder: 'Nome' %></div>
+        </div>
+
+        <div class="form-group col-md-5">
+          <div><%= f.label :email %>
+            <br/>
+            <%= f.email_field :email, class: 'form-control', placeholder: 'Email' %></div>
+        </div>
+      </div>
+
+      <!--<div class="form-inline" role="form">-->
+      <div class="row">
+        <div class="form-group col-md-5">
+          <div><%= f.label :palavra_passe %>
+            <br/>
+            <%= f.password_field :password, autocomplete: "off", class: 'form-control',
+                                 placeholder: 'Palavra Passe' %>
+          </div>
+        </div>
+
+        <div class="form-group col-md-5">
+          <div><%= f.label :confimação_palavra_passe %>
+            <br/>
+            <%= f.password_field :password_confirmation, autocomplete: 'off',
+                                 class: 'form-control', placeholder: 'Confirmar Palavra Passe' %>
+          </div>
+        </div>
       </div>
 
       <div class="form-group">
-        <div><%= f.label :email %>
+        <div><%= f.label :data_de_nascimento %>
           <br/>
-          <%= f.email_field :email, class: 'form-control' %></div>
+          <%= f.date_select :birth_date, start_year: 1920, end_year: Time.now.year %></div>
       </div>
 
-      <div><%= f.label :password %>
-        <br/>
-        <%= f.password_field :password, autocomplete: "off", class: 'form-control' %></div>
-
-      <div><%= f.label :password_confirmation %>
-        <br/>
-        <%= f.password_field :password_confirmation, autocomplete: "off" , class: 'form-control'%></div>
-
-      <div><%= f.label :data_de_nascimento %>
-        <br/>
-        <%= f.date_select :birth_date, start_year: 1920, end_year: Time.now.year %></div>
-
-      <div>
-        <%= f.label :curso %> </br>
-        <%= f.text_field :course , class: 'form-control'%>
+      <div class="row">
+        <div class="form-group col-xs-5">
+          <div>
+            <%= f.label :curso %> </br>
+            <%= f.text_field :course, class: 'form-control', placeholder: 'Diz-nos qual é o teu curso!' %>
+          </div>
+        </div>
       </div>
 
-      <div><%= f.label :sobre_mim %>
-        <br/>
-        <%= f.text_area :about_me , class: 'form-control'%></div>
+      <div class="row">
+        <div class="form-group col-xs-5">
+          <div><%= f.label :sobre_mim %>
+            <br/>
+            <%= f.text_area :about_me, class: 'form-control', placeholder: 'Diz-nos algo sobre ti!' %></div>
+        </div>
+      </div>
 
-      <div>
+      <div class="radio-inline">
         <%= f.radio_button :gender, 'male' %>
         <%= f.label :gender, 'Masculino', :value => 'male' %>
-        <br/>
+      </div>
+      <div class="radio-inline">
         <%= f.radio_button :gender, 'female' %>
         <%= f.label :gender, 'Feminino', :value => 'female' %>
       </div>
 
       <div><%= f.submit "Sign up" %></div>
-<% end %>
+  <% end %>
 </div>
 
 <%= render "devise/shared/links" %>
