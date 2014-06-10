@@ -1,34 +1,49 @@
-<p id="notice"><%= notice %></p>
+<div class="container">
 
-<p>
-  <strong>Title:</strong>
-  <%= @content.title %>
-</p>
+  <style>
+      p {
+          font-size: 110%;
+          font-family: "Myriad Pro Regular";
+      }
 
-<p>
-  <strong>Link image:</strong>
-  <%= image_tag @content.link_image %>
-</p>
+  </style>
 
-<p>
-  <strong>Description:</strong>
-  <%= @content.description %>
-</p>
+  <p id="notice"><%= notice %></p>
 
-<p>
-  <strong>Date:</strong>
-  <%= @content.date %>
-</p>
+  <h3>
+    <%= @content.title %>
+  </h3>
 
-<p>
-  <strong>Views:</strong>
-  <%= @content.views %>
-</p>
+  <div class="row">
+    <div class="col-md-4">
+      <%= image_tag @content.link_image, class: 'img-responsive' %>
+    </div>
 
-<p>
-  <strong>Text:</strong>
-  <%= @content.news_text %>
-</p>
+    <div>
 
-<%= link_to 'Edit', edit_content_path(@content) %> |
-<%= link_to 'Back', contents_path %>
+
+      <p>
+        <strong>Description:</strong>
+        <%= @content.description %>
+      </p>
+
+      <p>
+        <strong>Date:</strong>
+        <%= @content.date %>
+      </p>
+
+      <p>
+        <strong>Views:</strong>
+        <%= @content.views %>
+      </p>
+    </div>
+  </div>
+
+  <p>
+    <%= @content.news_text %>
+  </p>
+
+  <%= link_to 'Edit', edit_content_path(@content) %> |
+  <%= link_to 'Back', contents_path %>
+
+</div>

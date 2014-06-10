@@ -92,11 +92,15 @@ body {
     font-family: "Myriad Pro Regular";
 }
 
-#header{
-    /*background-color: grey;*/
+p {
+    font-family: "Myriad Pro Regular";
 }
 
-.navbar-item{
+#header {
+
+}
+
+.navbar-item {
     font-size: 150%;
 }
 
