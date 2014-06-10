@@ -10,8 +10,8 @@ class HomepageController < ApplicationController
 
   def index
     # @current_video_info = "video1"
-    @current_video_info = nil
-
+    # @current_video_info = nil
+    #
     # respond_to do |format|
     #   if params[:currIndex].nil?
     #     format.js
@@ -27,14 +27,14 @@ class HomepageController < ApplicationController
     # end
 
     #estamos a aceder da TV, actualizar a cena
-    # if !(params[:currIndex].nil?)
-    #   puts params[:currIndex]
-    #   puts "LOLOLOLOLOLOLOLOLOLOLOLOL"
-    #   @current_video_info = params[:currIndex]
-    #   render :partial => "sync"
-    # else
-    #   puts "TOU NO SITE HUEHUEHUEHUEHUEKKKKKKKKKKKKK"
-    # end
+    if !(params[:currIndex].nil?)
+      puts params[:currIndex]
+      puts "LOLOLOLOLOLOLOLOLOLOLOLOL"
+      @current_video_info = params[:currIndex]
+      render :partial => "sync"
+    else
+      puts "TOU NO SITE HUEHUEHUEHUEHUEKKKKKKKKKKKKK"
+    end
 
     # @current_video_info = nil
     # puts "LOLOLOLOLOLOLOL"
