@@ -5,6 +5,7 @@ class ScoresController < ApplicationController
   # GET /scores.json
   def index
     @scores = Score.all
+
   end
 
   # GET /scores/1
@@ -21,10 +22,16 @@ class ScoresController < ApplicationController
   def edit
   end
 
+  def badjoras
+    puts params[:bestScore]
+    puts params[:gameId]
+  end
+
   # POST /scores
   # POST /scores.json
   def create
     @score = Score.new(score_params)
+
 
     respond_to do |format|
       if @score.save
@@ -62,13 +69,13 @@ class ScoresController < ApplicationController
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_score
-      @score = Score.find(params[:id])
-    end
+  # Use callbacks to share common setup or constraints between actions.
+  def set_score
+    @score = Score.find(params[:id])
+  end
 
-    # Never trust parameters from the scary internet, only allow the white list through.
-    def score_params
-      params.require(:score).permit(:user_id, :game_id, :score)
-    end
+  # Never trust parameters from the scary internet, only allow the white list through.
+  def score_params
+    params.require(:score).permit(:user_id, :game_id, :score)
+  end
 end

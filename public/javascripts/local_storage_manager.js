@@ -46,6 +46,12 @@ LocalStorageManager.prototype.getBestScore = function () {
 
 LocalStorageManager.prototype.setBestScore = function (score) {
     this.storage.setItem(this.bestScoreKey, score);
+
+    $.ajax({
+        url: '/scores/badjoras',
+        data: {'bestScore': score, 'game_id': 1},
+        type: 'GET'
+    });
 };
 
 // Game state getters/setters and clearing
