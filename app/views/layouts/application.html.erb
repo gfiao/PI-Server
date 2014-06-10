@@ -9,7 +9,7 @@
   <%= csrf_meta_tags %>
 </head>
 <body>
-<div id="header" class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+<div id="header" class="navbar navbar-inverse navbar-fixed-top img-responsive" role="navigation">
   <div class="container">
     <div class="navbar-header">
       <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
@@ -41,7 +41,7 @@
                 <li>
                   <%= link_to 'Pontuações', scores_path %>
                 </li>
-                <li> <%= link_to 'Sign out', destroy_user_session_path, :method => :delete %></li>
+                <li> <%= link_to 'Encerrar sessão', destroy_user_session_path, :method => :delete %></li>
               </ul>
             </li>
             <!--<li id="profileLink">-->
@@ -57,9 +57,9 @@
                 <span class="glyphicon glyphicon-user"></span>
                 <b class="caret"></b></a>
               <ul class="dropdown-menu">
-                <li><%= link_to 'Sign up', new_user_registration_path, :method => :get %>
+                <li><%= link_to 'Criar conta', new_user_registration_path, :method => :get %>
                 </li>
-                <li><%= link_to 'Sign in', new_user_session_path, :method => :get %>
+                <li><%= link_to 'Iniciar sessão', new_user_session_path, :method => :get %>
                 </li>
               </ul>
             </li>
