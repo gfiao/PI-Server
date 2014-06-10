@@ -1,0 +1,325 @@
+@charset "UTF-8";
+@font-face {
+  font-family: 'Myriad Pro Regular';
+  font-style: normal;
+  font-weight: normal;
+  src: local("Myriad Pro Regular"), url("MYRIADPRO-REGULAR.woff") format("woff");
+}
+
+@font-face {
+  font-family: 'Myriad Pro Condensed';
+  font-style: normal;
+  font-weight: normal;
+  src: local("Myriad Pro Condensed"), url("MYRIADPRO-COND.woff") format("woff");
+}
+
+@font-face {
+  font-family: 'Myriad Pro Semibold Italic';
+  font-style: normal;
+  font-weight: normal;
+  src: local("Myriad Pro Semibold Italic"), url("MYRIADPRO-SEMIBOLDIT.woff") format("woff");
+}
+
+@font-face {
+  font-family: 'Myriad Pro Semibold';
+  font-style: normal;
+  font-weight: normal;
+  src: local("Myriad Pro Semibold"), url("MYRIADPRO-SEMIBOLD.woff") format("woff");
+}
+
+@font-face {
+  font-family: 'Myriad Pro Condensed Italic';
+  font-style: normal;
+  font-weight: normal;
+  src: local("Myriad Pro Condensed Italic"), url("MYRIADPRO-CONDIT.woff") format("woff");
+}
+
+@font-face {
+  font-family: 'Myriad Pro Bold Italic';
+  font-style: normal;
+  font-weight: normal;
+  src: local("Myriad Pro Bold Italic"), url("MYRIADPRO-BOLDIT.woff") format("woff");
+}
+
+@font-face {
+  font-family: 'Myriad Pro Bold Condensed Italic';
+  font-style: normal;
+  font-weight: normal;
+  src: local("Myriad Pro Bold Condensed Italic"), url("MYRIADPRO-BOLDCONDIT.woff") format("woff");
+}
+
+@font-face {
+  font-family: 'Myriad Pro Bold Condensed';
+  font-style: normal;
+  font-weight: normal;
+  src: local("Myriad Pro Bold Condensed"), url("MYRIADPRO-BOLDCOND.woff") format("woff");
+}
+
+@font-face {
+  font-family: 'Myriad Pro Bold';
+  font-style: normal;
+  font-weight: normal;
+  src: local("Myriad Pro Bold"), url("MYRIADPRO-BOLD.woff") format("woff");
+}
+
+@media (min-width: 500px) {
+  /* line 73, C:/Users/guilh_000/Documents/GitHub/PI-Server/app/assets/stylesheets/tv.css.scss */
+  #hour-info p {
+    font-size: 775%;
+  }
+
+  /* line 77, C:/Users/guilh_000/Documents/GitHub/PI-Server/app/assets/stylesheets/tv.css.scss */
+  #date-info p {
+    font-size: 375%;
+    padding-left: 20px;
+    padding-right: 20px;
+  }
+
+  /* line 83, C:/Users/guilh_000/Documents/GitHub/PI-Server/app/assets/stylesheets/tv.css.scss */
+  #category p {
+    margin-top: 0px;
+    font-size: 150%;
+    padding: 12px;
+  }
+
+  /* line 89, C:/Users/guilh_000/Documents/GitHub/PI-Server/app/assets/stylesheets/tv.css.scss */
+  #news-container p {
+    margin: 0px;
+    font-size: 120%;
+    padding: 10px;
+  }
+}
+@media (max-width: 499px) {
+  /*paragrafo das horas*/
+  /* line 99, C:/Users/guilh_000/Documents/GitHub/PI-Server/app/assets/stylesheets/tv.css.scss */
+  #hour-info > p {
+    font-size: 80px;
+  }
+
+  /* line 103, C:/Users/guilh_000/Documents/GitHub/PI-Server/app/assets/stylesheets/tv.css.scss */
+  #date-info > p {
+    font-size: 35px;
+  }
+}
+/* line 108, C:/Users/guilh_000/Documents/GitHub/PI-Server/app/assets/stylesheets/tv.css.scss */
+body {
+  margin: 0px;
+}
+
+/* line 112, C:/Users/guilh_000/Documents/GitHub/PI-Server/app/assets/stylesheets/tv.css.scss */
+#globalContainer {
+  background-color: #ffffff;
+  color: white;
+  width: 1920px;
+  height: 1080px;
+  font-family: "Myriad Pro Regular";
+}
+
+/*inicio do que realmente interessa*/
+/* line 128, C:/Users/guilh_000/Documents/GitHub/PI-Server/app/assets/stylesheets/tv.css.scss */
+#main {
+  /*mudar a altura consoante a resolução do display*/
+  width: 100%;
+  height: 100%;
+  background-color: darkblue;
+}
+
+/* line 143, C:/Users/guilh_000/Documents/GitHub/PI-Server/app/assets/stylesheets/tv.css.scss */
+#video-and-lateral {
+  height: 93%;
+  width: 100%;
+}
+
+/* ############# css do caixote central ############# */
+/* line 163, C:/Users/guilh_000/Documents/GitHub/PI-Server/app/assets/stylesheets/tv.css.scss */
+#view-area {
+  height: 100%;
+  width: 70%;
+  float: left;
+  /*display: inline-block;*/
+}
+
+/* line 171, C:/Users/guilh_000/Documents/GitHub/PI-Server/app/assets/stylesheets/tv.css.scss */
+#right-panel {
+  /*remover margens entre inline-block*/
+  /*margin-left: -4px;*/
+  height: 100%;
+  width: 30%;
+  float: left;
+  /*display: inline-block;*/
+}
+
+/* ############# css do painel lateral - TOPO ############# */
+/* line 183, C:/Users/guilh_000/Documents/GitHub/PI-Server/app/assets/stylesheets/tv.css.scss */
+#right-panel-top {
+  width: 100%;
+  height: 15%;
+  display: block;
+  background-color: rgba(58, 218, 255, 0.1);
+}
+
+/* line 194, C:/Users/guilh_000/Documents/GitHub/PI-Server/app/assets/stylesheets/tv.css.scss */
+#hour-info {
+  width: 50%;
+  font-family: "Myriad Pro Condensed";
+  font-weight: bold;
+}
+
+/* line 200, C:/Users/guilh_000/Documents/GitHub/PI-Server/app/assets/stylesheets/tv.css.scss */
+#date-info {
+  width: 50%;
+  /*background-color: blue;*/
+}
+
+/* line 207, C:/Users/guilh_000/Documents/GitHub/PI-Server/app/assets/stylesheets/tv.css.scss */
+#hour-info,
+#date-info {
+  height: 100%;
+  float: left;
+}
+
+/* line 213, C:/Users/guilh_000/Documents/GitHub/PI-Server/app/assets/stylesheets/tv.css.scss */
+#hour-info > p,
+#date-info > p {
+  text-align: center;
+  margin: 0px;
+}
+
+/* ############# PAINEL LATERAL - MEIO ############# */
+/* line 219, C:/Users/guilh_000/Documents/GitHub/PI-Server/app/assets/stylesheets/tv.css.scss */
+#right-panel-middle {
+  width: 100%;
+  height: 60%;
+  /*padding-left: 25px;*/
+  font-size: 240%;
+  background: linear-gradient(to bottom, darkblue 0%, rgba(58, 218, 255, 0.3) 10%, rgba(58, 218, 255, 0.3) 90%, darkblue 100%);
+}
+
+/* line 231, C:/Users/guilh_000/Documents/GitHub/PI-Server/app/assets/stylesheets/tv.css.scss */
+#toAnimate {
+  width: 90%;
+}
+
+/*titulo do restaurante*/
+/* line 236, C:/Users/guilh_000/Documents/GitHub/PI-Server/app/assets/stylesheets/tv.css.scss */
+#right-panel-middle h2 {
+  padding-left: 50px;
+  margin-bottom: 30px;
+  padding-top: 30px;
+  margin-top: 0px;
+}
+
+/*lista que contem a ementa*/
+/* line 244, C:/Users/guilh_000/Documents/GitHub/PI-Server/app/assets/stylesheets/tv.css.scss */
+#ementaList {
+  list-style: disc;
+  padding-left: 70px;
+}
+
+/* line 249, C:/Users/guilh_000/Documents/GitHub/PI-Server/app/assets/stylesheets/tv.css.scss */
+#ementaList > li {
+  margin-bottom: 15px;
+  /*margin-top: 20px;*/
+}
+
+/* ############# css do painel lateral - BAIXO ############# */
+/* line 255, C:/Users/guilh_000/Documents/GitHub/PI-Server/app/assets/stylesheets/tv.css.scss */
+#right-panel-bottom {
+  width: 100%;
+  height: 25%;
+  background-color: rgba(58, 218, 255, 0.1);
+}
+
+/* ############# FOOTER ############# */
+/* line 265, C:/Users/guilh_000/Documents/GitHub/PI-Server/app/assets/stylesheets/tv.css.scss */
+#footer {
+  height: 7%;
+  width: 100%;
+  font-size: 30px;
+}
+
+/* line 272, C:/Users/guilh_000/Documents/GitHub/PI-Server/app/assets/stylesheets/tv.css.scss */
+#category {
+  width: 20%;
+  height: 100%;
+  background-color: #3bb6ce;
+  float: left;
+  text-align: center;
+  border-bottom-right-radius: 50px;
+  border-top-right-radius: 50px;
+  font-family: "Myriad Pro Regular";
+}
+
+/* line 283, C:/Users/guilh_000/Documents/GitHub/PI-Server/app/assets/stylesheets/tv.css.scss */
+#news-container {
+  width: 80%;
+  height: 100%;
+  float: left;
+  font-family: 'Myriad Pro Condensed';
+  font-size: 40px;
+}
+
+/* line 291, C:/Users/guilh_000/Documents/GitHub/PI-Server/app/assets/stylesheets/tv.css.scss */
+#category p {
+  margin-top: 0px;
+}
+
+/* line 295, C:/Users/guilh_000/Documents/GitHub/PI-Server/app/assets/stylesheets/tv.css.scss */
+#news-container p {
+  margin: 0px;
+}
+
+/* line 299, C:/Users/guilh_000/Documents/GitHub/PI-Server/app/assets/stylesheets/tv.css.scss */
+.news-container-scroll {
+  overflow: hidden;
+}
+
+/*parte superior do painel lateral, com as horas/tempo*/
+/*#meteo-info, #hour-date {*/
+/*height: 50%;*/
+/*}*/
+/*temperatura maxima/minima*/
+/*#meteo-min-temp,*/
+/*#meteo-max-temp {*/
+/*width: 50%;*/
+/*height: 100%;*/
+/*float: left;*/
+/*}*/
+/*temperatura minima*/
+/*#meteo-min-temp {*/
+/*background-color: blue;*/
+/*}*/
+/*temperatura máxima*/
+/*#meteo-max-temp {*/
+/*background-color: red;*/
+/*}*/
+/*#max-temp-img,*/
+/*#max-temp-value,*/
+/*#min-temp-img,*/
+/*#min-temp-value {*/
+/*float: left;*/
+/*width: 50%;*/
+/*height: 100%;*/
+/*}*/
+/*#max-temp-img,*/
+/*#min-temp-img {*/
+/*background-color: #ffff00;*/
+/*}*/
+/*#max-temp-value,*/
+/*#min-temp-value {*/
+/*background-color: green;*/
+/*}*/
+/*centra os textos do rodapé*/
+/*#footer > h1 {*/
+/*margin-top: 19px;*/
+/*margin-bottom: 19px;*/
+/*}*/
+/*padding para a noticia do rodapé*/
+/*#news-container > h1 {*/
+/*padding-left: 10px;*/
+/*}*/
+/* line 356, C:/Users/guilh_000/Documents/GitHub/PI-Server/app/assets/stylesheets/tv.css.scss */
+.badjoras {
+  visibility: hidden;
+  position: absolute;
+}
