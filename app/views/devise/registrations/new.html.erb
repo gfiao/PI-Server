@@ -2,7 +2,7 @@
   <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
       <%= devise_error_messages! %>
 
-      <h2>Sign up</h2>
+      <h2 style="margin-bottom: 3%; margin-top: 3%"><b>Criar Conta</b></h2>
 
       <div class="row">
         <div class="form-group col-md-5">
@@ -69,8 +69,9 @@
         <%= f.label :gender, 'Feminino', :value => 'female' %>
       </div>
 
-      <div><%= f.submit "Sign up" %></div>
+      <div style="margin-top: 2%"><%= f.submit "Sign up" %></div>
   <% end %>
+
+  <p style="margin-top: 2%">Já tem conta? Faça <%= render "devise/shared/links" %></p>
 </div>
 
-<%= render "devise/shared/links" %>
