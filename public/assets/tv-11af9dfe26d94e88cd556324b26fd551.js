@@ -2,6 +2,7 @@
  * Created by Rafael on 28/05/2014.
  */
 
+
 function Weekday(shortName, portugueseName) {
     this.shortName = shortName;
     this.portugueseName = portugueseName;
@@ -460,3 +461,4 @@ function populateMarquee() {
 //        }
 //    });
 //}
+;

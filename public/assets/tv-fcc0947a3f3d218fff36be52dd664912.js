@@ -2,6 +2,7 @@
  * Created by Rafael on 28/05/2014.
  */
 
+
 function Weekday(shortName, portugueseName) {
     this.shortName = shortName;
     this.portugueseName = portugueseName;
@@ -56,9 +57,6 @@ function start() {
 
 //    var Mod = require('/trabalho');
 //    Mod.alertTemp;
-
-    //envia a info do primeiro video para a tv
-    currentVideoToHtml();
 
     updateTime();
     updateDate();
@@ -324,27 +322,20 @@ function onPlayerStateChange(event) {
     }
 }
 
-function currentVideoToHtml() {
-//    var obj = $("#bookmarkText h4");
-//    obj.empty();
-//    obj.append(currVideoIndex);
-
-//    alert("hehehe");
-//    alertAnotherPage();
-
-
+//function currentVideoToHtml() {
+////    var obj = $("#bookmarkText h4");
+////    obj.empty();
+////    obj.append(currVideoIndex);
+//
+////    alert("hehehe");
+////    alertAnotherPage();
+//
+//
 //    $(function() {
 //        window.hello();
 //    });
-
-
-    $.ajax( {
-        url: '/homepage/index',
-        data: {'currIndex': currVideoIndex+1},
-        type: 'GET'
-    });
-
-}
+//
+//}
 
 
 /**************************BUSCAR NOTICIAS A BD POR REST*****************/
@@ -460,3 +451,4 @@ function populateMarquee() {
 //        }
 //    });
 //}
+;

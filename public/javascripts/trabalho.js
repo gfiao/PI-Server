@@ -4,16 +4,24 @@
 
 //$(document).ready(function () {
 //
-//    function CreateIndex() {
-//        var ind = {currentIndex: 0};
-//        return ind; //temp = {currentIndex: '0'};
-//    }
-//    window.CurrentVideo = CreateIndex();
-////    console.log(window.CurrentVideo);
-//    window.CurrentVideo.watch("currentIndex", function(id, oldval, newval) {
-//        console.log("trabalho .js :  CurrentVideo." + id + " changed from " + oldval + " to " + newval );
-//        return newval;
-//    })
+//    $(function() {
+//        function hello() {
+//            alert("Hello, world!");
+//        }
+//        window.hello=hello();
+//    });
+//
+//
+////    function CreateIndex() {
+////        var ind = {currentIndex: 0};
+////        return ind; //temp = {currentIndex: '0'};
+////    }
+////    window.CurrentVideo = CreateIndex();
+//////    console.log(window.CurrentVideo);
+////    window.CurrentVideo.watch("currentIndex", function(id, oldval, newval) {
+////        console.log("trabalho .js :  CurrentVideo." + id + " changed from " + oldval + " to " + newval );
+////        return newval;
+////    })
 //});
 
 

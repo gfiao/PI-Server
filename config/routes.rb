@@ -38,6 +38,9 @@ Rails.application.routes.draw do
   get 'homepage/index'
   get 'tv' => 'tv#show'
 
+  # get 'homepage/updateInfo' => 'homepage#updateInfo'
+  # get 'homepage/sync' => 'homepage#sync'
+
   root 'homepage#index'
 
   resources :users do
