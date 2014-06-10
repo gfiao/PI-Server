@@ -5,5 +5,96 @@
   <%= @game.name %>
 </p>
 
+
+<% if @game.name == '2048' %>
+
+    <%= stylesheet_link_tag 'main2048.css' %>
+    <%= javascript_include_tag 'bind_polyfill.js' %>
+    <%= javascript_include_tag 'classlist_polyfill.js' %>
+    <%= javascript_include_tag 'animframe_polyfill.js' %>
+    <%= javascript_include_tag 'keyboard_input_manager.js' %>
+    <%= javascript_include_tag 'html_actuator.js' %>
+    <%= javascript_include_tag 'grid.js' %>
+    <%= javascript_include_tag 'tile.js' %>
+    <%= javascript_include_tag 'local_storage_manager.js' %>
+    <%= javascript_include_tag 'game_manager.js' %>
+    <%= javascript_include_tag 'application2048.js' %>
+
+
+
+
+    <div class="container" id="game">
+      <div class="heading">
+        <h1 class="title">2048</h1>
+
+        <div class="scores-container">
+          <div class="score-container">0</div>
+          <div class="best-container">0</div>
+        </div>
+      </div>
+
+      <div class="above-game">
+        <p class="game-intro">Junte os números e chegue ao <strong>quadrado 2048!</strong></p>
+        <a class="restart-button">Novo Jogo</a>
+      </div>
+
+      <div class="game-container">
+        <div class="game-message">
+          <p></p>
+
+          <div class="lower">
+            <a class="keep-playing-button">Continue a jogar</a>
+            <a class="retry-button">Tente de novo</a>
+          </div>
+        </div>
+
+        <div class="grid-container">
+          <div class="grid-row">
+            <div class="grid-cell"></div>
+            <div class="grid-cell"></div>
+            <div class="grid-cell"></div>
+            <div class="grid-cell"></div>
+          </div>
+          <div class="grid-row">
+            <div class="grid-cell"></div>
+            <div class="grid-cell"></div>
+            <div class="grid-cell"></div>
+            <div class="grid-cell"></div>
+          </div>
+          <div class="grid-row">
+            <div class="grid-cell"></div>
+            <div class="grid-cell"></div>
+            <div class="grid-cell"></div>
+            <div class="grid-cell"></div>
+          </div>
+          <div class="grid-row">
+            <div class="grid-cell"></div>
+            <div class="grid-cell"></div>
+            <div class="grid-cell"></div>
+            <div class="grid-cell"></div>
+          </div>
+        </div>
+
+        <div class="tile-container">
+
+        </div>
+      </div>
+
+      <p class="game-explanation">
+        <strong class="important">Como jogar:</strong> Use as <strong>setas do teclado</strong> para movimentar os quadrados.
+        Quando dois quadrados com o mesmo número se tocarem eles <strong>juntam-se num só!</strong>
+      </p>
+      <hr>
+      <p>
+        Pode jogar ao jogo original <a href="http://gabrielecirulli.github.io/2048/">aqui</a>.
+      </p>
+      <hr>
+
+    </div>
+
+
+
+<% end %>
+
 <%= link_to 'Edit', edit_game_path(@game) %> |
 <%= link_to 'Back', games_path %>
