@@ -50,7 +50,6 @@ LocalStorageManager.prototype.setBestScore = function (score) {
     $.ajax({
         url: '/scores',
         data: {
-            'user_id': 2,
             'game_id': 1,
             'score': score
         },

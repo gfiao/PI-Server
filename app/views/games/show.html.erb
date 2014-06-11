@@ -1,9 +1,6 @@
 <p id="notice"><%= notice %></p>
 
-<p>
-  <strong>Name:</strong>
-  <%= @game.name %>
-</p>
+
 
 
 <% if @game.name == '2048' %>
@@ -31,7 +28,12 @@
       </div>
 
       <div class="above-game">
-        <p class="game-intro">Junte os números e chegue ao <strong>quadrado 2048!</strong></p>
+        <% if user_signed_in? %>
+            <p class="game-intro">Junte os números e chegue ao <strong>quadrado 2048!</strong></p>
+
+        <% else %>
+            <p> Não está logged-in! A sua pontuação não vai contar para a lista das melhores pontuações! </p>
+        <% end %>
         <a class="restart-button">Novo Jogo</a>
       </div>
 
@@ -90,6 +92,11 @@
 
     </div>
 
+<% else %>
+    <p>
+      <strong>Name:</strong>
+      <%= @game.name %>
+    </p>
 
 
 <% end %>

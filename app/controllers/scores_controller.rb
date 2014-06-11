@@ -4,6 +4,7 @@ class ScoresController < ApplicationController
   # GET /scores
   # GET /scores.json
   def index
+
     @scores = Score.all
 
   end
@@ -27,15 +28,17 @@ class ScoresController < ApplicationController
   def create
     # @score = Score.new(score_params)
 
-    @score = Score.new(:user_id => params[:user_id], :game_id => params[:game_id], :score => params[:score])
-    @score.save
 
-    if @score.save
-    else
-      updScore = Score.find_by(user_id: params[:user_id])
-      if updScore.score < params[:score].to_i
-        updScore.score = params[:score]
-        updScore.save
+    if user_signed_in?
+      @score = Score.new(:user_id => current_user.id, :game_id => params[:game_id], :score => params[:score])
+      @score.save
+
+      if !@score.save
+        updScore = Score.find_by(user_id: current_user.id)
+        if updScore.score < params[:score].to_i
+          updScore.score = params[:score]
+          updScore.save
+        end
       end
     end
 
