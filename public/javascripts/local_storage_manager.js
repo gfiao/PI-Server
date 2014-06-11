@@ -48,9 +48,13 @@ LocalStorageManager.prototype.setBestScore = function (score) {
     this.storage.setItem(this.bestScoreKey, score);
 
     $.ajax({
-        url: '/scores/badjoras',
-        data: {'bestScore': score, 'game_id': 1},
-        type: 'GET'
+        url: '/scores',
+        data: {
+            'user_id': 2,
+            'game_id': 1,
+            'score': score
+        },
+        type: 'POST'
     });
 };
 

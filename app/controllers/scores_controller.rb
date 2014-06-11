@@ -22,16 +22,22 @@ class ScoresController < ApplicationController
   def edit
   end
 
-  def badjoras
-    puts params[:bestScore]
-    puts params[:gameId]
-  end
-
   # POST /scores
   # POST /scores.json
   def create
-    @score = Score.new(score_params)
+    # @score = Score.new(score_params)
 
+    @score = Score.new(:user_id => params[:user_id], :game_id => params[:game_id], :score => params[:score])
+    @score.save
+
+    if @score.save
+    else
+      updScore = Score.find_by(user_id: params[:user_id])
+      if updScore.score < params[:score].to_i
+        updScore.score = params[:score]
+        updScore.save
+      end
+    end
 
     respond_to do |format|
       if @score.save
