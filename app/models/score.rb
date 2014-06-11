@@ -6,4 +6,6 @@ class Score < ActiveRecord::Base
   validates :score, presence: true
   validates_associated :game, :user
   validates_presence_of :game, :user
+
+  validates_uniqueness_of :game_id, :scope => [:user_id]
 end

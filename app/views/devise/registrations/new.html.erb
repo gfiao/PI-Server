@@ -60,13 +60,22 @@
         </div>
       </div>
 
+      <div class="row">
+        <div class="form-group col-xs-5">
+          <div><%= f.label :imagem_de_perfil %> (Insere um URL)
+            <br/>
+            <%= f.text_field :avatar_url, class: 'form-control' %>
+          </div>
+        </div>
+      </div>
+
       <div class="radio-inline">
         <%= f.radio_button :gender, 'male' %>
-        <%= f.label :gender, 'Masculino', :value => 'male' %>
+        <%= f.label :gender, 'Masculino', :value => 'Masculino' %>
       </div>
       <div class="radio-inline">
         <%= f.radio_button :gender, 'female' %>
-        <%= f.label :gender, 'Feminino', :value => 'female' %>
+        <%= f.label :gender, 'Feminino', :value => 'Feminino' %>
       </div>
 
       <div style="margin-top: 2%"><%= f.submit "Sign up" %></div>
