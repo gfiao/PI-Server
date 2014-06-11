@@ -39,22 +39,24 @@
             <% require 'nokogiri' %>
             <% require 'open-uri' %>
             <% i = 0 %>
-            <% meals = Menu.find_all_by_date() %>
+            <%= Date.today %>
+            <%= meals = Menu.all %>
             <% while (meals.size == 0) %>
                 <% page = Nokogiri::HTML(open("http://sas.unl.pt/cantina")) %>
+                <% if !(page.nil?) %>
+                    <% ementaFCT = page.css('.cantina')[0] %>
+                    <% pratosAlmoco = ementaFCT.css('.lunch').css('.dish') %>
+                    <% pratosJantar = ementaFCT.css('.dinner').css('.dish') %>
 
-                <% ementaFCT = page.css('.cantina')[0] %>
-                <% pratosAlmoco = ementaFCT.css('.lunch').css('.dish') %>
-                <% pratosJantar = ementaFCT.css('.dinner').css('.dish') %>
-
-                <% pratosAlmoco.each do |prato| %>
-                    <% prato.text.split(";").each do |temp| %>
-                        <% Menu.create(meal: "almoco", dish: temp, date: Date.today()) %>
+                    <% pratosAlmoco.each do |prato| %>
+                        <% prato.text.split(";").each do |temp| %>
+                            <% Menu.create(meal: "almoco", dish: temp, date: Date.today()) %>
+                        <% end %>
                     <% end %>
-                <% end %>
-                <% pratosJantar.each do |prato| %>
-                    <% prato.text.split(";").each do |temp| %>
-                        <% Menu.create(meal: "jantar", dish: temp, date: Date.today()) %>
+                    <% pratosJantar.each do |prato| %>
+                        <% prato.text.split(";").each do |temp| %>
+                            <% Menu.create(meal: "jantar", dish: temp, date: Date.today()) %>
+                        <% end %>
                     <% end %>
                 <% end %>
                 <% meals = Menu.all %>
