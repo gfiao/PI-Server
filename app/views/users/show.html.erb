@@ -29,7 +29,8 @@
           <strong>Avatar:</strong>
         </div>
         <div class="col-xs-7">
-          ####AVATAR####
+          <%= (image_tag @user.avatar_url) %>
+          <%= @user.email %>
         </div>
       </div>
       <div class="row">

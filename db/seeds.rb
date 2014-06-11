@@ -52,9 +52,10 @@ puts 'Adding 50 random Users'
       gender: genders[(r+i)%genders.length],
       course: courses[(r2+i)%courses.length],
       about_me: 'Hehe sou a pessoa número ' + i.to_s + ' e sou muita fixe, hehe',
-      email: first_names[(r+i)%first_names.length]+'#{i}'+last_names[(r2+i)%last_names.length]+'@gMaile.com',
+      email: first_names[(r+i)%first_names.length]+'.'+last_names[(r2+i)%last_names.length]+'@gmail.com',
       password: 'qweqweqwe',
-      password_confirmation: 'qweqweqwe'
+      password_confirmation: 'qweqweqwe',
+      avatar_url: 'http://placehold.it/100x100'
   )
 end
 
