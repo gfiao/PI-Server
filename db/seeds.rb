@@ -178,3 +178,5 @@ FooterNews.create(category: 'Faculdade', news: 'Após uma longa reunião com rep
 FooterNews.create(category: 'Faculdade', news: 'O limite para as candidaturas Erasmus acaba daqui a uma semana.', date: Date.today())
 FooterNews.create(category: 'Faculdade', news: 'Casas de banho do Ed.VII fechadas devido às más condições das mesmas.', date: Date.today())
 
+#cena temporaria para o indice inicial do que esta na TV (começa a zero para indicar que a TV está desligada)
+CurrentVideo.create(index: 0)

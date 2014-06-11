@@ -2,31 +2,43 @@
  * Created by Rafael on 06/05/2014.
  */
 
-//$(document).ready(function () {
-//
-//    $(function() {
-//        function hello() {
-//            alert("Hello, world!");
-//        }
-//        window.hello=hello();
-//    });
-//
-//
-////    function CreateIndex() {
-////        var ind = {currentIndex: 0};
-////        return ind; //temp = {currentIndex: '0'};
-////    }
-////    window.CurrentVideo = CreateIndex();
-//////    console.log(window.CurrentVideo);
-////    window.CurrentVideo.watch("currentIndex", function(id, oldval, newval) {
-////        console.log("trabalho .js :  CurrentVideo." + id + " changed from " + oldval + " to " + newval );
-////        return newval;
-////    })
-//});
-
+var videos = [];
 
 function init() {
-    populateHeadlineDescription();
+//    populateHeadlineDescription();
+    videos = $.getValues('/videos');
+//    console.log(videos);
+
+    updateCurrentVideo();
+
+}
+
+
+//ALTERAR O TIMEOUT PARA 1 OU 2 SEGUNDOS
+//VERIFICAR SE A PROXIMA INFO É IGUAL À QUE LÁ ESTÁ
+//TOMAR ATENÇAO AO CASO EM QUE A TV NÃO ESTÁ LIGADA E O SITE ESTÁ
+//ESTE ULTIMO CASO DEVE APRESENTAR: TV DESLIGADA
+function updateCurrentVideo() {
+
+//    var previous_video = -1;
+
+    interval_ID = setInterval(function () {
+
+        var contents = $.getValues('/current_videos');
+
+        var ind = contents[0];
+        var curr_video = videos[ind.index-1];
+
+
+        $("#bookmarkText > h4").empty();
+        $("#bookmarkText > h4").append(curr_video.link);
+
+
+//        console.log(ind.index);
+
+
+//        clearInterval(interval_ID);
+    }, 5000);
 }
 
 
@@ -53,6 +65,8 @@ jQuery.extend({
     }
 });
 
+
+
 //function alertTemp() {
 //    alert("hehehe isto devia estar no site");
 //}
@@ -62,7 +76,7 @@ jQuery.extend({
 function populateHeadlineDescription() {
     var interval_ID;
     var obj;
-    var contents = $.getValues('/contents')
+    var contents = $.getValues('/contents');
 
     interval_ID = setInterval(function () {
 

@@ -1,5 +1,7 @@
 Rails.application.routes.draw do
 
+  resources :current_videos
+
   resources :footer_news
 
   resources :menus

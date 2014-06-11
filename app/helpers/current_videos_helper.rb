@@ -1,0 +1,2 @@
+module CurrentVideosHelper
+end

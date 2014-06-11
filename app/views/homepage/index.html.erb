@@ -6,8 +6,7 @@
   <div id="bookmark" class="row">
     <!-- Com o servidor feito, inserir aqui informação da TV -->
     <div id="bookmarkText" class="col-xs-10">
-      <!--<h4>PLACEHOLDER</h4>-->
-      <%= render partial: "sync" %>
+      <h4>PLACEHOLDER</h4>
     </div>
     <div id="bookmarkButton" class="col-xs-2">
       <button type="button" class="">Ver mais tarde!</button>
@@ -47,7 +46,7 @@
           <% i = 0 %>
           <% Content.all.each do |content| %>
 
-              <% #Se for o primeiro item, a class tem de ser item active               %>
+              <% #Se for o primeiro item, a class tem de ser item active                %>
               <% if (i == 0) %>
                   <div id="news_<%= i %>" class="item active">
               <% else %>
