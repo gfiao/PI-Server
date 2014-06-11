@@ -6,7 +6,4 @@ class TvController < ApplicationController
     render :layout => false
   end
 
-  # def render_sync
-  #
-  # end
 end

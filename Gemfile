@@ -4,6 +4,8 @@ gem 'devise'
 
 gem 'mediaelement_rails'
 
+gem 'nokogiri', '~> 1.6.2.1'
+
 # gem 'youtube_it'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
