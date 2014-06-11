@@ -18,14 +18,12 @@
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
       </button>
-      <!--<a href="#"><img id="logo" class="navbar-brand" src="../../images/images/imagem_iycr2014.jpg" alt="logo"/></a>-->
       <%= link_to (image_tag "campus-tv.png", :class => "navbar-brand", :id => "logo"), root_path %>
 
     </div>
 
     <div class="collapse navbar-collapse">
       <ul id="links" class="navbar-right nav navbar-nav">
-        <!--  <li class="active"><a href="#">Home</a></li>-->
         <li><%= link_to 'TV', tv_path, class: 'navbar-item' %></li>
         <li><%= link_to 'Jogo', games_path, class: 'navbar-item' %></li>
 
@@ -35,8 +33,7 @@
                       padding-right: 0px;
                       padding-bottom: 0px;
                       padding-left: 0px;">
-                <%= image_tag current_user.avatar_url, size: '50x50' %>
-                <!--<span class="glyphicon glyphicon-user"></span>-->
+                <%= image_tag User.find(current_user).avatar_url, size: '50x50' %>
                 <b class="caret"></b></a>
               <ul class="dropdown-menu">
                 <li><%= link_to 'Perfil', current_user %>
@@ -49,12 +46,8 @@
                 <li> <%= link_to 'Encerrar sessão', destroy_user_session_path, :method => :delete %></li>
               </ul>
             </li>
-            <!--<li id="profileLink">-->
-            <!--<p>-->
-            <%# link_to current_user.email, current_user, :method => :get %>
+            <%= link_to current_user.email, current_user, :method => :get %>
 
-            <!--</p>-->
-            <!--</li>-->
         <% else %>
             <li class="dropdown">
 
