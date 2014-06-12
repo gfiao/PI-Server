@@ -39,12 +39,20 @@
             <% require 'nokogiri' %>
             <% require 'open-uri' %>
             <% i = 0 %>
-            <%= Date.today %>
-            <%= meals = Menu.all %>
+            <%= puts "=============== DATA DE HOJE ===============" %>
+            <%= puts Date.today %>
+            <%= puts "=============== TAMANHO DA TABELA MENU ===============" %>
+            <%= puts Menu.all.size %>
+            <% meals = Menu.all %>
+
             <% while (meals.size == 0) %>
                 <% page = Nokogiri::HTML(open("http://sas.unl.pt/cantina")) %>
-                <% if !(page.nil?) %>
-                    <% ementaFCT = page.css('.cantina')[0] %>
+                <%= puts "=============== A PAGINA É NULA?? ===============" %>
+                <% ementaFCT = page.css('.cantina')[0] %>
+                <%= puts ementaFCT.nil? %>
+
+                <% if !(ementaFCT.nil?) %>
+                    <%= puts "=============== a pagina nao é nula, ainda bem que entrou aqui ===============" %>
                     <% pratosAlmoco = ementaFCT.css('.lunch').css('.dish') %>
                     <% pratosJantar = ementaFCT.css('.dinner').css('.dish') %>
 
@@ -60,9 +68,13 @@
                     <% end %>
                 <% end %>
                 <% meals = Menu.all %>
-                <% i+=1 %>
+                <% i = i+1 %>
             <% end %>
+            <%= puts "=============== NUMERO DE ITERAÇOES ===============" %>
             <% puts i %>
+            <%= puts "=============== TAMANHO DO MENU NO FIM DA CENA ===============" %>
+            <%= puts meals.size %>
+            <%= puts "=============== FIM DO TESTE ===============" %>
           </div>
         </div>
 
