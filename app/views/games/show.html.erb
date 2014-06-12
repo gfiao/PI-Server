@@ -15,7 +15,7 @@
 
     <div class="container" id="game">
       <div class="row">
-        <div class="" style="text-align: left">
+        <div class="gameToTheLeft col-md-5" style="">
           <div class="heading">
             <h1 class="title">2048</h1>
 
@@ -89,12 +89,24 @@
           <hr>
         </div>
 
-        <div id="highscore_table" style="border: 1px solid #000000; width: 800px; height: 300px;">
+        <div id="highscore_table" class="col-md-4">
+
+          <ul id="table_scores" class="nav nav-tabs">
+            <li class="active"><a href="#">Geral</a></li>
+            <li><a href="#">Curso</a></li>
+          </ul>
 
         </div>
 
       </div>
     </div>
+
+    <script>
+        $('#table_scores a').click(function (e) {
+            e.preventDefault()
+            $(this).tab('show')
+        })
+    </script>
 
 <% else %>
     <p>

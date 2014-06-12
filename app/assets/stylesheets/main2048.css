@@ -145,8 +145,18 @@ hr {
 }
 
 .container#game {
-    width: 500px;
+    /*width: 500px;*/
     margin: 0 auto;
+}
+
+.gameToTheLeft{
+    width: 500px;
+    height: 855px;
+}
+
+.testeclass{
+    /*width: auto;*/
+    /*height: auto;*/
 }
 
 @-webkit-keyframes fade-in {
