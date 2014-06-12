@@ -29,8 +29,7 @@
           <strong>Avatar:</strong>
         </div>
         <div class="col-xs-7">
-          <%= (image_tag @user.avatar_url) %>
-          <%= @user.email %>
+          <%= image_tag @user.avatar_url, size: '100x100' %>
         </div>
       </div>
       <div class="row">
