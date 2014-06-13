@@ -1,3 +1,12 @@
 // Place all the styles related to the Games controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+#highscore_table {
+  margin-left: 8%;
+}
+
+.table-header {
+  margin-bottom: 4%;
+  border-bottom: 1px solid #eee;
+}
