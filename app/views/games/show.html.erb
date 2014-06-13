@@ -1,4 +1,4 @@
-<p id="notice"><%= notice %></p>
+
 <% if @game.name == '2048' %>
 
     <%= stylesheet_link_tag 'main2048.css' %>
@@ -30,7 +30,7 @@
                 <p class="game-intro">Junte os números e chegue ao <strong>quadrado 2048!</strong></p>
 
             <% else %>
-                <p> Não está logged-in! A sua pontuação não vai contar para a lista das melhores pontuações! </p>
+                <p> Não está autenticado! A sua pontuação não vai contar para a tabela das melhores pontuações! </p>
             <% end %>
             <a class="restart-button">Novo Jogo</a>
           </div>
