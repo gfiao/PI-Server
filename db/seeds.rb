@@ -30,11 +30,8 @@ last_names = ['Fião',
 
 genders = ['Masculino', 'Feminino']
 
-courses = ['Mestrado Integrado em Engenharia Informatica',
-           'Mestrado Integrado em Engenharia Electrotecnica',
-           'Mestrado Integrado em Engenharia do Ambiente',
-           'Licenciatura em Bioquimica',
-           'Licenciatura em Engenharia dos Materiais']
+courses = ['Informatica', 'Electrotécnica', 'Ambiente', 'Bioquimica', 'Materiais',
+           'Civil', 'Gestão Industrial', 'Biomédica', 'Quimica', 'Fisica', 'Matemática', 'Mecânica']
 
 # USERS name:string birth_date:date gender:string course:string about_me:text
 #A data de nascimento terá de ser mudada posteriormente, para cada pessoa ter uma data realista
@@ -45,7 +42,7 @@ puts 'Adding 50 random Users'
     puts 'Done 25, almost there'
   end
   r=Random.rand(10);
-  r2=Random.rand(8);
+  r2=Random.rand(12);
   User.create(
       name: first_names[(r+i)%first_names.length] + ' ' + last_names[(r2+i)%last_names.length],
       birth_date: Date.today(),

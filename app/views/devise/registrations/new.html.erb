@@ -40,14 +40,30 @@
       <div class="form-group">
         <div><%= f.label :data_de_nascimento %>
           <br/>
-          <%= f.date_select :birth_date, start_year: 1920, end_year: Time.now.year %></div>
+          <%= f.date_select :birth_date, start_year: 1950, end_year: Time.now.year, class: 'form-control' %></div>
       </div>
 
       <div class="row">
         <div class="form-group col-xs-5">
           <div>
             <%= f.label :curso %> </br>
-            <%= f.text_field :course, class: 'form-control', placeholder: 'Diz-nos qual é o teu curso!' %>
+
+            <select name="user[course]" class="form-control">
+              <option value="">Please select</option>
+              <option value="Informática" selected="selected">Informática</option>
+              <option value="Ambiente">Ambiente</option>
+              <option value="Materiais">Materiais</option>
+              <option value="Electotécnica">Electotécnica</option>
+              <option value="Fisica">Fisica</option>
+              <option value="Matemática">Matemática</option>
+              <option value="Gestão Industrial">Gestão Industrial</option>
+              <option value="Biomédica">Biomédica</option>
+              <option value="Quimica">Quimica</option>
+              <option value="Civil">Civil</option>
+              <option value="Mecânica">Mecânica</option>
+              <option value="Bioquimica">Bioquimica</option>
+              <option value="Funcionário">Funcionário</option>
+            </select>
           </div>
         </div>
       </div>
@@ -70,11 +86,11 @@
       </div>
 
       <div class="radio-inline">
-        <%= f.radio_button :gender, 'male' %>
+        <%= f.radio_button :gender, 'Masculino' %>
         <%= f.label :gender, 'Masculino', :value => 'Masculino' %>
       </div>
       <div class="radio-inline">
-        <%= f.radio_button :gender, 'female' %>
+        <%= f.radio_button :gender, 'Feminino' %>
         <%= f.label :gender, 'Feminino', :value => 'Feminino' %>
       </div>
 
