@@ -9,8 +9,8 @@ function init() {
     videos = $.getValues('/videos');
 //    console.log(videos);
 
-//    DESACTIVADO APENAS PARA EFEITOS DE TESTE: JA FUNCIONA!
-//    updateCurrentVideo();
+//   ACTIVADO DE NOVO  ##DESACTIVADO APENAS PARA EFEITOS DE TESTE: JA FUNCIONA!
+    updateCurrentVideo();
 
 }
 
