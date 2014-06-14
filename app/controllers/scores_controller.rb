@@ -5,8 +5,11 @@ class ScoresController < ApplicationController
   # GET /scores.json
   def index
 
-    @scores = Score.all
-
+    if user_signed_in?
+      @scores = current_user.scores
+    else
+      @scores = Score.all
+    end
   end
 
   # GET /scores/1
@@ -27,7 +30,6 @@ class ScoresController < ApplicationController
   # POST /scores.json
   def create
     # @score = Score.new(score_params)
-
 
     if user_signed_in?
       @score = Score.new(:user_id => current_user.id, :game_id => params[:game_id], :score => params[:score])

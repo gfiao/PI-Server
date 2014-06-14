@@ -4,7 +4,12 @@ class ContentsController < ApplicationController
   # GET /contents
   # GET /contents.json
   def index
-    @contents = Content.all
+    if user_signed_in?
+      @contents = current_user.contents
+    else
+      @contents = Content.all
+    end
+
   end
 
   # GET /contents/1

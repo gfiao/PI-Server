@@ -40,6 +40,8 @@ Rails.application.routes.draw do
   get 'homepage/index'
   get 'tv' => 'tv#show'
 
+  #get '/users/:id/scores' => ''
+
   # get 'homepage/updateInfo' => 'homepage#updateInfo'
   # get 'homepage/sync' => 'homepage#sync'
 
