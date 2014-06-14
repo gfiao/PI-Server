@@ -17,7 +17,7 @@ function init() {
 
 //ALTERAR O TIMEOUT PARA 1 OU 2 SEGUNDOS
 //VERIFICAR SE A PROXIMA INFO É IGUAL À QUE LÁ ESTÁ
-//TOMAR ATENÇAO AO CASO EM QUE A TV NÃO ESTÁ LIGADA E O SITE ESTÁ
+//TOMAR ATENÇAO AO CASO EM QUE A TV NÃO ESTÁ LIGADA E O SITE ESTÁ - ESTE PONTO ESTÁ FEITO
 //ESTE ULTIMO CASO DEVE APRESENTAR: TV DESLIGADA
 function updateCurrentVideo() {
 
@@ -26,15 +26,24 @@ function updateCurrentVideo() {
     interval_ID = setInterval(function () {
 
         var contents = $.getValues('/current_videos');
+        var curr = contents[0];
 
-        var ind = contents[0];
-        var curr_video = videos[ind.index-1];
+        //a tv está ligada, entramos aqui
+        if (curr.index != 0) {
 
+            var curr_video = videos[curr.index - 1];
 
-        $("#bookmarkText > h4").empty();
-        $("#bookmarkText > h4").append(curr_video.link);
+            console.log("length: " + contents.length);
+            console.log(curr);
+            console.log("currVideo: " + curr_video);
 
-
+            $("#bookmarkText > h4").empty();
+            $("#bookmarkText > h4").append(curr_video.link);
+        }
+        else {
+            $("#bookmarkText > h4").empty();
+            $("#bookmarkText > h4").append("A TV está desligada");
+        }
 //        console.log(ind.index);
 
 
@@ -65,7 +74,6 @@ jQuery.extend({
         return result;
     }
 });
-
 
 
 //function alertTemp() {
