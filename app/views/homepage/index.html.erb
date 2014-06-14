@@ -9,7 +9,16 @@
       <h4>PLACEHOLDER</h4>
     </div>
     <div id="bookmarkButton" class="col-xs-2">
-      <button type="button" class="">Ver mais tarde!</button>
+      <!--<button type="button" class="">Ver mais tarde!</button>-->
+      <% if current_user.nil? %>
+          <%= button_to "Inicie sessão para\n guardar conteudo", new_user_session_path, :method => :get %>
+      <% else %>
+          <%= form_for(BookmarkedContent.new, :url => "/bookmarked_contents", :method => :post) do |f| %>
+              <%= f.hidden_field :content_id, :value => true %>
+              <%= f.hidden_field :user_id, :value => current_user.id %>
+              <%= f.submit "Ver mais tarde!", :class => "button_to" %>
+          <% end %>
+      <% end %>
     </div>
   </div>
 </div>
@@ -46,7 +55,7 @@
           <% i = 0 %>
           <% Content.all.each do |content| %>
 
-              <% #Se for o primeiro item, a class tem de ser item active                %>
+              <% #Se for o primeiro item, a class tem de ser item active                 %>
               <% if (i == 0) %>
                   <div id="news_<%= i %>" class="item active">
               <% else %>

@@ -25,29 +25,25 @@ function updateCurrentVideo() {
 
     interval_ID = setInterval(function () {
 
-        var contents = $.getValues('/current_videos');
-        var curr = contents[0];
+        var onpage = $('#bookmarkText').css('display');
+        if (onpage != undefined) {
 
-        //a tv está ligada, entramos aqui
-        if (curr.index != 0) {
+            var contents = $.getValues('/current_videos');
+            var curr = contents[0];
 
-            var curr_video = videos[curr.index - 1];
+            //a tv está ligada, entramos aqui
+            if (curr.index != 0) {
 
-            console.log("length: " + contents.length);
-            console.log(curr);
-            console.log("currVideo: " + curr_video);
+                var curr_video = videos[curr.index - 1];
 
-            $("#bookmarkText > h4").empty();
-            $("#bookmarkText > h4").append(curr_video.link);
+                $("#bookmarkText > h4").empty();
+                $("#bookmarkText > h4").append(curr_video.link);
+            }
+            else {
+                $("#bookmarkText > h4").empty();
+                $("#bookmarkText > h4").append("A TV está desligada");
+            }
         }
-        else {
-            $("#bookmarkText > h4").empty();
-            $("#bookmarkText > h4").append("A TV está desligada");
-        }
-//        console.log(ind.index);
-
-
-//        clearInterval(interval_ID);
     }, 5000);
 }
 
