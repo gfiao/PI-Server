@@ -1,29 +1,38 @@
 <%= form_for(@free_classroom) do |f| %>
-  <% if @free_classroom.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(@free_classroom.errors.count, "error") %> prohibited this free_classroom from being saved:</h2>
+    <% if @free_classroom.errors.any? %>
+        <div id="error_explanation">
+          <h2><%= pluralize(@free_classroom.errors.count, "error") %> prohibited this free_classroom from being
+            saved:</h2>
 
-      <ul>
-      <% @free_classroom.errors.full_messages.each do |message| %>
-        <li><%= message %></li>
-      <% end %>
-      </ul>
+          <ul>
+            <% @free_classroom.errors.full_messages.each do |message| %>
+                <li><%= message %></li>
+            <% end %>
+          </ul>
+        </div>
+    <% end %>
+
+    <div class="field">
+      <%= f.label :user_id %>
+      <br>
+      <%= f.number_field :user_id %>
     </div>
-  <% end %>
-
-  <div class="field">
-    <%= f.label :user_id %><br>
-    <%= f.number_field :user_id %>
-  </div>
-  <div class="field">
-    <%= f.label :classroom_id %><br>
-    <%= f.number_field :classroom_id %>
-  </div>
-  <div class="field">
-    <%= f.label :time %><br>
-    <%= f.datetime_select :time %>
-  </div>
-  <div class="actions">
-    <%= f.submit %>
-  </div>
+    <div class="field">
+      <%= f.label :classroom_id %>
+      <br>
+      <%= f.number_field :classroom_id %>
+    </div>
+    <div class="field">
+      <%= f.label :time %>
+      <br>
+      <%= f.datetime_select :time %>
+    </div>
+    <div class="field">
+      <%= f.label :likes %>
+      <br>
+      <%= f.number_field :likes %>
+    </div>
+    <div class="actions">
+      <%= f.submit %>
+    </div>
 <% end %>

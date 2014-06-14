@@ -40,6 +40,8 @@ class FreeClassroomsController < ApplicationController
   # PATCH/PUT /free_classrooms/1
   # PATCH/PUT /free_classrooms/1.json
   def update
+
+
     respond_to do |format|
       if @free_classroom.update(free_classroom_params)
         format.html { redirect_to @free_classroom, notice: 'Free classroom was successfully updated.' }
