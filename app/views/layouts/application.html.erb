@@ -25,7 +25,18 @@
     <div class="collapse navbar-collapse">
       <ul id="links" class="navbar-right nav navbar-nav">
         <li><%= link_to 'TV', tv_path, class: 'navbar-item' %></li>
-        <li><%= link_to 'Jogo', games_path, class: 'navbar-item' %></li>
+
+        <li class="dropdown">
+          <a href="#" class="dropdown-toggle navbar-item" data-toggle="dropdown">
+            Jogo
+            <b class="caret"></b></a>
+          <ul class="dropdown-menu">
+
+            <li><%= link_to '2048', game_path(1), :method => :get %>
+            </li>
+
+          </ul>
+        </li>
 
         <% if user_signed_in? %>
             <li class="dropdown">
