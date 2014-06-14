@@ -9,7 +9,6 @@ class ContentsController < ApplicationController
     else
       @contents = Content.all
     end
-
   end
 
   # GET /contents/1
@@ -67,17 +66,17 @@ class ContentsController < ApplicationController
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_content
-      if params[:title]
-        @content = Content.where(title: params[:title]).first
-      else
-        @content = Content.find(params[:id])
-      end
+  # Use callbacks to share common setup or constraints between actions.
+  def set_content
+    if params[:title]
+      @content = Content.where(title: params[:title]).first
+    else
+      @content = Content.find(params[:id])
     end
+  end
 
-    # Never trust parameters from the scary internet, only allow the white list through.
-    def content_params
-      params.require(:content).permit(:title, :link_image, :description, :date)
-    end
+  # Never trust parameters from the scary internet, only allow the white list through.
+  def content_params
+    params.require(:content).permit(:title, :link_image, :description, :date)
+  end
 end

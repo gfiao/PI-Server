@@ -64,13 +64,13 @@ class FreeClassroomsController < ApplicationController
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_free_classroom
-      @free_classroom = FreeClassroom.find(params[:id])
-    end
+  # Use callbacks to share common setup or constraints between actions.
+  def set_free_classroom
+    @free_classroom = FreeClassroom.find(params[:id])
+  end
 
-    # Never trust parameters from the scary internet, only allow the white list through.
-    def free_classroom_params
-      params.require(:free_classroom).permit(:user_id, :classroom_id, :time)
-    end
+  # Never trust parameters from the scary internet, only allow the white list through.
+  def free_classroom_params
+    params.require(:free_classroom).permit(:user_id, :classroom_id, :time)
+  end
 end

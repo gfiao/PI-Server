@@ -145,13 +145,13 @@ Game.create(name: 'Batalha Naval')
 #Score user_id:integer game_id:integer score:integer
 puts 'Adding Scores'
 Score.create(user_id: 5, game_id: 1, score: 30000)
-Score.create(user_id: 5, game_id: 3, score: 2000)
+#Score.create(user_id: 5, game_id: 3, score: 2000)
 Score.create(user_id: 1, game_id: 1, score: 20450)
 Score.create(user_id: 8, game_id: 1, score: 13056)
 Score.create(user_id: 28, game_id: 1, score: 7624)
 Score.create(user_id: 31, game_id: 1, score: 1464)
 Score.create(user_id: 13, game_id: 1, score: 506)
-Score.create(user_id: 1, game_id: 2, score: 140)
+#Score.create(user_id: 1, game_id: 2, score: 140)
 Score.create(user_id: 6, game_id: 1, score: 43218)
 
 #Video link:string
