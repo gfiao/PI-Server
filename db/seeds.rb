@@ -131,10 +131,10 @@ Classroom.create(building: 'Ed.7', classroom: '1.13')
 Classroom.create(building: 'Ed.2', classroom: '119')
 Classroom.create(building: 'Ed.2', classroom: '121')
 
-#FreeClassroom user_id:integer classroom_id:integer time:datetime
+#FreeClassroom user_id:integer classroom_id:integer from_time:datetime likes:integer, to_time:datetime
 puts 'Adding Free Classrooms'
-FreeClassroom.create(user_id: 1, classroom_id: 1, time: DateTime.now)
-FreeClassroom.create(user_id: 10, classroom_id: 4, time: DateTime.now)
+FreeClassroom.create(user_id: 1, classroom_id: 1, from_time: DateTime.now, to_time: DateTime.now)
+FreeClassroom.create(user_id: 10, classroom_id: 4, from_time: DateTime.now, to_time: DateTime.now)
 
 #Game name:string
 puts 'Adding Games'

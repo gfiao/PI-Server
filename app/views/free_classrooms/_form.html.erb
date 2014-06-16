@@ -24,18 +24,23 @@
     <!--</div>-->
 
     <div class="field">
-      <%= f.label :classroom_id %>
+      <%= f.label 'Sala' %>
       <br>
-      <% salas = Classroom.all %>
-      <%= select(:object, :building, salas.collect {
-              |classroom| [classroom.building + " Sala: " + classroom.classroom, classroom.id] }) %>
+      <%= f.select(:classroom_id, Classroom.all.collect {
+              |classroom| [classroom.building + " Sala: " + classroom.classroom, classroom.id] },
+                   {include_blank: 'Selecione uma sala'}) %>
     </div>
 
 
     <div class="field">
-      <%= f.label :time %>
+      <%= f.label 'Desde' %>
       <br>
-      <%= f.datetime_select :time %>
+      <%= f.datetime_select :from_time %>
+    </div>
+    <div class="field">
+      <%= f.label 'Até' %>
+      <br>
+      <%= f.datetime_select :to_time %>
     </div>
 
     <!--<div class="field">-->

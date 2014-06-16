@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140614130840) do
+ActiveRecord::Schema.define(version: 20140616131025) do
 
   create_table "bookmarked_contents", force: true do |t|
     t.integer  "user_id"
@@ -62,10 +62,11 @@ ActiveRecord::Schema.define(version: 20140614130840) do
   create_table "free_classrooms", force: true do |t|
     t.integer  "user_id"
     t.integer  "classroom_id"
-    t.datetime "time"
+    t.datetime "from_time"
     t.datetime "created_at"
     t.datetime "updated_at"
     t.integer  "likes"
+    t.datetime "to_time"
   end
 
   create_table "games", force: true do |t|

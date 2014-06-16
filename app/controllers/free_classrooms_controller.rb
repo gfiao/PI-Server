@@ -1,5 +1,6 @@
 class FreeClassroomsController < ApplicationController
   before_action :set_free_classroom, only: [:show, :edit, :update, :destroy]
+  before_filter :authenticate_user!, :except => [:show, :index]
 
   # GET /free_classrooms
   # GET /free_classrooms.json
@@ -74,6 +75,6 @@ class FreeClassroomsController < ApplicationController
   # Never trust parameters from the scary internet, only allow the white list through.
   def free_classroom_params
     #params.require(:free_classroom).permit(:user_id, :classroom_id, :time)
-    params.require(:free_classroom).permit(:classroom_id, :time)
+    params.require(:free_classroom).permit(:classroom_id, :from_time, :to_time)
   end
 end
