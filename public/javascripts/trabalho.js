@@ -14,6 +14,20 @@ function init() {
 
 }
 
+function watchLater() {
+    var currElement = $.getValues('/current_videos')[0];
+    var ind = currElement.index;
+
+    if (ind > 0) {
+        $.ajax({
+            url: "/bookmarked_contents",
+            type: "POST",
+            data: {content_id: ind},
+            success: alert("Sucessos caralho!")
+        });
+    }
+}
+
 
 //ALTERAR O TIMEOUT PARA 1 OU 2 SEGUNDOS
 //VERIFICAR SE A PROXIMA INFO É IGUAL À QUE LÁ ESTÁ

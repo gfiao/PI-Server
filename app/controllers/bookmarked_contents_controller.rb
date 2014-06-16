@@ -24,7 +24,11 @@ class BookmarkedContentsController < ApplicationController
   # POST /bookmarked_contents
   # POST /bookmarked_contents.json
   def create
-    @bookmarked_content = BookmarkedContent.new(bookmarked_content_params)
+    @bookmarked_content = BookmarkedContent.new
+    @bookmarked_content.content_id = params[:content_id]
+    @bookmarked_content.user_id = current_user.id
+
+    puts @bookmarked_content
 
     respond_to do |format|
       if @bookmarked_content.save
@@ -69,6 +73,6 @@ class BookmarkedContentsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def bookmarked_content_params
-      params.require(:bookmarked_content).permit(:user_id, :content_id)
+      params.require(:bookmarked_content).permit(:content_id)
     end
 end
