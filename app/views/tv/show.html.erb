@@ -48,7 +48,8 @@
             <% file = open("http://sas.unl.pt/cantina") %>
             <% page = Nokogiri::HTML(file) %>
             <%= puts "=============== A PAGINA É NULA?? ===============" %>
-            <% ementaFCT = page.css('div.cantina')[0] %>
+            <% ementaFCT = page.css('div.cantina') %>
+            <% ementaFCT = ementaFCT[0] %>
             <%= puts page.nil? %>
             <%= puts ementaFCT.nil? %>
 
