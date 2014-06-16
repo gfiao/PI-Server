@@ -15,6 +15,7 @@ class FreeClassroomsController < ApplicationController
   # GET /free_classrooms/new
   def new
     @free_classroom = FreeClassroom.new
+    @classrooms = Classroom.new
   end
 
   # GET /free_classrooms/1/edit
@@ -25,6 +26,7 @@ class FreeClassroomsController < ApplicationController
   # POST /free_classrooms.json
   def create
     @free_classroom = FreeClassroom.new(free_classroom_params)
+    @free_classroom.user_id = current_user.id
 
     respond_to do |format|
       if @free_classroom.save
@@ -71,6 +73,7 @@ class FreeClassroomsController < ApplicationController
 
   # Never trust parameters from the scary internet, only allow the white list through.
   def free_classroom_params
-    params.require(:free_classroom).permit(:user_id, :classroom_id, :time)
+    #params.require(:free_classroom).permit(:user_id, :classroom_id, :time)
+    params.require(:free_classroom).permit(:classroom_id, :time)
   end
 end

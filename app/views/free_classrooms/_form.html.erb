@@ -13,25 +13,37 @@
     <% end %>
 
     <!--<div class="field">-->
-      <!--<%= f.label :user_id %>-->
-      <!--<br>-->
-      <!--<%= f.number_field :user_id %>-->
+    <!--<%= f.label :user_id %>-->
+    <!--<br>-->
+    <!--<%= f.number_field :user_id %>-->
     <!--</div>-->
+    <!--<div class="field">-->
+    <!--<%= f.label :classroom_id %>-->
+    <!--<br>-->
+    <!--<%= f.number_field :classroom_id %>-->
+    <!--</div>-->
+
     <div class="field">
       <%= f.label :classroom_id %>
       <br>
-      <%= f.number_field :classroom_id %>
+      <% salas = Classroom.all %>
+      <%= select(:object, :building, salas.collect {
+              |classroom| [classroom.building + " Sala: " + classroom.classroom, classroom.id] }) %>
     </div>
+
+
     <div class="field">
       <%= f.label :time %>
       <br>
       <%= f.datetime_select :time %>
     </div>
+
     <!--<div class="field">-->
-      <!--<%= f.label :likes %>-->
-      <!--<br>-->
-      <!--<%= f.number_field :likes %>-->
+    <!--<%= f.label :likes %>-->
+    <!--<br>-->
+    <!--<%= f.number_field :likes %>-->
     <!--</div>-->
+
     <div class="actions">
       <%= f.submit %>
     </div>

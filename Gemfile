@@ -1,6 +1,8 @@
 source 'https://rubygems.org'
 
-gem 'mailman'
+gem 'simple_form'
+
+gem 'mailman' #Provavelmente nao vai ser usado
 
 gem 'devise'
 
