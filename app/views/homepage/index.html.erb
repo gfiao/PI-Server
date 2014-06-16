@@ -51,7 +51,7 @@
           <% i = 0 %>
           <% Content.all.each do |content| %>
 
-              <% #Se for o primeiro item, a class tem de ser item active                 %>
+              <% #Se for o primeiro item, a class tem de ser item active                    %>
               <% if (i == 0) %>
                   <div id="news_<%= i %>" class="item active">
               <% else %>
@@ -96,6 +96,19 @@
     </div>
 
     <!-- PARSE DE UM RSS FEED. APENAS PARA EFEITO DE TESTE, REMOVER MAIS TARDE!!!! -->
+    <% if false %>
+        <% require 'rss' %>
+        <% rss = RSS::Parser.parse('http://feeds.feedburner.com/PublicoRSS?format=xml', false) %>
+        <% rss.items.each do |item| %>
+            <% puts "#{item.pubDate} - #{item.title}" %>
+        <% end %>
+    <% end %>
+
+
+
+
+
+
 
 
 
