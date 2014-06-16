@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140616131025) do
+ActiveRecord::Schema.define(version: 20140616150455) do
 
   create_table "bookmarked_contents", force: true do |t|
     t.integer  "user_id"
@@ -43,6 +43,7 @@ ActiveRecord::Schema.define(version: 20140616131025) do
     t.datetime "updated_at"
     t.integer  "views"
     t.text     "news_text"
+    t.integer  "user_id"
   end
 
   create_table "current_videos", force: true do |t|

@@ -60,7 +60,7 @@ end
 puts 'Adding News Content'
 Content.create(title: 'Leslie Lamport vem à FCT!', link_image: 'LeslieLamport_960.jpg',
                description: 'Leslie Lamport vem dar uma palestra à grandiosa FCT', date: Date.today(), views: 3,
-               news_text: 'Hehe placeholder!')
+               news_text: 'Hehe placeholder!', user_id: 1)
 Content.create(title: 'Barbara Liskov vem à FCT!', link_image: 'top-prize.jpg',
                description: 'Barbara Liskov, vencedora do Turing Award, vem dar uma palestra à grandiosa FCT',
                date: Date.today(), views: 10, news_text: 'Inaugural Lecture "Programming the Turing Machine", by Prof. Barbara Liskov, Massachusetts Institute of Technology
@@ -80,13 +80,13 @@ Professor Barbara Liskov short bio:
 
 Barbara Liskov is an Institute Professor at MIT and also Associate Provost for Faculty Equity. She is a member of the National Academy of Engineering and the National Academy of Sciences, a fellow of the American Academy of Arts and Sciences, and a fellow of the ACM. She received the ACM Turing Award in 2009, the ACM SIGPLAN Programming Language Achievement Award in 2008, the IEEE Von Neumann medal in 2004, a lifetime achievement award from the Society of Women Engineers in 1996, and in 2003 was named one of the 50 most important women in science by Discover Magazine. Her research interests include
 distributed systems, replication algorithms to provide fault-tolerance, programming methodology, and programming languages. Her current research projects include
-Byzantine-fault-tolerant storage systems and online storage systems that provide confidentiality and integrity for the stored information.')
+Byzantine-fault-tolerant storage systems and online storage systems that provide confidentiality and integrity for the stored information.', user_id: 10)
 Content.create(title: 'Sócia da FCT ganhou prémio!', link_image: 'destaque_4.jpg',
                description: 'Sócia da FCT ganhou 1 Milhão de Euros pela sua investigação.',
-               date: Date.today(), views: 30, news_text: 'Hehe placeholder!')
+               date: Date.today(), views: 30, news_text: 'Hehe placeholder!', user_id: 24)
 Content.create(title: 'Noticia de ultima hora! FCT a arder!', link_image: 'imagem_iycr2014.jpg',
                description: 'FCT a arder! Edificios a ruir! Esta noticia esta aqui para termos 4 noticias!',
-               date: Date.today(), views: 55, news_text: 'Hehe placeholder!')
+               date: Date.today(), views: 55, news_text: 'Hehe placeholder!', user_id: 30)
 
 #UserContent user_id:integer content_id:integer
 puts 'Associating content to users'
