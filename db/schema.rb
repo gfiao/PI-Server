@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140617125724) do
+ActiveRecord::Schema.define(version: 20140617153758) do
 
   create_table "bookmarked_contents", force: true do |t|
     t.integer  "user_id"
@@ -76,6 +76,13 @@ ActiveRecord::Schema.define(version: 20140617125724) do
     t.datetime "updated_at"
   end
 
+  create_table "hours", force: true do |t|
+    t.integer  "hour"
+    t.integer  "minute"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
   create_table "menus", force: true do |t|
     t.string   "meal"
     t.string   "dish"
@@ -102,6 +109,21 @@ ActiveRecord::Schema.define(version: 20140617125724) do
 
   create_table "tags", force: true do |t|
     t.string   "tag"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "transport_hours", force: true do |t|
+    t.integer  "transport_id"
+    t.integer  "hour_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "transports", force: true do |t|
+    t.integer  "carreira"
+    t.string   "origin"
+    t.string   "destination"
     t.datetime "created_at"
     t.datetime "updated_at"
   end

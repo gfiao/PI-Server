@@ -1,5 +1,11 @@
 Rails.application.routes.draw do
 
+  resources :transport_hours
+
+  resources :hours
+
+  resources :transports
+
   resources :weathers
 
   resources :current_videos

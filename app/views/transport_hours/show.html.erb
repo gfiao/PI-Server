@@ -1,0 +1,14 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Transport:</strong>
+  <%= @transport_hour.transport_id %>
+</p>
+
+<p>
+  <strong>Hour:</strong>
+  <%= @transport_hour.hour_id %>
+</p>
+
+<%= link_to 'Edit', edit_transport_hour_path(@transport_hour) %> |
+<%= link_to 'Back', transport_hours_path %>

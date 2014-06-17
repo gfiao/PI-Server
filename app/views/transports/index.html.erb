@@ -1,0 +1,29 @@
+<h1>Listing transports</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Carreira</th>
+      <th>Origin</th>
+      <th>Destination</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @transports.each do |transport| %>
+      <tr>
+        <td><%= transport.carreira %></td>
+        <td><%= transport.origin %></td>
+        <td><%= transport.destination %></td>
+        <td><%= link_to 'Show', transport %></td>
+        <td><%= link_to 'Edit', edit_transport_path(transport) %></td>
+        <td><%= link_to 'Destroy', transport, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Transport', new_transport_path %>

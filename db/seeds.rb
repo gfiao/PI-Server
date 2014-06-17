@@ -172,3 +172,28 @@ FooterNews.create(category: 'Faculdade', news: 'Casas de banho do Ed.VII fechada
 
 #cena temporaria para o indice inicial do que esta na TV (começa a zero para indicar que a TV está desligada)
 CurrentVideo.create(index: 0)
+
+#Transports carreira:integer origin:integer destination:integer
+#  carreira = 0 => MTS
+puts 'Adding Transports'
+Transport.create(carreira: 0, origin: 'Universidade', destination: 'Cacilhas')
+Transport.create(carreira: 126, origin: 'Cacilhas', destination: 'Marisol')
+Transport.create(carreira: 194, origin: 'Costa da Caparica', destination: 'Pragal(Est)')
+
+#Hours hour:integer minute:integer
+puts 'Adding Hours'
+14.upto(18) do |i|
+  j = 0
+  while j < 60
+    Hour.create(hour: i, minute: j)
+    j += 5
+  end
+end
+
+#TransportHours transport_id:integer hour_id:integer
+puts 'Adding TransportHours'
+TransportHour.create(transport_id: Transport.find_by(carreira: 126), hour_id: Hour.find_by(hour: 14, minute: 35))
+TransportHour.create(transport_id: Transport.find_by(carreira: 126), hour_id: Hour.find_by(hour: 15, minute: 20))
+TransportHour.create(transport_id: Transport.find_by(carreira: 126), hour_id: Hour.find_by(hour: 17, minute: 55))
+TransportHour.create(transport_id: Transport.find_by(carreira: 194), hour_id: Hour.find_by(hour: 14, minute: 35))
+TransportHour.create(transport_id: Transport.find_by(carreira: 194), hour_id: Hour.find_by(hour: 18, minute: 0))

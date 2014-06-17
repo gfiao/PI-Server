@@ -1,0 +1,11 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  carreira: 1
+  origin: MyString
+  destination: MyString
+
+two:
+  carreira: 1
+  origin: MyString
+  destination: MyString
