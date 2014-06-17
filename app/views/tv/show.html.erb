@@ -85,6 +85,20 @@
 
         <div class="" id="right-panel-bottom">
           <div id="meteo-info">
+
+
+            <% client = Weatherman::Client.new :lang => 'pt-br' %>
+            <% response = client.lookup_by_location 'Almada' %>
+            <% forecast = response.forecasts.first %>
+            <% image = response.description_image %>
+            <% if Weather.find_by(date: response.condition['date']).nil? %>
+                <% Weather.create(date: response.condition['date'], city: response.location['city'],
+                                  min_temp: forecast['low'], max_temp: forecast['high'],
+                                  description: response.condition['text'], image_url: image['src']) %>
+            <% else %>
+                <% Weather.update(min_temp: forecast['low'], max_temp: forecast['high'],
+                                  description: response.condition['text'], image_url: image['src']) %>
+            <% end %>
             <div id="meteo-min-temp">
               <div id="max-temp-img">
 

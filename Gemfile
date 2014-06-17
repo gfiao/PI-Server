@@ -10,6 +10,8 @@ gem 'mediaelement_rails'
 
 gem 'nokogiri', '~> 1.6.2.1'
 
+gem 'yahoo_weatherman', '~> 2.0.0'
+
 # gem 'youtube_it'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'

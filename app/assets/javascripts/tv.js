@@ -215,15 +215,12 @@ function getPublicTrans() {
 
 function getMeteo() {
 
-    var uri = "http://api.wunderground.com/api/91f3ea2ed7630a37/forecast/q/CA/Almada.json";
-    uri = encodeURI(uri);
-    var getJson = jQuery.get(uri, function (r) {
-    }, "jsonp");
-
-    console.log(getJson);
+    var weather = $.getValues('/weathers');
+    console.log(weather);
 
     var content = '<h2>' + "Meteorologia" + '</h2>';
-    content += '<ul>Almada:<li>Máx: 26º</li><li>Min: 17º</li></ul>'
+    content += '<ul>' + weather[0].city + ':<li>Máx: ' + weather[0].max_temp +
+        '</li><li>Min ' + weather[0].min_temp + '</li></ul>'
 
     globalCounter++;
     return content;

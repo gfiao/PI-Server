@@ -151,6 +151,8 @@ GEM
       json (>= 1.8.0)
     warden (1.2.3)
       rack (>= 1.0)
+    yahoo_weatherman (2.0.0)
+      nokogiri
 
 PLATFORMS
   x86-mingw32
@@ -171,3 +173,4 @@ DEPENDENCIES
   turbolinks
   tzinfo-data
   uglifier (>= 1.3.0)
+  yahoo_weatherman (~> 2.0.0)

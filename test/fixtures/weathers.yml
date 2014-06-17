@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  date: 2014-06-17
+  min_temp: 1
+  max_temp: 1
+  city: MyString
+
+two:
+  date: 2014-06-17
+  min_temp: 1
+  max_temp: 1
+  city: MyString

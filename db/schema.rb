@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140616150455) do
+ActiveRecord::Schema.define(version: 20140617125724) do
 
   create_table "bookmarked_contents", force: true do |t|
     t.integer  "user_id"
@@ -106,13 +106,6 @@ ActiveRecord::Schema.define(version: 20140616150455) do
     t.datetime "updated_at"
   end
 
-  create_table "user_contents", force: true do |t|
-    t.integer  "user_id"
-    t.integer  "content_id"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
-
   create_table "users", force: true do |t|
     t.string   "name"
     t.date     "birth_date"
@@ -141,6 +134,17 @@ ActiveRecord::Schema.define(version: 20140616150455) do
     t.string   "link"
     t.datetime "created_at"
     t.datetime "updated_at"
+  end
+
+  create_table "weathers", force: true do |t|
+    t.date     "date"
+    t.integer  "min_temp"
+    t.integer  "max_temp"
+    t.string   "city"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.text     "description"
+    t.string   "image_url"
   end
 
 end
