@@ -1,7 +1,6 @@
 source 'https://rubygems.org'
 
 # gem 'youtube_it'
-# gem 'simple_form'
 # gem 'whenever', :require => false
 
 #Provavelmente nao vai ser usado
@@ -14,6 +13,8 @@ gem 'mediaelement_rails'
 gem 'nokogiri', '~> 1.6.2.1'
 
 gem 'yahoo_weatherman', '~> 2.0.0'
+
+gem 'simple_form'
 
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
