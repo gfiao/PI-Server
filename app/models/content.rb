@@ -1,7 +1,10 @@
 class Content < ActiveRecord::Base
 
-  has_many :content_videos
-  has_many :videos, through: :content_videos
+
+
+  # has_many :content_videos
+  # has_many :videos, through: :content_videos
+  has_one :video
 
   has_many :tag_contents
   has_many :tags, through: :tag_contents
@@ -11,6 +14,7 @@ class Content < ActiveRecord::Base
 
   has_many :users
 
+  accepts_nested_attributes_for :tags
   validates :title, presence: true;
 
 end

@@ -159,8 +159,8 @@ Video.create(link: 'https://www.youtube.com/embed/YXCNFeeH1Ow')
 Video.create(link: 'https://www.youtube.com/embed/9yNtJsFxDQI')
 
 #ContentVideo content_id:integer video_id:integer
-puts 'Associating videos to content'
-ContentVideo.create(content_id: 1, video_id: 1)
+# puts 'Associating videos to content'
+# ContentVideo.create(content_id: 1, video_id: 1)
 
 #FooterNews category:string news:string date:date
 puts 'Adding Footer News'

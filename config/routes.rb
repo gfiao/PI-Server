@@ -56,6 +56,10 @@ Rails.application.routes.draw do
     resources :free_classrooms
   end
 
+  resources :contents do
+    resources :tags
+  end
+
   get ':name' => 'users#show', as: 'user_name'
 
   # The priority is based upon order of creation: first created -> highest priority.
