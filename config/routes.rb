@@ -43,7 +43,7 @@ Rails.application.routes.draw do
   devise_for :users
   resources :users
 
-  # get 'homepage/feeds' => 'homepage#feeds'
+  get 'homepage/feeds' => 'homepage#feeds'
 
   get 'homepage/index'
   get 'tv' => 'tv#show'
