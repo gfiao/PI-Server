@@ -16,7 +16,6 @@ class FreeClassroomsController < ApplicationController
   # GET /free_classrooms/new
   def new
     @free_classroom = FreeClassroom.new
-    @classrooms = Classroom.new
   end
 
   # GET /free_classrooms/1/edit
