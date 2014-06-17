@@ -37,7 +37,7 @@ Rails.application.routes.draw do
   devise_for :users
   resources :users
 
-  get "/cantinaAlmoco" => redirect("http://localhost:3000/cantinaAlmoco.txt")
+  get 'homepage/feeds' => 'homepage#feeds'
 
   get 'homepage/index'
   get 'tv' => 'tv#show'
