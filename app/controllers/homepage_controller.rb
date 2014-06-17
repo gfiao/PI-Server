@@ -21,20 +21,6 @@ class HomepageController < ApplicationController
     end
   end
 
-  def feeds
-    # PARSE DE UM RSS FEED.APENAS PARA EFEITO DE TESTE, REMOVER MAIS TARDE!
-
-    require 'rss'
-    rss = RSS::Parser.parse('http://feeds.feedburner.com/PublicoRSS?format=xml', false)
-    puts "============================ INICIO FEEDS ==========================="
-    rss.items.each do |item|
-      puts "#{item.pubDate} - #{item.title}"
-    end
-    puts "============================ FIM FEEDS ==========================="
-
-    render nothing: true
-  end
-
   def index
 
   end

@@ -1,8 +1,11 @@
 source 'https://rubygems.org'
 
-gem 'simple_form'
+# gem 'youtube_it'
+# gem 'simple_form'
+# gem 'whenever', :require => false
 
-gem 'mailman' #Provavelmente nao vai ser usado
+#Provavelmente nao vai ser usado
+gem 'mailman'
 
 gem 'devise'
 
@@ -12,7 +15,6 @@ gem 'nokogiri', '~> 1.6.2.1'
 
 gem 'yahoo_weatherman', '~> 2.0.0'
 
-# gem 'youtube_it'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '4.1.1'

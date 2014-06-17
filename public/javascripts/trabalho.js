@@ -14,9 +14,9 @@ function init() {
 
 
 
-    setInterval(function(){
-        $('#testeFeeds').load('/homepage/feeds');
-    }, 15000);
+//    setInterval(function(){
+//        $('#testeFeeds').load('/homepage/feeds');
+//    }, 15000);
 
 }
 
