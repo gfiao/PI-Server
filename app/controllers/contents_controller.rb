@@ -34,10 +34,6 @@ class ContentsController < ApplicationController
     @content = Content.new(content_params)
     @content.user_id = current_user.id
 
-    puts '******************************************************************************************************************************************'
-    puts params[:content][:tag_ids]
-    puts '******************************************************************************************************************************************'
-
     params[:content][:tag_ids].each do |tag|
       if tag != ""
         @content.tags << Tag.find(tag)
