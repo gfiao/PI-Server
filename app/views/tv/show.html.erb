@@ -91,12 +91,14 @@
             <% response = client.lookup_by_location 'Almada' %>
             <% forecast = response.forecasts.first %>
             <% image = response.description_image %>
-            <% if Weather.find_by(date: response.condition['date']).nil? %>
+            <% weather = Weather.find_by(id: 1) %>
+            <% if weather.nil? %>
                 <% Weather.create(date: response.condition['date'], city: response.location['city'],
                                   min_temp: forecast['low'], max_temp: forecast['high'],
                                   description: response.condition['text'], image_url: image['src']) %>
             <% else %>
-                <% Weather.update(min_temp: forecast['low'], max_temp: forecast['high'],
+                <% weather.update(date: response.condition['date'], city: response.location['city'],
+                                  min_temp: forecast['low'], max_temp: forecast['high'],
                                   description: response.condition['text'], image_url: image['src']) %>
             <% end %>
             <div id="meteo-min-temp">

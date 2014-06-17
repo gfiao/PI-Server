@@ -5,11 +5,13 @@ class WeathersController < ApplicationController
   # GET /weathers.json
   def index
     @weathers = Weather.all
+    render json: Weather.all
   end
 
   # GET /weathers/1
   # GET /weathers/1.json
   def show
+    # render json: @weather
   end
 
   # GET /weathers/new

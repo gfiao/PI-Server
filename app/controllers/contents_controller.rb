@@ -21,6 +21,7 @@ class ContentsController < ApplicationController
   # GET /contents/new
   def new
     @content = Content.new
+    @tags = Tag.all
   end
 
   # GET /contents/1/edit
@@ -32,6 +33,18 @@ class ContentsController < ApplicationController
   def create
     @content = Content.new(content_params)
     @content.user_id = current_user.id
+
+    puts '******************************************************************************************************************************************'
+    puts params[:content][:tag_ids]
+    puts '******************************************************************************************************************************************'
+
+    params[:content][:tag_ids].each do |tag|
+      if tag != ""
+        @content.tags << Tag.find(tag)
+      end
+
+    end
+
 
     respond_to do |format|
       if @content.save
@@ -80,6 +93,6 @@ class ContentsController < ApplicationController
 
   # Never trust parameters from the scary internet, only allow the white list through.
   def content_params
-    params.require(:content).permit(:title, :link_image, :description, :date)
+    params.require(:content).permit(:title, :link_image, :description, :date, :news_text, tag_ids: [:id])
   end
 end
