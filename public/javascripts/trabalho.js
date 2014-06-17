@@ -12,6 +12,11 @@ function init() {
 //   ACTIVADO DE NOVO  ##DESACTIVADO APENAS PARA EFEITOS DE TESTE: JA FUNCIONA!
     updateCurrentVideo();
 
+//    $("#testeFeeds").load("http://www.eurogamer.pt/?format=rss&platform=PS3 <p>", function () {
+//        alert("The last 25 entries in the feed have been loaded");
+//    });
+
+
 }
 
 function watchLater() {

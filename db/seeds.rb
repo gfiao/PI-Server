@@ -89,10 +89,10 @@ Content.create(title: 'Noticia de ultima hora! FCT a arder!', link_image: 'image
                date: Date.today(), views: 55, news_text: 'Hehe placeholder!', user_id: 30)
 
 #UserContent user_id:integer content_id:integer
-puts 'Associating content to users'
-UserContent.create(user_id: 1, content_id: 1)
-UserContent.create(user_id: 10, content_id: 2)
-UserContent.create(user_id: 24, content_id: 3)
+# puts 'Associating content to users'
+# UserContent.create(user_id: 1, content_id: 1)
+# UserContent.create(user_id: 10, content_id: 2)
+# UserContent.create(user_id: 24, content_id: 3)
 
 #BookmarkedContent user_id:integer content_id:integer
 puts 'Adding Bookmarks'
