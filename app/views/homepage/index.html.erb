@@ -95,17 +95,12 @@
       <h2>Conteúdos mais vistos</h2>
     </div>
 
-    <!-- PARSE DE UM RSS FEED. APENAS PARA EFEITO DE TESTE, REMOVER MAIS TARDE!!!! -->
-    <% if false %>
-        <% require 'rss' %>
-        <% rss = RSS::Parser.parse('http://feeds.feedburner.com/PublicoRSS?format=xml', false) %>
-        <% rss.items.each do |item| %>
-            <% puts "#{item.pubDate} - #{item.title}" %>
-        <% end %>
-    <% end %>
 
 
 
+    <div id="testeFeeds">
+
+    </div>
 
 
 

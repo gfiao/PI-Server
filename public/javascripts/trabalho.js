@@ -5,12 +5,18 @@
 var videos = [];
 
 function init() {
-//    populateHeadlineDescription();
+
     videos = $.getValues('/videos');
-//    console.log(videos);
 
 //   ACTIVADO DE NOVO  ##DESACTIVADO APENAS PARA EFEITOS DE TESTE: JA FUNCIONA!
     updateCurrentVideo();
+
+
+
+
+    setInterval(function(){
+        $('#testeFeeds').load('/contents/populate');
+    }, 3000);
 
 }
 
@@ -85,13 +91,6 @@ jQuery.extend({
     }
 });
 
-
-//function alertTemp() {
-//    alert("hehehe isto devia estar no site");
-//}
-//
-//module.exports.alertTemp = alertTemp;
-
 function populateHeadlineDescription() {
     var interval_ID;
     var obj;
@@ -115,5 +114,4 @@ function populateHeadlineDescription() {
 
         clearInterval(interval_ID);
     }, 650);
-
 }

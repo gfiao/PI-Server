@@ -1,5 +1,19 @@
 class ContentsController < ApplicationController
   before_action :set_content, only: [:show, :edit, :update, :destroy]
+  before_filter :authenticate_user!, :except => [:show, :index]
+
+  def populate
+    # PARSE DE UM RSS FEED.APENAS PARA EFEITO DE TESTE, REMOVER MAIS TARDE!
+
+    require 'rss'
+    rss = RSS::Parser.parse('http://feeds.feedburner.com/PublicoRSS?format=xml', false)
+    puts "============================ INICIO FEEDS ==========================="
+    rss.items.each do |item|
+      puts "#{item.pubDate} - #{item.title}"
+    end
+    puts "============================ FIM FEEDS ==========================="
+
+  end
 
   # GET /contents
   # GET /contents.json
@@ -29,6 +43,7 @@ class ContentsController < ApplicationController
   # POST /contents.json
   def create
     @content = Content.new(content_params)
+    @content.user_id = current_user.id
 
     respond_to do |format|
       if @content.save
