@@ -184,9 +184,14 @@ Transport.create(carreira: 194, origin: 'Costa da Caparica', destination: 'Praga
 puts 'Adding Hours'
 14.upto(18) do |i|
   j = 0
+  k = 7
   while j < 60
     Hour.create(hour: i, minute: j)
     j += 5
+  end
+  while k < 60
+    Hour.create(hour: i, minute: k)
+    k += 5
   end
 end
 
