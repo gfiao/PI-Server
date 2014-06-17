@@ -53,7 +53,7 @@
             <%= puts page.nil? %>
             <%= puts ementaFCT.nil? %>
 
-            <% while (meals.size == 0) %>
+            <% while ((meals.size == 0) && (i < 10)) %>
                 <% if !(ementaFCT.nil?) %>
                     <%= puts "=============== a pagina nao é nula, ainda bem que entrou aqui ===============" %>
                     <% pratosAlmoco = ementaFCT.css('.lunch').css('.dish') %>
