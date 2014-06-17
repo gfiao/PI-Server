@@ -217,10 +217,15 @@ function getMeteo() {
 
     var weather = $.getValues('/weathers');
     console.log(weather);
+    if (weather[0].description = 'Predominantemente Nublado')
+        weather[0].description = 'Nublado';
 
-    var content = '<h2>' + "Meteorologia" + '</h2>';
-    content += '<ul>' + weather[0].city + ':<li>Máx: ' + weather[0].max_temp +
-        '</li><li>Min ' + weather[0].min_temp + '</li></ul>'
+    var content = '<h2 style="text-align: center">' + "Meteorologia" + '</h2>';
+    content += '<h3 style="text-align: center">Almada</h3>';
+    content += '<div style="text-align: center">' + weather[0].description +
+        '<img width="" height="" src="' + weather[0].image_url + '"></div>';
+    content += '<div style="text-align: center">Min: ' + weather[0].min_temp
+        + ' Máx: ' + weather[0].max_temp + '</div>';
 
     globalCounter++;
     return content;
