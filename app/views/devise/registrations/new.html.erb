@@ -18,7 +18,6 @@
         </div>
       </div>
 
-      <!--<div class="form-inline" role="form">-->
       <div class="row">
         <div class="form-group col-md-5">
           <div><%= f.label :palavra_passe %>
@@ -37,10 +36,10 @@
         </div>
       </div>
 
-      <div class="form-group">
+      <div class="form-group form-inline">
         <div><%= f.label :data_de_nascimento %>
           <br/>
-          <%= f.date_select :birth_date, start_year: 1950, end_year: Time.now.year, class: 'form-control' %></div>
+          <%= f.date_select :birth_date, {start_year: 1950, end_year: Time.now.year}, class: 'form-control' %></div>
       </div>
 
       <div class="row">
