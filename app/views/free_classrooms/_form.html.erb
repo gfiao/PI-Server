@@ -1,4 +1,4 @@
-<%= form_for(@free_classroom) do |f| %>
+<%= simple_form_for @free_classroom do |f| %>
     <% if @free_classroom.errors.any? %>
         <div id="error_explanation">
           <h2><%= pluralize(@free_classroom.errors.count, "error") %> prohibited this free_classroom from being
@@ -12,44 +12,33 @@
         </div>
     <% end %>
 
-    <!--<div class="field">-->
-    <!--<%= f.label :user_id %>-->
-    <!--<br>-->
-    <!--<%= f.number_field :user_id %>-->
-    <!--</div>-->
-    <!--<div class="field">-->
-    <!--<%= f.label :classroom_id %>-->
-    <!--<br>-->
-    <!--<%= f.number_field :classroom_id %>-->
-    <!--</div>-->
-
     <div class="field">
       <%= f.label 'Sala' %>
       <br>
       <%= f.select(:classroom_id, Classroom.all.collect {
               |classroom| [classroom.building + " Sala: " + classroom.classroom, classroom.id] },
-                   {include_blank: 'Selecione uma sala'}) %>
+                   {include_blank: 'Selecione uma sala'}, class: 'form-control') %>
     </div>
 
-
-    <div class="field">
-      <%= f.label 'Desde' %>
-      <br>
-      <%= f.datetime_select :from_time %>
-    </div>
-    <div class="field">
-      <%= f.label 'Até' %>
-      <br>
-      <%= f.datetime_select :to_time %>
+    <div class="form-inline">
+      <div class="field">
+        <%= f.label 'Desde' %>
+        <br>
+        <%= f.datetime_select :from_time, {start_year: Date.today.year, end_year: Date.today.year,
+                                           minute_step: 30}, {:order => [:day, :month, :year], class: 'form-control'} %>
+      </div>
     </div>
 
-    <!--<div class="field">-->
-    <!--<%= f.label :likes %>-->
-    <!--<br>-->
-    <!--<%= f.number_field :likes %>-->
-    <!--</div>-->
+    <div class="form-inline">
+      <div class="field">
+        <%= f.label 'Até' %>
+        <br>
+        <%= f.datetime_select :to_time, {start_year: Date.today.year, end_year: Date.today.year,
+                                         minute_step: 30}, {:order => [:day, :month, :year], class: 'form-control'} %>
+      </div>
+    </div>
 
-    <div class="actions">
-      <%= f.submit %>
+    <div style="margin-top: 3%" class="actions">
+      <%= f.submit 'Adicionar sala livre' %>
     </div>
 <% end %>
