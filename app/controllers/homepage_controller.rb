@@ -32,6 +32,30 @@ class HomepageController < ApplicationController
     end
     puts "============================ FIM FEEDS ==========================="
 
+    # para evitar que dê erro que diz que a vista homepage/feeds nao existe
+    render nothing: true
+  end
+
+  # adicionar às routes (da mesma forma que o metodo de cima)
+  # para podemos aceder-lhe no jquery
+  def fetch_mail
+
+    Mail.defaults do
+      retriever_method :pop3, :address => "pop.gmail.com",
+                       :port => 995,
+                       :user_name => "grupo05pi@gmail.com",
+                       :password => "badjoras",
+                       :enable_ssl => true
+    end
+
+    puts "============================ INICIO EMAIL STUFF ==========================="
+
+    Mail.find(:what => :first, :count => 10, :order => :desc).each do |mail|
+      puts mail
+    end
+
+    puts "============================ FIM EMAIL STUFF ==========================="
+
     render nothing: true
   end
 

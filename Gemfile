@@ -4,7 +4,7 @@ source 'https://rubygems.org'
 # gem 'whenever', :require => false
 
 #Provavelmente nao vai ser usado
-gem 'mailman'
+# gem 'mailman'
 
 gem 'devise'
 

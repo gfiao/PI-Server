@@ -44,6 +44,7 @@ Rails.application.routes.draw do
   resources :users
 
   get 'homepage/feeds' => 'homepage#feeds'
+  get 'homepage/fetch_mail' => 'homepage#fetch_mail'
 
   get 'homepage/index'
   get 'tv' => 'tv#show'
