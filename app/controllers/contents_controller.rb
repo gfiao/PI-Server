@@ -33,6 +33,7 @@ class ContentsController < ApplicationController
   def create
     @content = Content.new(content_params)
     @content.user_id = current_user.id
+    @content.video.new
 
     params[:content][:tag_ids].each do |tag|
       if tag != ""
@@ -89,6 +90,6 @@ class ContentsController < ApplicationController
 
   # Never trust parameters from the scary internet, only allow the white list through.
   def content_params
-    params.require(:content).permit(:title, :link_image, :description, :date, :news_text, tag_ids: [:id])
+    params.require(:content).permit(:title, :link_image, :description, :date, :news_text, :link, tag_ids: [:id])
   end
 end

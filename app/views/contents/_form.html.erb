@@ -41,6 +41,12 @@
       <%= f.association :tags, label_method: :tag, value_method: :id, as: :check_boxes %>
     </div>
 
+    <% f.fields_for :child do |builder| %>
+
+        <%= builder.label :childname %>
+        <%= builder.text_field :childname %>
+    <% end %>
+
 
 
     <div class="actions">

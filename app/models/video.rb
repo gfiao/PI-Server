@@ -4,4 +4,5 @@ class Video < ActiveRecord::Base
   belongs_to :content
 
   validates :link, presence: true;
+  validates_associated :content
 end

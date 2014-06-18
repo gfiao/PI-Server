@@ -64,6 +64,7 @@ Rails.application.routes.draw do
 
   resources :contents do
     resources :tags
+    resources :videos
   end
 
   get ':name' => 'users#show', as: 'user_name'
