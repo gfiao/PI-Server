@@ -10,9 +10,10 @@ class Content < ActiveRecord::Base
   has_many :bookmarked_contents
   has_many :users, through: :bookmarked_contents
 
-  has_many :users
+  has_many :user_content
+  has_many :users, through: :user_content
 
-  accepts_nested_attributes_for :tags
+  accepts_nested_attributes_for :tags, :video
   validates :title, presence: true
 
 end

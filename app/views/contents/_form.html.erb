@@ -41,13 +41,10 @@
       <%= f.association :tags, label_method: :tag, value_method: :id, as: :check_boxes %>
     </div>
 
-    <% f.fields_for :child do |builder| %>
 
-        <%= builder.label :childname %>
-        <%= builder.text_field :childname %>
+    <%= simple_fields_for :video do |v| %>
+        <%= v.input :link, required: false %>
     <% end %>
-
-
 
     <div class="actions">
       <%= f.submit %>

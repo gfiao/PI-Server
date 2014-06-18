@@ -22,6 +22,7 @@ class ContentsController < ApplicationController
   def new
     @content = Content.new
     @tags = Tag.all
+    #@content.build_video
   end
 
   # GET /contents/1/edit
@@ -32,8 +33,12 @@ class ContentsController < ApplicationController
   # POST /contents.json
   def create
     @content = Content.new(content_params)
-    @content.user_id = current_user.id
-    @content.video.new
+    @content.users << current_user
+
+    if !params[:video].nil?
+      Video.create(:link => params[:video][:link])
+      @content.video = Video.find_by(:link => params[:video][:link])
+    end
 
     params[:content][:tag_ids].each do |tag|
       if tag != ""

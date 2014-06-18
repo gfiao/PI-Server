@@ -4,7 +4,12 @@ class VideosController < ApplicationController
   # GET /videos
   # GET /videos.json
   def index
-    @videos = Video.all
+    if params[:content_id]
+      @videos = Content.find_by(:id => params[:content_id]).video
+    else
+      @videos = Video.all
+    end
+
   end
 
   # GET /videos/1

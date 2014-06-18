@@ -202,3 +202,9 @@ TransportHour.create(transport_id: Transport.find_by(carreira: 126), hour_id: Ho
 TransportHour.create(transport_id: Transport.find_by(carreira: 126), hour_id: Hour.find_by(hour: 17, minute: 55))
 TransportHour.create(transport_id: Transport.find_by(carreira: 194), hour_id: Hour.find_by(hour: 14, minute: 35))
 TransportHour.create(transport_id: Transport.find_by(carreira: 194), hour_id: Hour.find_by(hour: 18, minute: 0))
+
+#UserContent user_id:integer content_id:integer
+puts 'Associating content to users'
+UserContent.create(user_id: 1, content_id: 1)
+UserContent.create(user_id: 10, content_id: 2)
+UserContent.create(user_id: 24, content_id: 3)
