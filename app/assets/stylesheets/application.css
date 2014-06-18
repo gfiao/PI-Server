@@ -160,14 +160,14 @@ p {
 /*height: 500px;*/
 /*}*/
 
-@media (min-width: 981px) {
+@media (min-width: 768px) {
     #slidingPics img {
         height: 500px;
         width: 100%;
     }
 }
 
-@media (max-width: 981px), handheld {
+@media (max-width: 768px), handheld {
     #slidingPics img {
         width: 100%;
     }
@@ -178,7 +178,7 @@ p {
     padding: 0px;
 }
 
-@media (min-width: 981px) {
+@media (min-width: 992px) {
     .headline-description {
         background-color: lightgrey;
         height: 500px;
@@ -190,7 +190,7 @@ p {
     }
 }
 
-@media (max-width: 980px), handheld {
+@media (max-width: 991px) {
     .headline-description {
         background-color: lightgrey;
         height: auto;
@@ -217,14 +217,14 @@ p {
     background-color: lightgrey;
 }
 
-@media (max-width: 768px), handheld {
+@media (max-width: 767px) {
     .thumbnail {
         width: 390px;
         margin: 5px auto;
     }
 }
 
-@media (max-width: 768px), handheld {
+@media (max-width: 768px) {
     .btn-responsive {
         padding: 2px 4px;
         font-size: 80%;
