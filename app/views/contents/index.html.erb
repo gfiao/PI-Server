@@ -1,33 +1,33 @@
-<h1>Listing contents</h1>
+<div class="container">
+  <% if user_signed_in? %>
+      <h1>Os meus conteúdos</h1>
+  <% else %>
+      <h1>Conteúdos</h1>
+  <% end %>
 
-<table>
-  <thead>
+  <table class="table table-striped">
     <tr>
-      <th>Title</th>
       <th>Link image</th>
-      <th>Description</th>
-      <th>Date</th>
-      <th>Views</th>
-      <th colspan="3"></th>
+      <th>Titulo</th>
+      <th>Descrição</th>
+      <th>Data</th>
+      <th>Visto</th>
     </tr>
-  </thead>
-
-  <tbody>
     <% @contents.each do |content| %>
-      <tr>
-        <td><%= content.title %></td>
-        <td><%= content.link_image %></td>
-        <td><%= content.description %></td>
-        <td><%= content.date %></td>
-        <td><%= content.views %></td>
-        <td><%= link_to 'Show', content %></td>
-        <td><%= link_to 'Edit', edit_content_path(content) %></td>
-        <td><%= link_to 'Destroy', content, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
+        <tr>
+          <td><%= link_to (image_tag content.link_image, size: '90x70'), content_path(content.id) %></td>
+          <td><%= link_to content.title, content_path(content.id) %></td>
+          <td><%= content.description %></td>
+          <td><%= content.date %></td>
+          <td><%= content.views %></td>
+        </tr>
     <% end %>
-  </tbody>
-</table>
+  </table>
 
-<br>
+  <br>
 
-<%= link_to 'New Content', new_content_path %>
+  <% if user_signed_in? %>
+      <%= link_to 'New Content', new_content_path %>
+  <% end %>
+
+</div>

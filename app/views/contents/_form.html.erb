@@ -11,42 +11,46 @@
         </div>
     <% end %>
 
-    <div class="field">
-      <%= f.label :title %>
+    <div class="field form-group">
+      <%= f.label :titulo %>
       <br>
-      <%= f.text_field :title %>
-    </div>
-    <div class="field">
-      <%= f.label :link_image %>
-      <br>
-      <%= f.text_field :link_image %>
-    </div>
-    <div class="field">
-      <%= f.label :description %>
-      <br>
-      <%= f.text_area :description %>
-    </div>
-    <div class="field">
-      <%= f.label :date %>
-      <br>
-      <%= f.date_select :date %>
-    </div>
-    <div class="field">
-      <%= f.label :news_text %>
-      <br>
-      <%= f.text_area :news_text %>
+      <%= f.text_field :title, class: 'form-control' %>
     </div>
 
-    <div class="field">
+    <div class="field form-group">
+      <%= f.label :link_imagem %>
+      <br>
+      <%= f.text_field :link_image, class: 'form-control' %>
+    </div>
+
+    <div class="field form-group">
+      <%= f.label :descrição %>
+      <br>
+      <%= f.text_area :description, class: 'form-control' %>
+    </div>
+
+    <div class="form-inline form-group">
+      <%= f.label :data %>
+      <br>
+      <%= f.date_select :date, {}, class: 'form-control' %>
+    </div>
+
+    <div class="field form-group">
+      <%= f.label :texto_noticia %>
+      <br>
+      <%= f.text_area :news_text, class: 'form-control' %>
+    </div>
+
+    <div class="field form-group">
       <%= f.association :tags, label_method: :tag, value_method: :id, as: :check_boxes %>
     </div>
 
 
     <%= simple_fields_for :video do |v| %>
-        <%= v.input :link, required: false %>
+        <%= v.input :link_video, required: false %>
     <% end %>
 
-    <div class="actions">
-      <%= f.submit %>
+    <div class="actions" style="margin-top: 2%">
+      <%= f.submit 'Adicionar conteudo' %>
     </div>
 <% end %>
