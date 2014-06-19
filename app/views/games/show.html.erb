@@ -1,7 +1,7 @@
-
 <% if @game.name == '2048' %>
 
     <%= stylesheet_link_tag 'main2048.css' %>
+    <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track' => true %>
     <%= javascript_include_tag 'bind_polyfill.js' %>
     <%= javascript_include_tag 'classlist_polyfill.js' %>
     <%= javascript_include_tag 'animframe_polyfill.js' %>
@@ -12,6 +12,48 @@
     <%= javascript_include_tag 'local_storage_manager.js' %>
     <%= javascript_include_tag 'game_manager.js' %>
     <%= javascript_include_tag 'application2048.js' %>
+
+    <style>
+        /* Large desktop */
+        @media (min-width: 1200px) {
+            #highscore_table {
+                margin-left: 8%;
+            }
+        }
+
+        /* Portrait tablet to landscape and desktop */
+        @media (min-width: 768px) and (max-width: 979px) {
+            #highscore_table {
+                margin-left: 8%;
+                margin-top: 12%;
+            }
+        }
+
+        /* Landscape phone to portrait tablet */
+        @media (max-width: 767px) {
+            #highscore_table {
+                margin-left: 8%;
+                margin-top: 12%;
+            }
+        }
+
+        /* Landscape phones and down */
+        @media (max-width: 480px) {
+            #highscore_table {
+                margin-left: 8%;
+                margin-top: 12%;
+            }
+        }
+
+        .table-header {
+            margin-bottom: 4%;
+            border-bottom: 1px solid #eee;
+        }
+
+        /*.navbar-item {*/
+            /*font-size: 150%;*/
+        /*}*/
+    </style>
 
     <div class="container" id="game">
       <div class="row">
@@ -139,5 +181,5 @@
 
 <% end %>
 
-<%= link_to 'Edit', edit_game_path(@game) %> |
-<%= link_to 'Back', games_path %>
+<%# link_to 'Edit', edit_game_path(@game) %> |
+<%# link_to 'Back', games_path %>
