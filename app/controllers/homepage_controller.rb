@@ -42,9 +42,21 @@ class HomepageController < ApplicationController
   # para podemos aceder-lhe no jquery
   def fetch_mail
 
-    restaurants = ["Casa do Pessoal", "c@mpus.come", "Bar c@mpus", "Girassol", "Teresa Gato", "Snack-bar", "My Spot Bar"]
-    ementas = []
+    restaurants = ["Casa do Pessoal", "c@mpus.come", "Bar c@mpus", "Girassol",
+                   "Teresa Gato", "Espaço Mais", "Snack-bar", "My Spot Bar"]
+    ementas = [[],[],[],[],[],[],[],[]]
     indexes = []
+
+    # ind = 0
+    # first_arr = [""]
+
+    # passar esta inicialização para o outro FOR mais abaixo, se possivel
+    # restaurants.each do
+    #   ementas[ind] = Array.new(10, first_arr)
+    #   ind = ind + 1
+    # end
+
+    # puts ementas[0][].nil?
 
     require 'mail'
     Mail.defaults do
@@ -60,7 +72,7 @@ class HomepageController < ApplicationController
     puts "nº de emails na conta: #{Mail.all.length}"
 
     # retorna o primeiro email nao lido
-    mail = Mail.first
+    mail = Mail.last
 
     # apenas a parte que interessa, o texto do email, e converte para um array
     mail_text = mail.parts[0].parts[0].body.to_s.split("\n")
@@ -87,6 +99,8 @@ class HomepageController < ApplicationController
     puts "posicao onde comecam as ementas: #{pos}"
     puts "\n*********************** 4 ***************************\n"
 
+    puts "data do email #{mail.date.to_s}"
+
     # ficamos apenas com as linhas que têm ementas
     mail_text = mail_text[pos..-1]
 
@@ -95,23 +109,62 @@ class HomepageController < ApplicationController
     # para cada restaurante, vamos guardar o indice onde comeca a ementa
     # no fim, juntamos o last_interesting_line_index
     restaurants.each do |rest|
-      ind = mail_text.index { |v| v.include?(rest) }
+      # para evitar problemas de incompatibilidade com cedilhas
+      str_encoded = rest.force_encoding("ASCII-8BIT")
+      ind = mail_text.index { |v| v.include?(str_encoded) }
       if ind.nil?
         ind = "esta merda é nula!"
       else
-        ind = ind + pos
+        ind = ind + pos + 2 #para ignorar as linhas do nome do restaurante
         indexes.push(ind)
       end
       puts "#{rest} -> #{ind}"
     end
 
-
-
     puts "\n*********************** 6 ***************************\n"
 
-    puts indexes
+    # puts indexes
 
-    # puts "\n*********************** 7 ***************************\n"
+    puts "\n*********************** 7 ***************************\n"
+
+    indexes.push(last_interesting_line_index)
+
+    # não queremos considerar o ultimo indice, aquele para ignorar as linhas da meteo
+    for k in 0..indexes.length-2
+
+      curr_arr = ementas[k]
+
+      min = indexes[k]
+      max = indexes[k+1]-3 #para ignorar as linhas do proximo restaurante
+      # puts "min:#{min} - max:#{max}"
+
+      for x in min..max
+        temp = mail_text[x-pos]
+        # puts "#{x}: #{temp}"
+
+        curr_arr.push(temp)
+        # puts "#{x}: #{temp}"
+        # i = i+1
+
+        # str_ementa = str_ementa + temp
+        #
+        # if x==max
+        #   ementas[k] = str_ementa
+        # end
+
+      end
+      # puts "Ementa completa: #{str_ementa}."
+    end
+
+    # para efeitos de teste, remover mais tarde
+    k=0
+    ementas.each do |ementa|
+      puts "--------- ementa: #{restaurants[k]} ---------"
+      puts ementa
+      k += 1
+    end
+
+    # puts "\n*********************** 8 ***************************\n"
     #
     # i = pos
     # mail_text.each do |t|
@@ -121,10 +174,10 @@ class HomepageController < ApplicationController
     #   i = i+1
     # end
 
-
-
-
     "============================ COMENTARIOS, eliminar mais tarde ==========================="
+
+    # mail = Mail.first
+    # mail = Mail.find(:what => :first, :count => 1, :order => :asc)
 
     # puts "\n*********************** 0 ***************************\n"
     # emails = Mail.find(:what => :first, :count => 2, :order => :desc)
@@ -158,7 +211,6 @@ class HomepageController < ApplicationController
     # # puts mail.parts[0].parts[0].body.to_s #=> {'name' => 'my.pdf'}
     # puts "\n*********************** 13 ***************************\n"
     # # puts mail.parts[0].parts[1].body.to_s #=> {'name' => 'my.pdf'}
-
 
 
     # puts mail.parts[1].content_type_parameters #=> {'name' => 'my.pdf'}
