@@ -295,8 +295,10 @@ function checkTime(i) {
 /************************************************/
 
 var videos = [];
+var imagens = [];
 
 videos = $.getValues('/videos');
+imagens = $.getValues('/contents');
 
 function appendVideos() {
 
@@ -309,6 +311,13 @@ function appendVideos() {
                 'frameborder = "0" ' +
                 'allowfullscreen >' +
                 ' </iframe>');
+    });
+
+//
+    $.each(imagens, function (i, imagem) {
+        $('div#view-area').append(
+                '<img src="/assets/' + imagem.link_image + '"> '
+        );
     });
 }
 
