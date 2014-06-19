@@ -8,34 +8,32 @@
 
   </style>
 
-  <p id="notice"><%= notice %></p>
+  <!--<p id="notice"><%# notice %></p>-->
 
   <h3>
     <%= @content.title %>
   </h3>
 
+  <p>
+    <!--<strong>Description:</strong>-->
+    <%= @content.description %>
+  </p>
+
+  <div class="row">
+    <div class="col-md-3">
+      <strong>Data:</strong>
+      <%= @content.date %>
+    </div>
+
+    <div class="col-md-2">
+      <strong>Visto:</strong>
+      <%= @content.views %>
+    </div>
+  </div>
+
   <div class="row">
     <div class="col-md-4">
       <%= image_tag @content.link_image, class: 'img-responsive' %>
-    </div>
-
-    <div>
-
-
-      <p>
-        <strong>Description:</strong>
-        <%= @content.description %>
-      </p>
-
-      <p>
-        <strong>Date:</strong>
-        <%= @content.date %>
-      </p>
-
-      <p>
-        <strong>Views:</strong>
-        <%= @content.views %>
-      </p>
     </div>
   </div>
 
