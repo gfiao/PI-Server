@@ -2,42 +2,8 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
-/*
-*= require_tree .
-
- *= require bootstrap.min
-*= require_self
-   */
-
-/* Large desktop */
-@media (min-width: 1200px) {
-  #highscore_table {
-    margin-left: 8%;
-  }
-}
-
-/* Portrait tablet to landscape and desktop */
-@media (min-width: 768px) and (max-width: 979px) {
-  #highscore_table {
-    margin-left: 8%;
-    margin-top: 12%;
-  }
-}
-
-/* Landscape phone to portrait tablet */
-@media (max-width: 767px) {
-  #highscore_table {
-    margin-left: 8%;
-    margin-top: 12%;
-  }
-}
-
-/* Landscape phones and down */
-@media (max-width: 480px) {
-  #highscore_table {
-    margin-left: 8%;
-    margin-top: 12%;
-  }
+#highscore_table {
+  margin-left: 8%;
 }
 
 .table-header {
