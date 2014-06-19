@@ -40,6 +40,10 @@ class HomepageController < ApplicationController
   # para podemos aceder-lhe no jquery
   def fetch_mail
 
+    restaurants = ["Casa do Pessoal", "c@mpus.come", "Bar c@mpus", "Girassol", "Teresa Gato", "Snack-bar", "My Spot Bar"]
+    ementas = []
+    indexes = []
+
     require 'mail'
     Mail.defaults do
       retriever_method :imap, :address => "imap.gmail.com",
@@ -51,36 +55,115 @@ class HomepageController < ApplicationController
 
     puts "============================ INICIO EMAIL STUFF ==========================="
 
-    emails = Mail.all
-    puts emails.length
+    puts "nº de emails na conta: #{Mail.all.length}"
+
+    # retorna o primeiro email nao lido
+    mail = Mail.first
+
+    # apenas a parte que interessa, o texto do email, e converte para um array
+    mail_text = mail.parts[0].parts[0].body.to_s.split("\n")
+
+    puts "\n*********************** 1 ***************************\n"
+    puts "mail_text.length: #{mail_text.length}"
+
+    # elimina as linhas que não têm conteudo
+    mail_text.reject! { |t| t.length == 1 }
+
+    puts "mail_text.length apos limpeza: #{mail_text.length}"
+    puts "\n*********************** 2 ***************************\n"
+
+    # ignora as ultimas linhas que é sobre meteorologia
+    last_interesting_line_index = mail_text.length - 3
+
+    puts "last_interesting_line_index: #{last_interesting_line_index}"
+    puts "\n*********************** 3 ***************************\n"
+
+    # indice a partir do qual começam as ementas
+    pos = mail_text.index { |v| v.include?("Imagem intercalada 2") }
+    pos=pos+1
+
+    puts "posicao onde comecam as ementas: #{pos}"
+    puts "\n*********************** 4 ***************************\n"
+
+    # ficamos apenas com as linhas que têm ementas
+    mail_text = mail_text[pos..-1]
+
+    puts "\n*********************** 5 ***************************\n"
+
+    # para cada restaurante, vamos guardar o indice onde comeca a ementa
+    # no fim, juntamos o last_interesting_line_index
+    restaurants.each do |rest|
+      ind = mail_text.index { |v| v.include?(rest) }
+      if ind.nil?
+        ind = "esta merda é nula!"
+      else
+        ind = ind + pos
+        indexes.push(ind)
+      end
+      puts "#{rest} -> #{ind}"
+    end
+
+
+
+    puts "\n*********************** 6 ***************************\n"
+
+    puts indexes
+
+    # puts "\n*********************** 7 ***************************\n"
+    #
+    # i = pos
+    # mail_text.each do |t|
+    #   lol = t.length
+    #   isEmpty = t.eql? ""
+    #   puts "#{lol}/#{i}: #{t}"
+    #   i = i+1
+    # end
+
+
+
+
+    "============================ COMENTARIOS, eliminar mais tarde ==========================="
+
     # puts "\n*********************** 0 ***************************\n"
     # emails = Mail.find(:what => :first, :count => 2, :order => :desc)
 
-    mail = Mail.first
     # mails.each do |mail|
 
     # puts mail
 
-    puts "\n*********************** 3 ***************************\n"
-    puts mail.multipart? #=> true
-    puts "\n*********************** 4 ***************************\n"
-    puts mail.parts.length #=> 2
+    # puts "\n*********************** 3 ***************************\n"
+    # puts mail.multipart? #=> true
+    # puts "\n*********************** 4 ***************************\n"
+    # puts mail.parts.length #=> 2
     # puts "\n*********************** 5 ***************************\n"
-    # puts mail.body.preamble #=> "Text before the first part"
-    # puts "\n*********************** 6 ***************************\n"
-    # puts mail.body.epilogue #=> "Text after the last part"
-    puts "\n*********************** 7 ***************************\n"
-    mail.parts.map { |p| puts p.content_type } #=> ['text/plain', 'application/pdf']
-    puts "\n*********************** 8 ***************************\n"
-    mail.parts.map { |p| puts p.class } #=> [Mail::Message, Mail::Message]
-    puts "\n*********************** 9 ***************************\n"
-    puts mail.parts[0].content_type_parameters #=> {'charset' => 'ISO-8859-1'}
-    puts "\n*********************** 10 ***************************\n"
-    puts mail.parts[1].decoded #=> {'name' => 'my.pdf'}
-    puts "\n*********************** 11 ***************************\n"
-    puts mail.parts[2].content_type_parameters #=> {'name' => 'my.pdf'}
-    puts "\n*********************** 12 ***************************\n"
-    puts mail.parts[3].content_type_parameters #=> {'name' => 'my.pdf'}
+    # # puts mail.body.preamble #=> "Text before the first part"
+    # puts mail.content_type_parameters
+    # # puts "\n*********************** 6 ***************************\n"
+    # # puts mail.body.epilogue #=> "Text after the last part"
+    # puts "\n*********************** 7 ***************************\n"
+    # mail.parts.map { |p| puts p.content_type } #=> ['text/plain', 'application/pdf']
+    # puts "\n*********************** 8 ***************************\n"
+    # mail.parts.map { |p| puts p.class } #=> [Mail::Message, Mail::Message]
+    # puts "\n*********************** 9 ***************************\n"
+    # mail.parts[0].parts.map { |p| puts p.content_type } #=> {'charset' => 'ISO-8859-1'}
+    # puts "\n*********************** 10 ***************************\n"
+    # mail.parts[0].parts.map { |p| puts p.class }
+    # puts "\n*********************** 11 ***************************\n"
+    # puts mail.parts[0].parts[0].content_type_parameters #=> {'name' => 'my.pdf'}
+    # puts "\n*********************** 12 ***************************\n"
+    # puts mail.parts[0].parts[1].content_type_parameters #=> {'name' => 'my.pdf'}
+    # # puts "\n*********************** 13 ***************************\n"
+    # # puts mail.parts[0].parts[0].body.to_s #=> {'name' => 'my.pdf'}
+    # puts "\n*********************** 13 ***************************\n"
+    # # puts mail.parts[0].parts[1].body.to_s #=> {'name' => 'my.pdf'}
+
+
+
+    # puts mail.parts[1].content_type_parameters #=> {'name' => 'my.pdf'}
+    # puts "\n*********************** 11 ***************************\n"
+    # puts mail.parts[2].content_type_parameters #=> {'name' => 'my.pdf'}
+    # puts "\n*********************** 12 ***************************\n"
+    # puts mail.parts[3].content_type_parameters #=> {'name' => 'my.pdf'}
 
     # puts mail.envelope_from   #=> 'mikel@test.lindsaar.net'
     #
