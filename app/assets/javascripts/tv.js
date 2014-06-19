@@ -75,7 +75,7 @@ function start() {
     createMarquee();
     animatePanel();
 
-
+    getCurrentVideo();
 }
 
 
@@ -303,11 +303,22 @@ function appendVideos() {
     $.each(videos, function (i, video) {
         $('div#view-area').append(
                 '<iframe src="' + video.link + '?autoplay=1&controls=0&modestbranding=1&showinfo=0" ' +
+                'id = "video_' + i + '" ' +
                 'width = "640" ' +
                 'height = "390" ' +
                 'frameborder = "0" ' +
                 'allowfullscreen >' +
                 ' </iframe>');
+    });
+}
+
+function getCurrentVideo() {
+    $('#view-area').on('cycle-after', function (event, optionHash, outgoingSlideEl, incomingSlideEl, forwardFlag) {
+
+        currVideoIndex = parseInt(outgoingSlideEl.id.split('_')[1]);
+
+        //Envia o video/conteudo actual para o controlador
+        currentVideoToHtml(outgoingSlideEl.id.split('_')[0])
     });
 }
 
@@ -356,30 +367,17 @@ function onPlayerStateChange(event) {
         if (currVideoIndex == videos.length)
             currVideoIndex = 0;
 
-        currentVideoToHtml();
+        currentVideoToHtml("video");
     }
 }
 
-function currentVideoToHtml() {
-//    var obj = $("#bookmarkText h4");
-//    obj.empty();
-//    obj.append(currVideoIndex);
-
-//    alert("hehehe");
-//    alertAnotherPage();
-
-
-//    $(function() {
-//        window.hello();
-//    });
-
-
+function currentVideoToHtml(currentType) {
     $.ajax({
         url: '/homepage/index',
-        data: {'currIndex': currVideoIndex + 1},
+        data: {'currIndex': currVideoIndex + 1,
+            'content_type': currentType},
         type: 'GET'
     });
-
 }
 
 

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140618111244) do
+ActiveRecord::Schema.define(version: 20140619162603) do
 
   create_table "bookmarked_contents", force: true do |t|
     t.integer  "user_id"
@@ -50,6 +50,7 @@ ActiveRecord::Schema.define(version: 20140618111244) do
     t.integer  "index"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "content_type"
   end
 
   create_table "footer_news", force: true do |t|

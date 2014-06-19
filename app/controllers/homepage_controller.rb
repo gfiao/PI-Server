@@ -8,12 +8,14 @@ class HomepageController < ApplicationController
       # puts "fobiywvbefkf jobcwf qfb qefqbef qefb fq fqfwfqfbqi fjqhfbq fuiuhjnd qw   djkmsd bn "
       @video_id_table = CurrentVideo.first
       @currentVideo = params[:currIndex]
+      @currentType = params[:content_type]
 
       puts "=================================================="
       puts @currentVideo
 
       if !(@video_id_table.index == @currentVideo)
         @video_id_table.index = @currentVideo
+        @video_id_table.content_type = @currentType
         @video_id_table.save
         puts @video_id_table.index
       end
