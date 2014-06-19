@@ -29,8 +29,17 @@ var firstTimeCantina;
 var footerNews;
 var today;
 var currVideoIndex = 0; //indica o indice do video que esta a correr de momento
+var videosAppended = true;
 
-//$(document).ready(function () {
+$(document).ready(function () {
+
+
+    if (videosAppended) {
+
+        appendVideos();
+        videosAppended = false;
+    }
+
 //
 ////    var t = setInterval(function() {
 //        console.log(window.CurrentVideo);
@@ -43,7 +52,7 @@ var currVideoIndex = 0; //indica o indice do video que esta a correr de momento
 ////
 ////    obj.watch("value", function())
 //
-//});
+});
 
 
 function start() {
@@ -65,6 +74,8 @@ function start() {
     fetchFooterNews();
     createMarquee();
     animatePanel();
+
+
 }
 
 
@@ -287,6 +298,19 @@ var videos = [];
 
 videos = $.getValues('/videos');
 
+function appendVideos() {
+
+    $.each(videos, function (i, video) {
+        $('div#view-area').append(
+                '<iframe src="' + video.link + '?autoplay=1&controls=0&modestbranding=1&showinfo=0" ' +
+                'width = "640" ' +
+                'height = "390" ' +
+                'frameborder = "0" ' +
+                'allowfullscreen >' +
+                ' </iframe>');
+    });
+}
+
 //  2. This code loads the IFrame Player API code asynchronously.
 var tag = document.createElement('script');
 
@@ -294,11 +318,13 @@ tag.src = "https://www.youtube.com/iframe_api";
 var firstScriptTag = document.getElementsByTagName('script')[0];
 firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
 
-// 3. This function creates an <iframe> (and YouTube player)
+// 3. This function creates an
+//<iframe> (and YouTube player)
 //    after the API code downloads.
 var player;
 function onYouTubeIframeAPIReady() {
-    player = new YT.Player('view-area', {
+    //  player = new YT.Player('view-area', {
+    player = new YT.Player('ehehhehehehe', {
         height: '390',
         width: '640',
         //videoId: videos[counterVid].link.split('/')[4], //retorna codigo dos videos

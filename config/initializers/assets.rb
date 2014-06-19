@@ -2,6 +2,7 @@ Rails.application.config.assets.precompile += %w( tv.css )
 Rails.application.config.assets.precompile += %w( mediaelementplayer.css )
 Rails.application.config.assets.precompile += %w( animate.css )
 Rails.application.config.assets.precompile += %w( tv.js )
+Rails.application.config.assets.precompile += %w( jquery.cycle2.min.js )
 
 #JS e CSS para 2048
 Rails.application.config.assets.precompile += %w( bind_polyfill.js )

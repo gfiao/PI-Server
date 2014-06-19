@@ -5,8 +5,9 @@
   <%= stylesheet_link_tag 'tv.css' %>
   <%= stylesheet_link_tag 'animate.css' %>
   <%= javascript_include_tag 'jquery-2.1.1.min.js', 'application' %>
-  <%= javascript_include_tag 'tv.js' %>
   <%= javascript_include_tag 'jquery.marquee.js' %>
+  <%= javascript_include_tag 'jquery.cycle2.min.js' %>
+  <%= javascript_include_tag 'tv.js' %>
 
 </head>
 <body onload="start()">
@@ -15,9 +16,24 @@
 
     <div class="" id="video-and-lateral">
 
-      <div class="" id="view-area">
+
+      <div id="view-area" class="cycle-slideshow"
+           data-cycle-fx=scrollHorz
+           data-cycle-timeout=2500
+           data-cycle-prev=#prev2
+           data-cycle-next=#next2
+           data-cycle-slides=">iframe,>img"
+           data-cycle-youtube=true
+           data-cycle-youtube-autostart=true
+           data-cycle-youtube-autostop=true
+      >
+        <!--data-cycle-auto-height="640:390"-->
 
       </div>
+
+      <!--<div class="" id="view-area">-->
+
+      <!--</div>-->
 
 
       <div class="" id="right-panel">
