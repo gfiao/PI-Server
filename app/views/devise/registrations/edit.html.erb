@@ -1,5 +1,5 @@
 <div class="container">
-  <h2>Edit <%= resource_name.to_s.humanize %></h2>
+  <h2>Editar perfil</h2>
 
   <%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: {method: :put}) do |f| %>
       <%= devise_error_messages! %>
@@ -9,28 +9,28 @@
       <% end %>
 
       <div class="row">
-        <div class="form-group col-md-5">
+        <div class="form-group col-md-6">
           <%= f.label :sobre_mim %></br>
           <%= f.text_area :about_me, class: 'form-control' %>
         </div>
       </div>
 
       <div class="row">
-        <div class="form-group col-md-5">
+        <div class="form-group col-md-6">
           <%= f.label :nova_imagem_de_perfil %></br>
           <%= f.text_field :avatar_url, class: 'form-control' %>
         </div>
       </div>
 
       <div class="row">
-        <div class="form-group col-md-5">
+        <div class="form-group col-md-6">
           <%= f.label :nova_password %> <i>(deixe em branco se não quiser mudar)</i><br/>
           <%= f.password_field :password, autocomplete: "off", class: 'form-control' %>
         </div>
       </div>
 
       <div class="row">
-        <div class="form-group col-md-5">
+        <div class="form-group col-md-6">
           <%= f.label :confirma_a_nova_password %>
           <br/>
           <%= f.password_field :password_confirmation, autocomplete: "off", class: 'form-control' %>
@@ -38,18 +38,19 @@
       </div>
 
       <div class="row">
-        <div class="form-group col-md-5">
-          <%= f.label :current_password %> <i>(precisamos da palavra-passe atual para confirmar as mudanças)</i><br/>
+        <div class="form-group col-md-6">
+          <%= f.label :password_atual %> <i>(precisamos da palavra-passe atual para confirmar as mudanças)</i><br/>
           <%= f.password_field :current_password, autocomplete: "off", class: 'form-control' %>
         </div>
       </div>
 
-      <div style="margin-top: 2%"><%= f.submit "Update" %></div>
+      <div style="margin-top: 1%"><%= f.submit "Atualizar" %></div>
   <% end %>
 
-  <h3>Cancel my account</h3>
+  <h3>Cancelar conta</h3>
 
-  <p>Unhappy? <%= button_to "Cancel my account", registration_path(resource_name), data: {confirm: "Are you sure?"}, method: :delete %></p>
+  <p><%= button_to "Cancelar a minha conta",
+                            registration_path(resource_name), data: {confirm: "Tem a certeza?"}, method: :delete %></p>
 
   <%= link_to "Back", :back %>
 </div>
