@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140619162603) do
+ActiveRecord::Schema.define(version: 20140620105916) do
 
   create_table "bookmarked_contents", force: true do |t|
     t.integer  "user_id"
@@ -86,7 +86,7 @@ ActiveRecord::Schema.define(version: 20140619162603) do
 
   create_table "menus", force: true do |t|
     t.string   "meal"
-    t.string   "dish"
+    t.text     "dish",       limit: 255
     t.date     "date"
     t.datetime "created_at"
     t.datetime "updated_at"
