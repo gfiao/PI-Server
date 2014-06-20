@@ -69,7 +69,7 @@
 //regras para a TV FULL HD
 //TESTAR ISTO NA TV!!!!
 @media (min-width: 500px) {
-//  BUG NESTA MERDA, VER MELHOR
+  //  BUG NESTA MERDA, VER MELHOR
   #hour-info p {
     font-size: 775%;
   }
@@ -112,14 +112,14 @@ body {
 #globalContainer {
   background-color: #ffffff;
   color: white;
-  
+
   //  tamanho HD
-//    width: 1366px;
-//    height: 768px;
+  //    width: 1366px;
+  //    height: 768px;
 
   //  tamanho FULLHD
-    width: 1920px;
-    height: 1080px;
+  width: 1920px;
+  height: 1080px;
 
   font-family: "Myriad Pro Regular";
 }
@@ -168,6 +168,11 @@ body {
   /*display: inline-block;*/
 }
 
+.itemsCar {
+  height: 100%;
+  width: 100%;
+}
+
 #right-panel {
   /*remover margens entre inline-block*/
   /*margin-left: -4px;*/
@@ -199,7 +204,7 @@ body {
 
 #date-info {
   width: 50%;
-//  padding-top: 10px;
+  //  padding-top: 10px;
   /*background-color: blue;*/
 }
 

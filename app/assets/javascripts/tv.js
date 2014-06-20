@@ -303,21 +303,40 @@ imagens = $.getValues('/contents');
 function appendVideos() {
 
     $.each(videos, function (i, video) {
-        $('div#view-area').append(
-                '<iframe src="' + video.link + '?autoplay=1&controls=0&modestbranding=1&showinfo=0" ' +
+//        $('div#view-area').append(
+        if (i == 0) {
+            $('div.carousel-inner').append('<div class="item active itemsCar">' +
+                '<iframe src="' + video.link + '?autoplay=1&controls=0&modestbranding=1&showinfo=0" style="width: 100%; height:100%;"' +
                 'id = "video_' + i + '" ' +
-                'width = "640" ' +
-                'height = "390" ' +
                 'frameborder = "0" ' +
+                'width = 100%' +
+                'height: 100%' +
                 'allowfullscreen >' +
-                ' </iframe>');
+                ' </iframe>' +
+                '</div>');
+        }
+        else
+            $('div.carousel-inner').append('<div class="item itemsCar">' +
+                '<iframe src="' + video.link + '?autoplay=1&controls=0&modestbranding=1&showinfo=0" style="width: 100%; height:100%;" ' +
+                'id = "video_' + i + '" ' +
+                'frameborder = "0" ' +
+                'width = 100%' +
+                'height: 100%' +
+                'allowfullscreen >' +
+                ' </iframe>' +
+                '</div>');
+
     });
 
 //
     $.each(imagens, function (i, imagem) {
-        $('div#view-area').append(
-                '<img src="/assets/' + imagem.link_image + '"> '
-        );
+        $('div.carousel-inner').append('<div class="item">' +
+            '<img src="/assets/' + imagem.link_image + '" style="width: 100%; height:100%;" > ' +
+            '</div>');
+    });
+
+    $('#view-area').carousel({
+        interval: 1000 // in milliseconds
     });
 }
 
@@ -344,7 +363,7 @@ firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
 var player;
 function onYouTubeIframeAPIReady() {
     //  player = new YT.Player('view-area', {
-    player = new YT.Player('ehehhehehehe', {
+    player = new YT.Player('hueuhehue   ', {
         height: '390',
         width: '640',
         //videoId: videos[counterVid].link.split('/')[4], //retorna codigo dos videos
