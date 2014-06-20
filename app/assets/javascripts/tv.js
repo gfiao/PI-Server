@@ -26,6 +26,7 @@ var countRestaurant;
 var countPublicTrans;
 var countMeteo;
 var firstTimeCantina;
+var firstTimeWeather;
 var footerNews;
 var today;
 var currVideoIndex = 0; //indica o indice do video que esta a correr de momento
@@ -62,6 +63,7 @@ function start() {
     countMeteo = 0;
     footerNews = [];
     firstTimeCantina = true;
+    firstTimeWeather = true;
 
 //    var Mod = require('/trabalho');
 //    Mod.alertTemp;
@@ -223,11 +225,16 @@ function getPublicTrans() {
     return content;
 }
 
+var weather;
 
 function getMeteo() {
 
-    var weather = $.getValues('/weathers');
-    console.log(weather);
+    if(firstTimeWeather) {
+        weather = $.getValues('/weathers');
+        firstTimeWeather = false;
+    }
+
+//    console.log(weather);
     if (weather[0].description = 'Predominantemente Nublado')
         weather[0].description = 'Nublado';
 

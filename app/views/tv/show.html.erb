@@ -74,51 +74,7 @@
         </div>
         <div class="" id="right-panel-middle">
           <div class="" id="toAnimate">
-            <% require 'rubygems' %>
-            <% require 'nokogiri' %>
-            <% require 'open-uri' %>
-            <% i = 0 %>
-            <%= puts "=============== DATA DE HOJE ===============" %>
-            <%= puts Date.today %>
-            <%= puts "=============== TAMANHO DA TABELA MENU ===============" %>
-            <%= puts Menu.all.size %>
-            <% meals = Menu.all %>
-
-            <% file = open("http://sas.unl.pt/cantina") %>
-            <% page = Nokogiri::HTML(file) %>
-            <%= puts "=============== A PAGINA É NULA?? ===============" %>
-            <% ementaFCT = page.css('div.cantina') %>
-            <% ementaFCT = ementaFCT[0] %>
-            <%= puts page.nil? %>
-            <%= puts ementaFCT.nil? %>
-
-            <% while ((meals.size == 0) && (i < 10)) %>
-                <% if !(ementaFCT.nil?) %>
-                    <%= puts "=============== a pagina nao é nula, ainda bem que entrou aqui ===============" %>
-                    <% pratosAlmoco = ementaFCT.css('.lunch').css('.dish') %>
-                    <% pratosJantar = ementaFCT.css('.dinner').css('.dish') %>
-
-                    <% pratosAlmoco.each do |prato| %>
-                        <% prato.text.split(";").each do |temp| %>
-                            <% Menu.create(meal: "almoco", dish: temp, date: Date.today()) %>
-                        <% end %>
-                    <% end %>
-                    <% pratosJantar.each do |prato| %>
-                        <% prato.text.split(";").each do |temp| %>
-                            <% Menu.create(meal: "jantar", dish: temp, date: Date.today()) %>
-                        <% end %>
-                    <% end %>
-                <% end %>
-                <% meals = Menu.all %>
-                <% i = i+1 %>
-            <% end %>
-
-            <%= puts "=============== NUMERO DE ITERAÇOES ===============" %>
-            <% puts i %>
-            <%= puts "=============== TAMANHO DO MENU NO FIM DA CENA ===============" %>
-            <%= puts meals.size %>
-            <%= puts "=============== FIM DO TESTE ===============" %>
-            <% file.close %>
+            <!--a cena da ementa da cantina estava aqui-->
           </div>
         </div>
 

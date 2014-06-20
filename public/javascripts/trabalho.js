@@ -11,7 +11,7 @@ function init() {
 //   ACTIVADO DE NOVO  ##DESACTIVADO APENAS PARA EFEITOS DE TESTE: JA FUNCIONA!
     updateCurrentVideo();
 
-    $('#testeFeeds').load('/homepage/fetch_mail');
+//    $('#testeFeeds').load('/homepage/fetch_mail');
 
 //   DESACTIVADO PARA EFEITOS DE TESTE!!!!!
 //    setInterval(function(){
