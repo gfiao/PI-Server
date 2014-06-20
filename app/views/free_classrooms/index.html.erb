@@ -4,13 +4,13 @@
 
   <%= form_tag(free_classrooms_path, :method => "get", id: "building-form") do %>
 
-      <%= collection_select :classroom, :building, Classroom.select(:building).uniq, :building, :building %>
+      <%= collection_select :classroom, :building, Classroom.select(:building).uniq, :building, :building, {class: 'form-control'} %>
 
-      <%= submit_tag "Filter" %>
+      <%= submit_tag "Filter", class: 'btn btn-default' %>
   <% end %>
 
 
-  <table class="table table-striped">
+  <table class="table table-striped" style="margin-top: 2%;">
     <tr>
       <th>Edificio</th>
       <th>Sala</th>
