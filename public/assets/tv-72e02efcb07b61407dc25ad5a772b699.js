@@ -2,6 +2,7 @@
  * Created by Rafael on 28/05/2014.
  */
 
+
 function Weekday(shortName, portugueseName) {
     this.shortName = shortName;
     this.portugueseName = portugueseName;
@@ -457,32 +458,6 @@ function populateMarquee() {
     else
         footerCounter++;
 }
-function Free_classroom(building, classroom, from_time, to_time) {
-    this.building = building;
-    this.classroom = classroom;
-    this.from_time = from_time;
-    this.to_time = to_time;
-}
-function getFreeClassrooms() {
-    var freeClassroomsToTV = [];
-    var classrooms = $.getValues('/classrooms');
-    var free_classrooms = $.getValues('/free_classrooms');
-
-    for (var i = 0; i < classrooms.length; i++)
-        for (var j = 0; j < free_classrooms.length; j++)
-            if (free_classrooms[j].classroom_id == classrooms[i].id) {
-                var free = new Free_classroom(classrooms[i].building, classrooms[i].classroom,
-                    free_classrooms[j].from_time, free_classrooms[j].to_time);
-                freeClassroomsToTV.push(free);
-            }
-
-    //2014-06-20T10:26:01.901Z
-    for (var i = 0; i < freeClassroomsToTV.length; i++) {
-        freeClassroomsToTV[i].from_time = freeClassroomsToTV[i].from_time.split('T')[1].split('.')[0];
-        freeClassroomsToTV[i].to_time = freeClassroomsToTV[i].to_time.split('T')[1].split('.')[0];
-    }
-
-}
 
 
 /*
@@ -539,3 +514,4 @@ function getFreeClassrooms() {
 //        }
 //    });
 //}
+;
