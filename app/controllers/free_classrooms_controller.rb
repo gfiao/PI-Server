@@ -5,7 +5,15 @@ class FreeClassroomsController < ApplicationController
   # GET /free_classrooms
   # GET /free_classrooms.json
   def index
-    @free_classrooms = FreeClassroom.all
+    # @free_classrooms = FreeClassroo m.alls
+    if params[:classroom]
+      classrooms = Classroom.where(:building => params[:classroom][:building])
+      @free_classrooms = FreeClassroom.where(:classroom_id => classrooms)
+    else
+      @free_classrooms = FreeClassroom.all
+    end
+
+
   end
 
   # GET /free_classrooms/1

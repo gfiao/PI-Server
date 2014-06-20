@@ -2,7 +2,12 @@
 
   <h1>Salas livres</h1>
 
-  
+  <%= form_tag(free_classrooms_path, :method => "get", id: "building-form") do %>
+
+      <%= collection_select :classroom, :building, Classroom.select(:building).uniq, :building, :building %>
+
+      <%= submit_tag "Filter" %>
+  <% end %>
 
 
   <table class="table table-striped">
