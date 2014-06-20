@@ -2,7 +2,7 @@
   <% if user_signed_in? %>
       <h1>Os meus conteúdos</h1>
   <% else %>
-      <h1>Conteúdos</h1>
+      <h1>Notícias</h1>
   <% end %>
 
   <table class="table table-striped">
@@ -27,7 +27,7 @@
   <br>
 
   <% if user_signed_in? %>
-      <%= link_to 'New Content', new_content_path %>
+      <%= link_to 'Adicionar noticia', new_content_path %>
   <% end %>
 
 </div>

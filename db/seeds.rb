@@ -52,7 +52,7 @@ puts 'Adding 50 random Users'
       email: first_names[(r+i)%first_names.length]+'.'+last_names[(r2+i)%last_names.length]+'@gmail.com',
       password: 'qweqweqwe',
       password_confirmation: 'qweqweqwe',
-      avatar_url: 'http://placehold.it/100x100'
+      avatar_url: 'http://noticias.rumonet.pt/wp-content/uploads/2013/02/logo_FCTUNL.jpg'
   )
 end
 

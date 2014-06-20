@@ -45,7 +45,11 @@
           <strong>Avatar:</strong>
         </div>
         <div class="col-xs-7">
-          <%= image_tag @user.avatar_url, size: '100x100' %>
+          <% if current_user.avatar_url == '' %>
+              <%= image_tag 'http://noticias.rumonet.pt/wp-content/uploads/2013/02/logo_FCTUNL.jpg', size: '100x100' %>
+          <% else %>
+              <%= image_tag current_user.avatar_url, size: '100x100' %>
+          <% end %>
         </div>
       </div>
       <div class="row">
