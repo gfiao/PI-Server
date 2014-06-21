@@ -127,15 +127,16 @@ p {
     margin: auto;
     height: 40px;
     width: 80%;
-    margin-top: 20px;
-    margin-bottom: 20px;
+    /*margin-top: 20px;*/
+    /*margin-bottom: 20px;*/
     background-color: lightgrey;
     /*border: 1px solid #000000;*/
 }
 
 #bookmarkButton {
     height: 100%;
-    /*background-color: lightgrey;*/
+    /*background-color: grey;*/
+    padding: 0px;
 }
 
 #bookmarkText {
@@ -147,6 +148,7 @@ p {
     width: 100%;
     height: 100%;
     padding: 0px;
+    margin: 0px;
 }
 
 .headerTitle {
