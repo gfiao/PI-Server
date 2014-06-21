@@ -10,6 +10,12 @@ class FreeClassroom < ActiveRecord::Base
   validates_associated :user, :classroom
   validates_presence_of :user, :classroom
 
+  # validates_uniqueness_of :user_id, :scope => [:classroom_id, :from_time, :to_time],
+  #                         :message => 'Esta sala já existe'
+
+  validates_uniqueness_of :classroom_id, :scope => [:from_time, :to_time],
+                          :message => 'Esta sala já existe'
+
   def validate_end_date_before_start_date
     if from_time && to_time
       errors.add(:to_time, "Data de inicio tem de ser menor que a data de fim.") if to_time < from_time
