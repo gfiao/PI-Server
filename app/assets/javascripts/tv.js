@@ -18,7 +18,8 @@ var months = new Array("Janeiro", "Fevereiro", "Março", "Abril", "Maio", "Junho
 //var ementa_teresa = new Array("Massa com natas", "Bitoque", "Pataniscas com arroz", "Bacalhau à brás");
 //var ementa_cantina = []; //vai buscar a ementa à base de dados, atraves de um pedido rest
 
-var ementas = new Array(3); //em cada posição vamos ter um array com as ementas para cada restaurante
+var ementasAlmoco = new Array(3); //em cada posição vamos ter um array com as ementas de almoço para cada restaurante
+var ementasJantar = [];
 var restaurants = ["Cantina", "Casa do Pessoal", "My Spot Bar"]; //vai ter o nome de cada restaurante
 
 var globalCounter;
@@ -31,6 +32,9 @@ var footerNews;
 var today;
 var currVideoIndex = 0; //indica o indice do video que esta a correr de momento
 var videosAppended = true;
+
+var minute;
+var hour;
 
 $(document).ready(function () {
 
@@ -165,19 +169,22 @@ function populateMenu() {
 
             // inicializa os vectores das ementas
             if (count == 0) {
-                ementas[index] = [];
+                ementasAlmoco[index] = [];
             }
 
             if (el.meal == "almoço") {
-                ementas[index].push(el.dish);
+                ementasAlmoco[index].push(el.dish);
                 counters[index]++;
+            }
+            else if (el.meal == "jantar") {
+                ementasJantar.push(el.dish);
             }
         }
 
     });
 
 //    console.log(restaurants);
-//    console.log(ementas);
+//    console.log(ementasAlmoco);
 }
 
 function getEmenta() {
@@ -187,23 +194,44 @@ function getEmenta() {
         firstTimeCantina = false;
     }
 
-    //a cada iteração, mostra a ementa de cada um dos restaurantes
-    var index = countRestaurant % 3;
-    var lunch_place = restaurants[index];
-    var ementaContent = ementas[index];
+    var lunch_place;
+    var ementaContent;
 
-    var content = '<h2>' + lunch_place + '</h2><ul id="ementaList">';
+    // a hora é menor que 18:00, mostramos a ementa do almoço
+    if (hour < 18) {
 
+        //a cada iteração, mostra a ementa de cada um dos restaurantes
+        var index = countRestaurant % 3;
+        lunch_place = restaurants[index];
+        ementaContent = ementasAlmoco[index];
 
-    $.each(ementaContent, function (i, item) {
-        content += '<li>' + item + '</li>';
-    });
+        var content = '<h2>' + lunch_place + '</h2><ul id="ementaList">';
 
-    content += '</ul>';
-    countRestaurant++;
+        $.each(ementaContent, function (i, item) {
+            content += '<li>' + item + '</li>';
+        });
 
-    //chegou à ultima ementa, reinicializa o counter e incrementa o counter global
-    if (countRestaurant == ementas.length) {
+        content += '</ul>';
+        countRestaurant++;
+
+        //chegou à ultima ementa, reinicializa o counter e incrementa o counter global
+        if (countRestaurant == ementasAlmoco.length) {
+            countRestaurant = 0;
+            globalCounter++;
+        }
+    }
+    else {
+        lunch_place = "Cantina - Jantar";
+        ementaContent = ementasJantar;
+
+        var content = '<h2>' + lunch_place + '</h2><ul id="ementaList">';
+
+        $.each(ementaContent, function (i, item) {
+            content += '<li>' + item + '</li>';
+        });
+
+        content += '</ul>';
+
         countRestaurant = 0;
         globalCounter++;
     }
@@ -272,8 +300,8 @@ function updateDate() {
 function updateTime() {
     today = new Date();
 
-    var minute = today.getMinutes();
-    var hour = today.getHours();
+    minute = today.getMinutes();
+    hour = today.getHours();
 
     //add a zero in front of numbers < 10
     hour = checkTime(hour);
