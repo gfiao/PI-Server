@@ -90,15 +90,32 @@
 body {
     padding-top: 50px;
     font-family: "Myriad Pro Regular";
-    background-color: rgba(65, 215, 255, 0.24);
+    /*background-color: rgba(65, 215, 255, 0.24);*/
+    background-color: darkblue;
 }
 
 p {
     font-family: "Myriad Pro Regular";
 }
 
-#header {
+#cont1, #cont2, #cont3{
+    background-color: #e3ebf2;
+    padding-right: 35px;
+    padding-left: 35px;
+    /*border-left: 1px solid #000000;*/
+    /*border-right: 1px solid #000000;*/
+}
 
+#header {
+background-color: #106ca7;
+}
+
+.page-header{
+    border-bottom: 1px solid darkgreen;
+}
+
+.navbar-nav > .open > a:focus{
+    background-color: white;
 }
 
 .navbar-item {
@@ -153,6 +170,7 @@ p {
 
 .headerTitle {
     margin-top: 40px;
+    /*color: #000000;*/
 }
 
 /* ############# DESTAQUES ############# */
@@ -182,7 +200,7 @@ p {
 }
 
 .headline-description {
-    background-color: #ffffff;
+    background-color: aliceblue;
     /*background-color: lightgrey;*/
 }
 
