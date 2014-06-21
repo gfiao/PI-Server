@@ -56,6 +56,16 @@ puts 'Adding 50 random Users'
   )
 end
 
+User.create(name: 'Renato Alexandre',
+            birth_date: Date.today,
+            gender: 'Feminino',
+            course: 'Informática',
+            about_me: 'Curto bué de gajas de Erasmus :D',
+            email: 'renato@alexandre.com',
+            password: 'qweqweqwe',
+            password_confirmation: 'qweqweqwe',
+            avatar_url: 'http://img4.wikia.nocookie.net/__cb20121207145720/aleixo/images/7/75/Renato_disco.jpg')
+
 #Content title:string link_image:string description:text date:date news_text:text
 puts 'Adding News Content'
 Content.create(title: 'Leslie Lamport vem à FCT!', link_image: 'LeslieLamport_960.jpg',
@@ -188,13 +198,11 @@ Transport.create(carreira: 194, origin: 'Costa da Caparica', destination: 'Praga
 puts 'Adding Hours'
 14.upto(18) do |i|
   j = 0
-  k = 7
-  while j < 60
-    Hour.create(hour: i, minute: j)
-    j += 5
-  end
+  k = 2
   while k < 60
+    Hour.create(hour: i, minute: j)
     Hour.create(hour: i, minute: k)
+    j += 5
     k += 5
   end
 end

@@ -5,15 +5,18 @@
 
   <div id="bookmark" class="row">
     <!-- Com o servidor feito, inserir aqui informação da TV -->
-    <div id="bookmarkText" class="col-xs-10">
+    <div id="bookmarkText" class="col-xs-9 col-md-10">
       <h4></h4>
     </div>
-    <div id="bookmarkButton" class="col-xs-2">
+    <div id="bookmarkButton" class="col-xs-3 col-md-2">
       <!--<button type="button" class="">Ver mais tarde!</button>-->
       <% if current_user.nil? %>
           <%= button_to "Inicie sessão para\n guardar conteudo", new_user_session_path, :method => :get %>
       <% else %>
-          <input type="button" onclick="watchLater()" value="Ver mais tarde!"></input>
+          <!--<input type="button" onclick="watchLater()" value="Ver mais tarde!"></input>-->
+          <button type="button" class="btn btn-default btn-lg" onclick="watchLater()">
+            <span class="glyphicon glyphicon-time"></span> Ver mais tarde!
+          </button>
       <% end %>
     </div>
   </div>
