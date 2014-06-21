@@ -28,6 +28,10 @@
               <td><%= free_classroom.from_time.to_s(:short) %></td>
               <td><%= free_classroom.to_time.to_s(:short) %></td>
               <td><%= free_classroom.likes %></td>
+
+              <td><%= button_to("Like", free_classroom_path(free_classroom, "free_classroom[likes]" => free_classroom.likes + 1),
+                                :method => :put) %></td>
+
             </tr>
         <% end %>
     <% end %>
