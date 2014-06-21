@@ -90,6 +90,7 @@
 body {
     padding-top: 50px;
     font-family: "Myriad Pro Regular";
+    background-color: rgba(65, 215, 255, 0.24);
 }
 
 p {
@@ -178,9 +179,13 @@ p {
     padding: 0px;
 }
 
+.headline-description {
+    background-color: #ffffff;
+    /*background-color: lightgrey;*/
+}
+
 @media (min-width: 992px) {
     .headline-description {
-        background-color: lightgrey;
         height: 500px;
         padding-left: 10px;
     }
@@ -192,7 +197,6 @@ p {
 
 @media (max-width: 991px) {
     .headline-description {
-        background-color: lightgrey;
         height: auto;
         padding-left: 10px;
     }
