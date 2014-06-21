@@ -54,7 +54,7 @@ class FreeClassroomsController < ApplicationController
 
     respond_to do |format|
       if @free_classroom.update(free_classroom_params)
-        format.html { redirect_to @free_classroom, notice: 'Free classroom was successfully updated.' }
+        format.html { redirect_to free_classrooms_path, notice: 'Free classroom was successfully updated.' }
         format.json { render :show, status: :ok, location: @free_classroom }
       else
         format.html { render :edit }
