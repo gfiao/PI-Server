@@ -14,12 +14,12 @@ var months = new Array("Janeiro", "Fevereiro", "Março", "Abril", "Maio", "Junho
     "Outubro", "Novembro", "Dezembro");
 
 
-var restaurant = new Array("Cantina", "SpotBar", "Teresa");
-var ementa_spot = new Array("Sopa de nabiças", "Strogonoff", "Massa à bolonhesa", "Caril de frango");
-var ementa_teresa = new Array("Massa com natas", "Bitoque", "Pataniscas com arroz", "Bacalhau à brás");
-var ementa_cantina = []; //vai buscar a ementa à base de dados, atraves de um pedido rest
-var ementas = new Array(ementa_cantina, ementa_spot, ementa_teresa);
+//var ementa_spot = new Array("Sopa de nabiças", "Strogonoff", "Massa à bolonhesa", "Caril de frango");
+//var ementa_teresa = new Array("Massa com natas", "Bitoque", "Pataniscas com arroz", "Bacalhau à brás");
+//var ementa_cantina = []; //vai buscar a ementa à base de dados, atraves de um pedido rest
 
+var ementas = new Array(3); //em cada posição vamos ter um array com as ementas para cada restaurante
+var restaurants = ["Cantina", "Casa do Pessoal", "My Spot Bar"]; //vai ter o nome de cada restaurante
 
 var globalCounter;
 var countRestaurant;
@@ -34,25 +34,12 @@ var videosAppended = true;
 
 $(document).ready(function () {
 
-
     if (videosAppended) {
 
         appendVideos();
         videosAppended = false;
     }
 
-//
-////    var t = setInterval(function() {
-//        console.log(window.CurrentVideo);
-////        window.CurrentVideo.currentIndex = currVideoIndex;
-////    }, 5000);
-//
-//
-////    var obj = {value: 0};
-////    obj.value = $('#right-panel-bottom').text;
-////
-////    obj.watch("value", function())
-//
 });
 
 
@@ -65,9 +52,6 @@ function start() {
     firstTimeCantina = true;
     firstTimeWeather = true;
 
-//    var Mod = require('/trabalho');
-//    Mod.alertTemp;
-
     //envia a info do primeiro video para a tv
     currentVideoToHtml();
 
@@ -79,18 +63,6 @@ function start() {
 
     getCurrentVideo();
 }
-
-
-//require(['homepage'], function(badjoras) {
-//
-//    // jQuery loaded by foo module so free to use it
-//    $('.button').on('click', function(e) {
-//        badjoras.bar();
-//        e.preventDefault();
-//    });
-//
-//});
-
 
 jQuery.extend({
     getValues: function (url) {
@@ -169,19 +141,43 @@ function fetchContent() {
 }
 
 //passar parametro para indicar se é almoço ou jantar
+//Já trata ementas de outros restaurantes, nao apenas da cantina
 function populateMenu() {
 
     //conteudo obtido da base de dados
     var menu = $.getValues('/menus');
-    console.log(menu);
-    var temp = [];
 
-    $.each(menu, function (i, item) {
-        if (item.meal == "almoco")
-            temp[i] = item.dish;
+    var counters = [0, 0, 0];
+
+    // de seguida verifica se a entrada é para almoço (de momento só funciona para almoço)
+    // se for, adiciona-a ao array de ementas do respectivo restaurante
+    $.each(menu, function (i, el) {
+
+        var rest = el.restaurant;
+        var index = restaurants.indexOf(rest);
+        var count;
+
+        //para o caso de aparecerem ementas que não nos interessam mostrar na TV
+        //de momento, apenas mostramos CANTINA, MY-SPOT-BAR e CASA-DO-PESSOAL
+        if (index != -1) {
+
+            count = counters[index]; //o numero de entrada para o restaurante da entrada actual
+
+            // inicializa os vectores das ementas
+            if (count == 0) {
+                ementas[index] = [];
+            }
+
+            if (el.meal == "almoço") {
+                ementas[index].push(el.dish);
+                counters[index]++;
+            }
+        }
+
     });
 
-    ementas[0] = temp;
+//    console.log(restaurants);
+//    console.log(ementas);
 }
 
 function getEmenta() {
@@ -193,7 +189,7 @@ function getEmenta() {
 
     //a cada iteração, mostra a ementa de cada um dos restaurantes
     var index = countRestaurant % 3;
-    var lunch_place = restaurant[index];
+    var lunch_place = restaurants[index];
     var ementaContent = ementas[index];
 
     var content = '<h2>' + lunch_place + '</h2><ul id="ementaList">';
@@ -229,14 +225,14 @@ var weather;
 
 function getMeteo() {
 
-    if(firstTimeWeather) {
+    if (firstTimeWeather) {
         weather = $.getValues('/weathers');
         firstTimeWeather = false;
     }
 
 //    console.log(weather);
     if (weather[0].description = 'Predominantemente Nublado')
-        weather[0].description = 'Nublado';
+        weather[0].description = 'Muito Nublado';
 
     var content = '<h2 style="text-align: center">' + "Meteorologia" + '</h2>';
     content += '<h3 style="text-align: center">Almada</h3>';
