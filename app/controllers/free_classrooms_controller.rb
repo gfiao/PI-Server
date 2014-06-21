@@ -38,7 +38,7 @@ class FreeClassroomsController < ApplicationController
 
     respond_to do |format|
       if @free_classroom.save
-        format.html { redirect_to @free_classroom, notice: 'Free classroom was successfully created.' }
+        format.html { redirect_to free_classrooms_path, notice: 'Free classroom was successfully created.' }
         format.json { render :show, status: :created, location: @free_classroom }
       else
         format.html { render :new }

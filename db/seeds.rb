@@ -121,14 +121,18 @@ TagContent.create(content_id: 3, tag_id: 2)
 puts 'Adding Classrooms'
 Classroom.create(building: 'Ed.7', classroom: '2.3')
 Classroom.create(building: 'Ed.7', classroom: '1D')
+Classroom.create(building: 'Ed.7', classroom: '1C')
+Classroom.create(building: 'Ed.7', classroom: '2B')
 Classroom.create(building: 'Ed.7', classroom: '1.13')
 Classroom.create(building: 'Ed.2', classroom: '119')
 Classroom.create(building: 'Ed.2', classroom: '121')
+Classroom.create(building: 'Ed.2', classroom: '115')
+Classroom.create(building: 'Ed.2', classroom: '120')
 
 #FreeClassroom user_id:integer classroom_id:integer from_time:datetime likes:integer, to_time:datetime
 puts 'Adding Free Classrooms'
-FreeClassroom.create(user_id: 1, classroom_id: 1, from_time: DateTime.now, to_time: DateTime.now)
-FreeClassroom.create(user_id: 10, classroom_id: 4, from_time: DateTime.now, to_time: DateTime.now)
+FreeClassroom.create(user_id: 1, classroom_id: 1, from_time: DateTime.now, to_time: DateTime.now + 2.hours)
+FreeClassroom.create(user_id: 10, classroom_id: 4, from_time: DateTime.now, to_time: DateTime.now+ 3.hours)
 
 #Game name:string
 puts 'Adding Games'

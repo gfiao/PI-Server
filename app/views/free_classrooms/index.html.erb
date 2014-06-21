@@ -2,13 +2,15 @@
 
   <h1>Salas livres</h1>
 
-  <%= form_tag(free_classrooms_path, :method => "get", id: "building-form") do %>
-
-      <%= collection_select :classroom, :building, Classroom.select(:building).uniq, :building, :building, {class: 'form-control'} %>
-
-      <%= submit_tag "Filter", class: 'btn btn-default' %>
-  <% end %>
-
+  <div class="row">
+    <%= form_tag(free_classrooms_path, :method => "get", id: "building-form") do %>
+        <div class="col-xs-5 col-md-3">
+          <%= collection_select :classroom, :building, Classroom.select(:building).uniq, :building,
+                                :building, {}, class: 'form-control' %>
+        </div>
+        <%= submit_tag "Filtrar", class: 'btn btn-default' %>
+    <% end %>
+  </div>
 
   <table class="table table-striped" style="margin-top: 2%;">
     <tr>
@@ -23,8 +25,8 @@
             <tr>
               <td><%= Classroom.find_by(id: free_classroom.classroom_id).building %></td>
               <td><%= Classroom.find_by(id: free_classroom.classroom_id).classroom %></td>
-              <td><%= free_classroom.from_time.to_time %></td>
-              <td><%= free_classroom.to_time.to_time %></td>
+              <td><%= free_classroom.from_time.to_s(:short) %></td>
+              <td><%= free_classroom.to_time.to_s(:short) %></td>
               <td><%= free_classroom.likes %></td>
             </tr>
         <% end %>
