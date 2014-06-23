@@ -3,6 +3,12 @@
     <h2 class="headerTitle">Agora na TV</h2>
   </div>
 
+  <dl class="dl-horizontal">
+    <dt>PELES</dt>
+    <dd>VOADOR</dd>
+    <dd>VOADOR</dd>
+  </dl>
+
   <div id="bookmark" class="row navbar">
 
     <!-- Com o servidor feito, inserir aqui informação da TV -->
@@ -14,7 +20,8 @@
       <!--<button type="button" class="">Ver mais tarde!</button>-->
       <% if current_user.nil? %>
 
-          <button type="button" disabled class="btn btn-default btn-lg navbar-btn" onclick="watchLater()">
+          <button id="watch-later" type="button" class="btn btn-default btn-lg navbar-btn"
+                  data-placement="top" data-trigger="hover" title="Tens que estar autenticado para guardar conteúdo!">
             <span class="glyphicon glyphicon-time"></span><span id="watch-later"> Ver mais tarde!</span>
           </button>
 
@@ -61,7 +68,7 @@
           <% i = 0 %>
           <% Content.all.each do |content| %>
 
-              <% #Se for o primeiro item, a class tem de ser item active                    %>
+              <% #Se for o primeiro item, a class tem de ser item active                        %>
               <% if (i == 0) %>
                   <div id="news_<%= i %>" class="item active">
               <% else %>
@@ -104,8 +111,6 @@
     <div class="page-header">
       <h2 class="headerTitle">Conteúdos mais vistos</h2>
     </div>
-
-
 
 
     <div id="testeFeeds">

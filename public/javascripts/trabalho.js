@@ -4,9 +4,27 @@
 
 var videos = [];
 
+
+$(document).ready(function () {
+
+    $('#watch-later').tooltip();
+
+});
+
+
+
 function init() {
 
     videos = $.getValues('/videos');
+
+//    var obj = $('#watch-later');
+//    obj.mouseenter(function () {
+//        $('#watch-later').tooltip('show');
+//    })
+//        .mouseleave(function () {
+//            $('#watch-later').tooltip('hide');
+//        });
+
 
 //   ACTIVADO DE NOVO  ##DESACTIVADO APENAS PARA EFEITOS DE TESTE: JA FUNCIONA!
     updateCurrentVideo();
