@@ -1,205 +1,190 @@
-// Place all the styles related to the tv controller here.
-// They will automatically be included in application.css.
-// You can use Sass (SCSS) here: http://sass-lang.com/
-
-//FONTES
+@charset "UTF-8";
 @font-face {
   font-family: 'Myriad Pro Regular';
   font-style: normal;
   font-weight: normal;
-  src: local('Myriad Pro Regular'), url('MYRIADPRO-REGULAR.woff') format('woff');
+  src: local("Myriad Pro Regular"), url("MYRIADPRO-REGULAR.woff") format("woff");
 }
 
 @font-face {
   font-family: 'Myriad Pro Condensed';
   font-style: normal;
   font-weight: normal;
-  src: local('Myriad Pro Condensed'), url('MYRIADPRO-COND.woff') format('woff');
+  src: local("Myriad Pro Condensed"), url("MYRIADPRO-COND.woff") format("woff");
 }
 
 @font-face {
   font-family: 'Myriad Pro Semibold Italic';
   font-style: normal;
   font-weight: normal;
-  src: local('Myriad Pro Semibold Italic'), url('MYRIADPRO-SEMIBOLDIT.woff') format('woff');
+  src: local("Myriad Pro Semibold Italic"), url("MYRIADPRO-SEMIBOLDIT.woff") format("woff");
 }
 
 @font-face {
   font-family: 'Myriad Pro Semibold';
   font-style: normal;
   font-weight: normal;
-  src: local('Myriad Pro Semibold'), url('MYRIADPRO-SEMIBOLD.woff') format('woff');
+  src: local("Myriad Pro Semibold"), url("MYRIADPRO-SEMIBOLD.woff") format("woff");
 }
 
 @font-face {
   font-family: 'Myriad Pro Condensed Italic';
   font-style: normal;
   font-weight: normal;
-  src: local('Myriad Pro Condensed Italic'), url('MYRIADPRO-CONDIT.woff') format('woff');
+  src: local("Myriad Pro Condensed Italic"), url("MYRIADPRO-CONDIT.woff") format("woff");
 }
 
 @font-face {
   font-family: 'Myriad Pro Bold Italic';
   font-style: normal;
   font-weight: normal;
-  src: local('Myriad Pro Bold Italic'), url('MYRIADPRO-BOLDIT.woff') format('woff');
+  src: local("Myriad Pro Bold Italic"), url("MYRIADPRO-BOLDIT.woff") format("woff");
 }
 
 @font-face {
   font-family: 'Myriad Pro Bold Condensed Italic';
   font-style: normal;
   font-weight: normal;
-  src: local('Myriad Pro Bold Condensed Italic'), url('MYRIADPRO-BOLDCONDIT.woff') format('woff');
+  src: local("Myriad Pro Bold Condensed Italic"), url("MYRIADPRO-BOLDCONDIT.woff") format("woff");
 }
 
 @font-face {
   font-family: 'Myriad Pro Bold Condensed';
   font-style: normal;
   font-weight: normal;
-  src: local('Myriad Pro Bold Condensed'), url('MYRIADPRO-BOLDCOND.woff') format('woff');
+  src: local("Myriad Pro Bold Condensed"), url("MYRIADPRO-BOLDCOND.woff") format("woff");
 }
 
 @font-face {
   font-family: 'Myriad Pro Bold';
   font-style: normal;
   font-weight: normal;
-  src: local('Myriad Pro Bold'), url('MYRIADPRO-BOLD.woff') format('woff');
+  src: local("Myriad Pro Bold"), url("MYRIADPRO-BOLD.woff") format("woff");
 }
 
-//regras para a TV FULL HD
-//TESTAR ISTO NA TV!!!!
 @media (min-width: 500px) {
-  //  BUG NESTA MERDA, VER MELHOR
+  /* line 73, C:/Users/guilh_000/Documents/GitHub/PI-Server/app/assets/stylesheets/tv.css.scss */
   #hour-info p {
     font-size: 775%;
   }
 
+  /* line 77, C:/Users/guilh_000/Documents/GitHub/PI-Server/app/assets/stylesheets/tv.css.scss */
   #date-info p {
     font-size: 375%;
     padding-left: 20px;
     padding-right: 20px;
   }
 
+  /* line 83, C:/Users/guilh_000/Documents/GitHub/PI-Server/app/assets/stylesheets/tv.css.scss */
   #category p {
     margin-top: 0px;
     font-size: 150%;
     padding: 12px;
   }
 
+  /* line 89, C:/Users/guilh_000/Documents/GitHub/PI-Server/app/assets/stylesheets/tv.css.scss */
   #news-container p {
     margin: 0px;
     font-size: 120%;
     padding: 10px;
   }
 }
-
 @media (max-width: 499px) {
-
   /*paragrafo das horas*/
+  /* line 99, C:/Users/guilh_000/Documents/GitHub/PI-Server/app/assets/stylesheets/tv.css.scss */
   #hour-info > p {
     font-size: 80px;
   }
 
+  /* line 103, C:/Users/guilh_000/Documents/GitHub/PI-Server/app/assets/stylesheets/tv.css.scss */
   #date-info > p {
     font-size: 35px;
   }
 }
-
+/* line 108, C:/Users/guilh_000/Documents/GitHub/PI-Server/app/assets/stylesheets/tv.css.scss */
 body {
   margin: 0px;
 }
 
+/* line 112, C:/Users/guilh_000/Documents/GitHub/PI-Server/app/assets/stylesheets/tv.css.scss */
 #globalContainer {
   background-color: #ffffff;
   color: white;
-
-  //  tamanho HD
-  //    width: 1366px;
-  //    height: 768px;
-
-  //  tamanho FULLHD
   width: 1920px;
   height: 1080px;
-
   font-family: "Myriad Pro Regular";
 }
 
 /*inicio do que realmente interessa*/
+/* line 128, C:/Users/guilh_000/Documents/GitHub/PI-Server/app/assets/stylesheets/tv.css.scss */
 #main {
   /*mudar a altura consoante a resolução do display*/
-  //  height: 752px;
   width: 100%;
   height: 100%;
-
   background-color: darkblue;
-  //  font-size: 30px;
-
-  //cores da faculdade
-  //  background-color: #3bb6ce; //azul claro
-  //  background-color: #79ba28; // verde
-  //  background-color: #2a6dba; //azul escuro
 }
 
+/* line 143, C:/Users/guilh_000/Documents/GitHub/PI-Server/app/assets/stylesheets/tv.css.scss */
 #video-and-lateral {
   height: 93%;
   width: 100%;
 }
 
 /* ############# css do caixote central ############# */
+/* line 149, C:/Users/guilh_000/Documents/GitHub/PI-Server/app/assets/stylesheets/tv.css.scss */
 #view-area {
   height: 100%;
   width: 70%;
-  //  background-color: brown;
   float: left;
   /*display: inline-block;*/
 }
 
+/* line 157, C:/Users/guilh_000/Documents/GitHub/PI-Server/app/assets/stylesheets/tv.css.scss */
 .itemsCar {
   height: 100%;
   width: 100%;
 }
 
+/* line 162, C:/Users/guilh_000/Documents/GitHub/PI-Server/app/assets/stylesheets/tv.css.scss */
 #right-panel {
   /*remover margens entre inline-block*/
   /*margin-left: -4px;*/
   height: 100%;
   width: 30%;
-  //  background-color: lightgrey;
   float: left;
-  //  font-size: 30px;
   /*display: inline-block;*/
 }
 
 /* ############# css do painel lateral - TOPO ############# */
+/* line 174, C:/Users/guilh_000/Documents/GitHub/PI-Server/app/assets/stylesheets/tv.css.scss */
 #right-panel-top {
   width: 100%;
   height: 15%;
-  //  background-color: deeppink;
   display: block;
   background-color: rgba(58, 218, 255, 0.1);
-
-  //  border-bottom: 1px solid #79ba28;
-
 }
 
+/* line 185, C:/Users/guilh_000/Documents/GitHub/PI-Server/app/assets/stylesheets/tv.css.scss */
 #hour-info {
   width: 50%;
   font-family: "Myriad Pro Condensed";
   font-weight: bold;
 }
 
+/* line 191, C:/Users/guilh_000/Documents/GitHub/PI-Server/app/assets/stylesheets/tv.css.scss */
 #date-info {
   width: 50%;
-  //  padding-top: 10px;
   /*background-color: blue;*/
 }
 
+/* line 198, C:/Users/guilh_000/Documents/GitHub/PI-Server/app/assets/stylesheets/tv.css.scss */
 #hour-info,
 #date-info {
   height: 100%;
   float: left;
 }
 
+/* line 204, C:/Users/guilh_000/Documents/GitHub/PI-Server/app/assets/stylesheets/tv.css.scss */
 #hour-info > p,
 #date-info > p {
   text-align: center;
@@ -207,23 +192,22 @@ body {
 }
 
 /* ############# PAINEL LATERAL - MEIO ############# */
+/* line 210, C:/Users/guilh_000/Documents/GitHub/PI-Server/app/assets/stylesheets/tv.css.scss */
 #right-panel-middle {
   width: 100%;
   height: 60%;
-  //  background-color: lightgrey;
   /*padding-left: 25px;*/
-  //border-bottom: 1px solid lightgray;
   font-size: 240%;
-
-  //  box-shadow: inset 0 0 10px rgba(58, 218, 255, 0.36), inset 0 10px 10px rgba(58, 218, 255, 0.36);
   background: linear-gradient(to bottom, darkblue 0%, rgba(58, 218, 255, 0.3) 10%, rgba(58, 218, 255, 0.3) 90%, darkblue 100%);
 }
 
+/* line 222, C:/Users/guilh_000/Documents/GitHub/PI-Server/app/assets/stylesheets/tv.css.scss */
 #toAnimate {
   width: 90%;
 }
 
 /*titulo do restaurante*/
+/* line 227, C:/Users/guilh_000/Documents/GitHub/PI-Server/app/assets/stylesheets/tv.css.scss */
 #right-panel-middle h2 {
   padding-left: 50px;
   margin-bottom: 30px;
@@ -232,34 +216,35 @@ body {
 }
 
 /*lista que contem a ementa*/
+/* line 235, C:/Users/guilh_000/Documents/GitHub/PI-Server/app/assets/stylesheets/tv.css.scss */
 #ementaList {
-  list-style: none;
+  list-style: disc;
   padding-left: 70px;
 }
 
+/* line 240, C:/Users/guilh_000/Documents/GitHub/PI-Server/app/assets/stylesheets/tv.css.scss */
 #ementaList > li {
   margin-bottom: 15px;
   /*margin-top: 20px;*/
 }
 
 /* ############# css do painel lateral - BAIXO ############# */
+/* line 246, C:/Users/guilh_000/Documents/GitHub/PI-Server/app/assets/stylesheets/tv.css.scss */
 #right-panel-bottom {
   width: 100%;
   height: 25%;
-  //  border-bottom: 1px solid #79ba28;
   background-color: rgba(58, 218, 255, 0.1);
-
-  //  background: linear-gradient(to bottom, rgba(58, 218, 255, 0.36) 0%, darkblue 100%);
 }
 
 /* ############# FOOTER ############# */
+/* line 256, C:/Users/guilh_000/Documents/GitHub/PI-Server/app/assets/stylesheets/tv.css.scss */
 #footer {
   height: 7%;
   width: 100%;
-  //  background-color: rgba(179, 222, 236, 0.35);
   font-size: 30px;
 }
 
+/* line 263, C:/Users/guilh_000/Documents/GitHub/PI-Server/app/assets/stylesheets/tv.css.scss */
 #category {
   width: 20%;
   height: 100%;
@@ -271,6 +256,7 @@ body {
   font-family: "Myriad Pro Regular";
 }
 
+/* line 274, C:/Users/guilh_000/Documents/GitHub/PI-Server/app/assets/stylesheets/tv.css.scss */
 #news-container {
   width: 80%;
   height: 100%;
@@ -279,14 +265,17 @@ body {
   font-size: 40px;
 }
 
+/* line 282, C:/Users/guilh_000/Documents/GitHub/PI-Server/app/assets/stylesheets/tv.css.scss */
 #category p {
   margin-top: 0px;
 }
 
+/* line 286, C:/Users/guilh_000/Documents/GitHub/PI-Server/app/assets/stylesheets/tv.css.scss */
 #news-container p {
   margin: 0px;
 }
 
+/* line 290, C:/Users/guilh_000/Documents/GitHub/PI-Server/app/assets/stylesheets/tv.css.scss */
 .news-container-scroll {
   overflow: hidden;
 }
@@ -295,7 +284,6 @@ body {
 /*#meteo-info, #hour-date {*/
 /*height: 50%;*/
 /*}*/
-
 /*temperatura maxima/minima*/
 /*#meteo-min-temp,*/
 /*#meteo-max-temp {*/
@@ -303,17 +291,14 @@ body {
 /*height: 100%;*/
 /*float: left;*/
 /*}*/
-
 /*temperatura minima*/
 /*#meteo-min-temp {*/
 /*background-color: blue;*/
 /*}*/
-
 /*temperatura máxima*/
 /*#meteo-max-temp {*/
 /*background-color: red;*/
 /*}*/
-
 /*#max-temp-img,*/
 /*#max-temp-value,*/
 /*#min-temp-img,*/
@@ -322,32 +307,29 @@ body {
 /*width: 50%;*/
 /*height: 100%;*/
 /*}*/
-
 /*#max-temp-img,*/
 /*#min-temp-img {*/
 /*background-color: #ffff00;*/
 /*}*/
-
 /*#max-temp-value,*/
 /*#min-temp-value {*/
 /*background-color: green;*/
 /*}*/
-
 /*centra os textos do rodapé*/
 /*#footer > h1 {*/
 /*margin-top: 19px;*/
 /*margin-bottom: 19px;*/
 /*}*/
-
 /*padding para a noticia do rodapé*/
 /*#news-container > h1 {*/
 /*padding-left: 10px;*/
 /*}*/
-
+/* line 347, C:/Users/guilh_000/Documents/GitHub/PI-Server/app/assets/stylesheets/tv.css.scss */
 h3, h2 {
   text-align: center;
 }
 
+/* line 351, C:/Users/guilh_000/Documents/GitHub/PI-Server/app/assets/stylesheets/tv.css.scss */
 .meteo-span {
   display: inline-block;
   width: 50%;
@@ -355,7 +337,8 @@ h3, h2 {
 }
 
 /*#######################################################*/
+/* line 358, C:/Users/guilh_000/Documents/GitHub/PI-Server/app/assets/stylesheets/tv.css.scss */
 .badjoras {
   visibility: hidden;
-  position: absolute; //faz com que a div comece de cima, em vez de começar a meio do painel
+  position: absolute;
 }

@@ -209,11 +209,16 @@ end
 
 #TransportHours transport_id:integer hour_id:integer
 puts 'Adding TransportHours'
+TransportHour.create(transport_id: Transport.find_by(carreira: 0).id, hour_id: Hour.find_by(hour: 17, minute: 2).id)
+TransportHour.create(transport_id: Transport.find_by(carreira: 0).id, hour_id: Hour.find_by(hour: 17, minute: 17).id)
+TransportHour.create(transport_id: Transport.find_by(carreira: 0).id, hour_id: Hour.find_by(hour: 17, minute: 22).id)
+TransportHour.create(transport_id: Transport.find_by(carreira: 0).id, hour_id: Hour.find_by(hour: 17, minute: 37).id)
 TransportHour.create(transport_id: Transport.find_by(carreira: 126).id, hour_id: Hour.find_by(hour: 14, minute: 35).id)
 TransportHour.create(transport_id: Transport.find_by(carreira: 126).id, hour_id: Hour.find_by(hour: 15, minute: 20).id)
 TransportHour.create(transport_id: Transport.find_by(carreira: 126).id, hour_id: Hour.find_by(hour: 17, minute: 55).id)
 TransportHour.create(transport_id: Transport.find_by(carreira: 194).id, hour_id: Hour.find_by(hour: 14, minute: 35).id)
 TransportHour.create(transport_id: Transport.find_by(carreira: 194).id, hour_id: Hour.find_by(hour: 18, minute: 0).id)
+
 
 #UserContent user_id:integer content_id:integer
 puts 'Associating content to users'

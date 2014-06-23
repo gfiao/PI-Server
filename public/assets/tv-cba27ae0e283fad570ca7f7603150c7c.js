@@ -2,6 +2,7 @@
  * Created by Rafael on 28/05/2014.
  */
 
+
 function Weekday(shortName, portugueseName) {
     this.shortName = shortName;
     this.portugueseName = portugueseName;
@@ -205,10 +206,10 @@ function getEmenta() {
         lunch_place = restaurants[index];
         ementaContent = ementasAlmoco[index];
 
-        var content = '<h2 style="font-size: 140%">' + lunch_place + '</h2><ul id="ementaList">';
+        var content = '<h2>' + lunch_place + '</h2><ul id="ementaList">';
 
         $.each(ementaContent, function (i, item) {
-            content += '<li style="font-size: 90%">' + item + '</li>';
+            content += '<li>' + item + '</li>';
         });
 
         content += '</ul>';
@@ -224,10 +225,10 @@ function getEmenta() {
         lunch_place = "Cantina - Jantar";
         ementaContent = ementasJantar;
 
-        var content = '<h2 style="font-size: 140%">' + lunch_place + '</h2><ul id="ementaList">';
+        var content = '<h2>' + lunch_place + '</h2><ul id="ementaList">';
 
         $.each(ementaContent, function (i, item) {
-            content += '<li style="font-size: 90%">' + item + '</li>';
+            content += '<li>' + item + '</li>';
         });
 
         content += '</ul>';
@@ -240,53 +241,14 @@ function getEmenta() {
 }
 
 
-//Objecto a ser inserido na TV
-function Transport(carreira, origin, destination, hour, minute) {
-    this.carreira = carreira;
-    this.origin = origin;
-    this.destination = destination;
-    this.hour = hour;
-    this.minute = minute;
-}
 function getPublicTrans() {
     var transports = $.getValues('/transports');
-    var transportsToTV = [];
+    var hours = $.getValues('/hours');
+    var transportHours = $.getValues('/transport_hours');
 
-    for (var i = 0; i < transports.length; i++) {
-        var schedules = transports[i].transport_hours;
-        var hours = transports[i].hours;
-        if (schedules.length != 0) {
-            for (var j = 0; j < hours.length; j++) {
-                transportsToTV.push(new Transport(transports[i].carreira, transports[i].origin, transports[i].destination
-                    , hours[j].hour, hours[j].minute));
-            }
-        }
-    }
-
-    console.log(transportsToTV);
-
-
-    var content = '<h2 style="font-size: 140%">' + "Próximos transportes" + '</h2>';
-
-    var i = 0;
-    content += '<ul>MTS:';
-    while (transportsToTV[i].carreira == 0) {
-        content += '<li>' + transportsToTV[i].hour + ':' + transportsToTV[i].minute + '</li>';
-        i++;
-        if (i == 2) break;
-    }
-    content += '</ul>';
-
-//    content += '<ul>TST:';
-//    while (transportsToTV[i].carreira != 0) {
-//        content += '<li>' + transportsToTV[i].carreira + ' - ' + transportsToTV[i].hour + ':' + transportsToTV[i].minute + '</li>';
-//        i++;
-//    }
-//    content += '</ul>';
-
-//    content += '<ul>TST: <li>158 - 16h30</li><li>246 - 17h00</li></ul>';
-//    content += '<ul>MTS: <li>16h30</li><li>17h00</li></ul>';
-
+    var content = '<h2>' + "Transportes" + '</h2>';
+    content += '<ul>TST: <li>158 - 16h30</li><li>246 - 17h00</li></ul>';
+    content += '<ul>MTS: <li>16h30</li><li>17h00</li></ul>';
 
     globalCounter++;
     return content;
@@ -383,9 +345,10 @@ imagens = $.getValues('/contents');
 function appendVideos() {
 
     $.each(videos, function (i, video) {
+//        $('div#view-area').append(
         if (i == 0) {
             $('div.carousel-inner').append('<div id = "video_' + i + '" class="item active itemsCar">' +
-                '<iframe src="' + video.link + '?autoplay=0&controls=0&modestbranding=1&showinfo=0" style="width: 100%; height:100%;"' +
+                '<iframe src="' + video.link + '?autoplay=1&controls=0&modestbranding=1&showinfo=0" style="width: 100%; height:100%;"' +
                 'frameborder = "0" ' +
                 'width = 100%' +
                 'height: 100%' +
@@ -400,7 +363,7 @@ function appendVideos() {
         }
         else
             $('div.carousel-inner').append('<div id = "video_' + i + '" class="item itemsCar">' +
-                '<iframe src="' + video.link + '?autoplay=0&controls=0&modestbranding=1&showinfo=0" style="width: 100%; height:100%;" ' +
+                '<iframe src="' + video.link + '?autoplay=1&controls=0&modestbranding=1&showinfo=0" style="width: 100%; height:100%;" ' +
                 'frameborder = "0" ' +
                 'width = 100%' +
                 'height: 100%' +
@@ -415,12 +378,17 @@ function appendVideos() {
 
     });
 
+    console.log(imagens);
+
     $.each(imagens, function (i, imagem) {
         $('div.carousel-inner').append('<div id = "image_' + i + '" class="item">' +
             '<img src="/assets/' + imagem.link_image + '" style="width: 100%; height:100%;" > ' +
+
             '<div class="carousel-caption">' +
             '<h1>' + imagem.title + '</h1>' +
             '</div>' +
+
+
             '</div>');
     });
 
@@ -566,7 +534,6 @@ function getFreeClassrooms() {
                 var free = new Free_classroom(classrooms[i].building, classrooms[i].classroom,
                     free_classrooms[j].from_time, free_classrooms[j].to_time);
                 freeClassroomsToTV.push(free);
-                break;
             }
 
     //2014-06-20T10:26:01.901Z
@@ -574,7 +541,6 @@ function getFreeClassrooms() {
         freeClassroomsToTV[i].from_time = freeClassroomsToTV[i].from_time.split('T')[1].split('.')[0];
         freeClassroomsToTV[i].to_time = freeClassroomsToTV[i].to_time.split('T')[1].split('.')[0];
     }
-
 
 }
 
@@ -633,3 +599,4 @@ function getFreeClassrooms() {
 //        }
 //    });
 //}
+;

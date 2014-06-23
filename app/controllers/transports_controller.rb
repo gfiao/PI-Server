@@ -8,7 +8,7 @@ class TransportsController < ApplicationController
 
 
     respond_to do |format|
-      format.json { render :json => @transports.to_json(:include => [:transport_hours]) }
+      format.json { render :json => @transports.to_json(:include => [:transport_hours, :hours]) }
     end
   end
 
