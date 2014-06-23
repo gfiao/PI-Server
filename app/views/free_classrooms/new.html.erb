@@ -1,6 +1,7 @@
-<div id="cont1" class="container" style="padding-bottom: 3%">
+<div id="cont1" class="container space-top space-bottom" style="padding-bottom: 3%">
   <h1 class="page-header">Adicionar uma nova sala vazia.</h1>
   <%= render 'form' %>
-
-  <%= link_to 'Back', free_classrooms_path %>
+  <p></p>
+  <%= button_to('Voltar atrás', free_classrooms_path, class: "btn btn-default", method: :get) %>
+  <p></p>
 </div>

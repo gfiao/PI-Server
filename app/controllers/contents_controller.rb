@@ -6,11 +6,7 @@ class ContentsController < ApplicationController
   # GET /contents
   # GET /contents.json
   def index
-    if user_signed_in?
-      @contents = current_user.contents
-    else
-      @contents = Content.all
-    end
+    @contents = Content.all
   end
 
   # GET /contents/1

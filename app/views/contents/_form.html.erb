@@ -36,7 +36,7 @@
     </div>
 
     <div class="field form-group">
-      <%= f.label :texto_noticia %>
+      <%= f.label :texto_da_noticia %>
       <br>
       <%= f.text_area :news_text, class: 'form-control' %>
     </div>
@@ -51,6 +51,6 @@
     <% end %>
 
     <div class="actions" style="margin-top: 2%">
-      <%= f.submit 'Adicionar conteudo' %>
+      <%= f.submit 'Adicionar conteudo', class: "btn btn-default" %>
     </div>
 <% end %>

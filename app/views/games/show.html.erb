@@ -17,7 +17,11 @@
         /* Large desktop */
         @media (min-width: 1200px) {
             #highscore_table {
-                margin-left: 8%;
+                margin-left: 6%;
+            }
+
+            #badjoras {
+                padding-right: 50px
             }
         }
 
@@ -31,6 +35,11 @@
 
         /* Landscape phone to portrait tablet */
         @media (max-width: 767px) {
+            #cont1 {
+                margin-left: 0px;
+                margin-right: 0px;
+            }
+
             #highscore_table {
                 margin-left: 8%;
                 margin-top: 12%;
@@ -58,9 +67,10 @@
         }
     </style>
 
-    <div class="container" id="game">
+    <div class="container" id="game" style="margin-top: 30px;
+            margin-bottom: 30px; padding-top: 20px">
       <div class="row">
-        <div class="gameToTheLeft col-md-5" style="">
+        <div id="badjoras" class="gameToTheLeft col-md-6">
           <div class="heading">
             <h1 class="title">2048</h1>
 
@@ -122,16 +132,15 @@
             </div>
           </div>
 
-          <p class="game-explanation">
+          <p class="game-explanation" style="margin-top: 25px; margin-bottom: 20px">
             <strong class="important">Como jogar:</strong> Use as <strong>setas do teclado</strong> para movimentar os
             quadrados.
             Quando dois quadrados com o mesmo número se tocarem eles <strong>juntam-se num só!</strong>
           </p>
-          <hr>
+
           <p>
             Pode jogar ao jogo original <a href="http://gabrielecirulli.github.io/2048/">aqui</a>.
           </p>
-          <hr>
         </div>
 
         <div id="highscore_table" class="col-md-5">
@@ -183,6 +192,3 @@
 
 
 <% end %>
-
-<%# link_to 'Edit', edit_game_path(@game) %> |
-<%# link_to 'Back', games_path %>

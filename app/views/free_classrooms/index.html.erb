@@ -1,4 +1,4 @@
-<div id="cont1" class="container" style="padding-bottom: 3%">
+<div id="cont1" class="container space-top space-bottom" style="padding-bottom: 3%">
 
   <h1 class="page-header">Salas livres</h1>
 
@@ -6,7 +6,7 @@
     <%= form_tag(free_classrooms_path, :method => "get", id: "building-form") do %>
         <div class="col-xs-5 col-md-3">
           <%= collection_select :classroom, :building, Classroom.select(:building).uniq, :building,
-                                :building, {}, class: 'form-control' %>
+                                :building, {:selected => :building}, class: 'form-control' %>
         </div>
         <%= submit_tag "Filtrar", class: 'btn btn-default' %>
     <% end %>
@@ -19,6 +19,7 @@
       <th>De</th>
       <th>Até</th>
       <th>Likes</th>
+      <th>Adicionar like</th>
     </tr>
     <% @free_classrooms.each do |free_classroom| %>
         <% if free_classroom.to_time > Date.today %>
@@ -30,12 +31,12 @@
               <td><%= free_classroom.likes %></td>
 
               <td><%= button_to("Like", free_classroom_path(free_classroom, "free_classroom[likes]" => free_classroom.likes + 1),
-                                :method => :put) %></td>
+                                :method => :put, class: 'btn btn-sm btn-default') %></td>
 
             </tr>
         <% end %>
     <% end %>
   </table>
 
-  <%= link_to 'Adicionar nova sala livre', new_free_classroom_path %>
+  <%= button_to('Adicionar nova sala livre', new_free_classroom_path, :method => :get, class: 'btn btn-default')%>
 </div>

@@ -4,7 +4,12 @@ class UserContentsController < ApplicationController
   # GET /user_contents
   # GET /user_contents.json
   def index
-    @user_contents = UserContent.all
+    if user_signed_in?
+      @user_contents = current_user.user_contents
+    else
+      @user_contents = UserContent.all
+    end
+
   end
 
   # GET /user_contents/1
