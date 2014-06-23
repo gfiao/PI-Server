@@ -284,3 +284,18 @@ p {
     width: 200px;
     position: relative;
 }
+
+footer {
+    /*height: 50px;*/
+    background-color: darkblue;
+    color: white;
+    text-align: center;
+}
+
+footer p {
+    margin: 10px;
+}
+
+footer p:last-child {
+    margin-bottom: 0px;
+}
