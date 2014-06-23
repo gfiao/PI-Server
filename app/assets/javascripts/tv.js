@@ -342,9 +342,8 @@ function appendVideos() {
     $.each(videos, function (i, video) {
 //        $('div#view-area').append(
         if (i == 0) {
-            $('div.carousel-inner').append('<div class="item active itemsCar">' +
+            $('div.carousel-inner').append('<div id = "video_' + i + '" class="item active itemsCar">' +
                 '<iframe src="' + video.link + '?autoplay=1&controls=0&modestbranding=1&showinfo=0" style="width: 100%; height:100%;"' +
-                'id = "video_' + i + '" ' +
                 'frameborder = "0" ' +
                 'width = 100%' +
                 'height: 100%' +
@@ -353,9 +352,8 @@ function appendVideos() {
                 '</div>');
         }
         else
-            $('div.carousel-inner').append('<div class="item itemsCar">' +
+            $('div.carousel-inner').append('<div id = "video_' + i + '" class="item itemsCar">' +
                 '<iframe src="' + video.link + '?autoplay=1&controls=0&modestbranding=1&showinfo=0" style="width: 100%; height:100%;" ' +
-                'id = "video_' + i + '" ' +
                 'frameborder = "0" ' +
                 'width = 100%' +
                 'height: 100%' +
@@ -367,23 +365,24 @@ function appendVideos() {
 
 //
     $.each(imagens, function (i, imagem) {
-        $('div.carousel-inner').append('<div class="item">' +
+        $('div.carousel-inner').append('<div id = "image_' + i + '" class="item">' +
             '<img src="/assets/' + imagem.link_image + '" style="width: 100%; height:100%;" > ' +
             '</div>');
     });
 
     $('#view-area').carousel({
-        interval: 1000 // in milliseconds
+        interval: 2000 // in milliseconds
     });
 }
 
 function getCurrentVideo() {
-    $('#view-area').on('cycle-after', function (event, optionHash, outgoingSlideEl, incomingSlideEl, forwardFlag) {
 
-        currVideoIndex = parseInt(outgoingSlideEl.id.split('_')[1]);
+    $('#view-area').on('slid.bs.carousel', function () {
 
-        //Envia o video/conteudo actual para o controlador
-        currentVideoToHtml(outgoingSlideEl.id.split('_')[0])
+        var id = $(".active").attr("id");
+
+        currVideoIndex = parseInt(id.split('_')[1]);
+        currentVideoToHtml(id.split('_')[0]);
     });
 }
 
