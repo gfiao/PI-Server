@@ -5,6 +5,11 @@ class TransportsController < ApplicationController
   # GET /transports.json
   def index
     @transports = Transport.all
+
+
+    respond_to do |format|
+      format.json { render :json => @transports.to_json(:include => [:transport_hours]) }
+    end
   end
 
   # GET /transports/1
@@ -62,13 +67,13 @@ class TransportsController < ApplicationController
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_transport
-      @transport = Transport.find(params[:id])
-    end
+  # Use callbacks to share common setup or constraints between actions.
+  def set_transport
+    @transport = Transport.find(params[:id])
+  end
 
-    # Never trust parameters from the scary internet, only allow the white list through.
-    def transport_params
-      params.require(:transport).permit(:carreira, :origin, :destination)
-    end
+  # Never trust parameters from the scary internet, only allow the white list through.
+  def transport_params
+    params.require(:transport).permit(:carreira, :origin, :destination)
+  end
 end
