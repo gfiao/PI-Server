@@ -353,6 +353,11 @@ function appendVideos() {
                 'height: 100%' +
                 'allowfullscreen >' +
                 ' </iframe>' +
+
+                '<div class="carousel-caption">' +
+                '<h1>' + video.link + '</h1>' +
+                '</div>' +
+
                 '</div>');
         }
         else
@@ -363,14 +368,26 @@ function appendVideos() {
                 'height: 100%' +
                 'allowfullscreen >' +
                 ' </iframe>' +
+
+                '<div class="carousel-caption">' +
+                '<h1>' + video.link + '</h1>' +
+                '</div>' +
+
                 '</div>');
 
     });
 
-//
+    console.log(imagens);
+
     $.each(imagens, function (i, imagem) {
         $('div.carousel-inner').append('<div id = "image_' + i + '" class="item">' +
             '<img src="/assets/' + imagem.link_image + '" style="width: 100%; height:100%;" > ' +
+
+            '<div class="carousel-caption">' +
+            '<h1>' + imagem.title + '</h1>' +
+            '</div>' +
+
+
             '</div>');
     });
 
