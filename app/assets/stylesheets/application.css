@@ -91,7 +91,9 @@ body {
     padding-top: 50px;
     font-family: "Myriad Pro Regular";
     /*background-color: rgba(65, 215, 255, 0.24);*/
-    background-color: darkblue;
+    /*background-color: darkblue;*/
+    /*background-color: #106ca7;*/
+    background-color: #109fec;
 }
 
 p {
@@ -107,7 +109,8 @@ p {
 }
 
 #header {
-    background-color: #106ca7;
+    background-color: darkblue;
+    /*background-color: #106ca7;*/
 }
 
 .page-header {
