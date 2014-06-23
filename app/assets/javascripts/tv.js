@@ -241,6 +241,10 @@ function getEmenta() {
 
 
 function getPublicTrans() {
+    var transports = $.getValues('/transports');
+    var hours = $.getValues('/hours');
+    var transportHours = $.getValues('/transport_hours');
+
     var content = '<h2>' + "Transportes" + '</h2>';
     content += '<ul>TST: <li>158 - 16h30</li><li>246 - 17h00</li></ul>';
     content += '<ul>MTS: <li>16h30</li><li>17h00</li></ul>';
