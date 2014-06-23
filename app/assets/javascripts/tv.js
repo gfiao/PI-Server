@@ -258,16 +258,22 @@ function getMeteo() {
         firstTimeWeather = false;
     }
 
-//    console.log(weather);
     if (weather[0].description = 'Predominantemente Nublado')
         weather[0].description = 'Muito Nublado';
 
-    var content = '<h2 style="text-align: center">' + "Meteorologia" + '</h2>';
-    content += '<h3 style="text-align: center">Almada</h3>';
+    var content = '<h2>Meteorologia</h2>';
+
+    content += '<h3 style="font-size: 130%">Almada</h3>';
+
     content += '<div style="text-align: center">' + weather[0].description +
-        '<img width="" height="" src="' + weather[0].image_url + '"></div>';
-    content += '<div style="text-align: center">Min: ' + weather[0].min_temp
-        + ' Máx: ' + weather[0].max_temp + '</div>';
+        '<img src="' + weather[0].image_url + '"></div>';
+
+    content += '<span class="meteo-span">Min:</span>';
+    content += '<span class="meteo-span">Max:</span>';
+    content += '</br>';
+    content += '<span class="meteo-span">' + weather[0].min_temp + '</span>';
+    content += '<span class="meteo-span">' + weather[0].max_temp + '</span>';
+
 
     globalCounter++;
     return content;
@@ -488,6 +494,8 @@ function populateMarquee() {
     else
         footerCounter++;
 }
+
+//Objecto a ser inserido na TV
 function Free_classroom(building, classroom, from_time, to_time) {
     this.building = building;
     this.classroom = classroom;

@@ -145,20 +145,6 @@ body {
   width: 100%;
 }
 
-//#logotype {
-//  width: 20%;
-//  height: 62px;
-//  background-color: rgb(214, 233, 240);
-//  position: absolute;
-//  border-bottom-right-radius: 5px;
-//  font-size: 30px;
-//}
-//
-//#logotype > h2 {
-//  margin: 0px;
-//  padding-left: 15px;
-//}
-
 /* ############# css do caixote central ############# */
 #view-area {
   height: 100%;
@@ -358,6 +344,17 @@ body {
 /*padding-left: 10px;*/
 /*}*/
 
+h3, h2 {
+  text-align: center;
+}
+
+.meteo-span {
+  display: inline-block;
+  width: 50%;
+  text-align: center;
+}
+
+/*#######################################################*/
 .badjoras {
   visibility: hidden;
   position: absolute; //faz com que a div comece de cima, em vez de começar a meio do painel
