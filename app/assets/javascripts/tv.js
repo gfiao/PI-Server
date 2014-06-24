@@ -269,33 +269,41 @@ function getPublicTrans() {
     }
 
 
-    //TODO: FALTA METER CONFORME AS HORAS
-
     var content = '<h2 style="font-size: 140%">' + "Próximos transportes" + '</h2>';
 
     content += '<div style="padding-left: 3%"><p>MTS:</p>';
+    var counter = 0;
     for (var i = 0; i < transportsMTS.length; i++) {
-        if (transportsMTS[i].minute == 2 || transportsMTS[i].minute == 5 || transportsMTS[i].minute == 7 || transportsTST[i].minute == 0)
-            content += '<span class="transport-span">' + transportsMTS[i].hour + ':0' + transportsMTS[i].minute + '</span>';
-        else
-            content += '<span class="transport-span">' + transportsMTS[i].hour + ':' + transportsMTS[i].minute + '</span>';
-        if (i != 2) content += '|';
-        if (i == 2) break;
+        if ((transportsMTS[i].hour >= hour && transportsMTS[i].hour <= hour - 1) && (transportsMTS[i].minute > minute && transportsMTS[i].minute < minute - 15)) {
+            if (transportsMTS[i].minute == 2 || transportsMTS[i].minute == 5 || transportsMTS[i].minute == 7 || transportsTST[i].minute == 0)
+                content += '<span class="transport-span">' + transportsMTS[i].hour + ':0' + transportsMTS[i].minute + '</span>';
+            else
+                content += '<span class="transport-span">' + transportsMTS[i].hour + ':' + transportsMTS[i].minute + '</span>';
+            if (counter != 2) content += '|';
+            if (counter == 2) break;
+            counter++;
+        }
     }
     content += '</div></br>';
 
+    counter = 0;
     content += '<div style="padding-left: 3%"><p>TST:</p>';
     for (var i = 0; i < transportsTST.length; i++) {
-        if (transportsTST[i].minute == 2 || transportsTST[i].minute == 5 || transportsTST[i].minute == 7 || transportsTST[i].minute == 0)
-            content += '<p style="padding-left:6%;">' + transportsTST[i].carreira +
-                '  ' + transportsTST[i].destination + ' - ' +
-                transportsTST[i].hour + ':0' + transportsTST[i].minute + '</p>';
-        else
-            content += '<p style="padding-left:6%;">' + transportsTST[i].carreira +
-                '  ' + transportsTST[i].destination + ' - ' +
-                transportsTST[i].hour + ':' + transportsTST[i].minute + '</p>';
+        if ((transportsTST[i].hour > hour && transportsTST[i].hour <= hour - 1) && (transportsTST[i].minute > minute && transportsTST[i].minute < minute - 15)) {
 
-        if (i == 2) break;
+            if (transportsTST[i].minute == 2 || transportsTST[i].minute == 5 || transportsTST[i].minute == 7 || transportsTST[i].minute == 0)
+
+                content += '<p style="padding-left:6%;">' + transportsTST[i].carreira +
+                    '  ' + transportsTST[i].destination + ' - ' +
+                    transportsTST[i].hour + ':0' + transportsTST[i].minute + '</p>';
+            else
+                content += '<p style="padding-left:6%;">' + transportsTST[i].carreira +
+                    '  ' + transportsTST[i].destination + ' - ' +
+                    transportsTST[i].hour + ':' + transportsTST[i].minute + '</p>';
+
+            if (counter == 2) break;
+            counter++;
+        }
     }
     content += '</div>';
 
@@ -591,10 +599,17 @@ function getFreeClassrooms() {
     var html = '<div id="divClassrooms"><p style="font-size: 300%; text-align: center">' +
         'Salas livres ' + freeClassroomsToTV[0].building + ':</p>';
 
+    var counter = 0;
     for (var i = 0; i < freeClassroomsToTV.length; i++) {
-        html += '<p class="free-classrooms">' + freeClassroomsToTV[i].classroom
-            + ' livre até ás ' + freeClassroomsToTV[i].to_time + '</p>';
-        if (i == 2) break;
+        var classroomHour = freeClassroomsToTV[i].to_time.split(':')[0];
+//        var classroomMinute = freeClassroomsToTV[i].to_time.split(':')[1];
+
+        if (classroomHour > hour) {
+            html += '<p class="free-classrooms">' + freeClassroomsToTV[i].classroom
+                + ' livre até ás ' + freeClassroomsToTV[i].to_time + '</p>';
+            if (counter == 2) break;
+            counter++;
+        }
     }
     html += '</div>';
     $('#right-panel-bottom').append(html);

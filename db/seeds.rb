@@ -197,7 +197,7 @@ Transport.create(carreira: 194, origin: 'Costa da Caparica', destination: 'Praga
 
 #Hours hour:integer minute:integer
 puts 'Adding Hours'
-14.upto(18) do |i|
+14.upto(23) do |i|
   j = 0
   k = 2
   while k < 60
@@ -214,11 +214,15 @@ TransportHour.create(transport_id: Transport.find_by(carreira: 0).id, hour_id: H
 TransportHour.create(transport_id: Transport.find_by(carreira: 0).id, hour_id: Hour.find_by(hour: 17, minute: 17).id)
 TransportHour.create(transport_id: Transport.find_by(carreira: 0).id, hour_id: Hour.find_by(hour: 17, minute: 22).id)
 TransportHour.create(transport_id: Transport.find_by(carreira: 0).id, hour_id: Hour.find_by(hour: 17, minute: 37).id)
+TransportHour.create(transport_id: Transport.find_by(carreira: 0).id, hour_id: Hour.find_by(hour: 22, minute: 47).id)
+TransportHour.create(transport_id: Transport.find_by(carreira: 0).id, hour_id: Hour.find_by(hour: 22, minute: 37).id)
 TransportHour.create(transport_id: Transport.find_by(carreira: 126).id, hour_id: Hour.find_by(hour: 14, minute: 35).id)
 TransportHour.create(transport_id: Transport.find_by(carreira: 126).id, hour_id: Hour.find_by(hour: 15, minute: 20).id)
 TransportHour.create(transport_id: Transport.find_by(carreira: 126).id, hour_id: Hour.find_by(hour: 17, minute: 55).id)
 TransportHour.create(transport_id: Transport.find_by(carreira: 194).id, hour_id: Hour.find_by(hour: 14, minute: 35).id)
 TransportHour.create(transport_id: Transport.find_by(carreira: 194).id, hour_id: Hour.find_by(hour: 18, minute: 0).id)
+TransportHour.create(transport_id: Transport.find_by(carreira: 194).id, hour_id: Hour.find_by(hour: 22, minute: 40).id)
+TransportHour.create(transport_id: Transport.find_by(carreira: 126).id, hour_id: Hour.find_by(hour: 22, minute: 45).id)
 
 
 #UserContent user_id:integer content_id:integer
