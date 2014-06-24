@@ -66,6 +66,11 @@
   src: local('Myriad Pro Bold'), url('MYRIADPRO-BOLD.woff') format('woff');
 }
 
+
+h3, h2 {
+  text-align: center;
+}
+
 //regras para a TV FULL HD
 //TESTAR ISTO NA TV!!!!
 @media (min-width: 500px) {
@@ -291,6 +296,16 @@ body {
   overflow: hidden;
 }
 
+.free-classrooms{
+  font-size: 250%;
+  padding-left: 5%;
+}
+
+#divClassrooms{
+  padding-top: 2%;
+  padding-left: 2%;
+}
+
 /*parte superior do painel lateral, com as horas/tempo*/
 /*#meteo-info, #hour-date {*/
 /*height: 50%;*/
@@ -344,9 +359,6 @@ body {
 /*padding-left: 10px;*/
 /*}*/
 
-h3, h2 {
-  text-align: center;
-}
 
 .meteo-span {
   display: inline-block;

@@ -273,7 +273,10 @@ function getPublicTrans() {
     var i = 0;
     content += '<ul>MTS:';
     while (transportsToTV[i].carreira == 0) {
-        content += '<li>' + transportsToTV[i].hour + ':' + transportsToTV[i].minute + '</li>';
+        if (transportsToTV[i].minute == 2 || transportsToTV[i].minute == 5 || transportsToTV[i].minute == 7)
+            content += '<li>' + transportsToTV[i].hour + ':0' + transportsToTV[i].minute + '</li>';
+        else
+            content += '<li>' + transportsToTV[i].hour + ':' + transportsToTV[i].minute + '</li>';
         i++;
         if (i == 2) break;
     }
@@ -282,14 +285,16 @@ function getPublicTrans() {
 
     content += '<ul>TST:';
     while (transportsToTV[i].carreira != 0) {
-        content += '<li>' + transportsToTV[i].carreira + ' - ' + transportsToTV[i].hour + ':' + transportsToTV[i].minute + '</li>';
+        if (transportsToTV[i].minute == 2 || transportsToTV[i].minute == 5 || transportsToTV[i].minute == 7)
+            content += '<li>' + transportsToTV[i].carreira + ' - ' +
+                transportsToTV[i].hour + ':0' + transportsToTV[i].minute + '</li>';
+        else
+            content += '<li>' + transportsToTV[i].carreira + ' - ' +
+                transportsToTV[i].hour + ':' + transportsToTV[i].minute + '</li>';
         i++;
         if (i == 7) break;
     }
     content += '</ul>';
-
-//    content += '<ul>TST: <li>158 - 16h30</li><li>246 - 17h00</li></ul>';
-//    content += '<ul>MTS: <li>16h30</li><li>17h00</li></ul>';
 
 
     globalCounter++;
@@ -574,22 +579,19 @@ function getFreeClassrooms() {
 
     //2014-06-20T10:26:01.901Z
     for (var i = 0; i < freeClassroomsToTV.length; i++) {
-        freeClassroomsToTV[i].from_time = freeClassroomsToTV[i].from_time.split('T')[1].split('.')[0];
-        freeClassroomsToTV[i].to_time = freeClassroomsToTV[i].to_time.split('T')[1].split('.')[0];
+        var fromHour = freeClassroomsToTV[i].from_time.split('T')[1].split('.')[0].split(':');
+        var toHour = freeClassroomsToTV[i].to_time.split('T')[1].split('.')[0].split(':');
+        freeClassroomsToTV[i].from_time = fromHour[0] + ':' + fromHour[1];
+        freeClassroomsToTV[i].to_time = toHour[0] + ':' + toHour[1];
     }
 
-
-    console.log(freeClassroomsToTV);
-
-//    $('#right-panel-bottom').append('<div><h1>Salas livres ' + freeClassroomsToTV[0].building + ':</h1>');
-    var html = '<div><h1>Salas livres ' + freeClassroomsToTV[0].building + ':</h1>';
-    html += '<table  class="table table-bordered">';
-    html += '<tr>';
+    var html = '<div id="divClassrooms"><p style="font-size: 300%">Salas livres ' + freeClassroomsToTV[0].building + ':</p>';
 
     for (var i = 0; i < freeClassroomsToTV.length; i++) {
-        html += '<th>' + freeClassroomsToTV[i].classroom + '</th>'
+        html += '<p class="free-classrooms">' + freeClassroomsToTV[i].classroom
+            + ' livre até ás ' + freeClassroomsToTV[i].to_time + '</p>';
+        if (i == 2) break;
     }
-    html += '</tr></table>';
-
+    html += '</div>';
     $('#right-panel-bottom').append(html);
 }
