@@ -1,5 +1,5 @@
 class TvController < ApplicationController
-  before_filter :fetch_mail
+  before_filter :fetch_mail, :fetch_weather
   http_basic_authenticate_with :name => "admin", :password => "badjoras"
 
   def show
@@ -126,7 +126,7 @@ class TvController < ApplicationController
       puts "\n*********************** 2 ***************************\n"
 
       # ignora as ultimas linhas que é sobre meteorologia e nomes de badalhocas
-      new_string = "Instituto Português do Mar e da Atmosfera".force_encoding("ASCII-8BIT")
+      new_string = "Instituto Português".force_encoding("ASCII-8BIT")
       ind_temp = mail_text.index { |v| v.include?(new_string) }
       last_interesting_line_index = ind_temp-2
 
@@ -229,6 +229,23 @@ class TvController < ApplicationController
 
 
     puts "\n******************************** fim FCT HOJE 2/2 ********************************\n"
+  end
+
+  def fetch_weather
+    client = Weatherman::Client.new :lang => 'pt-br'
+    response = client.lookup_by_location 'Almada'
+    forecast = response.forecasts.first
+    image = response.description_image
+    weather = Weather.find_by(id: 1)
+    if weather.nil?
+      Weather.create(date: response.condition['date'], city: response.location['city'],
+                     min_temp: forecast['low'], max_temp: forecast['high'],
+                     description: response.condition['text'], image_url: image['src'])
+    else
+      weather.update(date: response.condition['date'], city: response.location['city'],
+                     min_temp: forecast['low'], max_temp: forecast['high'],
+                     description: response.condition['text'], image_url: image['src'])
+    end
   end
 
 end

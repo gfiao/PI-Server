@@ -64,6 +64,7 @@ function start() {
     fetchFooterNews();
     createMarquee();
     animatePanel();
+    getFreeClassrooms();
 
     getCurrentVideo();
 }
@@ -263,8 +264,9 @@ function getPublicTrans() {
         }
     }
 
-    console.log(transportsToTV);
+//    console.log(transportsToTV);
 
+    //TODO: FALTA METER CONFORME AS HORAS
 
     var content = '<h2 style="font-size: 140%">' + "Próximos transportes" + '</h2>';
 
@@ -276,13 +278,15 @@ function getPublicTrans() {
         if (i == 2) break;
     }
     content += '</ul>';
+    i = 5
 
-//    content += '<ul>TST:';
-//    while (transportsToTV[i].carreira != 0) {
-//        content += '<li>' + transportsToTV[i].carreira + ' - ' + transportsToTV[i].hour + ':' + transportsToTV[i].minute + '</li>';
-//        i++;
-//    }
-//    content += '</ul>';
+    content += '<ul>TST:';
+    while (transportsToTV[i].carreira != 0) {
+        content += '<li>' + transportsToTV[i].carreira + ' - ' + transportsToTV[i].hour + ':' + transportsToTV[i].minute + '</li>';
+        i++;
+        if (i == 7) break;
+    }
+    content += '</ul>';
 
 //    content += '<ul>TST: <li>158 - 16h30</li><li>246 - 17h00</li></ul>';
 //    content += '<ul>MTS: <li>16h30</li><li>17h00</li></ul>';
@@ -558,16 +562,15 @@ function Free_classroom(building, classroom, from_time, to_time) {
 function getFreeClassrooms() {
     var freeClassroomsToTV = [];
     var classrooms = $.getValues('/classrooms');
-    var free_classrooms = $.getValues('/free_classrooms');
 
-    for (var i = 0; i < classrooms.length; i++)
-        for (var j = 0; j < free_classrooms.length; j++)
-            if (free_classrooms[j].classroom_id == classrooms[i].id) {
-                var free = new Free_classroom(classrooms[i].building, classrooms[i].classroom,
-                    free_classrooms[j].from_time, free_classrooms[j].to_time);
-                freeClassroomsToTV.push(free);
-                break;
-            }
+    for (var i = 0; i < classrooms.length; i++) {
+        var free_classrooms = classrooms[i].free_classrooms;
+        for (var j = 0; j < free_classrooms.length; j++) {
+            var free = new Free_classroom(classrooms[i].building, classrooms[i].classroom,
+                free_classrooms[j].from_time, free_classrooms[j].to_time);
+            freeClassroomsToTV.push(free);
+        }
+    }
 
     //2014-06-20T10:26:01.901Z
     for (var i = 0; i < freeClassroomsToTV.length; i++) {
@@ -576,60 +579,17 @@ function getFreeClassrooms() {
     }
 
 
+    console.log(freeClassroomsToTV);
+
+//    $('#right-panel-bottom').append('<div><h1>Salas livres ' + freeClassroomsToTV[0].building + ':</h1>');
+    var html = '<div><h1>Salas livres ' + freeClassroomsToTV[0].building + ':</h1>';
+    html += '<table  class="table table-bordered">';
+    html += '<tr>';
+
+    for (var i = 0; i < freeClassroomsToTV.length; i++) {
+        html += '<th>' + freeClassroomsToTV[i].classroom + '</th>'
+    }
+    html += '</tr></table>';
+
+    $('#right-panel-bottom').append(html);
 }
-
-
-/*
- * object.watch polyfill
- *
- * 2012-04-03
- *
- * By Eli Grey, http://eligrey.com
- * Public Domain.
- * NO WARRANTY EXPRESSED OR IMPLIED. USE AT YOUR OWN RISK.
- */
-
-// object.watch
-//if (!Object.prototype.watch) {
-//    Object.defineProperty(Object.prototype, "watch", {
-//        enumerable: false
-//        , configurable: true
-//        , writable: false
-//        , value: function (prop, handler) {
-//            var
-//                oldval = this[prop]
-//                , newval = oldval
-//                , getter = function () {
-//                    return newval;
-//                }
-//                , setter = function (val) {
-//                    oldval = newval;
-//                    return newval = handler.call(this, prop, oldval, val);
-//                }
-//                ;
-//
-//            if (delete this[prop]) { // can't watch constants
-//                Object.defineProperty(this, prop, {
-//                    get: getter
-//                    , set: setter
-//                    , enumerable: true
-//                    , configurable: true
-//                });
-//            }
-//        }
-//    });
-//}
-//
-//// object.unwatch
-//if (!Object.prototype.unwatch) {
-//    Object.defineProperty(Object.prototype, "unwatch", {
-//        enumerable: false
-//        , configurable: true
-//        , writable: false
-//        , value: function (prop) {
-//            var val = this[prop];
-//            delete this[prop]; // remove accessors
-//            this[prop] = val;
-//        }
-//    });
-//}
