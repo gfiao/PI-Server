@@ -144,30 +144,66 @@ p {
 }
 
 /* ############# AGORA NA TV ############# */
+
+@media (max-width: 991px) {
+    #bookmark {
+        width: 100%;
+    }
+
+    #watch-later-span {
+        display: none;
+    }
+
+    #bookmarkText {
+        /*height: 100%;*/
+        height: 60px;
+        line-height: 60px;
+    }
+
+    #bookmarkText > span {
+        /*height: 60px;*/
+        /*line-height: 60px;*/
+        /*margin: 0px;*/
+        display: inline-block;
+        vertical-align: middle;
+        line-height: normal;
+        margin: 0px;
+        font-size: 130%;
+    }
+}
+
+@media (min-width: 992px) {
+    #bookmark {
+        width: 80%;
+    }
+
+    #bookmarkText {
+        height: 100%;
+    }
+
+    #bookmarkText > span {
+        height: 60px;
+        line-height: 60px;
+        margin: 0px;
+        font-size: 150%;
+    }
+}
+
 #bookmark {
     margin: auto;
-    height: 40px;
-    width: 80%;
-    /*margin-top: 20px;*/
-    /*margin-bottom: 20px;*/
+    height: auto;
     background-color: lightgrey;
-    /*border: 1px solid #000000;*/
 }
+
 
 #bookmarkButton {
     height: 100%;
-    /*background-color: grey;*/
     padding: 0px;
-}
-
-#bookmarkText {
-    height: 100%;
-    /*background-color: grey;*/
 }
 
 #bookmarkButton > button {
     width: 100%;
-    height: 100%;
+    height: 60px;
     padding: 0px;
     margin: 0px;
 }

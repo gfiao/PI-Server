@@ -13,7 +13,7 @@
 
     <!-- Com o servidor feito, inserir aqui informação da TV -->
     <div id="bookmarkText" class="col-xs-10 col-md-9">
-      <h4 class="navbar-text navbar-left"></h4>
+      <span class="navbar-text navbar-left"></span>
     </div>
 
     <div id="bookmarkButton" class="col-xs-2 col-md-3">
@@ -22,14 +22,14 @@
 
           <button id="watch-later" type="button" class="btn btn-default btn-lg navbar-btn"
                   data-placement="top" data-trigger="hover" title="Tens que estar autenticado para guardar conteúdo!">
-            <span class="glyphicon glyphicon-time"></span><span id="watch-later"> Ver mais tarde!</span>
+            <span class="glyphicon glyphicon-time"></span><span id="watch-later-span"> Ver mais tarde!</span>
           </button>
 
           <%#= button_to "Inicie sessão", new_user_session_path, :method => :get, :class => "btn btn-lg btn-default navbar-btn" %>
       <% else %>
           <!--<input type="button" onclick="watchLater()" value="Ver mais tarde!"></input>-->
           <button type="button" class="btn btn-default btn-lg navbar-btn" onclick="watchLater()">
-            <span class="glyphicon glyphicon-time"></span> Ver mais tarde!
+            <span class="glyphicon glyphicon-time"></span><span id="watch-later-span"> Ver mais tarde!</span>
           </button>
       <% end %>
     </div>

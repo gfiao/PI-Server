@@ -74,12 +74,12 @@ function updateCurrentVideo() {
 
                 var curr_video = videos[curr.index - 1];
 
-                $("#bookmarkText > h4").empty();
-                $("#bookmarkText > h4").append(curr_video.link);
+                $("#bookmarkText > span").empty();
+                $("#bookmarkText > span").append(curr_video.link);
             }
             else {
-                $("#bookmarkText > h4").empty();
-                $("#bookmarkText > h4").append("A TV está desligada");
+                $("#bookmarkText > span").empty();
+                $("#bookmarkText > span").append("A TV está desligada, texto bué grande para ver se passa para baixo");
             }
         }
     }, 5000);
