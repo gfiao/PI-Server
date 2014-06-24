@@ -32,12 +32,15 @@ class HomepageController < ApplicationController
     # RTP - muitas noticias, algumas com imagens. problemas com acentos/cedilhas - http://www.rtp.pt/noticias/index.php?headline=204&visual=58
     # feedsdenoticias.blogspot - não presta, não vale uma piça, UMA PIÇA! - http://feeds.destakes.com/destakes/canal/imprensa?format=xml
     # I-ONLINE - EXCELENTE!! COM IMAGENS, TEXTO E TAL. é necessário algum parse ao texto. - http://feeds.feedburner.com/jornali?format=xml
+    # DI eventos -  - http://www.di.fct.unl.pt/eventos/rss.xml
+    # DI noticias -  - http://www.di.fct.unl.pt/noticias/rss.xml
 
     require 'rss'
     require 'nokogiri'
 
     # por enquanto apenas o jornal I, pois funciona bem. adicionar mais links mais tarde caso haja mais feeds bacanos hehe
-    feeds = ["http://feeds.feedburner.com/jornali?format=xml"]
+    feeds = ["http://feeds.feedburner.com/jornali?format=xml", "http://www.di.fct.unl.pt/eventos/rss.xml",
+             "http://www.di.fct.unl.pt/noticias/rss.xml"]
 
     rss = RSS::Parser.parse(feeds[0], false)
     puts "============================ INICIO FEEDS ==========================="

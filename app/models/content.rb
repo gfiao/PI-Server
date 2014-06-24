@@ -14,6 +14,9 @@ class Content < ActiveRecord::Base
   has_many :users, through: :user_content
 
   accepts_nested_attributes_for :tags, :video
+
+  validates_uniqueness_of :title, :scope => [:description]
+
   validates :title, presence: true
 
 end
