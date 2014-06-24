@@ -393,8 +393,8 @@ function appendVideos() {
 
     $.each(videos, function (i, video) {
         if (i == 0) {
-            $('div.carousel-inner').append('<div id = "video_' + i + '" class="item active itemsCar">' +
-                '<iframe src="' + video.link + '?autoplay=0&controls=0&modestbranding=1&showinfo=0" style="width: 100%; height:100%;"' +
+            $('#tv-carousel').append('<div id = "video_' + i + '" class="item active itemsCar">' +
+                '<iframe src="' + video.link + '?autoplay=1&controls=0&modestbranding=1&showinfo=0" style="width: 100%; height:100%;"' +
                 'frameborder = "0" ' +
                 'width = 100%' +
                 'height: 100%' +
@@ -408,8 +408,8 @@ function appendVideos() {
                 '</div>');
         }
         else
-            $('div.carousel-inner').append('<div id = "video_' + i + '" class="item itemsCar">' +
-                '<iframe src="' + video.link + '?autoplay=0&controls=0&modestbranding=1&showinfo=0" style="width: 100%; height:100%;" ' +
+            $('#tv-carousel').append('<div id = "video_' + i + '" class="item itemsCar">' +
+                '<iframe src="' + video.link + '?autoplay=1&controls=0&modestbranding=1&showinfo=0" style="width: 100%; height:100%;" ' +
                 'frameborder = "0" ' +
                 'width = 100%' +
                 'height: 100%' +
