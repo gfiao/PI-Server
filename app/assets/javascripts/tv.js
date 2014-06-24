@@ -251,48 +251,49 @@ function Transport(carreira, origin, destination, hour, minute) {
 }
 function getPublicTrans() {
     var transports = $.getValues('/transports');
-    var transportsToTV = [];
+    var transportsTST = [];
+    var transportsMTS = [];
 
     for (var i = 0; i < transports.length; i++) {
         var schedules = transports[i].transport_hours;
         var hours = transports[i].hours;
-        if (schedules.length != 0) {
+        if (schedules.length != 0)
             for (var j = 0; j < hours.length; j++) {
-                transportsToTV.push(new Transport(transports[i].carreira, transports[i].origin, transports[i].destination
-                    , hours[j].hour, hours[j].minute));
+                if (transports[i].carreira == 0)
+                    transportsMTS.push(new Transport(transports[i].carreira, transports[i].origin, transports[i].destination
+                        , hours[j].hour, hours[j].minute));
+                else
+                    transportsTST.push(new Transport(transports[i].carreira, transports[i].origin, transports[i].destination
+                        , hours[j].hour, hours[j].minute));
             }
-        }
     }
 
-//    console.log(transportsToTV);
 
     //TODO: FALTA METER CONFORME AS HORAS
 
     var content = '<h2 style="font-size: 140%">' + "Próximos transportes" + '</h2>';
 
-    var i = 0;
-    content += '<ul>MTS:';
-    while (transportsToTV[i].carreira == 0) {
-        if (transportsToTV[i].minute == 2 || transportsToTV[i].minute == 5 || transportsToTV[i].minute == 7)
-            content += '<li>' + transportsToTV[i].hour + ':0' + transportsToTV[i].minute + '</li>';
+    content += '<div style="padding-left: 3%"><p>MTS:</p>';
+    for (var i = 0; i < transportsMTS.length; i++) {
+        if (transportsMTS[i].minute == 2 || transportsMTS[i].minute == 5 || transportsMTS[i].minute == 7 || transportsTST[i].minute == 0)
+            content += '<span class="transport-span">' + transportsMTS[i].hour + ':0' + transportsMTS[i].minute + '</span>';
         else
-            content += '<li>' + transportsToTV[i].hour + ':' + transportsToTV[i].minute + '</li>';
+            content += '<span class="transport-span">' + transportsMTS[i].hour + ':' + transportsMTS[i].minute + '</span>';
         i++;
         if (i == 2) break;
     }
-    content += '</ul>';
-    i = 5
+    content += '</div></br>';
 
-    content += '<ul>TST:';
-    while (transportsToTV[i].carreira != 0) {
-        if (transportsToTV[i].minute == 2 || transportsToTV[i].minute == 5 || transportsToTV[i].minute == 7)
-            content += '<li>' + transportsToTV[i].carreira + ' - ' +
-                transportsToTV[i].hour + ':0' + transportsToTV[i].minute + '</li>';
+    content += '<div style="padding-left: 3%"><p>TST:</p>';
+    for (var i = 0; i < transportsTST.length; i++) {
+        if (transportsTST[i].minute == 2 || transportsTST[i].minute == 5 || transportsTST[i].minute == 7 || transportsTST[i].minute == 0)
+            content += '<p style="padding-left:6%;">' + transportsTST[i].carreira + ' - ' +
+                transportsTST[i].hour + ':0' + transportsTST[i].minute + '</p>';
         else
-            content += '<li>' + transportsToTV[i].carreira + ' - ' +
-                transportsToTV[i].hour + ':' + transportsToTV[i].minute + '</li>';
+            content += '<p style="padding-left:6%;">' + transportsTST[i].carreira + ' - ' +
+                transportsTST[i].hour + ':' + transportsTST[i].minute + '</p>';
         i++;
-        if (i == 7) break;
+        if (i == 2) break;
     }
     content += '</ul>';
 
@@ -585,7 +586,8 @@ function getFreeClassrooms() {
         freeClassroomsToTV[i].to_time = toHour[0] + ':' + toHour[1];
     }
 
-    var html = '<div id="divClassrooms"><p style="font-size: 300%">Salas livres ' + freeClassroomsToTV[0].building + ':</p>';
+    var html = '<div id="divClassrooms"><p style="font-size: 300%; text-align: center">' +
+        'Salas livres ' + freeClassroomsToTV[0].building + ':</p>';
 
     for (var i = 0; i < freeClassroomsToTV.length; i++) {
         html += '<p class="free-classrooms">' + freeClassroomsToTV[i].classroom
