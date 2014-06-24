@@ -279,7 +279,7 @@ function getPublicTrans() {
             content += '<span class="transport-span">' + transportsMTS[i].hour + ':0' + transportsMTS[i].minute + '</span>';
         else
             content += '<span class="transport-span">' + transportsMTS[i].hour + ':' + transportsMTS[i].minute + '</span>';
-        i++;
+        if (i != 2) content += '|';
         if (i == 2) break;
     }
     content += '</div></br>';
@@ -287,15 +287,17 @@ function getPublicTrans() {
     content += '<div style="padding-left: 3%"><p>TST:</p>';
     for (var i = 0; i < transportsTST.length; i++) {
         if (transportsTST[i].minute == 2 || transportsTST[i].minute == 5 || transportsTST[i].minute == 7 || transportsTST[i].minute == 0)
-            content += '<p style="padding-left:6%;">' + transportsTST[i].carreira + ' - ' +
+            content += '<p style="padding-left:6%;">' + transportsTST[i].carreira +
+                '  ' + transportsTST[i].destination + ' - ' +
                 transportsTST[i].hour + ':0' + transportsTST[i].minute + '</p>';
         else
-            content += '<p style="padding-left:6%;">' + transportsTST[i].carreira + ' - ' +
+            content += '<p style="padding-left:6%;">' + transportsTST[i].carreira +
+                '  ' + transportsTST[i].destination + ' - ' +
                 transportsTST[i].hour + ':' + transportsTST[i].minute + '</p>';
-        i++;
+
         if (i == 2) break;
     }
-    content += '</ul>';
+    content += '</div>';
 
 
     globalCounter++;
@@ -314,18 +316,18 @@ function getMeteo() {
     if (weather[0].description = 'Predominantemente Nublado')
         weather[0].description = 'Muito Nublado';
 
-    var content = '<h2>Meteorologia</h2>';
+    var content = '<h2 style="font-size: 130%">Meteorologia</h2>';
 
-    content += '<h3 style="font-size: 130%">Almada</h3>';
+    content += '<h3 style="font-size: 130%">Almada</h3></br>';
 
-    content += '<div style="text-align: center">' + weather[0].description +
+    content += '<div style="text-align: center;font-size: 130%">' + weather[0].description + '  ' +
         '<img src="' + weather[0].image_url + '"></div>';
 
     content += '<span class="meteo-span">Min:</span>';
     content += '<span class="meteo-span">Max:</span>';
     content += '</br>';
-    content += '<span class="meteo-span">' + weather[0].min_temp + '</span>';
-    content += '<span class="meteo-span">' + weather[0].max_temp + '</span>';
+    content += '<span class="meteo-span"><b>' + weather[0].min_temp + '</b></span>';
+    content += '<span class="meteo-span"><b>' + weather[0].max_temp + '</b></span>';
 
 
     globalCounter++;
@@ -395,7 +397,7 @@ function appendVideos() {
     $.each(videos, function (i, video) {
         if (i == 0) {
             $('#tv-carousel').append('<div id = "video_' + i + '" class="item active itemsCar">' +
-                '<iframe src="' + video.link + '?autoplay=1&controls=0&modestbranding=1&showinfo=0" style="width: 100%; height:100%;"' +
+                '<iframe src="' + video.link + '?autoplay=0&controls=0&modestbranding=1&showinfo=0" style="width: 100%; height:100%;"' +
                 'frameborder = "0" ' +
                 'width = 100%' +
                 'height: 100%' +
@@ -410,7 +412,7 @@ function appendVideos() {
         }
         else
             $('#tv-carousel').append('<div id = "video_' + i + '" class="item itemsCar">' +
-                '<iframe src="' + video.link + '?autoplay=1&controls=0&modestbranding=1&showinfo=0" style="width: 100%; height:100%;" ' +
+                '<iframe src="' + video.link + '?autoplay=0&controls=0&modestbranding=1&showinfo=0" style="width: 100%; height:100%;" ' +
                 'frameborder = "0" ' +
                 'width = 100%' +
                 'height: 100%' +
