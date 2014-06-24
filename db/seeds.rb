@@ -141,21 +141,8 @@ Classroom.create(building: 'Ed.2', classroom: '120')
 
 #FreeClassroom user_id:integer classroom_id:integer from_time:datetime likes:integer, to_time:datetime
 puts 'Adding Free Classrooms'
-FreeClassroom.create(user_id: 1, classroom_id: 1, from_time:
-    DateTime.new(now.year, now.month, 1.day, 14.hours, 30.minutes, 0, 0),
-                     to_time: DateTime.new(now.year, now.month, 1.day, 14.hours, 30.minutes, 0, 0) + 2.hours)
-FreeClassroom.create(user_id: 10, classroom_id: 2, from_time:
-    DateTime.new(now.year, now.month, 1.day, 12.hours, 00.minutes, 0, 0),
-                     to_time: DateTime.new(now.year, now.month, 1.day, 12.hours, 00.minutes, 0, 0)+ 2.hours)
-FreeClassroom.create(user_id: 10, classroom_id: 3, from_time:
-    DateTime.new(now.year, now.month, 1.day, 10.hours, 00.minutes, 0, 0),
-                     to_time: DateTime.new(now.year, now.month, 1.day, 10.hours, 00.minutes, 0, 0)+ 3.hours)
-FreeClassroom.create(user_id: 10, classroom_id: 4, from_time:
-    DateTime.new(now.year, now.month, 1.day, 16.hours, 30.minutes, 0, 0),
-                     to_time: DateTime.new(now.year, now.month, 1.day, 16.hours, 30.minutes, 0, 0) + 1.hours)
-FreeClassroom.create(user_id: 10, classroom_id: 5, from_time:
-    DateTime.new(now.year, now.month, 1.day, 15.hours, 00.minutes, 0, 0),
-                     to_time: DateTime.new(now.year, now.month, 1.day, 15.hours, 00.minutes, 0, 0)+ 2.hours)
+FreeClassroom.create(user_id: 1, classroom_id: 1, from_time: DateTime.now, to_time: DateTime.now + 2.hours)
+FreeClassroom.create(user_id: 10, classroom_id: 4, from_time: DateTime.now, to_time: DateTime.now+ 3.hours)
 
 #Game name:string
 puts 'Adding Games'
@@ -185,6 +172,10 @@ Video.create(link: 'https://www.youtube.com/embed/mKXIXPiVk3U')
 Video.create(link: 'https://www.youtube.com/embed/YXCNFeeH1Ow')
 Video.create(link: 'https://www.youtube.com/embed/9yNtJsFxDQI')
 
+#ContentVideo content_id:integer video_id:integer
+# puts 'Associating videos to content'
+# ContentVideo.create(content_id: 1, video_id: 1)
+
 #FooterNews category:string news:string date:date
 puts 'Adding Footer News'
 FooterNews.create(category: 'País', news: 'Pedro Passos Coelho demite-se, após ter sido publicado que este é alemão.', date: Date.today())
@@ -201,23 +192,7 @@ CurrentVideo.create(index: 0)
 puts 'Adding Transports'
 Transport.create(carreira: 0, origin: 'Universidade', destination: 'Cacilhas')
 Transport.create(carreira: 126, origin: 'Cacilhas', destination: 'Marisol')
-Transport.create(carreira: 126, origin: 'Marisol', destination: 'Cacilhas')
 Transport.create(carreira: 194, origin: 'Costa da Caparica', destination: 'Pragal(Est)')
-Transport.create(carreira: 194, origin: 'Pragal(Est)', destination: 'Costa da Caparica')
-
-#TransportHours transport_id:integer hour_id:integer
-puts 'Adding TransportHours'
-TransportHour.create(transport_id: Transport.find_by(carreira: 0).id, hour_id: Hour.find_by(hour: 12, minute: 2).id)
-TransportHour.create(transport_id: Transport.find_by(carreira: 0).id, hour_id: Hour.find_by(hour: 12, minute: 7).id)
-TransportHour.create(transport_id: Transport.find_by(carreira: 0).id, hour_id: Hour.find_by(hour: 17, minute: 2).id)
-TransportHour.create(transport_id: Transport.find_by(carreira: 0).id, hour_id: Hour.find_by(hour: 17, minute: 17).id)
-TransportHour.create(transport_id: Transport.find_by(carreira: 0).id, hour_id: Hour.find_by(hour: 14, minute: 22).id)
-TransportHour.create(transport_id: Transport.find_by(carreira: 0).id, hour_id: Hour.find_by(hour: 14, minute: 37).id)
-TransportHour.create(transport_id: Transport.find_by(carreira: 126).id, hour_id: Hour.find_by(hour: 14, minute: 35).id)
-TransportHour.create(transport_id: Transport.find_by(carreira: 126).id, hour_id: Hour.find_by(hour: 15, minute: 20).id)
-TransportHour.create(transport_id: Transport.find_by(carreira: 126).id, hour_id: Hour.find_by(hour: 17, minute: 55).id)
-TransportHour.create(transport_id: Transport.find_by(carreira: 194).id, hour_id: Hour.find_by(hour: 14, minute: 35).id)
-TransportHour.create(transport_id: Transport.find_by(carreira: 194).id, hour_id: Hour.find_by(hour: 18, minute: 0).id)
 
 #Hours hour:integer minute:integer
 puts 'Adding Hours'
@@ -231,6 +206,19 @@ puts 'Adding Hours'
     k += 5
   end
 end
+
+#TransportHours transport_id:integer hour_id:integer
+puts 'Adding TransportHours'
+TransportHour.create(transport_id: Transport.find_by(carreira: 0).id, hour_id: Hour.find_by(hour: 17, minute: 2).id)
+TransportHour.create(transport_id: Transport.find_by(carreira: 0).id, hour_id: Hour.find_by(hour: 17, minute: 17).id)
+TransportHour.create(transport_id: Transport.find_by(carreira: 0).id, hour_id: Hour.find_by(hour: 17, minute: 22).id)
+TransportHour.create(transport_id: Transport.find_by(carreira: 0).id, hour_id: Hour.find_by(hour: 17, minute: 37).id)
+TransportHour.create(transport_id: Transport.find_by(carreira: 126).id, hour_id: Hour.find_by(hour: 14, minute: 35).id)
+TransportHour.create(transport_id: Transport.find_by(carreira: 126).id, hour_id: Hour.find_by(hour: 15, minute: 20).id)
+TransportHour.create(transport_id: Transport.find_by(carreira: 126).id, hour_id: Hour.find_by(hour: 17, minute: 55).id)
+TransportHour.create(transport_id: Transport.find_by(carreira: 194).id, hour_id: Hour.find_by(hour: 14, minute: 35).id)
+TransportHour.create(transport_id: Transport.find_by(carreira: 194).id, hour_id: Hour.find_by(hour: 18, minute: 0).id)
+
 
 #UserContent user_id:integer content_id:integer
 puts 'Associating content to users'
