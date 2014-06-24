@@ -143,6 +143,7 @@ Classroom.create(building: 'Ed.2', classroom: '120')
 puts 'Adding Free Classrooms'
 FreeClassroom.create(user_id: 1, classroom_id: 1, from_time: DateTime.now, to_time: DateTime.now + 2.hours)
 FreeClassroom.create(user_id: 10, classroom_id: 4, from_time: DateTime.now, to_time: DateTime.now+ 3.hours)
+FreeClassroom.create(user_id: 10, classroom_id: 3, from_time: DateTime.now, to_time: DateTime.now)
 
 #Game name:string
 puts 'Adding Games'
