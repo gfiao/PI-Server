@@ -32,9 +32,11 @@ function init() {
 //    $('#testeFeeds').load('/homepage/fetch_mail');
 
 //   DESACTIVADO PARA EFEITOS DE TESTE!!!!!
+    $('#testeFeeds').load('/homepage/feeds');
+
 //    setInterval(function(){
 //        $('#testeFeeds').load('/homepage/feeds');
-//    }, 15000);
+//    }, 20000);
 
 }
 
