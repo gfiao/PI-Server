@@ -14,43 +14,101 @@
     <%= javascript_include_tag 'application2048.js' %>
 
     <style>
+
+        /* para aplicar a margem entre header e caixote e footer e caixote */
+        @media (min-width: 768px) {
+            #game {
+                margin-top: 30px;
+                margin-bottom: 30px;
+                padding-top: 20px
+            }
+        }
+
         /* Large desktop */
         @media (min-width: 1200px) {
-            #highscore_table {
-                margin-left: 6%;
+            #game-container {
+                padding-right: 50px;
+                width: 565px;
             }
 
-            #badjoras {
-                padding-right: 50px
+            #highscore_table {
+                padding-right: 30px;
+            }
+        }
+
+        @media (min-width: 992px) and (max-width: 1199px) {
+            #game-container {
+                width: 735px;
+                padding-left: 23%;
+            }
+
+            #highscore_table {
+                margin-top: 5%;
+                padding-right: 30px;
+            }
+        }
+
+        @media (min-width: 768px) and (max-width: 991px) {
+            #game-container {
+                width: 530px;
+                margin: 0px auto;
+            }
+
+            #game {
+                margin-top: 30px;
+                margin-bottom: 30px;
+                padding-top: 20px
+            }
+
+            #highscore_table {
+                margin-top: 8%;
+                padding-right: 5%;
             }
         }
 
         /* Portrait tablet to landscape and desktop */
-        @media (min-width: 768px) and (max-width: 979px) {
+        @media (min-width: 521px) and (max-width: 767px) {
+            #game-container {
+                width: 500px;
+                margin: 0px auto;
+                padding: 0px;
+            }
+
+            #game {
+                padding-top: 20px;
+            }
+
             #highscore_table {
-                margin-left: 8%;
-                margin-top: 12%;
+                margin-top: 5%;
+                padding-right: 30px;
             }
         }
 
         /* Landscape phone to portrait tablet */
         @media (max-width: 767px) {
-            #cont1 {
-                margin-left: 0px;
-                margin-right: 0px;
-            }
-
             #highscore_table {
-                margin-left: 8%;
-                margin-top: 12%;
+                /*margin-left: 8%;*/
+                margin-top: 8%;
             }
         }
 
-        /* Landscape phones and down */
-        @media (max-width: 480px) {
+        @media (max-width: 520px) {
+            #game {
+                width: 315px;
+                margin: 0px auto;
+                padding-right: 5px;
+                padding-left: 5px;
+                padding-bottom: 2%;
+            }
+
+            #game-container {
+                width: 280px;
+                padding-left: 0px;
+                padding-right: 0px;
+            }
+
             #highscore_table {
-                margin-left: 8%;
-                margin-top: 12%;
+                padding-left: 0px;
             }
         }
 
@@ -61,16 +119,15 @@
 
         #game {
             background-color: #e3ebf2;
-            padding-right: 35px;
-            padding-left: 35px;
+            padding-right: 10px;
+            padding-left: 30px;
             padding-bottom: 7%;
         }
     </style>
 
-    <div class="container" id="game" style="margin-top: 30px;
-            margin-bottom: 30px; padding-top: 20px">
+    <div class="container" id="game">
       <div class="row">
-        <div id="badjoras" class="gameToTheLeft col-md-6">
+        <div id="game-container" class="gameToTheLeft col-md-12 col-lg-6">
           <div class="heading">
             <h1 class="title">2048</h1>
 
@@ -143,7 +200,7 @@
           </p>
         </div>
 
-        <div id="highscore_table" class="col-md-5">
+        <div id="highscore_table" class="col-md-12 col-lg-6">
           <h2 class="table-header">Tabela de pontuações</h2>
           <ul id="table_scores" class="nav nav-tabs">
             <li class="active"><a href="#geral">Geral</a></li>
@@ -169,7 +226,16 @@
               </table>
             </div>
             <div class="tab-pane" id="curso">
-
+              <table class="table table-striped">
+                <!--<tr>-->
+                  <!--<th>Curso</th>-->
+                  <!--<th>Jogador</th>-->
+                  <!--<th>Pontuação</th>-->
+                <!--</tr>-->
+                <tr>
+                  <th>Esta funcionalidade vem mais tarde, tá quase a sair do forno!</th>
+                </tr>
+              </table>
             </div>
           </div>
         </div>

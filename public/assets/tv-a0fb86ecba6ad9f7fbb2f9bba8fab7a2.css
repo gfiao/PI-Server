@@ -1,0 +1,344 @@
+@charset "UTF-8";
+@font-face {
+  font-family: 'Myriad Pro Regular';
+  font-style: normal;
+  font-weight: normal;
+  src: local("Myriad Pro Regular"), url("MYRIADPRO-REGULAR.woff") format("woff");
+}
+
+@font-face {
+  font-family: 'Myriad Pro Condensed';
+  font-style: normal;
+  font-weight: normal;
+  src: local("Myriad Pro Condensed"), url("MYRIADPRO-COND.woff") format("woff");
+}
+
+@font-face {
+  font-family: 'Myriad Pro Semibold Italic';
+  font-style: normal;
+  font-weight: normal;
+  src: local("Myriad Pro Semibold Italic"), url("MYRIADPRO-SEMIBOLDIT.woff") format("woff");
+}
+
+@font-face {
+  font-family: 'Myriad Pro Semibold';
+  font-style: normal;
+  font-weight: normal;
+  src: local("Myriad Pro Semibold"), url("MYRIADPRO-SEMIBOLD.woff") format("woff");
+}
+
+@font-face {
+  font-family: 'Myriad Pro Condensed Italic';
+  font-style: normal;
+  font-weight: normal;
+  src: local("Myriad Pro Condensed Italic"), url("MYRIADPRO-CONDIT.woff") format("woff");
+}
+
+@font-face {
+  font-family: 'Myriad Pro Bold Italic';
+  font-style: normal;
+  font-weight: normal;
+  src: local("Myriad Pro Bold Italic"), url("MYRIADPRO-BOLDIT.woff") format("woff");
+}
+
+@font-face {
+  font-family: 'Myriad Pro Bold Condensed Italic';
+  font-style: normal;
+  font-weight: normal;
+  src: local("Myriad Pro Bold Condensed Italic"), url("MYRIADPRO-BOLDCONDIT.woff") format("woff");
+}
+
+@font-face {
+  font-family: 'Myriad Pro Bold Condensed';
+  font-style: normal;
+  font-weight: normal;
+  src: local("Myriad Pro Bold Condensed"), url("MYRIADPRO-BOLDCOND.woff") format("woff");
+}
+
+@font-face {
+  font-family: 'Myriad Pro Bold';
+  font-style: normal;
+  font-weight: normal;
+  src: local("Myriad Pro Bold"), url("MYRIADPRO-BOLD.woff") format("woff");
+}
+
+@media (min-width: 500px) {
+  /* line 73, D:/GitHub/PI-Server/app/assets/stylesheets/tv.css.scss */
+  #hour-info p {
+    font-size: 775%;
+  }
+
+  /* line 77, D:/GitHub/PI-Server/app/assets/stylesheets/tv.css.scss */
+  #date-info p {
+    font-size: 375%;
+    padding-left: 20px;
+    padding-right: 20px;
+  }
+
+  /* line 83, D:/GitHub/PI-Server/app/assets/stylesheets/tv.css.scss */
+  #category p {
+    margin-top: 0px;
+    font-size: 150%;
+    padding: 12px;
+  }
+
+  /* line 89, D:/GitHub/PI-Server/app/assets/stylesheets/tv.css.scss */
+  #news-container p {
+    margin: 0px;
+    font-size: 120%;
+    padding: 10px;
+  }
+}
+@media (max-width: 499px) {
+  /*paragrafo das horas*/
+  /* line 99, D:/GitHub/PI-Server/app/assets/stylesheets/tv.css.scss */
+  #hour-info > p {
+    font-size: 80px;
+  }
+
+  /* line 103, D:/GitHub/PI-Server/app/assets/stylesheets/tv.css.scss */
+  #date-info > p {
+    font-size: 35px;
+  }
+}
+/* line 108, D:/GitHub/PI-Server/app/assets/stylesheets/tv.css.scss */
+body {
+  margin: 0px;
+}
+
+/* line 112, D:/GitHub/PI-Server/app/assets/stylesheets/tv.css.scss */
+#globalContainer {
+  background-color: #ffffff;
+  color: white;
+  width: 1920px;
+  height: 1080px;
+  font-family: "Myriad Pro Regular";
+}
+
+/*inicio do que realmente interessa*/
+/* line 128, D:/GitHub/PI-Server/app/assets/stylesheets/tv.css.scss */
+#main {
+  /*mudar a altura consoante a resolução do display*/
+  width: 100%;
+  height: 100%;
+  background-color: darkblue;
+}
+
+/* line 143, D:/GitHub/PI-Server/app/assets/stylesheets/tv.css.scss */
+#video-and-lateral {
+  height: 93%;
+  width: 100%;
+}
+
+/* ############# css do caixote central ############# */
+/* line 149, D:/GitHub/PI-Server/app/assets/stylesheets/tv.css.scss */
+#view-area {
+  height: 100%;
+  width: 70%;
+  float: left;
+  /*display: inline-block;*/
+}
+
+/* line 157, D:/GitHub/PI-Server/app/assets/stylesheets/tv.css.scss */
+.itemsCar {
+  height: 100%;
+  width: 100%;
+}
+
+/* line 162, D:/GitHub/PI-Server/app/assets/stylesheets/tv.css.scss */
+#right-panel {
+  /*remover margens entre inline-block*/
+  /*margin-left: -4px;*/
+  height: 100%;
+  width: 30%;
+  float: left;
+  /*display: inline-block;*/
+}
+
+/* ############# css do painel lateral - TOPO ############# */
+/* line 174, D:/GitHub/PI-Server/app/assets/stylesheets/tv.css.scss */
+#right-panel-top {
+  width: 100%;
+  height: 15%;
+  display: block;
+  background-color: rgba(58, 218, 255, 0.1);
+}
+
+/* line 185, D:/GitHub/PI-Server/app/assets/stylesheets/tv.css.scss */
+#hour-info {
+  width: 50%;
+  font-family: "Myriad Pro Condensed";
+  font-weight: bold;
+}
+
+/* line 191, D:/GitHub/PI-Server/app/assets/stylesheets/tv.css.scss */
+#date-info {
+  width: 50%;
+  /*background-color: blue;*/
+}
+
+/* line 198, D:/GitHub/PI-Server/app/assets/stylesheets/tv.css.scss */
+#hour-info,
+#date-info {
+  height: 100%;
+  float: left;
+}
+
+/* line 204, D:/GitHub/PI-Server/app/assets/stylesheets/tv.css.scss */
+#hour-info > p,
+#date-info > p {
+  text-align: center;
+  margin: 0px;
+}
+
+/* ############# PAINEL LATERAL - MEIO ############# */
+/* line 210, D:/GitHub/PI-Server/app/assets/stylesheets/tv.css.scss */
+#right-panel-middle {
+  width: 100%;
+  height: 60%;
+  /*padding-left: 25px;*/
+  font-size: 240%;
+  background: linear-gradient(to bottom, darkblue 0%, rgba(58, 218, 255, 0.3) 10%, rgba(58, 218, 255, 0.3) 90%, darkblue 100%);
+}
+
+/* line 222, D:/GitHub/PI-Server/app/assets/stylesheets/tv.css.scss */
+#toAnimate {
+  width: 90%;
+}
+
+/*titulo do restaurante*/
+/* line 227, D:/GitHub/PI-Server/app/assets/stylesheets/tv.css.scss */
+#right-panel-middle h2 {
+  padding-left: 50px;
+  margin-bottom: 30px;
+  padding-top: 30px;
+  margin-top: 0px;
+}
+
+/*lista que contem a ementa*/
+/* line 235, D:/GitHub/PI-Server/app/assets/stylesheets/tv.css.scss */
+#ementaList {
+  list-style: none;
+  padding-left: 70px;
+}
+
+/* line 240, D:/GitHub/PI-Server/app/assets/stylesheets/tv.css.scss */
+#ementaList > li {
+  margin-bottom: 15px;
+  /*margin-top: 20px;*/
+}
+
+/* ############# css do painel lateral - BAIXO ############# */
+/* line 246, D:/GitHub/PI-Server/app/assets/stylesheets/tv.css.scss */
+#right-panel-bottom {
+  width: 100%;
+  height: 25%;
+  background-color: rgba(58, 218, 255, 0.1);
+}
+
+/* ############# FOOTER ############# */
+/* line 256, D:/GitHub/PI-Server/app/assets/stylesheets/tv.css.scss */
+#footer {
+  height: 7%;
+  width: 100%;
+  font-size: 30px;
+}
+
+/* line 263, D:/GitHub/PI-Server/app/assets/stylesheets/tv.css.scss */
+#category {
+  width: 20%;
+  height: 100%;
+  background-color: #3bb6ce;
+  float: left;
+  text-align: center;
+  border-bottom-right-radius: 50px;
+  border-top-right-radius: 50px;
+  font-family: "Myriad Pro Regular";
+}
+
+/* line 274, D:/GitHub/PI-Server/app/assets/stylesheets/tv.css.scss */
+#news-container {
+  width: 80%;
+  height: 100%;
+  float: left;
+  font-family: 'Myriad Pro Condensed';
+  font-size: 40px;
+}
+
+/* line 282, D:/GitHub/PI-Server/app/assets/stylesheets/tv.css.scss */
+#category p {
+  margin-top: 0px;
+}
+
+/* line 286, D:/GitHub/PI-Server/app/assets/stylesheets/tv.css.scss */
+#news-container p {
+  margin: 0px;
+}
+
+/* line 290, D:/GitHub/PI-Server/app/assets/stylesheets/tv.css.scss */
+.news-container-scroll {
+  overflow: hidden;
+}
+
+/*parte superior do painel lateral, com as horas/tempo*/
+/*#meteo-info, #hour-date {*/
+/*height: 50%;*/
+/*}*/
+/*temperatura maxima/minima*/
+/*#meteo-min-temp,*/
+/*#meteo-max-temp {*/
+/*width: 50%;*/
+/*height: 100%;*/
+/*float: left;*/
+/*}*/
+/*temperatura minima*/
+/*#meteo-min-temp {*/
+/*background-color: blue;*/
+/*}*/
+/*temperatura máxima*/
+/*#meteo-max-temp {*/
+/*background-color: red;*/
+/*}*/
+/*#max-temp-img,*/
+/*#max-temp-value,*/
+/*#min-temp-img,*/
+/*#min-temp-value {*/
+/*float: left;*/
+/*width: 50%;*/
+/*height: 100%;*/
+/*}*/
+/*#max-temp-img,*/
+/*#min-temp-img {*/
+/*background-color: #ffff00;*/
+/*}*/
+/*#max-temp-value,*/
+/*#min-temp-value {*/
+/*background-color: green;*/
+/*}*/
+/*centra os textos do rodapé*/
+/*#footer > h1 {*/
+/*margin-top: 19px;*/
+/*margin-bottom: 19px;*/
+/*}*/
+/*padding para a noticia do rodapé*/
+/*#news-container > h1 {*/
+/*padding-left: 10px;*/
+/*}*/
+/* line 347, D:/GitHub/PI-Server/app/assets/stylesheets/tv.css.scss */
+h3, h2 {
+  text-align: center;
+}
+
+/* line 351, D:/GitHub/PI-Server/app/assets/stylesheets/tv.css.scss */
+.meteo-span {
+  display: inline-block;
+  width: 50%;
+  text-align: center;
+}
+
+/*#######################################################*/
+/* line 358, D:/GitHub/PI-Server/app/assets/stylesheets/tv.css.scss */
+.badjoras {
+  visibility: hidden;
+  position: absolute;
+}

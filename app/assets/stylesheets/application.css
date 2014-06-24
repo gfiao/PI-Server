@@ -304,6 +304,10 @@ footer p:last-child {
     margin-bottom: 0px;
 }
 
+footer p:first-child {
+    margin-top: 0px;
+}
+
 .space-top {
     margin-top: 30px;
 }
