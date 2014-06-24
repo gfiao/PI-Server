@@ -21,10 +21,10 @@
       </div>
 
       <% if devise_mapping.rememberable? -%>
-          <div><%= f.check_box :remember_me %> <%= f.label :lembrar %></div>
+          <div><%= f.check_box :remember_me %> <%= f.label :lembrar_dados %></div>
       <% end -%>
 
-      <div><%= f.submit "Iniciar sessão" %></div>
+      <div><%= f.submit "Iniciar sessão", class: "btn btn-default" %></div>
   <% end %>
 
   <p style="margin-top: 2%">Ainda não tem conta? <%= render "devise/shared/links" %></p>
