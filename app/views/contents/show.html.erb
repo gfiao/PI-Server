@@ -41,7 +41,8 @@
     <%= @content.news_text %>
   </p>
 
-  <%= link_to 'Edit', edit_content_path(@content) %> |
-  <%= link_to 'Back', contents_path %>
+  <%= button_to 'Editar notícia', edit_content_path(@content), method: :get, class: "btn btn-default" %>
+  <p></p>
+  <%= button_to 'Voltar atrás', contents_path, method: :get, class: "btn btn-default" %>
 
 </div>

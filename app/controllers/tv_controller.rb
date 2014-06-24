@@ -114,7 +114,7 @@ class TvController < ApplicationController
       # apenas a parte que interessa, o texto do email, e converte para um array
       mail_text = mail.parts[0].parts[0].body.to_s.split("\n")
 
-      # puts mail_text
+      puts mail_text
 
       puts "\n*********************** 1 ***************************\n"
       puts "mail_text.length: #{mail_text.length}"
