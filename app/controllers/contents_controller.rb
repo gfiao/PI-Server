@@ -12,6 +12,8 @@ class ContentsController < ApplicationController
   # GET /contents/1
   # GET /contents/1.json
   def show
+    @content.views = @content.views + 1
+    @content.save
   end
 
   # GET /contents/new
