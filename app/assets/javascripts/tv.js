@@ -62,7 +62,7 @@ function start() {
     updateTime();
     updateDate();
     fetchFooterNews();
-    createMarquee();
+    createFooter();
     animatePanel();
     getFreeClassrooms();
 
@@ -120,7 +120,7 @@ function animatePanel() {
             $("#toAnimate").empty();
             $("#toAnimate").append(toShow);
             $('#toAnimate').removeClass('fadeOutRight');
-            $('#toAnimate').addClass('animated fadeInRight');
+            $('#toAnimate').addClass('fadeInRight');
         }, 650);
 
     }, 5000); //time in ms
@@ -274,36 +274,36 @@ function getPublicTrans() {
     content += '<div style="padding-left: 3%"><p>MTS:</p>';
     var counter = 0;
     for (var i = 0; i < transportsMTS.length; i++) {
-        if ((transportsMTS[i].hour >= hour && transportsMTS[i].hour <= hour - 1) && (transportsMTS[i].minute > minute && transportsMTS[i].minute < minute - 15)) {
-            if (transportsMTS[i].minute == 2 || transportsMTS[i].minute == 5 || transportsMTS[i].minute == 7 || transportsTST[i].minute == 0)
-                content += '<span class="transport-span">' + transportsMTS[i].hour + ':0' + transportsMTS[i].minute + '</span>';
-            else
-                content += '<span class="transport-span">' + transportsMTS[i].hour + ':' + transportsMTS[i].minute + '</span>';
-            if (counter != 2) content += '|';
-            if (counter == 2) break;
-            counter++;
-        }
+//        if ((transportsMTS[i].hour >= hour && transportsMTS[i].hour <= hour - 1) && (transportsMTS[i].minute > minute && transportsMTS[i].minute < minute - 15)) {
+        if (transportsMTS[i].minute == 2 || transportsMTS[i].minute == 5 || transportsMTS[i].minute == 7 || transportsTST[i].minute == 0)
+            content += '<span class="transport-span">' + transportsMTS[i].hour + ':0' + transportsMTS[i].minute + '</span>';
+        else
+            content += '<span class="transport-span">' + transportsMTS[i].hour + ':' + transportsMTS[i].minute + '</span>';
+        if (counter != 2) content += '|';
+        if (counter == 2) break;
+        counter++;
+//        }
     }
     content += '</div></br>';
 
     counter = 0;
     content += '<div style="padding-left: 3%"><p>TST:</p>';
     for (var i = 0; i < transportsTST.length; i++) {
-        if ((transportsTST[i].hour > hour && transportsTST[i].hour <= hour - 1) && (transportsTST[i].minute > minute && transportsTST[i].minute < minute - 15)) {
+//        if ((transportsTST[i].hour > hour && transportsTST[i].hour <= hour - 1) && (transportsTST[i].minute > minute && transportsTST[i].minute < minute - 15)) {
 
-            if (transportsTST[i].minute == 2 || transportsTST[i].minute == 5 || transportsTST[i].minute == 7 || transportsTST[i].minute == 0)
+        if (transportsTST[i].minute == 2 || transportsTST[i].minute == 5 || transportsTST[i].minute == 7 || transportsTST[i].minute == 0)
 
-                content += '<p style="padding-left:6%;">' + transportsTST[i].carreira +
-                    '  ' + transportsTST[i].destination + ' - ' +
-                    transportsTST[i].hour + ':0' + transportsTST[i].minute + '</p>';
-            else
-                content += '<p style="padding-left:6%;">' + transportsTST[i].carreira +
-                    '  ' + transportsTST[i].destination + ' - ' +
-                    transportsTST[i].hour + ':' + transportsTST[i].minute + '</p>';
+            content += '<p style="padding-left:6%;">' + transportsTST[i].carreira +
+                '  ' + transportsTST[i].destination + ' - ' +
+                transportsTST[i].hour + ':0' + transportsTST[i].minute + '</p>';
+        else
+            content += '<p style="padding-left:6%;">' + transportsTST[i].carreira +
+                '  ' + transportsTST[i].destination + ' - ' +
+                transportsTST[i].hour + ':' + transportsTST[i].minute + '</p>';
 
-            if (counter == 2) break;
-            counter++;
-        }
+        if (counter == 2) break;
+        counter++;
+//        }
     }
     content += '</div>';
 
@@ -324,9 +324,9 @@ function getMeteo() {
     if (weather[0].description = 'Predominantemente Nublado')
         weather[0].description = 'Muito Nublado';
 
-    var content = '<h2 style="font-size: 130%">Meteorologia</h2>';
+    var content = '<h1 style="font-size: 130%;text-align: center;">Meteorologia</h2></br>';
 
-    content += '<h3 style="font-size: 130%">Almada</h3></br>';
+    content += '<h1 style="font-size: 130%; text-align: center">Almada</h3></br>';
 
     content += '<div style="text-align: center;font-size: 130%">' + weather[0].description + '  ' +
         '<img src="' + weather[0].image_url + '"></div>';
@@ -334,8 +334,8 @@ function getMeteo() {
     content += '<span class="meteo-span">Min:</span>';
     content += '<span class="meteo-span">Max:</span>';
     content += '</br>';
-    content += '<span class="meteo-span"><b>' + weather[0].min_temp + '</b></span>';
-    content += '<span class="meteo-span"><b>' + weather[0].max_temp + '</b></span>';
+    content += '<span class="meteo-span"><b>' + weather[0].min_temp + 'º</b></span>';
+    content += '<span class="meteo-span"><b>' + weather[0].max_temp + 'º</b></span>';
 
 
     globalCounter++;
@@ -438,7 +438,7 @@ function appendVideos() {
     $.each(imagens, function (i, imagem) {
         $('#tv-carousel').append('<div id = "image_' + i + '" class="item">' +
             '<img src="/assets/' + imagem.link_image + '" style="width: 100%; height:100%;" > ' +
-            '<div class="carousel-caption">' +
+            '<div class="carousel-caption" style="opacity: 0.7; background-color: #000000">' +
             '<h1>' + imagem.title + '</h1>' +
             '</div>' +
             '</div>');
@@ -540,32 +540,50 @@ var footerCounter = 0;
 
 function fetchFooterNews() {
     footerNews = $.getValues('/footer_news');
-//    console.log(footerNews);
+    console.log(footerNews);
 }
 
-function createMarquee() {
-    $('#category p').append(footerNews[0].category);
-    $('.news-container-scroll p').append(footerNews[0].news);
-    $('.news-container-scroll')
-        .bind('finished', populateMarquee)
-        .marquee({
-            duration: 5000
-        });
-    footerCounter++;
+function createFooter() {
+
+    intervalID = setInterval(function () {
+
+        toShow = getFooterContent();
+
+        $("#footer-category-tv p").removeClass('fadeInDown');
+        $("#footer-category-tv p").addClass('fadeOutUp');
+
+        $("#news-container").removeClass('fadeInDown');
+        $("#news-container").addClass('fadeOutUp');
+
+        setTimeout(function () { //timeout para garantir que o novo texto aparece entre os dois fades
+            $("#footer-category-tv p").empty();
+            $("#footer-category-tv p").append(toShow[0]);
+            $("#footer-category-tv p").removeClass('fadeOutUp');
+            $("#footer-category-tv p").addClass('animated fadeInDown');
+
+            $("#news-container p").empty();
+            $("#news-container p").append(toShow[1]);
+            $("#news-container").removeClass('fadeOutUp');
+            $("#news-container").addClass('animated fadeInDown');
+        }, 650);
+
+    }, 7500); //time in ms
+
 }
 
-function populateMarquee() {
-    var toappend = footerNews[footerCounter];
+function getFooterContent() {
+    var content = footerNews[footerCounter];
+    var toappend = [];
 
-    $('#category p').empty();
-    $('#category p').append(toappend.category);
-    $('.news-container-scroll p').empty();
-    $('.news-container-scroll p').append(toappend.news);
+    toappend[0] = content.category;
+    toappend[1] = content.news;
 
     if (footerCounter == footerNews.length - 1)
         footerCounter = 0;
     else
         footerCounter++;
+
+    return toappend;
 }
 
 //Objecto a ser inserido na TV
