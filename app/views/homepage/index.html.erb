@@ -115,7 +115,7 @@
     </div>
 
     <% i = 0 %>
-    <% Content.all.each do |content| %>
+    <% Content.all.order(views: :desc).each do |content| %>
 
         <% if (i % 3 == 0) %>
             <div class="row">
