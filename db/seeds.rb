@@ -117,6 +117,13 @@ Content.create(title: 'Apresentação da FCT!',
                description: 'Video de apresentação da FCT.',
                date: Date.today(), views: 15, news_text: 'Apresentação da Faculdade de Ciências e Tecnologia da Universidade Nova de Lisboa.
                Acede já ao canal de Youtube da faculdade para veres o que melhor se faz de investigação na FCT', user_id: 1)
+Content.create(title: 'Exposição Déjeuner Sur L\'Herbe', link_image: 'http://4.bp.blogspot.com/-TheKeV0Y2IE/U14IGdnOozI/AAAAAAAAAkE/G70R5VllI1Q/s1600/herbe.JPG', description: 'Déjeuner sur L´herbe, 08 Maio a 31 Julho,
+Jardim em frente à Biblioteca da FCT/UNL, Inauguração: 08 de Maio às 17:00h', date: Date.today(), views: 22, news_text: 'Jorge Pé-Curto, Paulo Neves, Rui Matos, Vitor Ribeiro e Volker Schnüttgen voltam agora ao Campus da FCT/UNL, acompanhados por Matthias Contzen, fluem num processo criativo e original.
+De um desafio tão grande, quanto inovador, resultados inesperados eram antecipados...
+Como num picnic, os seis escultores “espalharam” e “plantaram” esculturas no relvado frontal da Biblioteca, permitindo a fruição de propostas imaginativas e “saborosas”. As esculturas convivem. Os diferentes materiais comunicam e surpreendem...
+O espaço exterior recriado, gloza Manet, no delicioso e brilhante “Déjeuner sur l`Herbe”.
+As esculturas repousam (no espaço) e despertam (espaços)...', user_id: 1)
+
 
 #Video link:string category_id:integer
 puts 'Adding Videos'
