@@ -403,6 +403,13 @@ imagens = $.getValues('/contents');
 function appendVideos() {
 
     $.each(videos, function (i, video) {
+        var caption = '';
+
+        for (var j = 0; j < imagens.length; j++) {
+            if (video.content_id == imagens[j].id)
+                caption = imagens[j].title;
+        }
+
         if (i == 0) {
             $('#tv-carousel').append('<div id = "video_' + i + '" class="item active itemsCar">' +
                 '<iframe src="' + video.link + '?autoplay=0&controls=0&modestbranding=1&showinfo=0" style="width: 100%; height:100%;"' +
@@ -412,8 +419,8 @@ function appendVideos() {
                 'allowfullscreen >' +
                 ' </iframe>' +
 
-                '<div class="carousel-caption">' +
-                '<h1>' + video.link + '</h1>' +
+                '<div class="carousel-caption" style="opacity: 0.7; background-color: #000000">' +
+                '<h1>' + caption + '</h1>' +
                 '</div>' +
 
                 '</div>');
@@ -427,8 +434,8 @@ function appendVideos() {
                 'allowfullscreen >' +
                 ' </iframe>' +
 
-                '<div class="carousel-caption">' +
-                '<h1>' + video.link + '</h1>' +
+                '<div class="carousel-caption" style="opacity: 0.7; background-color: #000000">' +
+                '<h1>' + caption + '</h1>' +
                 '</div>' +
 
                 '</div>');

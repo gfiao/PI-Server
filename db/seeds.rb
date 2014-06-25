@@ -101,10 +101,6 @@ Content.create(title: 'Video de apresentação do MIEI',
                description: 'Video de apresentação do MIEI visa dar a conhecer o curso.',
                date: Date.today(), views: 15, news_text: 'O Departamento de Informática da FCT-UNL criou um video de
                 apresentação do Mestrado Integrado em Engenharia Informática', user_id: 1)
-Content.create(title: 'Video de apresentação do MIEI',
-               description: 'Video de apresentação do MIEI visa dar a conhecer o curso.',
-               date: Date.today(), views: 15, news_text: 'O Departamento de Informática da FCT-UNL criou um video de
-                apresentação do Mestrado Integrado em Engenharia Informática', user_id: 1)
 Content.create(title: 'A FCT fez 36 anos!',
                description: 'A FCT fez no ano passado 36 anos.',
                date: Date.today(), views: 15, news_text: 'A FCT fez no ano passado 36 anos.
@@ -126,11 +122,11 @@ Content.create(title: 'Apresentação da FCT!',
 puts 'Adding Videos'
 # Video.create(link: 'https://www.youtube.com/embed/iaItmiZTHP8') #Quim Barreiros
 # Video.create(link: 'https://www.youtube.com/embed/Ci6lMQNLKZU') #Mortal Kombat X
-Video.create(link: 'https://www.youtube.com/embed/LbmvzjhaPEg', content_id: 6) #Apresentaçao MIEI
-Video.create(link: 'https://www.youtube.com/embed/FVgZjyevTuI', content_id: 7) #36º Aniversario FCT
-Video.create(link: 'https://www.youtube.com/embed/bHwzUHSNVxg', content_id: 8) #35º Aniversario FCT
-Video.create(link: 'https://www.youtube.com/embed/mKXIXPiVk3U', content_id: 9) #FCT-UNL Inovação
-Video.create(link: 'https://www.youtube.com/embed/YXCNFeeH1Ow', content_id: 10) # FCT-UNL (Apresentaçao 2011)
+Video.create(link: 'https://www.youtube.com/embed/LbmvzjhaPEg', content_id: 5) #Apresentaçao MIEI
+Video.create(link: 'https://www.youtube.com/embed/FVgZjyevTuI', content_id: 6) #36º Aniversario FCT
+Video.create(link: 'https://www.youtube.com/embed/bHwzUHSNVxg', content_id: 7) #35º Aniversario FCT
+Video.create(link: 'https://www.youtube.com/embed/mKXIXPiVk3U', content_id: 8) #FCT-UNL Inovação
+Video.create(link: 'https://www.youtube.com/embed/YXCNFeeH1Ow', content_id: 9) # FCT-UNL (Apresentaçao 2011)
 # Video.create(link: 'https://www.youtube.com/embed/9yNtJsFxDQI') #Cena de AA
 
 #BookmarkedContent user_id:integer content_id:integer
