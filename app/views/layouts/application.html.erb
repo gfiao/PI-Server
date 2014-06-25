@@ -91,8 +91,23 @@
 
 </body>
 <footer>
-  <p>Rafael Bizarra, o Grande!</p>
-  <p>Leo Fião, um dos panões</p>
-  <p>Gui Fião, o outro panão, porque um panão, nunca vem só!</p>
+  <%= image_tag "logo_fctunl.png", :class => "footerImg", :id => "logo" %>
+  <span class="footerNames">Rafael Bizarra nº41895</span> |
+  <span class="footerNames">Leonardo Fião nº41740</span> |
+  <span class="footerNames">Guilherme Fião nº41738</span>
 </footer>
 </html>
+
+
+<style>
+
+    .footerImg {
+        width: 336px;
+        height: 75px;
+    }
+
+    .footerNames {
+        font-size: 125%;
+    }
+
+</style>

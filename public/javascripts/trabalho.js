@@ -81,7 +81,7 @@ function updateCurrentVideo() {
             }
             else {
                 $("#bookmarkText > span").empty();
-                $("#bookmarkText > span").append("A TV está desligada, texto bué grande para ver se passa para baixo");
+                $("#bookmarkText > span").append("A TV está desligada.");
             }
         }
     }, 5000);
