@@ -62,7 +62,7 @@ function start() {
     updateTime();
     updateDate();
     fetchFooterNews();
-    createMarquee();
+    createFooter();
     animatePanel();
     getFreeClassrooms();
 
@@ -120,7 +120,7 @@ function animatePanel() {
             $("#toAnimate").empty();
             $("#toAnimate").append(toShow);
             $('#toAnimate').removeClass('fadeOutRight');
-            $('#toAnimate').addClass('animated fadeInRight');
+            $('#toAnimate').addClass('fadeInRight');
         }, 650);
 
     }, 5000); //time in ms
@@ -540,32 +540,50 @@ var footerCounter = 0;
 
 function fetchFooterNews() {
     footerNews = $.getValues('/footer_news');
-//    console.log(footerNews);
+    console.log(footerNews);
 }
 
-function createMarquee() {
-    $('#category p').append(footerNews[0].category);
-    $('.news-container-scroll p').append(footerNews[0].news);
-    $('.news-container-scroll')
-        .bind('finished', populateMarquee)
-        .marquee({
-            duration: 5000
-        });
-    footerCounter++;
+function createFooter() {
+
+    intervalID = setInterval(function () {
+
+        toShow = getFooterContent();
+
+        $("#footer-category-tv p").removeClass('fadeInDown');
+        $("#footer-category-tv p").addClass('fadeOutUp');
+
+        $("#news-container").removeClass('fadeInDown');
+        $("#news-container").addClass('fadeOutUp');
+
+        setTimeout(function () { //timeout para garantir que o novo texto aparece entre os dois fades
+            $("#footer-category-tv p").empty();
+            $("#footer-category-tv p").append(toShow[0]);
+            $("#footer-category-tv p").removeClass('fadeOutUp');
+            $("#footer-category-tv p").addClass('animated fadeInDown');
+
+            $("#news-container p").empty();
+            $("#news-container p").append(toShow[1]);
+            $("#news-container").removeClass('fadeOutUp');
+            $("#news-container").addClass('animated fadeInDown');
+        }, 650);
+
+    }, 7500); //time in ms
+
 }
 
-function populateMarquee() {
-    var toappend = footerNews[footerCounter];
+function getFooterContent() {
+    var content = footerNews[footerCounter];
+    var toappend = [];
 
-    $('#category p').empty();
-    $('#category p').append(toappend.category);
-    $('.news-container-scroll p').empty();
-    $('.news-container-scroll p').append(toappend.news);
+    toappend[0] = content.category;
+    toappend[1] = content.news;
 
     if (footerCounter == footerNews.length - 1)
         footerCounter = 0;
     else
         footerCounter++;
+
+    return toappend;
 }
 
 //Objecto a ser inserido na TV
