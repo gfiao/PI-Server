@@ -166,7 +166,7 @@ Score.create(user_id: 6, game_id: 1, score: 43218)
 #Video link:string
 puts 'Adding Videos'
 # Video.create(link: 'https://www.youtube.com/embed/iaItmiZTHP8') #Quim Barreiros
-Video.create(link: 'https://www.youtube.com/embed/Ci6lMQNLKZU') #Mortal Kombat X
+# Video.create(link: 'https://www.youtube.com/embed/Ci6lMQNLKZU') #Mortal Kombat X
 Video.create(link: 'https://www.youtube.com/embed/FVgZjyevTuI')
 Video.create(link: 'https://www.youtube.com/embed/bHwzUHSNVxg')
 Video.create(link: 'https://www.youtube.com/embed/mKXIXPiVk3U')
@@ -179,11 +179,15 @@ Video.create(link: 'https://www.youtube.com/embed/9yNtJsFxDQI')
 
 #FooterNews category:string news:string date:date
 puts 'Adding Footer News'
-FooterNews.create(category: 'País', news: 'Pedro Passos Coelho demite-se, após ter sido publicado que este é alemão.', date: Date.today())
-FooterNews.create(category: 'Desporto', news: 'Benfica é campeão!', date: Date.today())
+# FooterNews.create(category: 'País', news: 'Pedro Passos Coelho demite-se, após ter sido publicado que este é alemão.', date: Date.today())
+# FooterNews.create(category: 'Desporto', news: 'Benfica é campeão!', date: Date.today())
 FooterNews.create(category: 'Faculdade', news: 'Após uma longa reunião com representantes dos alunos, foi anunciado uma redução das propinas.', date: Date.today())
 FooterNews.create(category: 'Faculdade', news: 'O limite para as candidaturas Erasmus acaba daqui a uma semana.', date: Date.today())
 FooterNews.create(category: 'Faculdade', news: 'Casas de banho do Ed.VII fechadas devido às más condições das mesmas.', date: Date.today())
+FooterNews.create(category: 'Faculdade', news: 'A Época Especial irá decorrer entre 21 e 26 de Julho. As inscrições já abriram.', date: Date.today())
+FooterNews.create(category: 'Faculdade', news: 'A data limite para a entrega de dissertações e teses é 22 de Setembro.', date: Date.today())
+FooterNews.create(category: 'País', news: 'Isaltino Morais saiu da prisão e ficou em liberdade condicional, mas não pode sair do país.', date: Date.today())
+FooterNews.create(category: 'País', news: 'Berardo exige ao Governo da Madeira indemnizações de um milhão de euros.', date: Date.today())
 
 #cena temporaria para o indice inicial do que esta na TV (começa a zero para indicar que a TV está desligada)
 CurrentVideo.create(index: 0)

@@ -274,36 +274,36 @@ function getPublicTrans() {
     content += '<div style="padding-left: 3%"><p>MTS:</p>';
     var counter = 0;
     for (var i = 0; i < transportsMTS.length; i++) {
-        if ((transportsMTS[i].hour >= hour && transportsMTS[i].hour <= hour - 1) && (transportsMTS[i].minute > minute && transportsMTS[i].minute < minute - 15)) {
-            if (transportsMTS[i].minute == 2 || transportsMTS[i].minute == 5 || transportsMTS[i].minute == 7 || transportsTST[i].minute == 0)
-                content += '<span class="transport-span">' + transportsMTS[i].hour + ':0' + transportsMTS[i].minute + '</span>';
-            else
-                content += '<span class="transport-span">' + transportsMTS[i].hour + ':' + transportsMTS[i].minute + '</span>';
-            if (counter != 2) content += '|';
-            if (counter == 2) break;
-            counter++;
-        }
+//        if ((transportsMTS[i].hour >= hour && transportsMTS[i].hour <= hour - 1) && (transportsMTS[i].minute > minute && transportsMTS[i].minute < minute - 15)) {
+        if (transportsMTS[i].minute == 2 || transportsMTS[i].minute == 5 || transportsMTS[i].minute == 7 || transportsTST[i].minute == 0)
+            content += '<span class="transport-span">' + transportsMTS[i].hour + ':0' + transportsMTS[i].minute + '</span>';
+        else
+            content += '<span class="transport-span">' + transportsMTS[i].hour + ':' + transportsMTS[i].minute + '</span>';
+        if (counter != 2) content += '|';
+        if (counter == 2) break;
+        counter++;
+//        }
     }
     content += '</div></br>';
 
     counter = 0;
     content += '<div style="padding-left: 3%"><p>TST:</p>';
     for (var i = 0; i < transportsTST.length; i++) {
-        if ((transportsTST[i].hour > hour && transportsTST[i].hour <= hour - 1) && (transportsTST[i].minute > minute && transportsTST[i].minute < minute - 15)) {
+//        if ((transportsTST[i].hour > hour && transportsTST[i].hour <= hour - 1) && (transportsTST[i].minute > minute && transportsTST[i].minute < minute - 15)) {
 
-            if (transportsTST[i].minute == 2 || transportsTST[i].minute == 5 || transportsTST[i].minute == 7 || transportsTST[i].minute == 0)
+        if (transportsTST[i].minute == 2 || transportsTST[i].minute == 5 || transportsTST[i].minute == 7 || transportsTST[i].minute == 0)
 
-                content += '<p style="padding-left:6%;">' + transportsTST[i].carreira +
-                    '  ' + transportsTST[i].destination + ' - ' +
-                    transportsTST[i].hour + ':0' + transportsTST[i].minute + '</p>';
-            else
-                content += '<p style="padding-left:6%;">' + transportsTST[i].carreira +
-                    '  ' + transportsTST[i].destination + ' - ' +
-                    transportsTST[i].hour + ':' + transportsTST[i].minute + '</p>';
+            content += '<p style="padding-left:6%;">' + transportsTST[i].carreira +
+                '  ' + transportsTST[i].destination + ' - ' +
+                transportsTST[i].hour + ':0' + transportsTST[i].minute + '</p>';
+        else
+            content += '<p style="padding-left:6%;">' + transportsTST[i].carreira +
+                '  ' + transportsTST[i].destination + ' - ' +
+                transportsTST[i].hour + ':' + transportsTST[i].minute + '</p>';
 
-            if (counter == 2) break;
-            counter++;
-        }
+        if (counter == 2) break;
+        counter++;
+//        }
     }
     content += '</div>';
 
@@ -324,9 +324,9 @@ function getMeteo() {
     if (weather[0].description = 'Predominantemente Nublado')
         weather[0].description = 'Muito Nublado';
 
-    var content = '<h2 style="font-size: 130%">Meteorologia</h2>';
+    var content = '<h1 style="font-size: 130%;text-align: center;">Meteorologia</h2></br>';
 
-    content += '<h3 style="font-size: 130%">Almada</h3></br>';
+    content += '<h1 style="font-size: 130%; text-align: center">Almada</h3></br>';
 
     content += '<div style="text-align: center;font-size: 130%">' + weather[0].description + '  ' +
         '<img src="' + weather[0].image_url + '"></div>';
@@ -334,8 +334,8 @@ function getMeteo() {
     content += '<span class="meteo-span">Min:</span>';
     content += '<span class="meteo-span">Max:</span>';
     content += '</br>';
-    content += '<span class="meteo-span"><b>' + weather[0].min_temp + '</b></span>';
-    content += '<span class="meteo-span"><b>' + weather[0].max_temp + '</b></span>';
+    content += '<span class="meteo-span"><b>' + weather[0].min_temp + 'º</b></span>';
+    content += '<span class="meteo-span"><b>' + weather[0].max_temp + 'º</b></span>';
 
 
     globalCounter++;
@@ -438,7 +438,7 @@ function appendVideos() {
     $.each(imagens, function (i, imagem) {
         $('#tv-carousel').append('<div id = "image_' + i + '" class="item">' +
             '<img src="/assets/' + imagem.link_image + '" style="width: 100%; height:100%;" > ' +
-            '<div class="carousel-caption">' +
+            '<div class="carousel-caption" style="opacity: 0.7; background-color: #000000">' +
             '<h1>' + imagem.title + '</h1>' +
             '</div>' +
             '</div>');

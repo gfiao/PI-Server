@@ -111,6 +111,7 @@ h3, h2 {
 
 body {
   margin: 0px;
+  overflow: hidden;
 }
 
 #globalContainer {
@@ -122,7 +123,7 @@ body {
   //    height: 768px;
 
   //  tamanho FULLHD
-  width: 1920px;
+  //  width: 1920px;
   height: 1080px;
 
   font-family: "Myriad Pro Regular";
@@ -367,7 +368,7 @@ body {
 
 .transport-span {
   display: inline-block;
-  padding-right:5%;
+  padding-right: 5%;
   padding-left: 5%;
 }
 
