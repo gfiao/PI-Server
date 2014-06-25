@@ -3,6 +3,7 @@
  */
 
 var videos = [];
+var news = [];
 
 
 $(document).ready(function () {
@@ -12,10 +13,10 @@ $(document).ready(function () {
 });
 
 
-
 function init() {
 
     videos = $.getValues('/videos');
+    news = $.getValues('/contents');
 
 //    var obj = $('#watch-later');
 //    obj.mouseenter(function () {
@@ -68,16 +69,30 @@ function updateCurrentVideo() {
         var onpage = $('#bookmarkText').css('display');
         if (onpage != undefined) {
 
+
+            //videos = vector de videos (json)
+            //news = vector de conteudos (json)
             var contents = $.getValues('/current_videos');
             var curr = contents[0];
 
             //a tv está ligada, entramos aqui
             if (curr.index != 0) {
 
-                var curr_video = videos[curr.index - 1];
+                var curr_video;
+                if (curr.content_type == 'video') {
+                    curr_video = news[videos[curr.index - 1].content_id - 1];
+                    //var curr_video = videos[curr.index - 1];
 
-                $("#bookmarkText > span").empty();
-                $("#bookmarkText > span").append(curr_video.link);
+                    $("#bookmarkText > span").empty();
+                    $("#bookmarkText > span").append(curr_video.title);
+                }
+                //Se for imagem
+                else {
+                    curr_video = news[curr.index - 1];
+
+                    $("#bookmarkText > span").empty();
+                    $("#bookmarkText > span").append(curr_video.title);
+                }
             }
             else {
                 $("#bookmarkText > span").empty();
