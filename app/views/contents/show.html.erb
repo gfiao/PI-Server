@@ -6,43 +6,76 @@
           font-family: "Myriad Pro Regular";
       }
 
+      .image-style {
+          width: 100%;
+          height: 100%;
+          margin-top: 20px;
+          margin-bottom: 20px;
+      }
+
+      .space-in-between {
+          margin-top: 15px;
+          margin-bottom: 15px;
+      }
+
   </style>
 
-  <!--<p id="notice"><%# notice %></p>-->
-
-  <h3>
-    <%= @content.title %>
-  </h3>
-
-  <p>
-    <!--<strong>Description:</strong>-->
-    <%= @content.description %>
-  </p>
-
   <div class="row">
-    <div class="col-md-3">
-      <strong>Data:</strong>
-      <%= @content.date %>
+    <div class="col-md-8">
+
+      <h3 class="row col-md-12">
+        <b><%= @content.title %></b>
+      </h3>
+
+      <div class="row col-md-12">
+        <p class="space-in-between">
+          <%= @content.description %>
+        </p>
+      </div>
+
+      <div class="row">
+        <div class="col-md-8">
+          <strong>Adicionado por </strong>
+          <%= link_to @author.name, @author, method: :get %>
+          <% time = @content.created_at %>
+          <%= time.strftime("às %H:%M de %d/%m/%Y") %>
+        </div>
+
+        <div class="col-md-4">
+          <%= @content.views %>
+          <strong>visualizações</strong>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-md-10">
+          <%= image_tag @content.link_image, class: 'img-rounded image-style' %>
+        </div>
+      </div>
+
+      <div>
+        <p>
+          <%= @content.news_text %>
+        </p>
+      </div>
+
+      <% if @author.id == current_user %>
+          <%= button_to 'Editar notícia', edit_content_path(@content), method: :get, class: "btn btn-default" %>
+      <% end %>
+      <p></p>
+      <%= button_to 'Voltar atrás', contents_path, method: :get, class: "btn btn-default" %>
     </div>
 
-    <div class="col-md-2">
-      <strong>Visto:</strong>
-      <%= @content.views %>
-    </div>
-  </div>
-
-  <div class="row">
     <div class="col-md-4">
-      <%= image_tag @content.link_image, class: 'img-responsive' %>
+      <h2 class="table-header" style="text-align: center">Notícias mais recentes</h2>
+      <table class="table">
+        <% @latest.each do |content| %>
+            <tr>
+              <td><%= link_to content.title, content, method: :get %></td>
+            </tr>
+        <% end %>
+      </table>
     </div>
   </div>
-
-  <p>
-    <%= @content.news_text %>
-  </p>
-
-  <%= button_to 'Editar notícia', edit_content_path(@content), method: :get, class: "btn btn-default" %>
-  <p></p>
-  <%= button_to 'Voltar atrás', contents_path, method: :get, class: "btn btn-default" %>
 
 </div>

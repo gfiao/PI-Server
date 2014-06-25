@@ -52,8 +52,11 @@ class HomepageController < ApplicationController
              "http://feeds.destakes.com/destakes/canal/imprensa?format=xml", #9
              "http://expresso.sapo.pt/static/rss/desporto_23414.xml"] #10
 
-    rss = RSS::Parser.parse(feeds[3], false)
-    puts "============================ INICIO FEEDS ==========================="
+    # alterar esta variavel consoante o feed que queremos usar
+    selectedFeedIndex = 0
+
+    rss = RSS::Parser.parse(feeds[selectedFeedIndex], false)
+    # puts "============================ INICIO FEEDS ==========================="
 
     puts rss.items
     # puts rss.title
@@ -61,44 +64,55 @@ class HomepageController < ApplicationController
     # puts rss.lastBuildDate
     puts rss.image
 
-    puts "\n********** intervalo **********\n"
+    # puts "\n********** intervalo **********\n"
 
     rss.items.each do |item|
-      puts "#{item.pubDate} - #{item.title} (#{item.category})"
-      # puts "#{item.enclosure}"
-      puts "#{item.description}"
-      # puts "#{item.category.text}"
+      # puts "\n********** inicio de um item do feed **********"
+      # puts "#{item.pubDate} - #{item.title} (#{item.category})"
 
-      item.category.each do |cat|
-        puts cat
+      description = item.description
+
+      # se for feed do jornal i, fazer parse da descriçao
+      if selectedFeedIndex == 0
+        doc = Nokogiri::HTML(description)
+
+        # obter a imagem da noticia
+        image = doc.css('img').map { |i| i['src'] } # Array of strings
+
+        # obter a descrição
+        description_div = doc.css('.field-type-text')[0]
+        description = description_div.css('.even')[0].text
+
+        #obter texto da noticia
+        text_div = doc.css('.field-type-text-with-summary')[0]
+        paragraphs = text_div.css('.even')
+
+        # puts paragraphs
+
+        news_text = ""
+        # counter = 0
+        paragraphs.css('p').each do |paragraph|
+          news_text.concat(paragraph.text + "\n")
+        end
+        #
+        # puts "\n********** DESCRIÇÃO **********"
+        # puts "#{description}\n"
+        #
+        # puts "\n********** TEXTO DA NOTICIA **********"
+        # puts "#{news_text}\n"
+        #
+        # puts "\n********** IMAGEM **********"
+        # puts "#{image}\n"
+
+        Content.create(title: item.title, link_image: image[0], description: description,
+                       date: item.pubDate, views: 0, news_text: news_text, user_id: 1)
+
+        # puts "\n********** fim de um item do feed **********"
       end
 
-      # string_temp = item.category.split("<category>")
-      # puts string_temp
-
-
-      # string_temp = item.description.image
-      # image = string_temp.split('/>')
-
-      string_temp = item.description
-
-      doc1 = Nokogiri::HTML(string_temp)
-      image = doc1.css('img').map { |i| i['src'] } # Array of strings
-
-
-      # doc1 = Nokogiri::HTML( string_temp )
-      # category = doc.css('category').map{ |i| i['src'] } # Array of strings
-
-      puts "\n\n\n #{image}\n\n\n"
-
       #   Content.create(title, link_image, description, date, views, news_text, user_id)
-
-      # Content.create(title: item.title.to_s.force_encoding("UTF-8"), link_image: image[0], description: "Noticia de teste!!",
-      #                date: item.pubDate, views: 0, news_text: item.description.to_s.force_encoding("UTF-8"), user_id: 1)
-
-
     end
-    puts "============================ FIM FEEDS ==========================="
+    # puts "============================ FIM FEEDS ==========================="
 
     # para evitar que dê erro que diz que a vista homepage/feeds nao existe
     render nothing: true
