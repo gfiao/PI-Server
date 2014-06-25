@@ -198,20 +198,6 @@ Score.create(user_id: 13, game_id: 1, score: 506)
 #Score.create(user_id: 1, game_id: 2, score: 140)
 Score.create(user_id: 6, game_id: 1, score: 43218)
 
-#Video link:string
-puts 'Adding Videos'
-# Video.create(link: 'https://www.youtube.com/embed/iaItmiZTHP8') #Quim Barreiros
-Video.create(link: 'https://www.youtube.com/embed/Ci6lMQNLKZU') #Mortal Kombat X
-Video.create(link: 'https://www.youtube.com/embed/FVgZjyevTuI')
-Video.create(link: 'https://www.youtube.com/embed/bHwzUHSNVxg')
-Video.create(link: 'https://www.youtube.com/embed/mKXIXPiVk3U')
-Video.create(link: 'https://www.youtube.com/embed/YXCNFeeH1Ow')
-Video.create(link: 'https://www.youtube.com/embed/9yNtJsFxDQI')
-
-#ContentVideo content_id:integer video_id:integer
-# puts 'Associating videos to content'
-# ContentVideo.create(content_id: 1, video_id: 1)
-
 #FooterNews category:string news:string date:date
 puts 'Adding Footer News'
 # FooterNews.create(category: 'País', news: 'Pedro Passos Coelho demite-se, após ter sido publicado que este é alemão.', date: Date.today())
