@@ -97,6 +97,41 @@ Content.create(title: 'Sócia da FCT ganhou prémio!', link_image: 'destaque_4.j
 Content.create(title: 'Noticia de ultima hora! FCT a arder!', link_image: 'imagem_iycr2014.jpg',
                description: 'FCT a arder! Edificios a ruir! Esta noticia esta aqui para termos 4 noticias!',
                date: Date.today(), views: 55, news_text: 'Hehe placeholder!', user_id: 30)
+Content.create(title: 'Video de apresentação do MIEI',
+               description: 'Video de apresentação do MIEI visa dar a conhecer o curso.',
+               date: Date.today(), views: 15, news_text: 'O Departamento de Informática da FCT-UNL criou um video de
+                apresentação do Mestrado Integrado em Engenharia Informática', user_id: 1)
+Content.create(title: 'Video de apresentação do MIEI',
+               description: 'Video de apresentação do MIEI visa dar a conhecer o curso.',
+               date: Date.today(), views: 15, news_text: 'O Departamento de Informática da FCT-UNL criou um video de
+                apresentação do Mestrado Integrado em Engenharia Informática', user_id: 1)
+Content.create(title: 'A FCT fez 36 anos!',
+               description: 'A FCT fez no ano passado 36 anos.',
+               date: Date.today(), views: 15, news_text: 'A FCT fez no ano passado 36 anos.
+                Acede já ao canal de Youtube da faculdade para veres os melhores momentos do 36º ano da FCT', user_id: 1)
+Content.create(title: 'A FCT fez 35 anos!',
+               description: 'Os melhores momentos do 35º ano da FCT.',
+               date: Date.today(), views: 15, news_text: 'A FCT fez à dois anos 35 anos.
+                Acede já ao canal de Youtube da faculdade para veres os melhores momentos do 35º ano da FCT', user_id: 1)
+Content.create(title: 'Inovação na FCT!',
+               description: 'Apresentação dos Centros de Investigação da FCT.',
+               date: Date.today(), views: 15, news_text: 'Apresentação dos Centros de Investigação da Faculdade de Ciências e Tecnologia da Universidade Nova de Lisboa.
+               Acede já ao canal de Youtube da faculdade para veres o que melhor se faz de investigação na FCT', user_id: 1)
+Content.create(title: 'Apresentação da FCT!',
+               description: 'Video de apresentação da FCT.',
+               date: Date.today(), views: 15, news_text: 'Apresentação da Faculdade de Ciências e Tecnologia da Universidade Nova de Lisboa.
+               Acede já ao canal de Youtube da faculdade para veres o que melhor se faz de investigação na FCT', user_id: 1)
+
+#Video link:string category_id:integer
+puts 'Adding Videos'
+# Video.create(link: 'https://www.youtube.com/embed/iaItmiZTHP8') #Quim Barreiros
+# Video.create(link: 'https://www.youtube.com/embed/Ci6lMQNLKZU') #Mortal Kombat X
+Video.create(link: 'https://www.youtube.com/embed/LbmvzjhaPEg', content_id: 6) #Apresentaçao MIEI
+Video.create(link: 'https://www.youtube.com/embed/FVgZjyevTuI', content_id: 7) #36º Aniversario FCT
+Video.create(link: 'https://www.youtube.com/embed/bHwzUHSNVxg', content_id: 8) #35º Aniversario FCT
+Video.create(link: 'https://www.youtube.com/embed/mKXIXPiVk3U', content_id: 9) #FCT-UNL Inovação
+Video.create(link: 'https://www.youtube.com/embed/YXCNFeeH1Ow') # FCT-UNL (Apresentaçao 2011)
+# Video.create(link: 'https://www.youtube.com/embed/9yNtJsFxDQI') #Cena de AA
 
 #BookmarkedContent user_id:integer content_id:integer
 puts 'Adding Bookmarks'
@@ -162,16 +197,6 @@ Score.create(user_id: 31, game_id: 1, score: 1464)
 Score.create(user_id: 13, game_id: 1, score: 506)
 #Score.create(user_id: 1, game_id: 2, score: 140)
 Score.create(user_id: 6, game_id: 1, score: 43218)
-
-#Video link:string
-puts 'Adding Videos'
-# Video.create(link: 'https://www.youtube.com/embed/iaItmiZTHP8') #Quim Barreiros
-Video.create(link: 'https://www.youtube.com/embed/Ci6lMQNLKZU') #Mortal Kombat X
-Video.create(link: 'https://www.youtube.com/embed/FVgZjyevTuI')
-Video.create(link: 'https://www.youtube.com/embed/bHwzUHSNVxg')
-Video.create(link: 'https://www.youtube.com/embed/mKXIXPiVk3U')
-Video.create(link: 'https://www.youtube.com/embed/YXCNFeeH1Ow')
-Video.create(link: 'https://www.youtube.com/embed/9yNtJsFxDQI')
 
 #ContentVideo content_id:integer video_id:integer
 # puts 'Associating videos to content'
