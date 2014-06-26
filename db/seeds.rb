@@ -38,45 +38,49 @@ courses = ['Informatica', 'Electrotécnica', 'Ambiente', 'Bioquimica', 'Materiai
 #O about_me tambem poderá ser mudado
 puts 'Adding 50 random Users'
 
-User.create(name: 'Administrador',
-            birth_date: Date.today,
-            gender: 'Masculino',
-            course: 'Informática',
-            about_me: 'Conta de administrador do sistema!',
-            email: 'admin@admin.com',
-            password: 'adminadmin',
-            password_confirmation: 'adminadmin',
-            avatar_url: 'http://noticias.rumonet.pt/wp-content/uploads/2013/02/logo_FCTUNL.jpg'
-)
-
-2.upto(50) do |i|
-  if i == 25
+1.upto(50) do |i|
+  if i == 1
+    User.create(
+        name: 'Administrador',
+        birth_date: Date.today,
+        gender: 'Masculino',
+        course: 'Informática',
+        about_me: 'Conta de administrador do sistema!',
+        email: 'admin@campus.fct.unl.pt',
+        password: 'adminadmin',
+        password_confirmation: 'adminadmin',
+        avatar_url: 'http://noticias.rumonet.pt/wp-content/uploads/2013/02/logo_FCTUNL.jpg'
+    )
+  elsif i == 25
     puts 'Done 25, almost there'
+  elsif i == 50
+    User.create(
+        name: 'Renato Alexandre',
+        birth_date: Date.today,
+        gender: 'Feminino',
+        course: 'Informática',
+        about_me: 'Curto bué de gajas de Erasmus :D',
+        email: 'renato.alexandre@campus.fct.unl.pt',
+        password: 'qweqweqwe',
+        password_confirmation: 'qweqweqwe',
+        avatar_url: 'http://img4.wikia.nocookie.net/__cb20121207145720/aleixo/images/7/75/Renato_disco.jpg')
+  else
+    r=Random.rand(10)
+    r2=Random.rand(12)
+    User.create(
+        name: first_names[(r+i)%first_names.length] + ' ' + last_names[(r2+i)%last_names.length],
+        birth_date: Date.today(),
+        gender: genders[(r+i)%genders.length],
+        course: courses[(r2+i)%courses.length],
+        about_me: 'Hehe sou a pessoa número ' + i.to_s + ' e sou muita fixe, hehe',
+        email: first_names[(r+i)%first_names.length]+'.'+last_names[(r2+i)%last_names.length]+'@campus.fct.unl.pt',
+        password: 'qweqweqwe',
+        password_confirmation: 'qweqweqwe',
+        avatar_url: 'http://noticias.rumonet.pt/wp-content/uploads/2013/02/logo_FCTUNL.jpg'
+    )
   end
-  r=Random.rand(10)
-  r2=Random.rand(12)
-  User.create(
-      name: first_names[(r+i)%first_names.length] + ' ' + last_names[(r2+i)%last_names.length],
-      birth_date: Date.today(),
-      gender: genders[(r+i)%genders.length],
-      course: courses[(r2+i)%courses.length],
-      about_me: 'Hehe sou a pessoa número ' + i.to_s + ' e sou muita fixe, hehe',
-      email: first_names[(r+i)%first_names.length]+'.'+last_names[(r2+i)%last_names.length]+'@gmail.com',
-      password: 'qweqweqwe',
-      password_confirmation: 'qweqweqwe',
-      avatar_url: 'http://noticias.rumonet.pt/wp-content/uploads/2013/02/logo_FCTUNL.jpg'
-  )
 end
 
-User.create(name: 'Renato Alexandre',
-            birth_date: Date.today,
-            gender: 'Feminino',
-            course: 'Informática',
-            about_me: 'Curto bué de gajas de Erasmus :D',
-            email: 'renato@alexandre.com',
-            password: 'qweqweqwe',
-            password_confirmation: 'qweqweqwe',
-            avatar_url: 'http://img4.wikia.nocookie.net/__cb20121207145720/aleixo/images/7/75/Renato_disco.jpg')
 
 #Content title:string link_image:string description:text date:date news_text:text
 puts 'Adding News Content'
