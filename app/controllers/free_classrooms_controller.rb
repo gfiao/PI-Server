@@ -7,8 +7,12 @@ class FreeClassroomsController < ApplicationController
   def index
     # @free_classrooms = FreeClassroom.alls
     if params[:classroom]
-      classrooms = Classroom.where(:building => params[:classroom][:building])
-      @free_classrooms = FreeClassroom.where(:classroom_id => classrooms)
+      if params[:classroom][:building] != ""
+        classrooms = Classroom.where(:building => params[:classroom][:building])
+        @free_classrooms = FreeClassroom.where(:classroom_id => classrooms)
+      else
+        @free_classrooms = FreeClassroom.all
+      end
     else
       @free_classrooms = FreeClassroom.all
     end
