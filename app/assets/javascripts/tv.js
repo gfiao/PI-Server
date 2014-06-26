@@ -412,10 +412,11 @@ function appendVideos() {
 
         if (i == 0) {
             $('#tv-carousel').append('<div id = "video_' + i + '" class="item active itemsCar">' +
-                '<iframe src="' + video.link + '?autoplay=0&controls=0&modestbranding=1&showinfo=0" style="width: 100%; height:100%;"' +
+                '<iframe src="' + video.link + '?autoplay=1&controls=0&modestbranding=1&showinfo=0" style="width: 100%; height:100%;"' +
                 'frameborder = "0" ' +
                 'width = 100%' +
                 'height: 100%' +
+                'enablejsapi="1"' +
                 'allowfullscreen >' +
                 ' </iframe>' +
 
@@ -427,10 +428,11 @@ function appendVideos() {
         }
         else
             $('#tv-carousel').append('<div id = "video_' + i + '" class="item itemsCar">' +
-                '<iframe src="' + video.link + '?autoplay=0&controls=0&modestbranding=1&showinfo=0" style="width: 100%; height:100%;" ' +
+                '<iframe src="' + video.link + '?autoplay=1&controls=0&modestbranding=1&showinfo=0" style="width: 100%; height:100%;" ' +
                 'frameborder = "0" ' +
                 'width = 100%' +
                 'height: 100%' +
+                'enablejsapi="1"' +
                 'allowfullscreen >' +
                 ' </iframe>' +
 
@@ -480,11 +482,11 @@ firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
 var player;
 function onYouTubeIframeAPIReady() {
     //  player = new YT.Player('view-area', {
-    player = new YT.Player('hueuhehue   ', {
-        height: '390',
-        width: '640',
-        //videoId: videos[counterVid].link.split('/')[4], //retorna codigo dos videos
-        playerVars: { 'autoplay': 0, 'showinfo': 0, 'rel': 0, 'controls': 1, 'modestbranding': 1},
+    player = new YT.Player('activeVideo', {
+//        height: '390',
+//        width: '640',
+//        videoId: videos[counterVid].link.split('/')[4], //retorna codigo dos videos
+//        playerVars: { 'autoplay': 0, 'showinfo': 0, 'rel': 0, 'controls': 1, 'modestbranding': 1},
         events: {
             'onReady': onPlayerReady,
             'onStateChange': onPlayerStateChange
