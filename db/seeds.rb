@@ -37,12 +37,24 @@ courses = ['Informatica', 'Electrotécnica', 'Ambiente', 'Bioquimica', 'Materiai
 #A data de nascimento terá de ser mudada posteriormente, para cada pessoa ter uma data realista
 #O about_me tambem poderá ser mudado
 puts 'Adding 50 random Users'
-1.upto(50) do |i|
+
+User.create(name: 'Administrador',
+            birth_date: Date.today,
+            gender: 'Masculino',
+            course: 'Informática',
+            about_me: 'Conta de administrador do sistema!',
+            email: 'admin@admin.com',
+            password: 'adminadmin',
+            password_confirmation: 'adminadmin',
+            avatar_url: 'http://noticias.rumonet.pt/wp-content/uploads/2013/02/logo_FCTUNL.jpg'
+)
+
+2.upto(50) do |i|
   if i == 25
     puts 'Done 25, almost there'
   end
-  r=Random.rand(10);
-  r2=Random.rand(12);
+  r=Random.rand(10)
+  r2=Random.rand(12)
   User.create(
       name: first_names[(r+i)%first_names.length] + ' ' + last_names[(r2+i)%last_names.length],
       birth_date: Date.today(),
