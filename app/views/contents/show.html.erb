@@ -85,8 +85,10 @@
 
       <div class="row">
         <span class="col-md-6 btn-group">
-          <% if @author.id == current_user.id %>
-              <%= button_to 'Editar notícia', edit_content_path(@content), method: :get, class: "btn btn-default" %>
+          <% if !current_user.nil? %>
+              <% if @author.id == current_user.id %>
+                  <%= button_to 'Editar notícia', edit_content_path(@content), method: :get, class: "btn btn-default" %>
+              <% end %>
           <% end %>
           <p></p>
           <%= button_to 'Voltar atrás', contents_path, method: :get, class: "btn btn-default" %>

@@ -5,29 +5,27 @@
       <h1 class="page-header">Notícias</h1>
   <% end %>
 
+  <% if user_signed_in? %>
+      <%= button_to('Adicionar nova noticia', new_content_path, method: :get, class: "btn btn-default") %>
+  <% end %>
+  <br>
+
   <table class="table table-striped">
     <tr>
-      <th>Link imagem</th>
-      <th>Título</th>
-      <th>Descrição</th>
-      <th>Data de inserção</th>
-      <th>Visualizações</th>
+      <th class="col-md-1" style="text-align: center">Link imagem</th>
+      <th class="col-md-3" style="text-align: center">Título</th>
+      <th class="col-md-6" style="text-align: center">Descrição</th>
+      <th class="col-md-1" style="text-align: center">Data de inserção</th>
+      <th class="col-md-1">Visualizações</th>
     </tr>
     <% @contents.each do |content| %>
         <tr>
-          <td><%= link_to (image_tag content.link_image, size: '90x70'), content_path(content.id) %></td>
-          <td><%= link_to content.title, content_path(content.id) %></td>
-          <td><%= content.description %></td>
-          <td style="text-align: center"><%= content.date %></td>
-          <td style="text-align: center"><%= content.views %></td>
+          <td class="col-md-1"><%= link_to (image_tag content.link_image, size: '90x70'), content_path(content.id) %></td>
+          <td class="col-md-3"><%= link_to content.title, content_path(content.id) %></td>
+          <td class="col-md-6"><%= content.description %></td>
+          <td class="col-md-1" style="text-align: center"><%= content.created_at.strftime("%d/%m/%Y, %H:%M") %></td>
+          <td class="col-md-1" style="text-align: center"><%= content.views %></td>
         </tr>
     <% end %>
   </table>
-
-  <br>
-
-  <% if user_signed_in? %>
-      <%= button_to('Adicionar noticia', new_content_path, method: :get, class: "btn btn-default") %>
-  <% end %>
-
 </div>

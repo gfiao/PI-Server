@@ -43,7 +43,7 @@
         <!-- Indicators -->
         <ol class="carousel-indicators">
           <% i = 0 %>
-          <% Content.all.each do |content| %>
+          <% Content.limit(10).each do |content| %>
 
               <% if (i == 0) %>
                   <li data-target="#slidingPics" data-slide-to="0" class="active"
@@ -60,7 +60,7 @@
         <div id="news_carousel" class="carousel-inner">
 
           <% i = 0 %>
-          <% Content.all.each do |content| %>
+          <% Content.limit(10).each do |content| %>
 
               <% if (i == 0) %>
                   <div id="news_<%= i %>" class="item active">
@@ -109,7 +109,7 @@
     </div>
 
     <% i = 0 %>
-    <% Content.all.order(views: :desc).each do |content| %>
+    <% Content.all.order(views: :desc).limit(15).each do |content| %>
 
         <% if (i % 3 == 0) %>
             <div class="row">

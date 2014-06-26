@@ -12,10 +12,15 @@ class ContentsController < ApplicationController
   # GET /contents/1
   # GET /contents/1.json
   def show
-    @latest = Content.all.order(created_at: :desc)
+    @latest = Content.all.order(created_at: :desc).limit(15)
+
+    @author = User.find_by(:id => @content.user_id)
+    puts "LOOOOOOOOOOOOOOOOL"
+
+    puts @content.title
+    puts @author.id
 
     if !(@content.views.nil?)
-      @author = User.find_by(:id => @content.user_id)
 
       @content.views = @content.views + 1
       @content.save
