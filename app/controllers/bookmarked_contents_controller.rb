@@ -60,6 +60,7 @@ class BookmarkedContentsController < ApplicationController
   def destroy
     @bookmarked_content.destroy
     respond_to do |format|
+      # format.html { redirect_to user_path, notice: 'Bookmarked content was successfully destroyed.' }
       format.html { redirect_to bookmarked_contents_url, notice: 'Bookmarked content was successfully destroyed.' }
       format.json { head :no_content }
     end

@@ -1,4 +1,4 @@
-<div id="cont1" class="container" style="padding-bottom: 2%">
+<div id="cont1" class="container space-top space-bottom" style="padding-bottom: 2%">
   <h1 class="page-header">O meu perfil</h1>
 
   <style>
@@ -25,82 +25,117 @@
   </div>
 
   <!--<div id="userInfo row">-->
-  <div class="row">
-    <div class="col-md-3" id="bookmarks">
-      <ul>
-        <li>Video 1 - isto é um nome muita grande só para evr se está a descer como deve ser</li>
-        <li>Video 2</li>
-        <li>Video 3</li>
-        <li>Video 4</li>
-        <li>Video 5</li>
-        <li>Video 6</li>
-        <li>Video 7</li>
-        <li>Video 8</li>
-        <li>Video 9</li>
-      </ul>
-    </div>
-    <div class=" col-md-9">
-      <div class="row">
-        <div class="col-xs-5 right-align">
-          <strong>Avatar:</strong>
-        </div>
-        <div class="col-xs-7">
-          <% if current_user.avatar_url == '' %>
-              <%= image_tag 'http://noticias.rumonet.pt/wp-content/uploads/2013/02/logo_FCTUNL.jpg', size: '100x100' %>
-          <% else %>
-              <%= image_tag current_user.avatar_url, size: '100x100' %>
-          <% end %>
-        </div>
-      </div>
-      <div class="row">
-        <div class="col-xs-5 right-align">
-          <strong>Nome:</strong>
-        </div>
-        <div class="col-xs-7">
-          <%= @user.name %>
-        </div>
-      </div>
-      <div class="row">
-        <div class="col-xs-5 right-align">
-          <strong>Curso:</strong>
-        </div>
-        <div class="col-xs-7">
-          <%= @user.course %>
-        </div>
-      </div>
-      <div class="row">
-        <div class="col-xs-5 right-align">
-          <strong>Data de Nascimento:</strong>
-        </div>
-        <div class="col-xs-7">
-          <%= @user.birth_date %>
-        </div>
-      </div>
-      <div class="row">
-        <div class="col-xs-5 right-align">
-          <strong>Género:</strong>
-        </div>
-        <div class="col-xs-7">
-          <%= @user.gender %>
-        </div>
-      </div>
-      <div class="row">
-        <div class="col-xs-5 right-align">
-          <strong>Sobre mim:</strong>
-        </div>
-        <div class="col-xs-7">
-          <%= @user.about_me %>
-        </div>
-      </div>
-      <div class="col-xs-12" id="links">
-        <%= link_to 'Editar perfil', edit_user_registration_path %>
-        <%# link_to 'Back', users_path %>
-      </div>
+  <div class="col-md-4">
+
+    <h3 class="table-header" style="text-align: center"><b>Conteúdo guardado</b></h3>
+    <table class="table">
+      <% current_user.bookmarked_contents.each do |entry| %>
+          <% content = Content.find_by(:id => entry.content_id) %>
+          <tr>
+            <td><%= content.title %></td>
+            <td class="right-align"><%= button_to "Remover?", entry, method: :delete, class: "btn btn-default btn-sm" %></td>
+          </tr>
+      <% end %>
+      <tr>
+        <td>Conteudo 1, um video sobre vida selvagem</td>
+        <td class="right-align"><%= button_to "Remover?", bookmarked_content_path, method: :delete, class: "btn btn-default btn-sm" %></td>
+      </tr>
+      <tr>
+        <td>Conteudo 2, uma htória tôbe... APIÁR!</td>
+        <td class="right-align"><%= button_to "Remover?", bookmarked_content_path, method: :delete, class: "btn btn-default btn-sm" %></td>
+      </tr>
+      <tr>
+        <td>Conteudo 3, só para encher chouriças</td>
+        <td class="right-align"><%= button_to "Remover?", bookmarked_content_path, method: :delete, class: "btn btn-default btn-sm" %></td>
+      </tr>
+      <tr>
+        <td>Conteudo 4</td>
+        <td class="right-align"><%= button_to "Remover?", bookmarked_content_path, method: :delete, class: "btn btn-default btn-sm" %></td>
+      </tr>
+      <tr>
+        <td>Conteudo xpto</td>
+        <td class="right-align"><%= button_to "Remover?", bookmarked_content_path, method: :delete, class: "btn btn-default btn-sm" %></td>
+      </tr>
+    </table>
+  </div>
 
 
+  <!--<div class="col-md-3" id="bookmarks">-->
+  <!--<ul>-->
+  <!--<li>Video 1 - isto é um nome muita grande só para evr se está a descer como deve ser</li>-->
+  <!--<li>Video 2</li>-->
+  <!--<li>Video 3</li>-->
+  <!--<li>Video 4</li>-->
+  <!--<li>Video 5</li>-->
+  <!--<li>Video 6</li>-->
+  <!--<li>Video 7</li>-->
+  <!--<li>Video 8</li>-->
+  <!--<li>Video 9</li>-->
+  <!--</ul>-->
+  <!--</div>-->
+
+
+  <div class="col-md-8">
+    <div class="row">
+      <div class="col-xs-5 right-align">
+        <strong>Avatar:</strong>
+      </div>
+      <div class="col-xs-7">
+        <% if current_user.avatar_url == '' %>
+            <%= image_tag 'http://noticias.rumonet.pt/wp-content/uploads/2013/02/logo_FCTUNL.jpg', size: '100x100' %>
+        <% else %>
+            <%= image_tag current_user.avatar_url, size: '100x100' %>
+        <% end %>
+      </div>
     </div>
+    <div class="row">
+      <div class="col-xs-5 right-align">
+        <strong>Nome:</strong>
+      </div>
+      <div class="col-xs-7">
+        <%= @user.name %>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-xs-5 right-align">
+        <strong>Curso:</strong>
+      </div>
+      <div class="col-xs-7">
+        <%= @user.course %>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-xs-5 right-align">
+        <strong>Data de Nascimento:</strong>
+      </div>
+      <div class="col-xs-7">
+        <%= @user.birth_date %>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-xs-5 right-align">
+        <strong>Género:</strong>
+      </div>
+      <div class="col-xs-7">
+        <%= @user.gender %>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-xs-5 right-align">
+        <strong>Sobre mim:</strong>
+      </div>
+      <div class="col-xs-7">
+        <%= @user.about_me %>
+      </div>
+    </div>
+    <div class="col-xs-12" id="links">
+      <%= button_to 'Editar perfil', edit_user_registration_path, method: :get, class: "btn btn-default" %>
+    </div>
+
 
   </div>
+
+</div>
 
 </div>
 </div>
