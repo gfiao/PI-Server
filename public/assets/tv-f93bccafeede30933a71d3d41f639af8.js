@@ -2,6 +2,7 @@
  * Created by Rafael on 28/05/2014.
  */
 
+
 function Weekday(shortName, portugueseName) {
     this.shortName = shortName;
     this.portugueseName = portugueseName;
@@ -123,7 +124,7 @@ function animatePanel() {
             $('#toAnimate').addClass('fadeInRight');
         }, 650);
 
-    }, 18000); //time in ms
+    }, 5000); //time in ms
 
     //QUALQUER CODIGO QUE VENHA APOS O FIM DO SET_INTERVAL,
     //É EXECUTADO LOGO AO INICIO. QUANDO O SET_INTERVAL CHEGA AO FIM,
@@ -412,15 +413,14 @@ function appendVideos() {
 
         if (i == 0) {
             $('#tv-carousel').append('<div id = "video_' + i + '" class="item active itemsCar">' +
-                '<iframe src="' + video.link + '?autoplay=1&controls=0&modestbranding=1&showinfo=0" style="width: 100%; height:100%;"' +
+                '<iframe src="' + video.link + '?autoplay=0&controls=0&modestbranding=1&showinfo=0" style="width: 100%; height:100%;"' +
                 'frameborder = "0" ' +
                 'width = 100%' +
                 'height: 100%' +
-                'enablejsapi="1"' +
                 'allowfullscreen >' +
                 ' </iframe>' +
 
-                '<div class="carousel-caption" style="opacity: 0.8; background-color: #000000">' +
+                '<div class="carousel-caption" style="opacity: 0.7; background-color: #000000">' +
                 '<h1>' + caption + '</h1>' +
                 '</div>' +
 
@@ -428,15 +428,14 @@ function appendVideos() {
         }
         else
             $('#tv-carousel').append('<div id = "video_' + i + '" class="item itemsCar">' +
-                '<iframe src="' + video.link + '?autoplay=1&controls=0&modestbranding=1&showinfo=0" style="width: 100%; height:100%;" ' +
+                '<iframe src="' + video.link + '?autoplay=0&controls=0&modestbranding=1&showinfo=0" style="width: 100%; height:100%;" ' +
                 'frameborder = "0" ' +
                 'width = 100%' +
                 'height: 100%' +
-                'enablejsapi="1"' +
                 'allowfullscreen >' +
                 ' </iframe>' +
 
-                '<div class="carousel-caption" style="opacity: 0.8; background-color: #000000">' +
+                '<div class="carousel-caption" style="opacity: 0.7; background-color: #000000">' +
                 '<h1>' + caption + '</h1>' +
                 '</div>' +
 
@@ -445,17 +444,16 @@ function appendVideos() {
     });
 
     $.each(imagens, function (i, imagem) {
-        if (imagem.link_image != null)
-            $('#tv-carousel').append('<div id = "image_' + i + '" class="item itemsCar">' +
-                '<img src="/assets/' + imagem.link_image + '" style="width: 100%; height:100%;" > ' +
-                '<div class="carousel-caption" style="opacity: 0.8; background-color: #000000">' +
-                '<h1>' + imagem.title + '</h1>' +
-                '</div>' +
-                '</div>');
+        $('#tv-carousel').append('<div id = "image_' + i + '" class="item">' +
+            '<img src="/assets/' + imagem.link_image + '" style="width: 100%; height:100%;" > ' +
+            '<div class="carousel-caption" style="opacity: 0.7; background-color: #000000">' +
+            '<h1>' + imagem.title + '</h1>' +
+            '</div>' +
+            '</div>');
     });
 
     $('#view-area').carousel({
-        interval: 12000 // in milliseconds
+        interval: 2000 // in milliseconds
     });
 }
 
@@ -483,11 +481,11 @@ firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
 var player;
 function onYouTubeIframeAPIReady() {
     //  player = new YT.Player('view-area', {
-    player = new YT.Player('activeVideo', {
-//        height: '390',
-//        width: '640',
-//        videoId: videos[counterVid].link.split('/')[4], //retorna codigo dos videos
-//        playerVars: { 'autoplay': 0, 'showinfo': 0, 'rel': 0, 'controls': 1, 'modestbranding': 1},
+    player = new YT.Player('hueuhehue   ', {
+        height: '390',
+        width: '640',
+        //videoId: videos[counterVid].link.split('/')[4], //retorna codigo dos videos
+        playerVars: { 'autoplay': 0, 'showinfo': 0, 'rel': 0, 'controls': 1, 'modestbranding': 1},
         events: {
             'onReady': onPlayerReady,
             'onStateChange': onPlayerStateChange
@@ -577,7 +575,7 @@ function createFooter() {
             $("#news-container").addClass('animated fadeInDown');
         }, 650);
 
-    }, 8000); //time in ms
+    }, 7500); //time in ms
 
 }
 
@@ -642,3 +640,4 @@ function getFreeClassrooms() {
     html += '</div>';
     $('#right-panel-bottom').append(html);
 }
+;

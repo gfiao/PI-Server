@@ -91,12 +91,12 @@ Professor Barbara Liskov short bio:
 Barbara Liskov is an Institute Professor at MIT and also Associate Provost for Faculty Equity. She is a member of the National Academy of Engineering and the National Academy of Sciences, a fellow of the American Academy of Arts and Sciences, and a fellow of the ACM. She received the ACM Turing Award in 2009, the ACM SIGPLAN Programming Language Achievement Award in 2008, the IEEE Von Neumann medal in 2004, a lifetime achievement award from the Society of Women Engineers in 1996, and in 2003 was named one of the 50 most important women in science by Discover Magazine. Her research interests include
 distributed systems, replication algorithms to provide fault-tolerance, programming methodology, and programming languages. Her current research projects include
 Byzantine-fault-tolerant storage systems and online storage systems that provide confidentiality and integrity for the stored information.', user_id: 10)
-Content.create(title: 'Sócia da FCT ganhou prémio!', link_image: 'destaque_4.jpg',
-               description: 'Sócia da FCT ganhou 1 Milhão de Euros pela sua investigação.',
-               date: Date.today(), views: 30, news_text: 'Hehe placeholder!', user_id: 24)
-Content.create(title: 'Noticia de ultima hora! FCT a arder!', link_image: 'imagem_iycr2014.jpg',
-               description: 'FCT a arder! Edificios a ruir! Esta noticia esta aqui para termos 4 noticias!',
-               date: Date.today(), views: 55, news_text: 'Hehe placeholder!', user_id: 30)
+# Content.create(title: 'Sócia da FCT ganhou prémio!', link_image: 'destaque_4.jpg',
+#                description: 'Sócia da FCT ganhou 1 Milhão de Euros pela sua investigação.',
+#                date: Date.today(), views: 30, news_text: 'Hehe placeholder!', user_id: 24)
+# Content.create(title: 'Noticia de ultima hora! FCT a arder!', link_image: 'imagem_iycr2014.jpg',
+#                description: 'FCT a arder! Edificios a ruir! Esta noticia esta aqui para termos 4 noticias!',
+#                date: Date.today(), views: 55, news_text: 'Hehe placeholder!', user_id: 30)
 Content.create(title: 'Video de apresentação do MIEI',
                description: 'Video de apresentação do MIEI visa dar a conhecer o curso.',
                date: Date.today(), views: 15, news_text: 'O Departamento de Informática da FCT-UNL criou um video de
@@ -117,23 +117,32 @@ Content.create(title: 'Apresentação da FCT!',
                description: 'Video de apresentação da FCT.',
                date: Date.today(), views: 15, news_text: 'Apresentação da Faculdade de Ciências e Tecnologia da Universidade Nova de Lisboa.
                Acede já ao canal de Youtube da faculdade para veres o que melhor se faz de investigação na FCT', user_id: 1)
-Content.create(title: 'Exposição Déjeuner Sur L\'Herbe', link_image: 'http://4.bp.blogspot.com/-TheKeV0Y2IE/U14IGdnOozI/AAAAAAAAAkE/G70R5VllI1Q/s1600/herbe.JPG', description: 'Déjeuner sur L´herbe, 08 Maio a 31 Julho,
+Content.create(title: 'Biblioteca: Exposição Déjeuner Sur L\'Herbe', link_image: 'herbe.jpg', description: 'Déjeuner sur L´herbe, 08 Maio a 31 Julho,
 Jardim em frente à Biblioteca da FCT/UNL, Inauguração: 08 de Maio às 17:00h', date: Date.today(), views: 22, news_text: 'Jorge Pé-Curto, Paulo Neves, Rui Matos, Vitor Ribeiro e Volker Schnüttgen voltam agora ao Campus da FCT/UNL, acompanhados por Matthias Contzen, fluem num processo criativo e original.
 De um desafio tão grande, quanto inovador, resultados inesperados eram antecipados...
 Como num picnic, os seis escultores “espalharam” e “plantaram” esculturas no relvado frontal da Biblioteca, permitindo a fruição de propostas imaginativas e “saborosas”. As esculturas convivem. Os diferentes materiais comunicam e surpreendem...
 O espaço exterior recriado, gloza Manet, no delicioso e brilhante “Déjeuner sur l`Herbe”.
 As esculturas repousam (no espaço) e despertam (espaços)...', user_id: 1)
 
+Content.create(title: 'Biblioteca: Exposição "A DEUS"', link_image: 'MonicaCid_ConviteEletronico.jpg',
+               description: 'Exposição "A DEUS", Desenho / Instalação de Mónica CID, 14 Maio a 31 de Julho, Sala de Exposições da Biblioteca FCT/UNL, Inauguração: 14 Maio às 17:00h',
+               date: Date.today(), views: 12, news_text: 'Há doze anos que Mónica Cid (Lisboa, 1973) cria diários gráficos. Doze anos a observar o quotidiano, as pessoas que por ela passam, os seus movimentos, os seus gestos. Uma vivência pessoal passada a desenho e transformada em algo de belo e mágico. Nesta exposição, Cid converte os seus livros em esculturas: figuras que saem das folhas, que dialogam entre si, que interpelam os desenhos que continuam planos.
+Se fosse um livro, esta exposição começaria assim: “Uma linha, cansada de ser linha, abandona o caderno onde estava presa e transforma-se na silhueta de um homem em fuga. O caderno agora vazio transforma-se numa parede branca, à espera de ser riscada.”
+Tudo se inicia num bloco de desenhos. Um bloco em branco que sai à rua, que se deita na mesa de um café e que aguarda que a mão de quem o segura comece os seus movimentos. Uma folha que deseja a caneta, que anseia pelo momento em que aquela lhe toca pela primeira vez e que a linha nasce. Quando a acção se inicia, os movimentos são tão rápidos que o caderno nem consegue perceber o que está a ser desenhado. A linha transforma-se numa senhora sentada, num rosto de um homem, numa mãe que leva uma criança pela mão... Por vezes, são frases, notas ou ideias que surgem.
+Os gestos dos corpos das pessoas que passam pelo caderno são transpostos para as folhas, como se a mão que desenha tornasse seus esses mesmos movimentos e os transformasse em linhas. A fluidez da linha é adversa do pensamento. Estas não são linhas pensantes, mas linhas de acção, linhas em movimento, linhas que seguem olhos. Os desenhos organizam-se de forma despreocupada na folha. Não há neste acto de desenhar um cuidado com a composição dos elementos na folha. A folha enche-se instintivamente num processo de descoberta.
+O caderno, cansado de ser riscado, acaba o seu dia no atelier e é aí que o real do quotidiano se transforma num mundo inventado. É aí que a linha que desenha se transfigura em linha que esculpe. Os desenhos saem das folhas à procura de uma nova vida. Antes desenhos com linhas agora esculturas de linhas. A escultura reinventa o desenho, reimagina-o, transporta-o de volta a um mundo físico, mas desta vez não para a trivialidade do dia-a-dia mas para um lugar fantasiado e encantador. Um mundo que nos faz sorrir, que nos leva para um imaginário mágico dos livros de crianças, dos livros que já foram escritos e que a nossa memória evoca, mas também dos livros que ainda não foram escritos e que a imaginação de cada espectador compõe.
+Desenho feito escultura e escultura feita de desenho. Os dois gestuais concentrados numa exploração da linha, da figura e do movimento. ', user_id: 1)
+
 
 #Video link:string category_id:integer
 puts 'Adding Videos'
 # Video.create(link: 'https://www.youtube.com/embed/iaItmiZTHP8') #Quim Barreiros
 # Video.create(link: 'https://www.youtube.com/embed/Ci6lMQNLKZU') #Mortal Kombat X
-Video.create(link: 'https://www.youtube.com/embed/LbmvzjhaPEg', content_id: 5) #Apresentaçao MIEI
-Video.create(link: 'https://www.youtube.com/embed/FVgZjyevTuI', content_id: 6) #36º Aniversario FCT
-Video.create(link: 'https://www.youtube.com/embed/bHwzUHSNVxg', content_id: 7) #35º Aniversario FCT
-Video.create(link: 'https://www.youtube.com/embed/mKXIXPiVk3U', content_id: 8) #FCT-UNL Inovação
-Video.create(link: 'https://www.youtube.com/embed/YXCNFeeH1Ow', content_id: 9) # FCT-UNL (Apresentaçao 2011)
+Video.create(link: 'https://www.youtube.com/embed/LbmvzjhaPEg', content_id: 3) #Apresentaçao MIEI
+Video.create(link: 'https://www.youtube.com/embed/FVgZjyevTuI', content_id: 4) #36º Aniversario FCT
+Video.create(link: 'https://www.youtube.com/embed/bHwzUHSNVxg', content_id: 5) #35º Aniversario FCT
+Video.create(link: 'https://www.youtube.com/embed/mKXIXPiVk3U', content_id: 6) #FCT-UNL Inovação
+Video.create(link: 'https://www.youtube.com/embed/YXCNFeeH1Ow', content_id: 7) # FCT-UNL (Apresentaçao 2011)
 # Video.create(link: 'https://www.youtube.com/embed/9yNtJsFxDQI') #Cena de AA
 
 #BookmarkedContent user_id:integer content_id:integer
@@ -225,7 +234,7 @@ Transport.create(carreira: 194, origin: 'Costa da Caparica', destination: 'Praga
 
 #Hours hour:integer minute:integer
 puts 'Adding Hours'
-14.upto(23) do |i|
+10.upto(17) do |i|
   j = 0
   k = 2
   while k < 60
@@ -238,19 +247,22 @@ end
 
 #TransportHours transport_id:integer hour_id:integer
 puts 'Adding TransportHours'
-TransportHour.create(transport_id: Transport.find_by(carreira: 0).id, hour_id: Hour.find_by(hour: 17, minute: 2).id)
-TransportHour.create(transport_id: Transport.find_by(carreira: 0).id, hour_id: Hour.find_by(hour: 17, minute: 17).id)
-TransportHour.create(transport_id: Transport.find_by(carreira: 0).id, hour_id: Hour.find_by(hour: 17, minute: 22).id)
-TransportHour.create(transport_id: Transport.find_by(carreira: 0).id, hour_id: Hour.find_by(hour: 17, minute: 37).id)
-TransportHour.create(transport_id: Transport.find_by(carreira: 0).id, hour_id: Hour.find_by(hour: 22, minute: 47).id)
-TransportHour.create(transport_id: Transport.find_by(carreira: 0).id, hour_id: Hour.find_by(hour: 22, minute: 37).id)
-TransportHour.create(transport_id: Transport.find_by(carreira: 126).id, hour_id: Hour.find_by(hour: 14, minute: 35).id)
-TransportHour.create(transport_id: Transport.find_by(carreira: 126).id, hour_id: Hour.find_by(hour: 15, minute: 20).id)
-TransportHour.create(transport_id: Transport.find_by(carreira: 126).id, hour_id: Hour.find_by(hour: 17, minute: 55).id)
-TransportHour.create(transport_id: Transport.find_by(carreira: 194).id, hour_id: Hour.find_by(hour: 14, minute: 35).id)
-TransportHour.create(transport_id: Transport.find_by(carreira: 194).id, hour_id: Hour.find_by(hour: 18, minute: 0).id)
-TransportHour.create(transport_id: Transport.find_by(carreira: 194).id, hour_id: Hour.find_by(hour: 22, minute: 40).id)
-TransportHour.create(transport_id: Transport.find_by(carreira: 126).id, hour_id: Hour.find_by(hour: 22, minute: 45).id)
+# TransportHour.create(transport_id: Transport.find_by(carreira: 0).id, hour_id: Hour.find_by(hour: 10, minute: 12).id)
+# TransportHour.create(transport_id: Transport.find_by(carreira: 0).id, hour_id: Hour.find_by(hour: 10, minute: 17).id)
+# TransportHour.create(transport_id: Transport.find_by(carreira: 0).id, hour_id: Hour.find_by(hour: 10, minute: 22).id)
+TransportHour.create(transport_id: Transport.find_by(carreira: 0).id, hour_id: Hour.find_by(hour: 10, minute: 42).id)
+TransportHour.create(transport_id: Transport.find_by(carreira: 0).id, hour_id: Hour.find_by(hour: 10, minute: 47).id)
+TransportHour.create(transport_id: Transport.find_by(carreira: 0).id, hour_id: Hour.find_by(hour: 10, minute: 52).id)
+TransportHour.create(transport_id: Transport.find_by(carreira: 0).id, hour_id: Hour.find_by(hour: 10, minute: 57).id)
+# TransportHour.create(transport_id: Transport.find_by(carreira: 0).id, hour_id: Hour.find_by(hour: 22, minute: 47).id)
+# TransportHour.create(transport_id: Transport.find_by(carreira: 0).id, hour_id: Hour.find_by(hour: 22, minute: 37).id)
+TransportHour.create(transport_id: Transport.find_by(carreira: 126).id, hour_id: Hour.find_by(hour: 10, minute: 45).id)
+TransportHour.create(transport_id: Transport.find_by(carreira: 126).id, hour_id: Hour.find_by(hour: 10, minute: 40).id)
+# TransportHour.create(transport_id: Transport.find_by(carreira: 126).id, hour_id: Hour.find_by(hour: 17, minute: 55).id)
+TransportHour.create(transport_id: Transport.find_by(carreira: 194).id, hour_id: Hour.find_by(hour: 10, minute: 55).id)
+# TransportHour.create(transport_id: Transport.find_by(carreira: 194).id, hour_id: Hour.find_by(hour: 18, minute: 0).id)
+# TransportHour.create(transport_id: Transport.find_by(carreira: 194).id, hour_id: Hour.find_by(hour: 22, minute: 40).id)
+# TransportHour.create(transport_id: Transport.find_by(carreira: 126).id, hour_id: Hour.find_by(hour: 22, minute: 45).id)
 
 
 #UserContent user_id:integer content_id:integer
