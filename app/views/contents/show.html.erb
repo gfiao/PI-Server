@@ -18,6 +18,10 @@
           margin-bottom: 15px;
       }
 
+      .btn-group {
+          display: inline-block;
+      }
+
   </style>
 
   <div class="row">
@@ -34,16 +38,32 @@
       </div>
 
       <div class="row">
-        <div class="col-md-8">
-          <strong>Adicionado por </strong>
-          <%= link_to @author.name, @author, method: :get %>
+
+        <div class="col-md-3">
+          <strong><span class="glyphicon glyphicon-calendar"></span></strong>
           <% time = @content.created_at %>
-          <%= time.strftime("às %H:%M de %d/%m/%Y") %>
+          <%= time.strftime("%d/%m/%Y, às %H:%M") %>
         </div>
 
-        <div class="col-md-4">
-          <%= @content.views %>
-          <strong>visualizações</strong>
+        <div class="col-md-2">
+          <strong><span class="glyphicon glyphicon-eye-open"></span></strong>
+          <% views = @content.views %>
+          <% if views == 1 %>
+              <strong> <%= views %> viu</strong>
+          <% else %>
+              <strong> <%= views %> viram</strong>
+          <% end %>
+        </div>
+
+        <div class="col-md-3">
+          <span class="glyphicon glyphicon-tag"></span> Tags vêm aqui!!
+          <% %>
+          <% %>
+        </div>
+
+        <div class="col-md-3">
+          <strong><span class="glyphicon glyphicon-user"></span></strong>
+          <%= link_to @author.name, @author, method: :get %>
         </div>
       </div>
 
@@ -53,17 +73,21 @@
         </div>
       </div>
 
-      <div>
-        <p>
+      <div class="row">
+        <p class="col-md-12">
           <%= @content.news_text %>
         </p>
       </div>
 
-      <% if @author.id == current_user %>
-          <%= button_to 'Editar notícia', edit_content_path(@content), method: :get, class: "btn btn-default" %>
-      <% end %>
-      <p></p>
-      <%= button_to 'Voltar atrás', contents_path, method: :get, class: "btn btn-default" %>
+      <div class="row">
+        <span class="col-md-6 btn-group">
+          <% if @author.id == current_user %>
+              <%= button_to 'Editar notícia', edit_content_path(@content), method: :get, class: "btn btn-default" %>
+          <% end %>
+          <p></p>
+          <%= button_to 'Voltar atrás', contents_path, method: :get, class: "btn btn-default" %>
+        </span>
+      </div>
     </div>
 
     <div class="col-md-4">

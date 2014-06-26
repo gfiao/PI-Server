@@ -12,12 +12,15 @@ class ContentsController < ApplicationController
   # GET /contents/1
   # GET /contents/1.json
   def show
-    @author = User.find_by(:id => @content.user_id)
-
     @latest = Content.all.order(created_at: :desc)
 
-    @content.views = @content.views + 1
-    @content.save
+    if !(@content.views.nil?)
+      @author = User.find_by(:id => @content.user_id)
+
+      @content.views = @content.views + 1
+      @content.save
+    end
+
   end
 
   # GET /contents/new
@@ -35,6 +38,8 @@ class ContentsController < ApplicationController
   # POST /contents.json
   def create
     @content = Content.new(content_params)
+    @content.user_id = current_user.id
+    @content.views = 0
     @content.users << current_user
 
     if !params[:video].nil?
