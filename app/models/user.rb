@@ -22,6 +22,6 @@ class User < ActiveRecord::Base
   validates :course, presence: true;
   validates :birth_date, presence: true;
 
-  validates :email, format: {with: /\b[A-Z0-9._%a-z\-]+@campus\.fct\.unl\.pt\z/,
+  validates :email, format: {with: /\b[A-Z0-9._%a-z\-]+@(campus.)?fct\.unl\.pt\z/,
                              message: "Tem de usar o email @campus.fct.unl.pt"}
 end
