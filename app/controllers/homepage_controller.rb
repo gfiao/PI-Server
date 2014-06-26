@@ -35,6 +35,7 @@ class HomepageController < ApplicationController
     # 8 - RTP - muitas noticias, algumas com imagens. problemas com acentos/cedilhas - http://www.rtp.pt/noticias/index.php?headline=204&visual=58
     # 9 - feedsdenoticias.blogspot - não presta, não vale uma piça, UMA PIÇA! - http://feeds.destakes.com/destakes/canal/imprensa?format=xml
     # 10 - Expresso Desporto -  - http://expresso.sapo.pt/static/rss/desporto_23414.xml
+    # 11 - Blog BIBLIOTECA -  - http://feeds.feedburner.com/BlogueDaBibliotecaFct/unl?format=xml
 
     require 'rss'
     require 'nokogiri'
@@ -50,10 +51,11 @@ class HomepageController < ApplicationController
              "http://feeds.dn.pt/DN-Portugal", #7
              "http://www.rtp.pt/noticias/index.php?headline=204&visual=58", #8
              "http://feeds.destakes.com/destakes/canal/imprensa?format=xml", #9
-             "http://expresso.sapo.pt/static/rss/desporto_23414.xml"] #10
+             "http://expresso.sapo.pt/static/rss/desporto_23414.xml", #10
+             "http://feeds.feedburner.com/BlogueDaBibliotecaFct/unl?format=xml"] #11
 
     # alterar esta variavel consoante o feed que queremos usar
-    selectedFeedIndex = 0
+    selectedFeedIndex = 11
 
     rss = RSS::Parser.parse(feeds[selectedFeedIndex], false)
     puts "============================ INICIO FEEDS ==========================="
@@ -114,7 +116,19 @@ class HomepageController < ApplicationController
                        date: item.pubDate, views: 0, news_text: news_text, user_id: 1)
 
         puts "\n********** fim de um item do feed **********"
+
+      # feed da biblioteca
+      elsif selectedFeedIndex == 11
+        doc = Nokogiri::HTML(description)
+
+        # obter a imagem da noticia
+        image = doc.css('a').map { |i| i['href'] } # Array of strings
+
+        Content.create(title: item.title, link_image: image[0], description: "(sem descrição para apresentar)",
+                       date: item.pubDate, views: 0, news_text: item.description, user_id: 1)
+
       end
+
 
       #   Content.create(title, link_image, description, date, views, news_text, user_id)
     end
