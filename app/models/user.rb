@@ -22,7 +22,6 @@ class User < ActiveRecord::Base
   validates :course, presence: true;
   validates :birth_date, presence: true;
 
-  # validates_format_of :avatar_url, :presence => true, :with => %r{\.(png|jpg|jpeg|gif|bmp)$}i,
-  #                     :message => "needs to be .jpg, .png, .jpeg, .gif, .bmp", :multiline => true
-
+  validates :email, format: {with: /\b[A-Z0-9._%a-z\-]+@campus\.fct\.unl\.pt\z/,
+                             message: "Tem de usar o email @campus.fct.unl.pt"}
 end

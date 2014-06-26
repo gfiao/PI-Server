@@ -22,6 +22,10 @@
           display: inline-block;
       }
 
+      .line-spacing {
+          line-height: 23px;
+      }
+
   </style>
 
   <div class="row">
@@ -74,14 +78,14 @@
       </div>
 
       <div class="row">
-        <p class="col-md-12">
-          <%= @content.news_text %>
+        <p class="col-md-12 line-spacing">
+          <%= raw @content.news_text %>
         </p>
       </div>
 
       <div class="row">
         <span class="col-md-6 btn-group">
-          <% if @author.id == current_user %>
+          <% if @author.id == current_user.id %>
               <%= button_to 'Editar notícia', edit_content_path(@content), method: :get, class: "btn btn-default" %>
           <% end %>
           <p></p>

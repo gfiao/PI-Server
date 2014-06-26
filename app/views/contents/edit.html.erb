@@ -1,9 +1,9 @@
 <div id="cont1" class="container space-top space-bottom">
-  <h1>Editar Notícia</h1>
+  <h1 class="page-header">Editar Notícia</h1>
 
   <%= render 'form' %>
   <p></p>
-  <%= button_to 'Voltar atrás', contents_path %>
+  <%= button_to 'Voltar atrás', contents_path, method: :get, class: "btn btn-default" %>
   <p></p>
 
 </div>
