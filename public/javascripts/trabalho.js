@@ -50,9 +50,32 @@ function watchLater() {
             url: "/bookmarked_contents",
             type: "POST",
             data: {content_id: ind},
-            success: alert("Sucessos caralho!")
+            success: createAlertDiv()
         });
     }
+}
+
+function createAlertDiv() {
+
+    toShow = '<div class="col-md-2"></div>' +
+        '<div class="col-md-8 alert alert-success" role="alert" style="margin-bottom: 0px;">' +
+        '<p>Uma cena para alertar que tá bem feito heheu</p>' +
+        '</div><div class="col-md-2"></div>';
+
+    $("#bookmark-message-alert").removeClass('animated fadeOutUp');
+    $("#bookmark-message-alert").addClass('animated fadeInDown');
+    $("#bookmark-message-alert").append(toShow);
+
+    setTimeout(function () { //timeout para garantir que o novo texto aparece entre os dois fades
+        $("#bookmark-message-alert").removeClass('animated fadeInDown');
+        $("#bookmark-message-alert").addClass('animated fadeOutUp');
+
+    }, 3000);
+
+    setTimeout(function () {
+//        alert("isto só devia vir dps");
+        $("#bookmark-message-alert").empty();
+    }, 3500);
 }
 
 

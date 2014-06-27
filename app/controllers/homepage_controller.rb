@@ -55,7 +55,7 @@ class HomepageController < ApplicationController
              "http://feeds.feedburner.com/BlogueDaBibliotecaFct/unl?format=xml"] #11
 
     # alterar esta variavel consoante o feed que queremos usar
-    selectedFeedIndex = 11
+    selectedFeedIndex = 0
 
     rss = RSS::Parser.parse(feeds[selectedFeedIndex], false)
     puts "============================ INICIO FEEDS ==========================="
