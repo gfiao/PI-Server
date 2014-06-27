@@ -43,7 +43,14 @@ function init() {
 
 function watchLater() {
     var currElement = $.getValues('/current_videos')[0];
-    var ind = currElement.index;
+    var ind;
+
+    if (currElement.content_type == "video") {
+        var videoContent = news[videos[currElement.index - 1].content_id - 1];
+        ind = videoContent.id;
+    }
+    else
+        ind = currElement.index;
 
     if (ind > 0) {
         $.ajax({

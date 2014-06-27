@@ -1,5 +1,5 @@
 <div id="cont1" class="container space-top space-bottom" style="padding-bottom: 2%">
-  <h1 class="page-header">O meu perfil</h1>
+  <h1 class="page-header">Perfil de <%= @user.name %></h1>
 
   <style>
       .row {
@@ -11,7 +11,7 @@
       }
 
       /*#bookmarks {*/
-          /*background-color: lightgray;*/
+      /*background-color: lightgray;*/
       /*}*/
 
       #links {
@@ -27,37 +27,45 @@
   <!--<div id="userInfo row">-->
   <div class="col-md-4">
 
-    <h3 class="table-header" style="text-align: center"><b>Conteúdo guardado</b></h3>
-    <table class="table table-hover">
-      <% current_user.bookmarked_contents.each do |entry| %>
-          <% puts entry %>
-          <% content = Content.find_by(:id => entry.content_id) %>
-          <tr>
-            <td><%= content.title %></td>
-            <td class="right-align"><%= button_to "Remover?", entry, method: :delete, class: "btn btn-default btn-sm" %></td>
-          </tr>
-      <% end %>
-      <tr>
-        <td>Conteudo 1, um video sobre vida selvagem</td>
-        <td class="right-align"><%= button_to "Remover?", bookmarked_content_path, method: :delete, class: "btn btn-default btn-sm" %></td>
-      </tr>
-      <tr>
-        <td>Conteudo 2, uma htória tôbe... APIÁR!</td>
-        <td class="right-align"><%= button_to "Remover?", bookmarked_content_path, method: :delete, class: "btn btn-default btn-sm" %></td>
-      </tr>
-      <tr>
-        <td>Conteudo 3, só para encher chouriças</td>
-        <td class="right-align"><%= button_to "Remover?", bookmarked_content_path, method: :delete, class: "btn btn-default btn-sm" %></td>
-      </tr>
-      <tr>
-        <td>Conteudo 4</td>
-        <td class="right-align"><%= button_to "Remover?", bookmarked_content_path, method: :delete, class: "btn btn-default btn-sm" %></td>
-      </tr>
-      <tr>
-        <td>Conteudo xpto</td>
-        <td class="right-align"><%= button_to "Remover?", bookmarked_content_path, method: :delete, class: "btn btn-default btn-sm" %></td>
-      </tr>
-    </table>
+    <% if !current_user.nil? %>
+        <% if @user.id == current_user.id %>
+
+            <div class="col-md-4">
+
+              <h3 class="table-header" style="text-align: center"><b>Conteúdo guardado</b></h3>
+              <table class="table">
+                <% current_user.bookmarked_contents.each do |entry| %>
+                    <% content = Content.find_by(:id => entry.content_id) %>
+                    <tr>
+                      <td><%= link_to content.title, content_path(content.id) %></td>
+                      <td class="right-align"><%= button_to "Remover?", entry, method: :delete, class: "btn btn-default btn-sm" %></td>
+                    </tr>
+                <% end %>
+              </table>
+            </div>
+        <% end %>
+    <% end %>
+    <!--<tr>-->
+    <!--<td>Conteudo 1, um video sobre vida selvagem</td>-->
+    <!--<td class="right-align"><%= button_to "Remover?", bookmarked_content_path, method: :delete, class: "btn btn-default btn-sm" %></td>-->
+    <!--</tr>-->
+    <!--<tr>-->
+    <!--<td>Conteudo 2, uma htória tôbe... APIÁR!</td>-->
+    <!--<td class="right-align"><%= button_to "Remover?", bookmarked_content_path, method: :delete, class: "btn btn-default btn-sm" %></td>-->
+    <!--</tr>-->
+    <!--<tr>-->
+    <!--<td>Conteudo 3, só para encher chouriças</td>-->
+    <!--<td class="right-align"><%= button_to "Remover?", bookmarked_content_path, method: :delete, class: "btn btn-default btn-sm" %></td>-->
+    <!--</tr>-->
+    <!--<tr>-->
+    <!--<td>Conteudo 4</td>-->
+    <!--<td class="right-align"><%= button_to "Remover?", bookmarked_content_path, method: :delete, class: "btn btn-default btn-sm" %></td>-->
+    <!--</tr>-->
+    <!--<tr>-->
+    <!--<td>Conteudo xpto</td>-->
+    <!--<td class="right-align"><%= button_to "Remover?", bookmarked_content_path, method: :delete, class: "btn btn-default btn-sm" %></td>-->
+    <!--</tr>-->
+    <!--</table>-->
   </div>
 
 
@@ -85,7 +93,7 @@
         <% if current_user.avatar_url == '' %>
             <%= image_tag 'http://noticias.rumonet.pt/wp-content/uploads/2013/02/logo_FCTUNL.jpg', size: '100x100' %>
         <% else %>
-            <%= image_tag current_user.avatar_url, size: '100x100' %>
+            <%= image_tag @user.avatar_url, size: '100x100' %>
         <% end %>
       </div>
     </div>
@@ -129,9 +137,13 @@
         <%= @user.about_me %>
       </div>
     </div>
-    <div class="col-xs-12" id="links">
-      <%= button_to 'Editar perfil', edit_user_registration_path, method: :get, class: "btn btn-default" %>
-    </div>
+    <% if !current_user.nil? %>
+        <% if @user.id == current_user.id %>
+            <div class="col-xs-12" id="links">
+              <%= button_to 'Editar perfil', edit_user_registration_path, method: :get, class: "btn btn-default" %>
+            </div>
+        <% end %>
+    <% end %>
 
 
   </div>
