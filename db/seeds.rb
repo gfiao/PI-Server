@@ -113,23 +113,23 @@ Byzantine-fault-tolerant storage systems and online storage systems that provide
 # Content.create(title: 'Noticia de ultima hora! FCT a arder!', link_image: 'imagem_iycr2014.jpg',
 #                description: 'FCT a arder! Edificios a ruir! Esta noticia esta aqui para termos 4 noticias!',
 #                date: Date.today(), views: 55, news_text: 'Hehe placeholder!', user_id: 30)
-Content.create(title: 'Video de apresentação do MIEI',
+Content.create(title: 'Video de apresentação do MIEI', link_image: 'fct.gif',
                description: 'Video de apresentação do MIEI visa dar a conhecer o curso.',
                date: Date.today(), views: 15, news_text: 'O Departamento de Informática da FCT-UNL criou um video de
                 apresentação do Mestrado Integrado em Engenharia Informática', user_id: 1)
-Content.create(title: 'A FCT fez 36 anos!',
+Content.create(title: 'A FCT fez 36 anos!', link_image: 'fct.gif',
                description: 'A FCT fez no ano passado 36 anos.',
                date: Date.today(), views: 15, news_text: 'A FCT fez no ano passado 36 anos.
                 Acede já ao canal de Youtube da faculdade para veres os melhores momentos do 36º ano da FCT', user_id: 1)
-Content.create(title: 'A FCT fez 35 anos!',
+Content.create(title: 'A FCT fez 35 anos!', link_image: 'fct.gif',
                description: 'Os melhores momentos do 35º ano da FCT.',
                date: Date.today(), views: 15, news_text: 'A FCT fez à dois anos 35 anos.
                 Acede já ao canal de Youtube da faculdade para veres os melhores momentos do 35º ano da FCT', user_id: 1)
-Content.create(title: 'Inovação na FCT!',
+Content.create(title: 'Inovação na FCT!', link_image: 'fct.gif',
                description: 'Apresentação dos Centros de Investigação da FCT.',
                date: Date.today(), views: 15, news_text: 'Apresentação dos Centros de Investigação da Faculdade de Ciências e Tecnologia da Universidade Nova de Lisboa.
                Acede já ao canal de Youtube da faculdade para veres o que melhor se faz de investigação na FCT', user_id: 1)
-Content.create(title: 'Apresentação da FCT!',
+Content.create(title: 'Apresentação da FCT!', link_image: 'fct.gif',
                description: 'Video de apresentação da FCT.',
                date: Date.today(), views: 15, news_text: 'Apresentação da Faculdade de Ciências e Tecnologia da Universidade Nova de Lisboa.
                Acede já ao canal de Youtube da faculdade para veres o que melhor se faz de investigação na FCT', user_id: 1)
