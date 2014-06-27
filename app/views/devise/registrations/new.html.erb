@@ -4,17 +4,18 @@
 
       <h2 class="page-header" style="margin-bottom: 3%; margin-top: 3%"><b>Criar Conta</b></h2>
 
-      <p style="margin-top: 3%; margin-bottom: 3%; font-size: 120%">Já tem conta? <%= render "devise/shared/links" %></p>
+      <p style="margin-top: 3%; margin-bottom: 3%; font-size: 120%">Já tem
+        conta? <%= render "devise/shared/links" %></p>
 
       <div class="row">
         <div class="form-group col-md-6">
-          <div><%= f.label :nome, class: 'form' %>
+          <div><%= f.label :nome, class: 'form' %><b> *</b>
             <br/>
             <%= f.text_field :name, autofocus: true, class: 'form-control', placeholder: 'Nome' %></div>
         </div>
 
         <div class="form-group col-md-6">
-          <div><%= f.label :email, 'Email (tens que usar o teu email @campus.fct.unl.pt)' %>
+          <div><%= f.label :email %><b> *</b> (tens que usar o teu email @campus.fct.unl.pt)
             <br/>
             <%= f.email_field :email, class: 'form-control', placeholder: 'Email' %></div>
         </div>
@@ -22,7 +23,7 @@
 
       <div class="row">
         <div class="form-group col-md-6">
-          <div><%= f.label :palavra_passe %>
+          <div><%= f.label :palavra_passe %><b> *</b>
             <br/>
             <%= f.password_field :password, autocomplete: "off", class: 'form-control',
                                  placeholder: 'Palavra Passe' %>
@@ -30,7 +31,7 @@
         </div>
 
         <div class="form-group col-md-6">
-          <div><%= f.label :confimação_palavra_passe %>
+          <div><%= f.label :confimação_palavra_passe %><b> *</b>
             <br/>
             <%= f.password_field :password_confirmation, autocomplete: 'off',
                                  class: 'form-control', placeholder: 'Confirmar Palavra Passe' %>
@@ -38,18 +39,23 @@
         </div>
       </div>
 
-        <div class="form-group form-inline">
-          <div><%= f.label :data_de_nascimento %>
+      <div class="row">
+        <div class="form-group col-md-4 form-inline">
+          <div><%= f.label :data_de_nascimento %><b> *</b>
             <br/>
             <%= f.date_select :birth_date, {start_year: 1950, end_year: Time.now.year}, class: 'form-control' %>
           </div>
         </div>
+        <div class="col-md-6 pull-right" style="margin-top: 10px">
+          <p>Os campos assinalados com <b>*</b> são de preenchimentos obrigatório</p>
+        </div>
+      </div>
 
       <div class="row">
         <div class="form-group col-xs-6">
           <div>
-            <%= f.label :curso %> </br>
-
+            <%= f.label :curso %><b> *</b>
+            </br>
             <select name="user[course]" class="form-control">
               <option value="">Please select</option>
               <option value="Informática" selected="selected">Informática</option>
@@ -74,7 +80,8 @@
         <div class="form-group col-xs-6">
           <div><%= f.label :sobre_mim %>
             <br/>
-            <%= f.text_area :about_me, class: 'form-control', placeholder: 'Diz-nos algo sobre ti!' %></div>
+            <%= f.text_area :about_me, class: 'form-control pre-scrollable', placeholder: 'Diz-nos algo sobre ti!' %>
+          </div>
         </div>
       </div>
 
@@ -87,7 +94,7 @@
         </div>
       </div>
 
-      <div><%= f.label :sexo %>
+      <div><%= f.label :sexo %><b> *</b>
         </br>
         <div class="radio-inline">
           <%= f.radio_button :gender, 'Masculino' %>

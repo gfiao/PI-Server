@@ -28,8 +28,9 @@
   <div class="col-md-4">
 
     <h3 class="table-header" style="text-align: center"><b>Conteúdo guardado</b></h3>
-    <table class="table">
+    <table class="table table-hover">
       <% current_user.bookmarked_contents.each do |entry| %>
+          <% puts entry %>
           <% content = Content.find_by(:id => entry.content_id) %>
           <tr>
             <td><%= content.title %></td>

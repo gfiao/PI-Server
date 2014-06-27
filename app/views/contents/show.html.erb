@@ -98,7 +98,7 @@
 
     <div class="col-md-4">
       <h2 class="table-header" style="text-align: center">Notícias mais recentes</h2>
-      <table class="table">
+      <table class="table table-hover">
         <% @latest.each do |content| %>
             <tr>
               <td><%= link_to content.title, content, method: :get %></td>
