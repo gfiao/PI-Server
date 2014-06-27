@@ -446,16 +446,26 @@ function appendVideos() {
 
     $.each(imagens, function (i, imagem) {
         if (imagem.link_image != null)
-            $('#tv-carousel').append('<div id = "image_' + i + '" class="item itemsCar">' +
-                '<img src="/assets/' + imagem.link_image + '" style="width: 100%; height:100%;" > ' +
-                '<div class="carousel-caption" style="opacity: 0.8; background-color: #000000">' +
-                '<h1>' + imagem.title + '</h1>' +
-                '</div>' +
-                '</div>');
+            if (imagem.link_image.indexOf('http') >= 0) {
+                $('#tv-carousel').append('<div id = "image_' + i + '" class="item itemsCar">' +
+                    '<img src="' + imagem.link_image + '" style="width: 100%; height:100%;" > ' +
+                    '<div class="carousel-caption" style="opacity: 0.8; background-color: #000000">' +
+                    '<h1>' + imagem.title + '</h1>' +
+                    '</div>' +
+                    '</div>');
+            }
+            else {
+                $('#tv-carousel').append('<div id = "image_' + i + '" class="item itemsCar">' +
+                    '<img src="/assets/' + imagem.link_image + '" style="width: 100%; height:100%;" > ' +
+                    '<div class="carousel-caption" style="opacity: 0.8; background-color: #000000">' +
+                    '<h1>' + imagem.title + '</h1>' +
+                    '</div>' +
+                    '</div>');
+            }
     });
 
     $('#view-area').carousel({
-        interval: 12000 // in milliseconds
+        interval: 12000 // (12000 = o valor ideal) in milliseconds
     });
 }
 

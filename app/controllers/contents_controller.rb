@@ -20,6 +20,8 @@ class ContentsController < ApplicationController
     puts @content.title
     puts @author.id
 
+    @video = @content.video
+
     if !(@content.views.nil?)
 
       @content.views = @content.views + 1
