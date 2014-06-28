@@ -23,8 +23,8 @@
       <th>Sala</th>
       <th>De</th>
       <th>Até</th>
-      <th>Likes</th>
-      <th>Adicionar like</th>
+      <th>Feedback</th>
+      <th></th>
     </tr>
     <% @free_classrooms.each do |free_classroom| %>
         <% if free_classroom.to_time > Date.today %>
@@ -34,10 +34,16 @@
               <td><%= free_classroom.from_time.to_s(:short) %></td>
               <td><%= free_classroom.to_time.to_s(:short) %></td>
               <td><%= free_classroom.likes %></td>
-
-              <td><%= button_to("Like", free_classroom_path(free_classroom, "free_classroom[likes]" => free_classroom.likes + 1),
-                                :method => :put, class: 'btn btn-sm btn-default') %></td>
-
+              <td>
+                <span>
+                  <%= link_to raw("<i class=\"glyphicon glyphicon-thumbs-up\"></i>"), free_classroom_path(free_classroom, "free_classroom[likes]" => free_classroom.likes + 1),
+                              :method => :put, class: 'btn btn-sm btn-default' %>
+                </span>
+                <span>
+                  <%= link_to raw("<span class=\"glyphicon glyphicon-thumbs-down\"></span>"), free_classroom_path(free_classroom, "free_classroom[likes]" => free_classroom.likes - 1),
+                              :method => :put, class: 'btn btn-sm btn-default' %>
+                </span>
+              </td>
             </tr>
         <% end %>
     <% end %>
