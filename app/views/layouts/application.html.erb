@@ -92,10 +92,33 @@
 
 </body>
 <footer>
-  <%= image_tag "logo_fctunl.png", :class => "footerImg", :id => "logo" %>
-  <span class="footerNames">Rafael Bizarra nº41895</span> |
-  <span class="footerNames">Leonardo Fião nº41740</span> |
-  <span class="footerNames">Guilherme Fião nº41738</span>
+
+  <div class="row">
+    <div class="col-md-5" style="margin-right: 0px; padding-right: 0px">
+        <%= image_tag "logo_fctunl.png", :class => "footerImg", :id => "logo" %>
+    </div>
+    <div class="col-md-7" style="margin-top: 10px; margin-left: 0px; padding-left: 0px">
+      <div class="row">
+        <span class="footerNames no-padding col-md-3">Rafael Bizarra nº41895</span>
+        <span class="footerNames no-padding col-md-3">Leonardo Fião nº41740</span>
+        <span class="footerNames no-padding col-md-3">Guilherme Fião nº41738</span>
+      </div>
+      <div class="row">
+        <span class="footerNames no-padding col-md-6">{r.bizarra, l.fiao, g.fiao}@campus.fct.unl.pt</span>
+        <span class="footerNames no-padding col-md-2">FCT 2014</span>
+        <!--<span class="footerNames no-padding col-md-3">l.fiao</span>-->
+        <!--<span class="footerNames no-padding col-md-3">g.fiao</span>-->
+      </div>
+
+    </div>
+
+  </div>
+
+
+  <!--<%= image_tag "logo_fctunl.png", :class => "footerImg", :id => "logo" %>-->
+  <!--<span class="footerNames">Rafael Bizarra nº41895</span> |-->
+  <!--<span class="footerNames">Leonardo Fião nº41740</span> |-->
+  <!--<span class="footerNames">Guilherme Fião nº41738</span>-->
 </footer>
 </html>
 
@@ -109,6 +132,11 @@
 
     .footerNames {
         font-size: 125%;
+    }
+
+    .no-padding {
+        padding-left: 0px;
+        padding-right: 0px;
     }
 
 </style>

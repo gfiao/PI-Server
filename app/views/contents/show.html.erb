@@ -1,6 +1,17 @@
 <div id="cont1" class="container space-top space-bottom" style="padding-bottom: 3%">
 
   <style>
+      .tag-styled {
+          background-color: lightblue;
+          border-radius: 50px;
+          padding: 5px;
+          margin-right: 5px
+      }
+
+      .tag-styled a {
+          color: blue;
+      }
+
       p {
           font-size: 110%;
           font-family: "Myriad Pro Regular";
@@ -9,7 +20,7 @@
       .image-style {
           width: 100%;
           height: 100%;
-          margin-top: 20px;
+          margin-top: 10px;
           margin-bottom: 20px;
       }
 
@@ -59,15 +70,22 @@
           <% end %>
         </div>
 
-        <div class="col-md-3">
-          <span class="glyphicon glyphicon-tag"></span> Tags vêm aqui!!
-          <% %>
-          <% %>
-        </div>
-
-        <div class="col-md-3">
+        <div class="col-md-4">
           <strong><span class="glyphicon glyphicon-user"></span></strong>
           <%= link_to @author.name, @author, method: :get %>
+        </div>
+      </div>
+
+      <div class="row" style="margin-top: 10px; margin-bottom: 10px;">
+        <div class="col-md-10">
+          <span class="glyphicon glyphicon-tag"></span>
+          <% if @content.tags.size > 0 %>
+              <% @content.tags.each do |tag| %>
+                  <span class="tag-styled"><%= link_to tag.tag, '#' %></span>
+              <% end %>
+          <% else %>
+              <span>Este conteúdo não nenhuma tag associada!</span>
+          <% end %>
         </div>
       </div>
 

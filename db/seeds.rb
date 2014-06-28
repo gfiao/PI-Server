@@ -106,7 +106,7 @@ Professor Barbara Liskov short bio:
 
 Barbara Liskov is an Institute Professor at MIT and also Associate Provost for Faculty Equity. She is a member of the National Academy of Engineering and the National Academy of Sciences, a fellow of the American Academy of Arts and Sciences, and a fellow of the ACM. She received the ACM Turing Award in 2009, the ACM SIGPLAN Programming Language Achievement Award in 2008, the IEEE Von Neumann medal in 2004, a lifetime achievement award from the Society of Women Engineers in 1996, and in 2003 was named one of the 50 most important women in science by Discover Magazine. Her research interests include
 distributed systems, replication algorithms to provide fault-tolerance, programming methodology, and programming languages. Her current research projects include
-Byzantine-fault-tolerant storage systems and online storage systems that provide confidentiality and integrity for the stored information.', user_id: 10)
+Byzantine-fault-tolerant storage systems and online storage systems that provide confidentiality and integrity for the stored information.', user_id: 1)
 # Content.create(title: 'Sócia da FCT ganhou prémio!', link_image: 'destaque_4.jpg',
 #                description: 'Sócia da FCT ganhou 1 Milhão de Euros pela sua investigação.',
 #                date: Date.today(), views: 30, news_text: 'Hehe placeholder!', user_id: 24)
@@ -179,16 +179,28 @@ puts 'Adding new Tags'
 Tag.create(tag: 'Informática')
 Tag.create(tag: 'Bioquimica')
 Tag.create(tag: 'Ambiente')
-Tag.create(tag: 'Geral')
 Tag.create(tag: 'Electrotécnica')
 Tag.create(tag: 'Matemática')
 Tag.create(tag: 'Física')
+Tag.create(tag: 'Geral FCT')
+Tag.create(tag: 'Video')
+Tag.create(tag: 'País')
+Tag.create(tag: 'Mundo')
+Tag.create(tag: 'Desporto')
+
 
 #TagContent content_id:integer tag_id:integer
 puts 'Adding Tag to Contents'
 TagContent.create(content_id: 1, tag_id: 1)
-TagContent.create(content_id: 2, tag_id: 1)
-TagContent.create(content_id: 3, tag_id: 2)
+TagContent.create(content_id: 1, tag_id: 8)
+TagContent.create(content_id: 2, tag_id: 2)
+TagContent.create(content_id: 2, tag_id: 8)
+TagContent.create(content_id: 3, tag_id: 7)
+TagContent.create(content_id: 3, tag_id: 8)
+TagContent.create(content_id: 4, tag_id: 7)
+TagContent.create(content_id: 4, tag_id: 8)
+TagContent.create(content_id: 5, tag_id: 7)
+TagContent.create(content_id: 5, tag_id: 8)
 
 #Classrooms building:string classroom:string
 puts 'Adding Classrooms'
@@ -282,7 +294,7 @@ TransportHour.create(transport_id: Transport.find_by(carreira: 194).id, hour_id:
 
 
 #UserContent user_id:integer content_id:integer
-puts 'Associating content to users'
-UserContent.create(user_id: 1, content_id: 1)
-UserContent.create(user_id: 10, content_id: 2)
-UserContent.create(user_id: 24, content_id: 3)
+# puts 'Associating content to users'
+# UserContent.create(user_id: 1, content_id: 1)
+# UserContent.create(user_id: 10, content_id: 2)
+# UserContent.create(user_id: 24, content_id: 3)
