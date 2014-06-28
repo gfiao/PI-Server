@@ -644,7 +644,7 @@ function getFreeClassrooms() {
 
         if (classroomHour > hour) {
             html += '<p class="free-classrooms">' + freeClassroomsToTV[i].classroom
-                + ' livre até ás ' + freeClassroomsToTV[i].to_time + '</p>';
+                + ' livre até às ' + freeClassroomsToTV[i].to_time + '</p>';
             if (counter == 2) break;
             counter++;
         }
