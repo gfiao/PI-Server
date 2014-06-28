@@ -29,19 +29,26 @@
 
   <% if !current_user.nil? %>
       <% if @user.id == current_user.id %>
-
           <div class="col-md-4">
-
-            <h3 class="table-header" style="text-align: center"><b>Conteúdo guardado</b></h3>
-            <table class="table">
-              <% current_user.bookmarked_contents.each do |entry| %>
-                  <% content = Content.find_by(:id => entry.content_id) %>
-                  <tr>
-                    <td><%= link_to content.title, content_path(content.id) %></td>
-                    <td class="right-align"><%= button_to "Remover?", entry, method: :delete, class: "btn btn-default btn-sm" %></td>
-                  </tr>
-              <% end %>
-            </table>
+            <h3 class="table-header" style="text-align: center">
+              <b>Conteúdo guardado</b>
+            </h3>
+            <% bookmarks = current_user.bookmarked_contents %>
+            <% puts bookmarks.size %>
+            <% if bookmarks.size == 0 %>
+                <p class="justified">Não tens conteúdo guardado. Podes guardar conteúdo para ver mais tarde
+                através da página principal</p>
+            <% else %>
+                <table class="table">
+                  <% bookmarks.each do |entry| %>
+                      <% content = Content.find_by(:id => entry.content_id) %>
+                      <tr>
+                        <td><%= link_to content.title, content_path(content.id) %></td>
+                        <td class="right-align"><%= button_to "Remover?", entry, method: :delete, class: "btn btn-default btn-sm" %></td>
+                      </tr>
+                  <% end %>
+                </table>
+            <% end %>
           </div>
       <% end %>
   <% end %>

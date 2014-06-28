@@ -8,8 +8,13 @@
           <%= collection_select :classroom, :building, Classroom.select(:building).uniq, :building,
                                 :building, {:selected => :building, include_blank: 'Todos'}, class: 'form-control' %>
         </div>
-        <%= submit_tag "Filtrar", class: 'btn btn-default' %>
+        <div class="col-md-2">
+          <%= submit_tag "Filtrar", class: 'btn btn-default' %>
+        </div>
     <% end %>
+    <div class="col-md-3">
+      <%= button_to('Adicionar nova sala livre', new_free_classroom_path, :method => :get, class: 'btn btn-default') %>
+    </div>
   </div>
 
   <table class="table table-striped" style="margin-top: 2%;">
@@ -38,5 +43,5 @@
     <% end %>
   </table>
 
-  <%= button_to('Adicionar nova sala livre', new_free_classroom_path, :method => :get, class: 'btn btn-default') %>
+
 </div>
