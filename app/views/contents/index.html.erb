@@ -1,8 +1,8 @@
 <style>
-  #description {
-      margin-top: 10px;
-      margin-bottom: 10px;
-  }
+    #description {
+        margin-top: 10px;
+        margin-bottom: 10px;
+    }
 </style>
 
 <div id="cont1" class="container space-top space-bottom" style="padding-bottom: 3%">
@@ -17,22 +17,27 @@
   <% end %>
   <br>
 
-  <table class="table table-hover table-striped">
-    <tr>
-      <th class="col-md-1" style="text-align: center">Link imagem</th>
-      <th class="col-md-3" style="text-align: center">Título</th>
-      <th class="col-md-6" style="text-align: center">Descrição</th>
-      <th class="col-md-1" style="text-align: center">Data de inserção</th>
-      <th class="col-md-1">Visualizações</th>
-    </tr>
-    <% @contents.each do |content| %>
+  <% if @contents.size > 0 %>
+      <table class="table table-hover table-striped">
         <tr>
-          <td class="col-md-1"><%= link_to (image_tag content.link_image, size: '90x70'), content_path(content.id) %></td>
-          <td class="col-md-3"><%= raw link_to content.title, content_path(content.id) %></td>
-          <td id="description" class="col-md-6"><%= raw content.description %></td>
-          <td class="col-md-1" style="text-align: center"><%= content.created_at.strftime("%d/%m/%Y, %H:%M") %></td>
-          <td class="col-md-1" style="text-align: center"><%= content.views %></td>
+          <th class="col-md-1" style="text-align: center">Link imagem</th>
+          <th class="col-md-3" style="text-align: center">Título</th>
+          <th class="col-md-6" style="text-align: center">Descrição</th>
+          <th class="col-md-1" style="text-align: center">Data de inserção</th>
+          <th class="col-md-1">Visualizações</th>
         </tr>
-    <% end %>
-  </table>
+        <% @contents.each do |content| %>
+            <tr>
+              <td class="col-md-1"><%= link_to (image_tag content.link_image, size: '90x70'), content_path(content.id) %></td>
+              <td class="col-md-3"><%= raw link_to content.title, content_path(content.id) %></td>
+              <td id="description" class="col-md-6"><%= raw content.description %></td>
+              <td class="col-md-1" style="text-align: center"><%= content.created_at.strftime("%d/%m/%Y, %H:%M") %></td>
+              <td class="col-md-1" style="text-align: center"><%= content.views %></td>
+            </tr>
+        <% end %>
+      </table>
+  <% else %>
+      <strong><p>Ainda não adicionaste nenhuma notícia.<br>
+        Adiciona uma clicando no botão acima!</p></strong>
+  <% end %>
 </div>
