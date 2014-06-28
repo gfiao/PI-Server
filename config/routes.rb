@@ -61,6 +61,7 @@ Rails.application.routes.draw do
     resources :bookmarked_contents
     resources :user_contents
     resources :free_classrooms
+    resources :contents
   end
 
   resources :contents do
@@ -68,7 +69,7 @@ Rails.application.routes.draw do
     resources :videos
   end
 
-  get ':name' => 'users#show', as: 'user_name'
+  # get ':name' => 'users#show', as: 'user_name'
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
