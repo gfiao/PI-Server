@@ -227,14 +227,23 @@
             </div>
             <div class="tab-pane" id="curso">
               <table class="table table-striped">
-                <!--<tr>-->
-                  <!--<th>Curso</th>-->
-                  <!--<th>Jogador</th>-->
-                  <!--<th>Pontuação</th>-->
-                <!--</tr>-->
                 <tr>
-                  <th>Esta funcionalidade vem mais tarde, tá quase a sair do forno!</th>
+                  <th>Jogador</th>
+                  <th>Curso</th>
+                  <th>Pontuação</th>
                 </tr>
+                <!--<tr>-->
+                <!--<th>Esta funcionalidade vem mais tarde, tá quase a sair do forno!</th>-->
+                <!--</tr>-->
+
+                <% @highest_scores_by_course.each do |score| %>
+                    <tr>
+                      <td><%= score.name %></td>
+                      <td><%= score.course %></td>
+                      <td><%= score.score %></td>
+                    </tr>
+                <% end %>
+
               </table>
             </div>
           </div>

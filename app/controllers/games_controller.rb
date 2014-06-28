@@ -10,6 +10,13 @@ class GamesController < ApplicationController
   # GET /games/1
   # GET /games/1.json
   def show
+    @highest_scores_by_course = Score.find_by_sql("SELECT users.name, course, score FROM scores INNER JOIN users ON scores.user_id = users.id INNER JOIN games ON scores.game_id = games.id GROUP BY users.course ORDER BY MAX(score) DESC")
+    puts "======================="
+    @highest_scores_by_course.each do |s|
+      puts "#{s.course} - #{s.name} - #{s.score}"
+    end
+    # puts x
+    puts "======================="
   end
 
   # GET /games/new
