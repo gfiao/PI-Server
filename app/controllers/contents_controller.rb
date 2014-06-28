@@ -111,4 +111,5 @@ class ContentsController < ApplicationController
   def content_params
     params.require(:content).permit(:title, :link_image, :description, :date, :news_text, :link, tag_ids: [:id])
   end
+
 end

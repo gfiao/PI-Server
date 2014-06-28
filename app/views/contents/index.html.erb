@@ -1,3 +1,10 @@
+<style>
+  #description {
+      margin-top: 10px;
+      margin-bottom: 10px;
+  }
+</style>
+
 <div id="cont1" class="container space-top space-bottom" style="padding-bottom: 3%">
   <% if user_signed_in? %>
       <h1 class="page-header">Os meus conteúdos</h1>
@@ -21,8 +28,8 @@
     <% @contents.each do |content| %>
         <tr>
           <td class="col-md-1"><%= link_to (image_tag content.link_image, size: '90x70'), content_path(content.id) %></td>
-          <td class="col-md-3"><%= link_to content.title, content_path(content.id) %></td>
-          <td class="col-md-6"><%= content.description %></td>
+          <td class="col-md-3"><%= raw link_to content.title, content_path(content.id) %></td>
+          <td id="description" class="col-md-6"><%= raw content.description %></td>
           <td class="col-md-1" style="text-align: center"><%= content.created_at.strftime("%d/%m/%Y, %H:%M") %></td>
           <td class="col-md-1" style="text-align: center"><%= content.views %></td>
         </tr>

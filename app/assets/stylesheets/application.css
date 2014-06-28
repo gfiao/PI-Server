@@ -268,9 +268,13 @@ p {
 
 /* ############# CONTEUDO + VISTO ############# */
 
-.top-content img {
+#content-image {
+    height: 200px;
+}
+
+#content-image img {
     width: 100%;
-    height: 175px;
+    height: 100%;
 }
 
 .caption:hover {

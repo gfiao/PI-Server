@@ -36,6 +36,7 @@ class HomepageController < ApplicationController
     # 9 - feedsdenoticias.blogspot - não presta, não vale uma piça, UMA PIÇA! - http://feeds.destakes.com/destakes/canal/imprensa?format=xml
     # 10 - Expresso Desporto -  - http://expresso.sapo.pt/static/rss/desporto_23414.xml
     # 11 - Blog BIBLIOTECA -  - http://feeds.feedburner.com/BlogueDaBibliotecaFct/unl?format=xml
+    # 12 - Feed da FCT -  - http://www.fct.unl.pt/rss.xml
 
     require 'rss'
     require 'nokogiri'
@@ -52,10 +53,11 @@ class HomepageController < ApplicationController
              "http://www.rtp.pt/noticias/index.php?headline=204&visual=58", #8
              "http://feeds.destakes.com/destakes/canal/imprensa?format=xml", #9
              "http://expresso.sapo.pt/static/rss/desporto_23414.xml", #10
-             "http://feeds.feedburner.com/BlogueDaBibliotecaFct/unl?format=xml"] #11
+             "http://feeds.feedburner.com/BlogueDaBibliotecaFct/unl?format=xml", #11
+             "http://www.fct.unl.pt/noticias/rss.xml"] #12
 
     # alterar esta variavel consoante o feed que queremos usar
-    selectedFeedIndex = 0
+    selectedFeedIndex = 12
 
     rss = RSS::Parser.parse(feeds[selectedFeedIndex], false)
     puts "============================ INICIO FEEDS ==========================="
@@ -117,7 +119,7 @@ class HomepageController < ApplicationController
 
         puts "\n********** fim de um item do feed **********"
 
-      # feed da biblioteca
+        # feed da biblioteca
       elsif selectedFeedIndex == 11
         doc = Nokogiri::HTML(description)
 
@@ -127,6 +129,38 @@ class HomepageController < ApplicationController
         Content.create(title: item.title, link_image: image[0], description: "(sem descrição para apresentar)",
                        date: item.pubDate, views: 0, news_text: item.description, user_id: 1)
 
+        # feed de noticias da fct
+      elsif selectedFeedIndex == 12
+        doc = Nokogiri::HTML(description)
+
+        #OBTER IMAGEM (ATENÇAO QUE ALGUMAS NOTICIAS NAO TÊM IMAGEM)
+        image_div = doc.css('.field-field-imagem')[0]
+        if image_div.nil?
+          image = 'fct.gif'
+        else
+          image = image_div.css('img').map { |i| i['src'] }
+          puts image
+          image = image[0]
+        end
+
+        description_div = doc.css('.field-field-resumo')[0]
+        description = description_div.css('p').to_s
+
+        page_no_description = doc.css('.field-field-resumo').remove
+        news_text = page_no_description.css('p').to_s
+
+        # paragraphs.each do |parag|
+        #   puts parag
+        # end
+
+
+        #
+        # description = doc.css('.field-field-resumo')[0]
+
+        Content.create(title: item.title, link_image: image, description: description,
+                       date: item.pubDate, views: 0, news_text: news_text, user_id: 1)
+
+      #   introduzir tags para o conteudo
       end
 
 

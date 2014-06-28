@@ -37,7 +37,7 @@
             <% puts bookmarks.size %>
             <% if bookmarks.size == 0 %>
                 <p class="justified">Não tens conteúdo guardado. Podes guardar conteúdo para ver mais tarde
-                através da página principal</p>
+                  através da página principal</p>
             <% else %>
                 <table class="table">
                   <% bookmarks.each do |entry| %>
@@ -52,44 +52,6 @@
           </div>
       <% end %>
   <% end %>
-  <!--<tr>-->
-  <!--<td>Conteudo 1, um video sobre vida selvagem</td>-->
-  <!--<td class="right-align"><%= button_to "Remover?", bookmarked_content_path, method: :delete, class: "btn btn-default btn-sm" %></td>-->
-  <!--</tr>-->
-  <!--<tr>-->
-  <!--<td>Conteudo 2, uma htória tôbe... APIÁR!</td>-->
-  <!--<td class="right-align"><%= button_to "Remover?", bookmarked_content_path, method: :delete, class: "btn btn-default btn-sm" %></td>-->
-  <!--</tr>-->
-  <!--<tr>-->
-  <!--<td>Conteudo 3, só para encher chouriças</td>-->
-  <!--<td class="right-align"><%= button_to "Remover?", bookmarked_content_path, method: :delete, class: "btn btn-default btn-sm" %></td>-->
-  <!--</tr>-->
-  <!--<tr>-->
-  <!--<td>Conteudo 4</td>-->
-  <!--<td class="right-align"><%= button_to "Remover?", bookmarked_content_path, method: :delete, class: "btn btn-default btn-sm" %></td>-->
-  <!--</tr>-->
-  <!--<tr>-->
-  <!--<td>Conteudo xpto</td>-->
-  <!--<td class="right-align"><%= button_to "Remover?", bookmarked_content_path, method: :delete, class: "btn btn-default btn-sm" %></td>-->
-  <!--</tr>-->
-  <!--</table>-->
-  <!--</div>-->
-
-
-  <!--<div class="col-md-3" id="bookmarks">-->
-  <!--<ul>-->
-  <!--<li>Video 1 - isto é um nome muita grande só para evr se está a descer como deve ser</li>-->
-  <!--<li>Video 2</li>-->
-  <!--<li>Video 3</li>-->
-  <!--<li>Video 4</li>-->
-  <!--<li>Video 5</li>-->
-  <!--<li>Video 6</li>-->
-  <!--<li>Video 7</li>-->
-  <!--<li>Video 8</li>-->
-  <!--<li>Video 9</li>-->
-  <!--</ul>-->
-  <!--</div>-->
-
 
   <div class="col-md-8">
     <div class="row">
@@ -97,11 +59,7 @@
         <strong>Avatar:</strong>
       </div>
       <div class="col-xs-7">
-        <% if current_user.avatar_url == '' %>
-            <%= image_tag 'http://noticias.rumonet.pt/wp-content/uploads/2013/02/logo_FCTUNL.jpg', size: '100x100' %>
-        <% else %>
-            <%= image_tag @user.avatar_url, size: '100x100' %>
-        <% end %>
+        <%= image_tag @user.avatar_url, size: '150x150' %>
       </div>
     </div>
     <div class="row">

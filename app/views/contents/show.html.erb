@@ -32,12 +32,12 @@
     <div class="col-md-8">
 
       <h3 class="row col-md-12">
-        <b><%= @content.title %></b>
+        <b><%= raw @content.title %></b>
       </h3>
 
       <div class="row col-md-12">
         <p class="space-in-between">
-          <%= @content.description %>
+          <%= raw @content.description %>
         </p>
       </div>
 
@@ -106,15 +106,13 @@
 
 
       <div class="row" style="margin-top: 30px">
-        <div class="col-md-2">
-          <% if !current_user.nil? %>
+        <% if !current_user.nil? %>
+            <div class="col-md-2">
               <% if @author.id == current_user.id %>
                   <%= button_to 'Editar notícia', edit_content_path(@content), method: :get, class: "btn btn-default" %>
               <% end %>
-          <% end %>
-          <!--<p></p>-->
-
-        </div>
+            </div>
+        <% end %>
         <div class="col-md-3">
           <%= button_to 'Voltar atrás', contents_path, method: :get, class: "btn btn-default" %>
         </div>
