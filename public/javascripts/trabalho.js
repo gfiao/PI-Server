@@ -66,7 +66,7 @@ function createAlertDiv() {
 
     toShow = '<div class="col-md-2"></div>' +
         '<div class="col-md-8 alert alert-success" role="alert" style="margin-bottom: 0px;">' +
-        '<p>Uma cena para alertar que tá bem feito heheu</p>' +
+        '<p>Conteúdo gravado com sucesso!</p>' +
         '</div><div class="col-md-2"></div>';
 
     $("#bookmark-message-alert").removeClass('animated fadeOutUp');

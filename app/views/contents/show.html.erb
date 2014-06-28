@@ -125,11 +125,11 @@
 
       <div class="row" style="margin-top: 30px">
         <% if !current_user.nil? %>
-            <div class="col-md-2">
-              <% if @author.id == current_user.id %>
+            <% if @author.id == current_user.id %>
+                <div class="col-md-2">
                   <%= button_to 'Editar notícia', edit_content_path(@content), method: :get, class: "btn btn-default" %>
-              <% end %>
-            </div>
+                </div>
+            <% end %>
         <% end %>
         <div class="col-md-3">
           <%= button_to 'Voltar atrás', contents_path, method: :get, class: "btn btn-default" %>
