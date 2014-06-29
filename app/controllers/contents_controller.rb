@@ -6,48 +6,75 @@ class ContentsController < ApplicationController
   # GET /contents
   # GET /contents.json
   def index
-    if params[:user_id]
-      @contents = User.find(params[:user_id]).contents
+
+    if params[:user_id] # GET /users/:id/contents
+      if user_signed_in?
+        if params[:user_id].to_i == current_user.id
+          @contents = User.find(params[:user_id]).contents
+        else
+          flash[:error] = "Não tens permissões para ver conteúdos doutros utilizadores!"
+          redirect_to root_url
+        end
+      else
+        flash[:error] = "Não tens permissões para ver conteúdos doutros utilizadores!"
+        redirect_to root_url
+      end
     else
       @contents = Content.all
     end
-
   end
 
-  # GET /contents/1
-  # GET /contents/1.json
+
+# GET /contents/1
+# GET /contents/1.json
   def show
-    @latest = Content.all.order(created_at: :desc).limit(15)
 
-    @author = User.find_by(:id => @content.user_id)
-    puts "LOOOOOOOOOOOOOOOOL"
+    if @content.nil?
+      flash[:error] = "O conteúdo que procuras não existe!"
+      redirect_to root_url
+    else
+      @latest = Content.all.order(created_at: :desc).limit(15)
 
-    puts @content.title
-    puts @author.id
+      @author = User.find_by(:id => @content.user_id)
+      puts "LOOOOOOOOOOOOOOOOL"
 
-    @video = @content.video
+      puts @content.title
+      puts @author.id
 
-    if !(@content.views.nil?)
+      @video = @content.video
 
-      @content.views = @content.views + 1
-      @content.save
+      if !(@content.views.nil?)
+        @content.views = @content.views + 1
+        @content.save
+      end
     end
 
   end
 
-  # GET /contents/new
+# GET /contents/new
   def new
     @content = Content.new
     @tags = Tag.all
     #@content.build_video
   end
 
-  # GET /contents/1/edit
+# GET /contents/1/edit
   def edit
+
+    if current_user.nil?
+      flash[:error] = "Não tens permissões para realizar essa acção!"
+      redirect_to root_url
+    else
+      if @content.user_id != current_user.id
+        flash[:error] = "Não tens permissões para editar esse conteúdo!"
+        redirect_to root_url
+      end
+    end
+
   end
 
-  # POST /contents
-  # POST /contents.json
+# POST /contents
+# POST /contents.json
   def create
     @content = Content.new(content_params)
     @content.user_id = current_user.id
@@ -78,8 +105,8 @@ class ContentsController < ApplicationController
     end
   end
 
-  # PATCH/PUT /contents/1
-  # PATCH/PUT /contents/1.json
+# PATCH/PUT /contents/1
+# PATCH/PUT /contents/1.json
   def update
     respond_to do |format|
       if @content.update(content_params)
@@ -92,8 +119,8 @@ class ContentsController < ApplicationController
     end
   end
 
-  # DELETE /contents/1
-  # DELETE /contents/1.json
+# DELETE /contents/1
+# DELETE /contents/1.json
   def destroy
     @content.destroy
     respond_to do |format|
@@ -103,16 +130,19 @@ class ContentsController < ApplicationController
   end
 
   private
-  # Use callbacks to share common setup or constraints between actions.
+# Use callbacks to share common setup or constraints between actions.
   def set_content
     if params[:title]
       @content = Content.where(title: params[:title]).first
     else
-      @content = Content.find(params[:id])
+      count = Content.count
+      if params[:id].to_i <= count
+        @content = Content.find(params[:id])
+      end
     end
   end
 
-  # Never trust parameters from the scary internet, only allow the white list through.
+# Never trust parameters from the scary internet, only allow the white list through.
   def content_params
     params.require(:content).permit(:title, :link_image, :description, :date, :news_text, :link, tag_ids: [:id])
   end

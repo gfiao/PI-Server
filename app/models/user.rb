@@ -16,11 +16,11 @@ class User < ActiveRecord::Base
   has_many :scores
   #has_many :games, through: :scores
 
-  validates :name, presence: true;
+  validates :name, presence: true
   validates :email, presence: true, uniqueness: true
-  validates :gender, presence: true;
-  validates :course, presence: true;
-  validates :birth_date, presence: true;
+  validates :gender, presence: true
+  validates :course, presence: true
+  validates :birth_date, presence: true
 
   validates :email, format: {with: /\b[A-Z0-9._%a-z\-]+@(campus.)?fct\.unl\.pt\z/,
                              message: "Tem de usar o email @campus.fct.unl.pt"}

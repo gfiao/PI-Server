@@ -15,6 +15,23 @@ class ScoresController < ApplicationController
   # GET /scores/1
   # GET /scores/1.json
   def show
+
+    # apenas o administrador pode ver/editar
+    if @score.nil?
+      flash[:error] = "Esse conteúdo não existe!"
+      redirect_to root_url
+    else
+      if current_user.nil?
+        flash[:error] = "Não tens permissões para realizar esta acção!"
+        redirect_to root_url
+      else
+        if current_user.id != 1
+          flash[:error] = "Não tens permissões para visualizar este conteúdo!"
+          redirect_to root_url
+        end
+      end
+    end
+
   end
 
   # GET /scores/new
@@ -82,7 +99,10 @@ class ScoresController < ApplicationController
   private
   # Use callbacks to share common setup or constraints between actions.
   def set_score
-    @score = Score.find(params[:id])
+    count = Score.count
+    if params[:id].to_i <= count
+      @score = Score.find(params[:id])
+    end
   end
 
   # Never trust parameters from the scary internet, only allow the white list through.

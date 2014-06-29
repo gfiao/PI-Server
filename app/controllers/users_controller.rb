@@ -12,6 +12,12 @@ class UsersController < ApplicationController
   # GET /users/1
   # GET /users/1.json
   def show
+
+    if @user.nil?
+      flash[:error] = "O utilizador que procuras não existe!"
+      redirect_to root_url
+    end
+
   end
 
   # GET /users/new
@@ -22,19 +28,15 @@ class UsersController < ApplicationController
   # GET /users/1/edit
   def edit
 
-    if params[:user_id] != current_user.id
-      puts "====================="
-      puts "NÃO PODES EDITAR ESSE USER!!"
-      puts "====================="
-      # render nothing: true
-      flash[:error] = "Não tens permissões para editar esse utilizador!"
-      redirect_to root_url#, alert: "Não tens permissões para realizar essa acção!"
+    if current_user.nil?
+      flash[:error] = "Não tens permissões para realizar essa acção!"
+      redirect_to root_url
     else
-      puts "*********************"
-      puts "EDITA ESSE USER, POIS ÉS TU HEHEHE!!"
-      puts "*********************"
+      if params[:user_id] != current_user.id
+        flash[:error] = "Não tens permissões para editar esse utilizador!"
+        redirect_to root_url
+      end
     end
-
   end
 
   # POST /users
@@ -83,7 +85,10 @@ class UsersController < ApplicationController
     if params[:name]
       @user = User.where(name: params[:name]).first
     else
-      @user = User.find(params[:id])
+      count = User.count
+      if params[:id].to_i <= count
+        @user = User.find(params[:id])
+      end
     end
   end
 

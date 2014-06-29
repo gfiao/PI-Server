@@ -39,8 +39,9 @@ courses = ['Informatica', 'Electrotécnica', 'Ambiente', 'Bioquimica', 'Materiai
 puts 'Adding 50 random Users'
 
 1.upto(50) do |i|
+  t = nil
   if i == 1
-    User.create(
+    t = User.create(
         name: 'Administrador',
         birth_date: Date.today,
         gender: 'Masculino',
@@ -51,10 +52,10 @@ puts 'Adding 50 random Users'
         password_confirmation: 'adminadmin',
         avatar_url: 'http://noticias.rumonet.pt/wp-content/uploads/2013/02/logo_FCTUNL.jpg'
     )
-  elsif i == 25
-    puts 'Done 25, almost there'
+  # elsif i == 25
+  #   puts 'Done 25, almost there'
   elsif i == 50
-    User.create(
+    t = User.create(
         name: 'Renato Alexandre',
         birth_date: Date.today,
         gender: 'Feminino',
@@ -67,18 +68,19 @@ puts 'Adding 50 random Users'
   else
     r=Random.rand(10)
     r2=Random.rand(12)
-    User.create(
+    t = User.create(
         name: first_names[(r+i)%first_names.length] + ' ' + last_names[(r2+i)%last_names.length],
         birth_date: Date.today(),
         gender: genders[(r+i)%genders.length],
         course: courses[(r2+i)%courses.length],
         about_me: 'Hehe sou a pessoa número ' + i.to_s + ' e sou muita fixe, hehe',
-        email: first_names[(r+i)%first_names.length]+'.'+last_names[(r2+i)%last_names.length]+'@campus.fct.unl.pt',
+        email: first_names[(r+i)%first_names.length]+'.'+last_names[(r2+i)%last_names.length]+''+i.to_s+'@campus.fct.unl.pt',
         password: 'qweqweqwe',
         password_confirmation: 'qweqweqwe',
         avatar_url: 'http://noticias.rumonet.pt/wp-content/uploads/2013/02/logo_FCTUNL.jpg'
     )
   end
+  puts "Adicionado o user com id=#{i}, name=#{t.name}, mail=#{t.email}"
 end
 
 
@@ -87,6 +89,7 @@ puts 'Adding News Content'
 Content.create(title: 'Leslie Lamport vem à FCT!', link_image: 'LeslieLamport_960.jpg',
                description: 'Leslie Lamport vem dar uma palestra à grandiosa FCT', date: Date.today(), views: 3,
                news_text: 'Hehe placeholder!', user_id: 1)
+
 Content.create(title: 'Barbara Liskov vem à FCT!', link_image: 'top-prize.jpg',
                description: 'Barbara Liskov, vencedora do Turing Award, vem dar uma palestra à grandiosa FCT',
                date: Date.today(), views: 10, news_text: 'Inaugural Lecture "Programming the Turing Machine", by Prof. Barbara Liskov, Massachusetts Institute of Technology
@@ -106,49 +109,42 @@ Professor Barbara Liskov short bio:
 
 Barbara Liskov is an Institute Professor at MIT and also Associate Provost for Faculty Equity. She is a member of the National Academy of Engineering and the National Academy of Sciences, a fellow of the American Academy of Arts and Sciences, and a fellow of the ACM. She received the ACM Turing Award in 2009, the ACM SIGPLAN Programming Language Achievement Award in 2008, the IEEE Von Neumann medal in 2004, a lifetime achievement award from the Society of Women Engineers in 1996, and in 2003 was named one of the 50 most important women in science by Discover Magazine. Her research interests include
 distributed systems, replication algorithms to provide fault-tolerance, programming methodology, and programming languages. Her current research projects include
-Byzantine-fault-tolerant storage systems and online storage systems that provide confidentiality and integrity for the stored information.', user_id: 1)
-# Content.create(title: 'Sócia da FCT ganhou prémio!', link_image: 'destaque_4.jpg',
-#                description: 'Sócia da FCT ganhou 1 Milhão de Euros pela sua investigação.',
-#                date: Date.today(), views: 30, news_text: 'Hehe placeholder!', user_id: 24)
-# Content.create(title: 'Noticia de ultima hora! FCT a arder!', link_image: 'imagem_iycr2014.jpg',
-#                description: 'FCT a arder! Edificios a ruir! Esta noticia esta aqui para termos 4 noticias!',
-#                date: Date.today(), views: 55, news_text: 'Hehe placeholder!', user_id: 30)
+Byzantine-fault-tolerant storage systems and online storage systems that provide confidentiality and integrity for the stored information.', user_id: 2)
+
 Content.create(title: 'Video de apresentação do MIEI', link_image: 'fct.gif',
                description: 'Video de apresentação do MIEI visa dar a conhecer o curso.',
                date: Date.today(), views: 15, news_text: 'O Departamento de Informática da FCT-UNL criou um video de
                 apresentação do Mestrado Integrado em Engenharia Informática', user_id: 1)
+
 Content.create(title: 'A FCT fez 36 anos!', link_image: 'fct.gif',
                description: 'A FCT fez no ano passado 36 anos.',
                date: Date.today(), views: 15, news_text: 'A FCT fez no ano passado 36 anos.
-                Acede já ao canal de Youtube da faculdade para veres os melhores momentos do 36º ano da FCT', user_id: 1)
+                Acede já ao canal de Youtube da faculdade para veres os melhores momentos do 36º ano da FCT', user_id: 3)
+
 Content.create(title: 'A FCT fez 35 anos!', link_image: 'fct.gif',
                description: 'Os melhores momentos do 35º ano da FCT.',
                date: Date.today(), views: 15, news_text: 'A FCT fez à dois anos 35 anos.
-                Acede já ao canal de Youtube da faculdade para veres os melhores momentos do 35º ano da FCT', user_id: 1)
+                Acede já ao canal de Youtube da faculdade para veres os melhores momentos do 35º ano da FCT', user_id: 2)
+
 Content.create(title: 'Inovação na FCT!', link_image: 'fct.gif',
                description: 'Apresentação dos Centros de Investigação da FCT.',
                date: Date.today(), views: 15, news_text: 'Apresentação dos Centros de Investigação da Faculdade de Ciências e Tecnologia da Universidade Nova de Lisboa.
-               Acede já ao canal de Youtube da faculdade para veres o que melhor se faz de investigação na FCT', user_id: 1)
+               Acede já ao canal de Youtube da faculdade para veres o que melhor se faz de investigação na FCT', user_id: 3)
+
 Content.create(title: 'Apresentação da FCT!', link_image: 'fct.gif',
                description: 'Video de apresentação da FCT.',
                date: Date.today(), views: 15, news_text: 'Apresentação da Faculdade de Ciências e Tecnologia da Universidade Nova de Lisboa.
                Acede já ao canal de Youtube da faculdade para veres o que melhor se faz de investigação na FCT', user_id: 1)
-# Content.create(title: 'Biblioteca: Exposição Déjeuner Sur L\'Herbe', link_image: 'herbe.jpg', description: 'Déjeuner sur L´herbe, 08 Maio a 31 Julho,
-# Jardim em frente à Biblioteca da FCT/UNL, Inauguração: 08 de Maio às 17:00h', date: Date.today(), views: 22, news_text: 'Jorge Pé-Curto, Paulo Neves, Rui Matos, Vitor Ribeiro e Volker Schnüttgen voltam agora ao Campus da FCT/UNL, acompanhados por Matthias Contzen, fluem num processo criativo e original.
-# De um desafio tão grande, quanto inovador, resultados inesperados eram antecipados...
-# Como num picnic, os seis escultores “espalharam” e “plantaram” esculturas no relvado frontal da Biblioteca, permitindo a fruição de propostas imaginativas e “saborosas”. As esculturas convivem. Os diferentes materiais comunicam e surpreendem...
-# O espaço exterior recriado, gloza Manet, no delicioso e brilhante “Déjeuner sur l`Herbe”.
-# As esculturas repousam (no espaço) e despertam (espaços)...', user_id: 1)
 
-# Content.create(title: 'Biblioteca: Exposição "A DEUS"', link_image: 'MonicaCid_ConviteEletronico.jpg',
-#                description: 'Exposição "A DEUS", Desenho / Instalação de Mónica CID, 14 Maio a 31 de Julho, Sala de Exposições da Biblioteca FCT/UNL, Inauguração: 14 Maio às 17:00h',
-#                date: Date.today(), views: 12, news_text: 'Há doze anos que Mónica Cid (Lisboa, 1973) cria diários gráficos. Doze anos a observar o quotidiano, as pessoas que por ela passam, os seus movimentos, os seus gestos. Uma vivência pessoal passada a desenho e transformada em algo de belo e mágico. Nesta exposição, Cid converte os seus livros em esculturas: figuras que saem das folhas, que dialogam entre si, que interpelam os desenhos que continuam planos.
-# Se fosse um livro, esta exposição começaria assim: “Uma linha, cansada de ser linha, abandona o caderno onde estava presa e transforma-se na silhueta de um homem em fuga. O caderno agora vazio transforma-se numa parede branca, à espera de ser riscada.”
-# Tudo se inicia num bloco de desenhos. Um bloco em branco que sai à rua, que se deita na mesa de um café e que aguarda que a mão de quem o segura comece os seus movimentos. Uma folha que deseja a caneta, que anseia pelo momento em que aquela lhe toca pela primeira vez e que a linha nasce. Quando a acção se inicia, os movimentos são tão rápidos que o caderno nem consegue perceber o que está a ser desenhado. A linha transforma-se numa senhora sentada, num rosto de um homem, numa mãe que leva uma criança pela mão... Por vezes, são frases, notas ou ideias que surgem.
-# Os gestos dos corpos das pessoas que passam pelo caderno são transpostos para as folhas, como se a mão que desenha tornasse seus esses mesmos movimentos e os transformasse em linhas. A fluidez da linha é adversa do pensamento. Estas não são linhas pensantes, mas linhas de acção, linhas em movimento, linhas que seguem olhos. Os desenhos organizam-se de forma despreocupada na folha. Não há neste acto de desenhar um cuidado com a composição dos elementos na folha. A folha enche-se instintivamente num processo de descoberta.
-# O caderno, cansado de ser riscado, acaba o seu dia no atelier e é aí que o real do quotidiano se transforma num mundo inventado. É aí que a linha que desenha se transfigura em linha que esculpe. Os desenhos saem das folhas à procura de uma nova vida. Antes desenhos com linhas agora esculturas de linhas. A escultura reinventa o desenho, reimagina-o, transporta-o de volta a um mundo físico, mas desta vez não para a trivialidade do dia-a-dia mas para um lugar fantasiado e encantador. Um mundo que nos faz sorrir, que nos leva para um imaginário mágico dos livros de crianças, dos livros que já foram escritos e que a nossa memória evoca, mas também dos livros que ainda não foram escritos e que a imaginação de cada espectador compõe.
-# Desenho feito escultura e escultura feita de desenho. Os dois gestuais concentrados numa exploração da linha, da figura e do movimento. ', user_id: 1)
-
+#UserContent user_id:integer content_id:integer
+# puts 'Associating content to users'
+UserContent.create(user_id: 1, content_id: 1)
+UserContent.create(user_id: 2, content_id: 2)
+UserContent.create(user_id: 1, content_id: 3)
+UserContent.create(user_id: 3, content_id: 4)
+UserContent.create(user_id: 2, content_id: 5)
+UserContent.create(user_id: 3, content_id: 6)
+UserContent.create(user_id: 1, content_id: 7)
 
 #Video link:string category_id:integer
 puts 'Adding Videos'
@@ -291,10 +287,3 @@ TransportHour.create(transport_id: Transport.find_by(carreira: 194).id, hour_id:
 # TransportHour.create(transport_id: Transport.find_by(carreira: 194).id, hour_id: Hour.find_by(hour: 18, minute: 0).id)
 # TransportHour.create(transport_id: Transport.find_by(carreira: 194).id, hour_id: Hour.find_by(hour: 22, minute: 40).id)
 # TransportHour.create(transport_id: Transport.find_by(carreira: 126).id, hour_id: Hour.find_by(hour: 22, minute: 45).id)
-
-
-#UserContent user_id:integer content_id:integer
-# puts 'Associating content to users'
-# UserContent.create(user_id: 1, content_id: 1)
-# UserContent.create(user_id: 10, content_id: 2)
-# UserContent.create(user_id: 24, content_id: 3)

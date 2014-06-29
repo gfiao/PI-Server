@@ -23,6 +23,23 @@ class FreeClassroomsController < ApplicationController
   # GET /free_classrooms/1
   # GET /free_classrooms/1.json
   def show
+
+    # apenas o administrador pode ver/editar
+    if @content.nil?
+      flash[:error] = "Esse conteúdo não existe!"
+      redirect_to root_url
+    else
+      if current_user.nil?
+        flash[:error] = "Não tens permissões para realizar esta acção!"
+        redirect_to root_url
+      else
+        if current_user.id != 1
+          flash[:error] = "Não tens permissões para visualizar este conteúdo!"
+          redirect_to root_url
+        end
+      end
+    end
+
   end
 
   # GET /free_classrooms/new
@@ -32,6 +49,9 @@ class FreeClassroomsController < ApplicationController
 
   # GET /free_classrooms/1/edit
   def edit
+
+    # dar permissão ao administrador para alterar????
+    redirect_to root_url
   end
 
   # POST /free_classrooms
@@ -80,7 +100,10 @@ class FreeClassroomsController < ApplicationController
   private
   # Use callbacks to share common setup or constraints between actions.
   def set_free_classroom
-    @free_classroom = FreeClassroom.find(params[:id])
+    count = FreeClassroom.count
+    if params[:id].to_i <= count
+      @free_classroom = FreeClassroom.find(params[:id])
+    end
   end
 
   # Never trust parameters from the scary internet, only allow the white list through.
