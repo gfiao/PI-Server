@@ -21,6 +21,20 @@ class UsersController < ApplicationController
 
   # GET /users/1/edit
   def edit
+
+    if params[:user_id] != current_user.id
+      puts "====================="
+      puts "NÃO PODES EDITAR ESSE USER!!"
+      puts "====================="
+      # render nothing: true
+      flash[:error] = "Não tens permissões para editar esse utilizador!"
+      redirect_to root_url#, alert: "Não tens permissões para realizar essa acção!"
+    else
+      puts "*********************"
+      puts "EDITA ESSE USER, POIS ÉS TU HEHEHE!!"
+      puts "*********************"
+    end
+
   end
 
   # POST /users
