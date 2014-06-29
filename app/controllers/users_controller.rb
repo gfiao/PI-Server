@@ -32,7 +32,9 @@ class UsersController < ApplicationController
       flash[:error] = "Não tens permissões para realizar essa acção!"
       redirect_to root_url
     else
-      if params[:user_id] != current_user.id
+      if params[:id].to_i == current_user.id
+        redirect_to edit_user_registration_path
+      else
         flash[:error] = "Não tens permissões para editar esse utilizador!"
         redirect_to root_url
       end
