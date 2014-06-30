@@ -219,8 +219,8 @@ FreeClassroom.create(user_id: 10, classroom_id: 3, from_time: DateTime.now, to_t
 #Game name:string
 puts 'Adding Games'
 Game.create(name: '2048')
-Game.create(name: '4-em-linha')
-Game.create(name: 'Batalha Naval')
+# Game.create(name: '4-em-linha')
+# Game.create(name: 'Batalha Naval')
 
 #Score user_id:integer game_id:integer score:integer
 puts 'Adding Scores'

@@ -28,7 +28,6 @@ class ContentsController < ApplicationController
 # GET /contents/1
 # GET /contents/1.json
   def show
-
     if @content.nil?
       flash[:error] = "O conteúdo que procuras não existe!"
       redirect_to root_url
@@ -36,7 +35,7 @@ class ContentsController < ApplicationController
       @latest = Content.all.order(created_at: :desc).limit(15)
 
       @author = User.find_by(:id => @content.user_id)
-      puts "LOOOOOOOOOOOOOOOOL"
+      # puts "LOOOOOOOOOOOOOOOOL"
 
       puts @content.title
       puts @author.id
@@ -48,14 +47,12 @@ class ContentsController < ApplicationController
         @content.save
       end
     end
-
   end
 
 # GET /contents/new
   def new
     @content = Content.new
     @tags = Tag.all
-    #@content.build_video
   end
 
 # GET /contents/1/edit

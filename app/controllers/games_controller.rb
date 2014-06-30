@@ -43,12 +43,30 @@ class GamesController < ApplicationController
 
   # GET /games/new
   def new
-
-    @game = Game.new
+    if user_signed_in?
+      if current_user.id == 1
+        @game = Game.new
+      else
+        flash[:error] = "Não tens permissões para introduzir um novo jogo!"
+        redirect_to root_url
+      end
+    else
+      flash[:error] = "Não tens permissões para introduzir um novo jogo!"
+      redirect_to root_url
+    end
   end
 
   # GET /games/1/edit
   def edit
+    if user_signed_in?
+      if current_user.id != 1
+        flash[:error] = "Não tens permissões para editar jogos!"
+        redirect_to root_url
+      end
+    else
+      flash[:error] = "Não tens permissões para realizar tal acção!"
+      redirect_to root_url
+    end
   end
 
   # POST /games
