@@ -7,6 +7,7 @@ class ClassroomsController < ApplicationController
     @classrooms = Classroom.all
 
     respond_to do |format|
+      format.html
       format.json { render :json => @classrooms.to_json(:include => [:free_classrooms]) }
     end
   end

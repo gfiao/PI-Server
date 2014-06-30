@@ -6,7 +6,16 @@ class UsersController < ApplicationController
   # GET /users
   # GET /users.json
   def index
-    @users = User.all
+
+    if user_signed_in?
+      if current_user.id == 1
+        @users = User.all
+      end
+    else
+      flash[:error] = "Não tens permissões para realizar tal acção!"
+      redirect_to root_url
+    end
+
   end
 
   # GET /users/1
@@ -27,13 +36,14 @@ class UsersController < ApplicationController
 
   # GET /users/1/edit
   def edit
-
     if current_user.nil?
       flash[:error] = "Não tens permissões para realizar essa acção!"
       redirect_to root_url
     else
       if params[:id].to_i == current_user.id
         redirect_to edit_user_registration_path
+      elsif current_user.id == 1
+        #é o admin, ele pode editar!
       else
         flash[:error] = "Não tens permissões para editar esse utilizador!"
         redirect_to root_url
