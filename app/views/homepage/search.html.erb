@@ -1,0 +1,27 @@
+<div id="cont1" class="container space-top space-bottom" style="padding-bottom: 2%">
+  <h1 class="page-header">Resultados da pesquisa</h1>
+
+  <% if (@user_res.size == 0) and (@content_res.size == 0) %>
+      <p>Nenhum resultado corresponde à sua pesquisa</p>
+  <% end %>
+
+  <% if (@user_res.size > 0) %>
+      <h2>Utilizadores</h2>
+  <% end %>
+  <% @user_res.each do |user| %>
+      <div>
+        <p><b><%= link_to user.name, user %></b><br/>
+          <%= user.about_me %></p>
+      </div>
+  <% end %>
+
+  <% if (@content_res.size > 0) %>
+      <h2>Conteúdos</h2>
+  <% end %>
+  <% @content_res.each do |content| %>
+      <div>
+        <p><b><%= link_to content.title, content %></b><br/>
+          <%= raw content.description %></p>
+      </div>
+  <% end %>
+</div>

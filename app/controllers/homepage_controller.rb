@@ -1,8 +1,22 @@
 class HomepageController < ApplicationController
   before_filter :update_video
 
-  def update_video
+  def search
+    @user_res = []
+    @content_res = []
+    User.all.each do |user|
+      if user.name.downcase.include? params[:search].downcase
+        @user_res << user
+      end
+    end
+    Content.all.each do |content|
+      if content.title.downcase.include? params[:search].downcase
+        @content_res << content
+      end
+    end
+  end
 
+  def update_video
     #estamos a aceder a partir da TV, actualizar o indice caso seja diferente do actual
     if !(params[:currIndex].nil?)
       # puts "fobiywvbefkf jobcwf qfb qefqbef qefb fq fqfwfqfbqi fjqhfbq fuiuhjnd qw   djkmsd bn "

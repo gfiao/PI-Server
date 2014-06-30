@@ -56,6 +56,8 @@ Rails.application.routes.draw do
 
   root 'homepage#index'
 
+  get 'homepage/search'
+
   resources :users do
     resources :scores
     resources :bookmarked_contents
