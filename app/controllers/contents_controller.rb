@@ -62,8 +62,15 @@ class ContentsController < ApplicationController
       flash[:error] = "Não tens permissões para realizar essa acção!"
       redirect_to root_url
     else
-      if @content.user_id != current_user.id
-        flash[:error] = "Não tens permissões para editar esse conteúdo!"
+      if !@content.nil?
+        if current_user.id == 1
+          #modo admin, permitir edição
+        elsif @content.user_id != current_user.id
+          flash[:error] = "Não tens permissões para editar esse conteúdo!"
+          redirect_to root_url
+        end
+      else
+        flash[:error] = "O conteúdo que procuras não existe!"
         redirect_to root_url
       end
     end
@@ -133,7 +140,8 @@ class ContentsController < ApplicationController
       @content = Content.where(title: params[:title]).first
     else
       count = Content.count
-      if params[:id].to_i <= count
+      exists = Content.exists?(params[:id].to_i)
+      if (params[:id].to_i <= count) and exists
         @content = Content.find(params[:id])
       end
     end
