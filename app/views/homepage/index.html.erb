@@ -9,6 +9,7 @@
 
     .errors-div span {
         font-size: 150%;
+        color: #ffffff;
     }
 </style>
 
@@ -114,9 +115,9 @@
       </div>
 
       <div id="sideDescription" class="col-md-3 headline-description no-padding">
-        <h2><%= Content.find(1).title %></h2>
+        <h2><%= Content.first.title %></h2>
 
-        <p><%= Content.find(1).description %></p>
+        <p><%= Content.first.description %></p>
       </div>
 
     </div>

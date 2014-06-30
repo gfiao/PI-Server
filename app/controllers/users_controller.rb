@@ -10,6 +10,9 @@ class UsersController < ApplicationController
     if user_signed_in?
       if current_user.id == 1
         @users = User.all
+      else
+        flash[:error] = "Não tens permissões para realizar tal acção!"
+        redirect_to root_url
       end
     else
       flash[:error] = "Não tens permissões para realizar tal acção!"

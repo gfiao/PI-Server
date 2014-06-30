@@ -125,9 +125,12 @@
 
       <div class="row" style="margin-top: 30px">
         <% if !current_user.nil? %>
-            <% if @author.id == current_user.id %>
+            <% if (@author.id == current_user.id) or (current_user.id == 1) %>
                 <div class="col-md-2">
                   <%= button_to 'Editar notícia', edit_content_path(@content), method: :get, class: "btn btn-default" %>
+                </div>
+                <div class="col-md-3">
+                  <%= button_to 'Remover notícia', @content, method: :delete, data: {confirm: 'Tens a certeza que queres remover esta notícia?'}, class: "btn btn-default" %>
                 </div>
             <% end %>
         <% end %>
