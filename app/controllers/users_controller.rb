@@ -101,7 +101,8 @@ class UsersController < ApplicationController
       @user = User.where(name: params[:name]).first
     else
       count = User.count
-      if params[:id].to_i <= count
+      exists = User.exists?(params[:id].to_i)
+      if (params[:id].to_i <= count) and exists
         @user = User.find(params[:id])
       end
     end

@@ -7,20 +7,41 @@ class ContentsController < ApplicationController
   # GET /contents.json
   def index
 
+    # puts "***********************========***********************"
+    # puts @user_id.nil?
+    # puts @user_id
+
     if params[:user_id] # GET /users/:id/contents
-      if user_signed_in?
-        if params[:user_id].to_i == current_user.id
-          @contents = User.find(params[:user_id]).contents
-        else
-          flash[:error] = "Não tens permissões para ver conteúdos doutros utilizadores!"
-          redirect_to root_url
-        end
-      else
-        flash[:error] = "Não tens permissões para ver conteúdos doutros utilizadores!"
-        redirect_to root_url
+      @contents = User.find(params[:user_id]).contents
+      @user_id = params[:user_id].to_i
+
+      # puts "DEVIA MOSTRAR ISTO QUANDO FAÇO USERS/id/CONTENTS"
+      # puts @user_id
+
+
+      # puts params[:user_id].nil?
+
+    elsif params[:tag] # quando estamos a filtrar por tag
+      @user_id = -1
+      if params[:tag][:id] != ""
+        @display_all = true
+
+        # puts "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~"
+        # puts "PELES PELES PELES"
+        # puts params[:id_user]
+
+        @contents = Tag.find(params[:tag][:id]).contents.where(:user_id => params[:id_user])
+        @display_all = nil
+
+        # @contents.each do |cont|
+        #   puts cont.title
+        #   puts cont.id
+        #   puts cont.user_id
+        # end
       end
-    else
+    else  # GET /contents
       @contents = Content.all
+      @display_all = true
     end
   end
 
@@ -136,13 +157,16 @@ class ContentsController < ApplicationController
   private
 # Use callbacks to share common setup or constraints between actions.
   def set_content
+    @user_id = -1
     if params[:title]
       @content = Content.where(title: params[:title]).first
     else
       count = Content.count
       exists = Content.exists?(params[:id].to_i)
       if (params[:id].to_i <= count) and exists
+        # puts ":::::::::::::::::::::::::::::::::::::"
         @content = Content.find(params[:id])
+        @user_id = params[:user_id].to_i
       end
     end
   end

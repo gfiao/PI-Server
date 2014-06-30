@@ -7,14 +7,34 @@
 
 <div id="cont1" class="container space-top space-bottom" style="padding-bottom: 3%">
   <% if user_signed_in? %>
-      <h1 class="page-header">Os meus conteúdos</h1>
+      <% if @display_all.nil? %>
+          <h1 class="page-header">Os meus conteúdos</h1>
+      <% else %>
+          <h1 class="page-header">Notícias</h1>
+      <% end %>
   <% else %>
       <h1 class="page-header">Notícias</h1>
   <% end %>
 
-  <% if user_signed_in? %>
-      <%= button_to('Adicionar nova noticia', new_content_path, method: :get, class: "btn btn-default") %>
-  <% end %>
+
+  <div class="row">
+    <%= form_tag(contents_path, :method => "get", id: "building-form") do %>
+        <%= hidden_field_tag :id_user, @user_id %>
+        <div class="col-xs-5 col-md-3">
+          <%= collection_select :tag, :id, Tag.all, :id,
+                                :tag, {:selected => :id, include_blank: 'Todas'}, class: 'form-control' %>
+        </div>
+        <div class="col-md-2">
+          <%= submit_tag "Filtrar", class: 'btn btn-default' %>
+        </div>
+    <% end %>
+    <div class="col-md-3">
+      <% if user_signed_in? %>
+          <%= button_to('Adicionar nova noticia', new_content_path, method: :get, class: "btn btn-default") %>
+      <% end %>
+    </div>
+  </div>
+
   <br>
 
   <% if @contents.size > 0 %>
