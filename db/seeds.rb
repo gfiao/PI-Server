@@ -80,7 +80,7 @@ puts 'Adding 50 random Users'
         avatar_url: 'http://noticias.rumonet.pt/wp-content/uploads/2013/02/logo_FCTUNL.jpg'
     )
   end
-  puts "Adicionado o user com id=#{i}, name=#{t.name}, mail=#{t.email}"
+  # puts "Adicionado o user com id=#{i}, name=#{t.name}, mail=#{t.email}"
 end
 
 
@@ -258,7 +258,7 @@ Transport.create(carreira: 194, origin: 'Costa da Caparica', destination: 'Praga
 
 #Hours hour:integer minute:integer
 puts 'Adding Hours'
-10.upto(17) do |i|
+10.upto(20) do |i|
   j = 0
   k = 2
   while k < 60
@@ -274,16 +274,16 @@ puts 'Adding TransportHours'
 # TransportHour.create(transport_id: Transport.find_by(carreira: 0).id, hour_id: Hour.find_by(hour: 10, minute: 12).id)
 # TransportHour.create(transport_id: Transport.find_by(carreira: 0).id, hour_id: Hour.find_by(hour: 10, minute: 17).id)
 # TransportHour.create(transport_id: Transport.find_by(carreira: 0).id, hour_id: Hour.find_by(hour: 10, minute: 22).id)
-TransportHour.create(transport_id: Transport.find_by(carreira: 0).id, hour_id: Hour.find_by(hour: 11, minute: 42).id)
-TransportHour.create(transport_id: Transport.find_by(carreira: 0).id, hour_id: Hour.find_by(hour: 10, minute: 47).id)
-TransportHour.create(transport_id: Transport.find_by(carreira: 0).id, hour_id: Hour.find_by(hour: 10, minute: 52).id)
-TransportHour.create(transport_id: Transport.find_by(carreira: 0).id, hour_id: Hour.find_by(hour: 10, minute: 57).id)
+TransportHour.create(transport_id: Transport.find_by(carreira: 0).id, hour_id: Hour.find_by(hour: 19, minute: 2).id)
+TransportHour.create(transport_id: Transport.find_by(carreira: 0).id, hour_id: Hour.find_by(hour: 19, minute: 7).id)
+TransportHour.create(transport_id: Transport.find_by(carreira: 0).id, hour_id: Hour.find_by(hour: 19, minute: 12).id)
+TransportHour.create(transport_id: Transport.find_by(carreira: 0).id, hour_id: Hour.find_by(hour: 19, minute: 17).id)
 # TransportHour.create(transport_id: Transport.find_by(carreira: 0).id, hour_id: Hour.find_by(hour: 22, minute: 47).id)
 # TransportHour.create(transport_id: Transport.find_by(carreira: 0).id, hour_id: Hour.find_by(hour: 22, minute: 37).id)
-TransportHour.create(transport_id: Transport.find_by(carreira: 126).id, hour_id: Hour.find_by(hour: 11, minute: 45).id)
-TransportHour.create(transport_id: Transport.find_by(carreira: 126).id, hour_id: Hour.find_by(hour: 11, minute: 40).id)
+TransportHour.create(transport_id: Transport.find_by(carreira: 126).id, hour_id: Hour.find_by(hour: 19, minute: 00).id)
+TransportHour.create(transport_id: Transport.find_by(carreira: 126).id, hour_id: Hour.find_by(hour: 19, minute: 30).id)
 # TransportHour.create(transport_id: Transport.find_by(carreira: 126).id, hour_id: Hour.find_by(hour: 17, minute: 55).id)
-TransportHour.create(transport_id: Transport.find_by(carreira: 194).id, hour_id: Hour.find_by(hour: 11, minute: 55).id)
+TransportHour.create(transport_id: Transport.find_by(carreira: 194).id, hour_id: Hour.find_by(hour: 19, minute: 10).id)
 # TransportHour.create(transport_id: Transport.find_by(carreira: 194).id, hour_id: Hour.find_by(hour: 18, minute: 0).id)
 # TransportHour.create(transport_id: Transport.find_by(carreira: 194).id, hour_id: Hour.find_by(hour: 22, minute: 40).id)
 # TransportHour.create(transport_id: Transport.find_by(carreira: 126).id, hour_id: Hour.find_by(hour: 22, minute: 45).id)
