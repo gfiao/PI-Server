@@ -42,7 +42,8 @@
         <tr>
           <th class="col-md-1" style="text-align: center">Link imagem</th>
           <th class="col-md-3" style="text-align: center">Título</th>
-          <th class="col-md-6" style="text-align: center">Descrição</th>
+          <th class="col-md-5" style="text-align: center">Descrição</th>
+          <th class="col-md-1">Agendar para depois</th>
           <th class="col-md-1" style="text-align: center">Data de inserção</th>
           <th class="col-md-1">Visualizações</th>
         </tr>
@@ -50,7 +51,20 @@
             <tr>
               <td class="col-md-1"><%= link_to (image_tag content.link_image, size: '90x70'), content_path(content.id) %></td>
               <td class="col-md-3"><%= raw link_to content.title, content_path(content.id) %></td>
-              <td id="description" class="col-md-6"><%= raw content.description %></td>
+              <td id="description" class="col-md-5"><%= raw content.description %></td>
+              <% if current_user.nil? %>
+                  <td class="col-md-1">
+                    <button type="button" disabled class="btn btn-default btn-lg navbar-btn" onclick="">
+                      <span class="glyphicon glyphicon-time"></span>
+                    </button>
+                  </td>
+              <% else %>
+                  <td class="col-md-1">
+                    <button type="button" class="btn btn-default btn-lg navbar-btn" onclick="watchLater(<%= content.id %>)">
+                      <span class="glyphicon glyphicon-time"></span>
+                    </button>
+                  </td>
+              <% end %>
               <td class="col-md-1" style="text-align: center"><%= content.created_at.strftime("%d/%m/%Y, %H:%M") %></td>
               <td class="col-md-1" style="text-align: center"><%= content.views %></td>
             </tr>

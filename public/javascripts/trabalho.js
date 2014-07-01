@@ -61,24 +61,51 @@ function init() {
 
 }
 
-function watchLater() {
-    var currElement = $.getValues('/current_videos')[0];
+function watchLater(index) {
+    var currElement;
+
+    console.log("CA ESTOU EU CRL: " + index);
+
+    //no caso do botão de agendar no topo da pagina inicial
+    if (index == undefined)
+        currElement = $.getValues('/current_videos')[0];
+
+    // clicamos para agendar numa noticia (pagina inicial ou index das noticias)
+    else {
+        console.log("o indice NÃO é negativo!");
+        var contents = $.getValues('/contents');
+        currElement = contents[index-1];
+        console.log(currElement);
+    }
+
     var ind;
 
     if (currElement.content_type == "video") {
         var videoContent = news[videos[currElement.index - 1].content_id - 1];
         ind = videoContent.id;
+        console.log("diz que é video!!")
     }
     else
-        ind = currElement.index;
+        ind = currElement.id;
 
-    if (ind > 0) {
-        $.ajax({
-            url: "/bookmarked_contents",
-            type: "POST",
-            data: {content_id: ind},
-            success: createAlertDiv()
-        });
+    if (index == null) {
+        if (ind > 0) {
+            $.ajax({
+                url: "/bookmarked_contents",
+                type: "POST",
+                data: {content_id: ind},
+                success: createAlertDiv()
+            });
+        }
+    }
+    else {
+        if (ind > 0) {
+            $.ajax({
+                url: "/bookmarked_contents",
+                type: "POST",
+                data: {content_id: ind}
+            });
+        }
     }
 }
 
