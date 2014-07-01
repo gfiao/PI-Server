@@ -123,7 +123,7 @@ function animatePanel() {
             $('#toAnimate').addClass('fadeInRight');
         }, 650);
 
-    }, 18000); //time in ms
+    }, /*18000*/ 5000); //time in ms
 
     //QUALQUER CODIGO QUE VENHA APOS O FIM DO SET_INTERVAL,
     //É EXECUTADO LOGO AO INICIO. QUANDO O SET_INTERVAL CHEGA AO FIM,
@@ -273,37 +273,55 @@ function getPublicTrans() {
 
     content += '<div style="padding-left: 3%"><p>MTS:</p>';
     var counter = 0;
+
+    var transTime = new Date(); //hora do transporte
+    var currentTime = new Date(); //hora actual
+    currentTime.setHours(hour);
+    currentTime.setMinutes(minute);
+
     for (var i = 0; i < transportsMTS.length; i++) {
-//        if ((transportsMTS[i].hour >= hour && transportsMTS[i].hour <= hour - 1) && (transportsMTS[i].minute > minute && transportsMTS[i].minute < minute - 15)) {
-        if (transportsMTS[i].minute == 2 || transportsMTS[i].minute == 5 || transportsMTS[i].minute == 7 || transportsTST[i].minute == 0)
-            content += '<span class="transport-span">' + transportsMTS[i].hour + ':0' + transportsMTS[i].minute + '</span>';
-        else
-            content += '<span class="transport-span">' + transportsMTS[i].hour + ':' + transportsMTS[i].minute + '</span>';
-        if (counter != 2) content += '|';
-        if (counter == 2) break;
-        counter++;
-//        }
+        transTime.setHours(transportsMTS[i].hour);
+        transTime.setMinutes(transportsMTS[i].minute);
+        var diff = transTime - currentTime; //diff in milliseconds
+
+        var diffMin = Math.round(((diff % 86400000) % 3600000) / 60000); //diff in minutes
+        if (diffMin <= 15 && diffMin > 0) {
+            if (transportsMTS[i].minute == 2 || transportsMTS[i].minute == 5 || transportsMTS[i].minute == 7 || transportsMTS[i].minute == 0)
+                content += '<span class="transport-span">' + transportsMTS[i].hour + ':0' + transportsMTS[i].minute + '</span>';
+            else
+                content += '<span class="transport-span">' + transportsMTS[i].hour + ':' + transportsMTS[i].minute + '</span>';
+            if (counter != 2) content += '|';
+            if (counter == 4) break;
+            counter++;
+        }
     }
     content += '</div></br>';
+
+    currentTime.setHours(hour);
+    currentTime.setMinutes(minute);
 
     counter = 0;
     content += '<div style="padding-left: 3%"><p>TST:</p>';
     for (var i = 0; i < transportsTST.length; i++) {
-//        if ((transportsTST[i].hour > hour && transportsTST[i].hour <= hour - 1) && (transportsTST[i].minute > minute && transportsTST[i].minute < minute - 15)) {
+        transTime.setHours(transportsTST[i].hour);
+        transTime.setMinutes(transportsTST[i].minute);
+        diff = transTime - currentTime; //diff in milliseconds
+        diffMin = Math.round(((diff % 86400000) % 3600000) / 60000); //diff in minutes
+        if (diffMin <= 30 && diffMin > 0) {
 
-        if (transportsTST[i].minute == 2 || transportsTST[i].minute == 5 || transportsTST[i].minute == 7 || transportsTST[i].minute == 0)
+            if (transportsTST[i].minute == 2 || transportsTST[i].minute == 5 || transportsTST[i].minute == 7 || transportsTST[i].minute == 0)
 
-            content += '<p style="padding-left:6%;">' + transportsTST[i].carreira +
-                '  ' + transportsTST[i].destination + ' - ' +
-                transportsTST[i].hour + ':0' + transportsTST[i].minute + '</p>';
-        else
-            content += '<p style="padding-left:6%;">' + transportsTST[i].carreira +
-                '  ' + transportsTST[i].destination + ' - ' +
-                transportsTST[i].hour + ':' + transportsTST[i].minute + '</p>';
+                content += '<p style="padding-left:6%;">' + transportsTST[i].carreira +
+                    '  ' + transportsTST[i].destination + ' - ' +
+                    transportsTST[i].hour + ':0' + transportsTST[i].minute + '</p>';
+            else
+                content += '<p style="padding-left:6%;">' + transportsTST[i].carreira +
+                    '  ' + transportsTST[i].destination + ' - ' +
+                    transportsTST[i].hour + ':' + transportsTST[i].minute + '</p>';
 
-        if (counter == 2) break;
-        counter++;
-//        }
+            if (counter == 2) break;
+            counter++;
+        }
     }
     content += '</div>';
 
@@ -412,7 +430,7 @@ function appendVideos() {
 
         if (i == 0) {
             $('#tv-carousel').append('<div id = "video_' + i + '" class="item active itemsCar">' +
-                '<iframe src="' + video.link + '?autoplay=1&controls=0&modestbranding=1&showinfo=0" style="width: 100%; height:100%;"' +
+                '<iframe src="' + video.link + '?autoplay=0&controls=0&modestbranding=1&showinfo=0" style="width: 100%; height:100%;"' +
                 'frameborder = "0" ' +
                 'width = 100%' +
                 'height: 100%' +
@@ -428,7 +446,7 @@ function appendVideos() {
         }
         else
             $('#tv-carousel').append('<div id = "video_' + i + '" class="item itemsCar">' +
-                '<iframe src="' + video.link + '?autoplay=1&controls=0&modestbranding=1&showinfo=0" style="width: 100%; height:100%;" ' +
+                '<iframe src="' + video.link + '?autoplay=0&controls=0&modestbranding=1&showinfo=0" style="width: 100%; height:100%;" ' +
                 'frameborder = "0" ' +
                 'width = 100%' +
                 'height: 100%' +
@@ -455,17 +473,18 @@ function appendVideos() {
                     '</div>');
             }
             else {
-                $('#tv-carousel').append('<div id = "image_' + i + '" class="item itemsCar">' +
-                    '<img src="/assets/' + imagem.link_image + '" style="width: 100%; height:100%;" > ' +
-                    '<div class="carousel-caption" style="opacity: 0.8; background-color: #000000">' +
-                    '<h1>' + imagem.title + '</h1>' +
-                    '</div>' +
-                    '</div>');
+                if (imagem.link_image != 'fct.gif')
+                    $('#tv-carousel').append('<div id = "image_' + i + '" class="item itemsCar">' +
+                        '<img src="/assets/' + imagem.link_image + '" style="width: 100%; height:100%;" > ' +
+                        '<div class="carousel-caption" style="opacity: 0.8; background-color: #000000">' +
+                        '<h1>' + imagem.title + '</h1>' +
+                        '</div>' +
+                        '</div>');
             }
     });
 
     $('#view-area').carousel({
-        interval: 12000 // (12000 = o valor ideal) in milliseconds
+        interval: 2000 // (12000 = o valor ideal) in milliseconds
     });
 }
 
