@@ -6,22 +6,48 @@
   <% end %>
 
   <% if (@user_res.size > 0) %>
-      <h2>Utilizadores</h2>
-  <% end %>
-  <% @user_res.each do |user| %>
-      <div>
-        <p><b><%= link_to user.name, user %></b><br/>
-          <%= user.about_me %></p>
-      </div>
+      <h3 class="page-header" style="width: 30%">Utilizadores</h3>
+
+      <% if @user_res.count == 1 %>
+          <p>Foi encontrado <strong><%= @user_res.count %></strong> utilizador</p>
+      <% else %>
+          <p>Foram encontrados <strong><%= @user_res.count %></strong> utilizadores</p>
+      <% end %>
+
+      <table class="table table-hover table-striped" style="width: 80%">
+        <tr>
+          <th>Nome</th>
+          <th>Pequena descrição</th>
+        </tr>
+        <% @user_res.each do |user| %>
+            <tr>
+              <td class="col-md-3"><%= link_to user.name, user %></td>
+              <td class="col-md-9"><%= raw user.about_me %></td>
+            </tr>
+        <% end %>
+      </table>
   <% end %>
 
   <% if (@content_res.size > 0) %>
-      <h2>Conteúdos</h2>
-  <% end %>
-  <% @content_res.each do |content| %>
-      <div>
-        <p><b><%= link_to content.title, content %></b><br/>
-          <%= raw content.description %></p>
-      </div>
+      <h3 class="page-header" style="width: 30%">Conteúdos</h3>
+
+      <% if @content_res.count == 1 %>
+          <p>Foi encontrado <strong><%= @content_res.count %></strong> conteúdo</p>
+      <% else %>
+          <p>Foram encontrados <strong><%= @content_res.count %></strong> conteúdos</p>
+      <% end %>
+
+      <table class="table table-hover table-striped" style="width: 80%">
+        <tr>
+          <th>Título</th>
+          <th>Descrição</th>
+        </tr>
+        <% @content_res.each do |content| %>
+            <tr>
+              <td class="col-md-3"><%= link_to content.title, content %></td>
+              <td class="col-md-9"><%= raw content.description %></td>
+            </tr>
+        <% end %>
+      </table>
   <% end %>
 </div>
