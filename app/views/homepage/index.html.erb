@@ -27,7 +27,7 @@
 
     <!-- Com o servidor feito, inserir aqui informação da TV -->
     <div id="bookmarkText" class="col-xs-10 col-md-9">
-      <span class="navbar-text navbar-left"></span>
+      <span class="navbar-text navbar-left" style="white-space:nowrap; width:100%; overflow:hidden; text-overflow:ellipsis;"></span>
     </div>
 
     <div id="bookmarkButton" class="col-xs-2 col-md-3">
@@ -116,7 +116,9 @@
 
       <div id="sideDescription" class="col-md-3 headline-description" style="padding-right: 10px">
         <h2 style="margin: 0px; padding-top: 10px; padding-bottom: 10px"><%= Content.first.title %></h2>
+
         <p class="page-header" style="margin: 0px; padding: 0px"></p>
+
         <p id="description-text" style="margin: 0px; padding-top: 10px; padding-bottom: 10px">
           <%= Content.first.description %>
         </p>
