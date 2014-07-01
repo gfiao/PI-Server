@@ -61,7 +61,7 @@
   </div>
 
 
-  <div class="row">
+  <div class="row" style="padding-left: 15px; padding-right: 15px">
     <div class="col-md-9 headline-img">
       <div id="slidingPics" class="carousel slide">
 
@@ -114,10 +114,12 @@
         </div>
       </div>
 
-      <div id="sideDescription" class="col-md-3 headline-description no-padding">
-        <h2><%= Content.first.title %></h2>
-
-        <p><%= Content.first.description %></p>
+      <div id="sideDescription" class="col-md-3 headline-description" style="padding-right: 10px">
+        <h2 style="margin: 0px; padding-top: 10px; padding-bottom: 10px"><%= Content.first.title %></h2>
+        <p class="page-header" style="margin: 0px; padding: 0px"></p>
+        <p id="description-text" style="margin: 0px; padding-top: 10px; padding-bottom: 10px">
+          <%= Content.first.description %>
+        </p>
       </div>
 
     </div>
@@ -159,7 +161,8 @@
                   <span class="glyphicon glyphicon-time"></span><span> Agendar!</span>
                 </button>
               </div>
-              <div class="col-md-5 col-xs-5"><span class="pull-right" style="line-height: 34px"><%= content.views %> visualizações</span></div>
+              <div class="col-md-5 col-xs-5">
+                <span class="pull-right" style="line-height: 34px"><%= content.views %> visualizações</span></div>
             </div>
           </div>
         </div>

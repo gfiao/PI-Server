@@ -10,6 +10,26 @@ $(document).ready(function () {
 
     $('#watch-later').tooltip();
 
+//    $('#news-carousel').carousel({
+//        interval: 2000
+//    });
+//
+//
+//    //este evento é despoletado quando a animação começa
+//    $('#news_carousel').on('slide.bs.carousel', function () {
+//        //id da posição seleccionada actualmente
+//        obj = $("#news_carousel .active").attr('id');
+//
+//        var splitted_id = obj.split("_");
+//        var id = splitted_id[splitted_id.length - 1]; //obtem o ID e normaliza-o para 0 até length-1
+//
+//        alert(id);
+//    });
+//
+////    $('#myCarousel').on('slid.bs.carousel', function () {
+////        // do something…
+////    })
+
 });
 
 
@@ -161,6 +181,7 @@ function populateHeadlineDescription() {
     var obj;
     var contents = $.getValues('/contents');
 
+    // o intervalo serve para obter o id correcto, senão dava o anterior
     interval_ID = setInterval(function () {
 
         //id da posição seleccionada actualmente
@@ -173,7 +194,7 @@ function populateHeadlineDescription() {
         toChange.empty();
         toChange.append(contents[id].title);
 
-        toChange = $("#sideDescription > p");
+        toChange = $("#description-text");
         toChange.empty();
         toChange.append(contents[id].description);
 

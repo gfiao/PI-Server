@@ -214,12 +214,6 @@ p {
 }
 
 /* ############# DESTAQUES ############# */
-/*#slidingPics {*/
-/*background-color: brown;*/
-/*margin-top: 5px;*/
-/*padding-top: 15px;*/
-/*height: 500px;*/
-/*}*/
 
 @media (min-width: 768px) {
     #slidingPics img {
@@ -259,6 +253,7 @@ p {
     .headline-description {
         height: auto;
         padding-left: 10px;
+        margin-top: 10px;
     }
 }
 
