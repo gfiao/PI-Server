@@ -10,7 +10,7 @@
 first_names = ['Zé',
                'António',
                'Carlos',
-               'Carlão',
+               'Eduardo',
                'Paulo',
                'Paulão',
                'Leonardo',
@@ -21,12 +21,13 @@ first_names = ['Zé',
 
 last_names = ['Fião',
               'Bizarra',
-              'Bizarro',
-              'Engatatão',
+              'Silva',
+              'Pinto',
               'Lopes',
               'Costa',
-              'Rato',
-              'Sócrates']
+              'Sousa',
+              'Sócrates',
+              'Coelho']
 
 genders = ['Masculino', 'Feminino']
 
@@ -229,13 +230,20 @@ Game.create(name: '2048')
 puts 'Adding Scores'
 Score.create(user_id: 5, game_id: 1, score: 30000)
 #Score.create(user_id: 5, game_id: 3, score: 2000)
-Score.create(user_id: 1, game_id: 1, score: 20450)
+# Score.create(user_id: 1, game_id: 1, score: 20450) #Administrador fica sem score
 Score.create(user_id: 8, game_id: 1, score: 13056)
 Score.create(user_id: 28, game_id: 1, score: 7624)
 Score.create(user_id: 31, game_id: 1, score: 1464)
 Score.create(user_id: 13, game_id: 1, score: 506)
 #Score.create(user_id: 1, game_id: 2, score: 140)
 Score.create(user_id: 6, game_id: 1, score: 43218)
+Score.create(user_id: 20, game_id: 1, score: 2390)
+Score.create(user_id: 21, game_id: 1, score: 8622)
+Score.create(user_id: 22, game_id: 1, score: 1238)
+Score.create(user_id: 23, game_id: 1, score: 3248)
+Score.create(user_id: 24, game_id: 1, score: 6530)
+Score.create(user_id: 25, game_id: 1, score: 12946)
+Score.create(user_id: 26, game_id: 1, score: 2314)
 
 #FooterNews category:string news:string date:date
 puts 'Adding Footer News'
