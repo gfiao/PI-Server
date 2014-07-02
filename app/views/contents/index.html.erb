@@ -60,9 +60,15 @@
                   </td>
               <% else %>
                   <td class="col-md-1">
-                    <button type="button" class="btn btn-default btn-lg navbar-btn" onclick="watchLater(<%= content.id %>)">
-                      <span class="glyphicon glyphicon-time"></span>
-                    </button>
+                    <% if @user_bookmarked_contents.include? content.id %>
+                        <button type="button" disabled class="btn btn-default btn-lg navbar-btn">
+                          <span class="glyphicon glyphicon-time"></span>
+                        </button>
+                    <% else %>
+                        <button type="button" class="btn btn-success btn-lg navbar-btn" onclick="watchLater(<%= content.id %>)">
+                          <span class="glyphicon glyphicon-time"></span>
+                        </button>
+                    <% end %>
                   </td>
               <% end %>
               <td class="col-md-1" style="text-align: center"><%= content.created_at.strftime("%d/%m/%Y, %H:%M") %></td>

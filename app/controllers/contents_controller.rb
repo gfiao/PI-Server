@@ -11,6 +11,22 @@ class ContentsController < ApplicationController
     # puts @user_id.nil?
     # puts @user_id
 
+    if !current_user.nil?
+      temp = current_user.bookmarked_contents
+      @user_bookmarked_contents = []
+
+      temp.each do |entry|
+        @user_bookmarked_contents.push(entry.content_id)
+      end
+
+      # puts "=============TESTE============"
+      # @user_bookmarked_contents.each do |bookmark|
+      #   puts bookmark
+      # end
+      # puts "=============TESTE============"
+    end
+
+
     if params[:user_id] # GET /users/:id/contents
       @contents = User.find(params[:user_id]).contents
       @user_id = params[:user_id].to_i

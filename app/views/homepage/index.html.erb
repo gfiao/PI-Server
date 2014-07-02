@@ -25,20 +25,18 @@
 
   <div id="bookmark" class="row navbar">
 
-    <!-- Com o servidor feito, inserir aqui informação da TV -->
     <div id="bookmarkText" class="col-xs-10 col-md-9">
       <span class="navbar-text navbar-left" style="white-space:nowrap; width:100%; overflow:hidden; text-overflow:ellipsis;"></span>
     </div>
 
     <div id="bookmarkButton" class="col-xs-2 col-md-3">
-      <!--<button type="button" class="">Ver mais tarde!</button>-->
       <% if current_user.nil? %>
           <button id="watch-later" type="button" class="btn btn-default btn-lg navbar-btn"
                   data-placement="top" data-trigger="hover" title="Tens que estar autenticado para guardar conteúdo!">
             <span class="glyphicon glyphicon-time"></span><span id="watch-later-span"> Ver mais tarde!</span>
           </button>
       <% else %>
-          <button type="button" class="btn btn-default btn-lg navbar-btn" onclick="watchLater()">
+          <button type="button" class="btn btn-success btn-lg navbar-btn" onclick="watchLater()">
             <span class="glyphicon glyphicon-time"></span><span id="watch-later-span"> Ver mais tarde!</span>
           </button>
       <% end %>
@@ -64,7 +62,7 @@
         <!-- Indicators -->
         <ol class="carousel-indicators">
           <% i = 0 %>
-          <% Content.limit(10).each do |content| %>
+          <% @top_contents.each do |content| %>
 
               <% if (i == 0) %>
                   <li data-target="#slidingPics" data-slide-to="0" class="active"
@@ -81,7 +79,7 @@
         <div id="news_carousel" class="carousel-inner">
 
           <% i = 0 %>
-          <% Content.limit(10).each do |content| %>
+          <% @top_contents.each do |content| %>
 
               <% if (i == 0) %>
                   <div id="news_<%= i %>" class="item active">
@@ -111,12 +109,12 @@
       </div>
 
       <div id="sideDescription" class="col-md-3 headline-description" style="padding-right: 10px">
-        <h2 style="margin: 0px; padding-top: 10px; padding-bottom: 10px"><%= Content.first.title %></h2>
+        <h2 style="margin: 0px; padding-top: 10px; padding-bottom: 10px"><%= @first_content.title %></h2>
 
         <p class="page-header" style="margin: 0px; padding: 0px"></p>
 
         <p id="description-text" style="margin: 0px; padding-top: 10px; padding-bottom: 10px">
-          <%= Content.first.description %>
+          <%= @first_content.description %>
         </p>
       </div>
 
@@ -134,7 +132,7 @@
     </div>
 
     <% i = 0 %>
-    <% Content.all.order(views: :desc).limit(15).each do |content| %>
+    <% @most_viewed_contents.each do |content| %>
 
         <% if (i % 3 == 0) %>
             <div class="row">
@@ -155,15 +153,22 @@
             </div>
             <div class="ratings row" style="margin-bottom: 10px; height: 34px">
               <div class="col-md-6 col-xs-6" style="margin-left: 10px">
-                <% if current_user.nil? %>
+                <% if !current_user.nil? %>
+                    <% if @user_bookmarked_contents.include? content.id %> <!-- O utilizador ja tem este conteudo nos bookmarks -->
+                        <button type="button" disabled class="btn btn-default btn-md" onclick="watchLater(<%= content.id %>)">
+                          <span class="glyphicon glyphicon-time"></span><span> Já agendado</span>
+                        </button>
+                    <% else %> <!-- O utilizador ainda nao tem este conteudo nos bookmarks -->
+                        <button type="button" class="btn btn-success btn-md" onclick="watchLater(<%= content.id %>)">
+                          <span class="glyphicon glyphicon-time"></span><span> Agendar!</span>
+                        </button>
+                    <% end %>
+                <% else %>
                     <button type="button" disabled class="btn btn-default btn-md" onclick="watchLater(<%= content.id %>)">
                       <span class="glyphicon glyphicon-time"></span><span> Agendar!</span>
                     </button>
-                <% else %>
-                    <button type="button" class="btn btn-default btn-md" onclick="watchLater(<%= content.id %>)">
-                      <span class="glyphicon glyphicon-time"></span><span> Agendar!</span>
-                    </button>
                 <% end %>
+
               </div>
               <div class="col-md-5 col-xs-5">
                 <span class="pull-right" style="line-height: 34px"><%= content.views %> visualizações</span></div>

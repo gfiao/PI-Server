@@ -174,7 +174,7 @@ class HomepageController < ApplicationController
         Content.create(title: item.title, link_image: image, description: description,
                        date: item.pubDate, views: 0, news_text: news_text, user_id: 1)
 
-      #   introduzir tags para o conteudo
+        #   introduzir tags para o conteudo
       end
 
 
@@ -187,6 +187,26 @@ class HomepageController < ApplicationController
   end
 
   def index
+
+    @most_viewed_contents = Content.all.order(views: :desc).limit(15)
+    @top_contents = Content.limit(10)
+
+    @first_content = @top_contents.first
+
+    if !current_user.nil?
+      temp = current_user.bookmarked_contents
+      @user_bookmarked_contents = []
+
+      temp.each do |entry|
+        @user_bookmarked_contents.push(entry.content_id)
+      end
+
+      # puts "=============TESTE============"
+      # @user_bookmarked_contents.each do |bookmark|
+      #   puts bookmark
+      # end
+      # puts "=============TESTE============"
+    end
 
   end
 
