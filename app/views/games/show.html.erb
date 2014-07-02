@@ -211,37 +211,42 @@
             <div class="tab-pane active" id="geral">
               <table class="table table-striped">
                 <tr>
+                  <th>Pos.</th>
                   <th>Nome</th>
                   <th>Curso</th>
                   <th>Pontuação</th>
                 </tr>
+                <% i = 1 %>
                 <% orderedScores = Score.where(game_id: 1).order(score: :desc) %>
                 <% orderedScores.each do |score| %>
                     <tr>
+                      <td><%= i %>º</td>
                       <td><%= User.find_by(id: score.user_id).name %></td>
                       <td><%= User.find_by(id: score.user_id).course %></td>
                       <td><%= score.score %></td>
                     </tr>
+                    <% i += 1 %>
                 <% end %>
               </table>
             </div>
             <div class="tab-pane" id="curso">
               <table class="table table-striped">
                 <tr>
-                  <th>Jogador</th>
+                  <th>Pos.</th>
                   <th>Curso</th>
+                  <th>Jogador</th>
                   <th>Pontuação</th>
                 </tr>
-                <!--<tr>-->
-                <!--<th>Esta funcionalidade vem mais tarde, tá quase a sair do forno!</th>-->
-                <!--</tr>-->
 
+                <% i = 1 %>
                 <% @highest_scores_by_course.each do |score| %>
                     <tr>
-                      <td><%= score.name %></td>
+                      <td><%= i %>º</td>
                       <td><%= score.course %></td>
+                      <td><%= score.name %></td>
                       <td><%= score.score %></td>
                     </tr>
+                    <% i += 1 %>
                 <% end %>
 
               </table>
