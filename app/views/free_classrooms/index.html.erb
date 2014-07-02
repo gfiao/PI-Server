@@ -25,16 +25,25 @@
       <th>Sala</th>
       <th>De</th>
       <th>Até</th>
+      <th>Teste</th>
       <th>Feedback</th>
       <th></th>
     </tr>
+
+
+    <% def seconds_to_time(seconds) %>
+        <% [seconds / 3600, seconds / 60 % 60].map { |t| t.to_s.rjust(2, '0') }.join(':') %>
+    <% end %>
+
     <% @free_classrooms.each do |free_classroom| %>
         <% if free_classroom.to_time > Date.today %>
+            <% diff = free_classroom.to_time - Time.now %>
             <tr>
               <td><%= Classroom.find_by(id: free_classroom.classroom_id).building %></td>
               <td><%= Classroom.find_by(id: free_classroom.classroom_id).classroom %></td>
               <td><%= free_classroom.from_time.to_s(:short) %></td>
               <td><%= free_classroom.to_time.to_s(:short) %></td>
+              <td><%= seconds_to_time(diff.to_i) %></td>
               <td><%= free_classroom.likes %></td>
               <td>
                 <span>

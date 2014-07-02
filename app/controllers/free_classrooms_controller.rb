@@ -60,6 +60,15 @@ class FreeClassroomsController < ApplicationController
     @free_classroom = FreeClassroom.new(free_classroom_params)
     @free_classroom.user_id = current_user.id
 
+    puts "======================================"
+    puts params[:from_time]
+    puts "======================================"
+
+    # @free_classroom.from_time = @free_classroom.from_time.change(day: Date.today.day)
+    # @free_classroom.from_time = Date.today
+
+    @free_classroom.to_time = @free_classroom.to_time.change(day: Date.today.day)
+
     respond_to do |format|
       if @free_classroom.save
         format.html { redirect_to free_classrooms_path, notice: 'Free classroom was successfully created.' }
@@ -110,5 +119,6 @@ class FreeClassroomsController < ApplicationController
   def free_classroom_params
     #params.require(:free_classroom).permit(:user_id, :classroom_id, :time)
     params.require(:free_classroom).permit(:classroom_id, :from_time, :to_time, :likes)
+
   end
 end

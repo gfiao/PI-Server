@@ -38,18 +38,20 @@
       </div>
     </div>
 
-    <div class="row" style="margin-top: 15px">
-      <div class="col-md-5">
-        <div class="form-inline">
-          <div class="field">
-            <%= f.label 'Desde' %>
-            <br>
-            <%= f.datetime_select :from_time, {start_year: Date.today.year, end_year: Date.today.year,
-                                               minute_step: 30}, {:order => [:day, :month, :year], class: 'form-control'} %>
-          </div>
-        </div>
-      </div>
-    </div>
+    <!--<div class="row" style="margin-top: 15px">-->
+    <!--<div class="col-md-5">-->
+    <!--<div class="form-inline">-->
+    <!--<div class="field">-->
+    <!--<%# f.label 'Desde' %>-->
+    <!--<br>-->
+    <%# f.datetime_select :from_time, {minute_step: 30, :discard_year => true, :discard_month => true},
+                                  {class: 'form-control'} %>
+    <!--</div>-->
+    <!--</div>-->
+    <!--</div>-->
+    <!--</div>-->
+
+    <%= f.input :from_time, :as => :hidden, :input_html => {:value => DateTime.now + 1.hours} %>
 
     <div class="row" style="margin-top: 15px">
       <div class="col-md-5">
@@ -57,8 +59,8 @@
           <div class="field">
             <%= f.label 'Até' %>
             <br>
-            <%= f.datetime_select :to_time, {start_year: Date.today.year, end_year: Date.today.year,
-                                             minute_step: 30}, {:order => [:day, :month, :year], class: 'form-control'} %>
+            <%= f.datetime_select :to_time, {start_hour: DateTime.now.hour, minute_step: 30, :discard_year => true, :discard_month => true},
+                                  {class: 'form-control'} %>
           </div>
         </div>
       </div>

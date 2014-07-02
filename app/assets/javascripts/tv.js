@@ -430,7 +430,7 @@ function appendVideos() {
 
         if (i == 0) {
             $('#tv-carousel').append('<div id = "video_' + i + '" class="item active itemsCar">' +
-                '<iframe src="' + video.link + '?autoplay=0&controls=0&modestbranding=1&showinfo=0" style="width: 100%; height:100%;"' +
+                '<iframe src="' + video.link + '?autoplay=0&controls=0&modestbranding=1&showinfo=0&loop=1" style="width: 100%; height:100%;"' +
                 'frameborder = "0" ' +
                 'width = 100%' +
                 'height: 100%' +
@@ -446,7 +446,7 @@ function appendVideos() {
         }
         else
             $('#tv-carousel').append('<div id = "video_' + i + '" class="item itemsCar">' +
-                '<iframe src="' + video.link + '?autoplay=0&controls=0&modestbranding=1&showinfo=0" style="width: 100%; height:100%;" ' +
+                '<iframe src="' + video.link + '?autoplay=0&controls=0&modestbranding=1&showinfo=0&loop=1" style="width: 100%; height:100%;" ' +
                 'frameborder = "0" ' +
                 'width = 100%' +
                 'height: 100%' +
@@ -659,9 +659,22 @@ function getFreeClassrooms() {
     var counter = 0;
     for (var i = 0; i < freeClassroomsToTV.length; i++) {
         var classroomHour = freeClassroomsToTV[i].to_time.split(':')[0];
-//        var classroomMinute = freeClassroomsToTV[i].to_time.split(':')[1];
+        var classroomMinute = freeClassroomsToTV[i].to_time.split(':')[1];
 
-        if (classroomHour > hour) {
+        //hora em q a sala acaba
+        var classroomDate = new Date();
+        classroomDate.setHours(classroomHour);
+        classroomDate.setMinutes(classroomMinute);
+
+        //data do sistema
+        var systemDate = new Date();
+        systemDate.setHours(hour);
+        systemDate.setMinutes(minute);
+
+        var diff = classroomDate - systemDate;
+        var diffMin = Math.round(((diff % 86400000) % 3600000) / 60000); //diff in minutes
+
+        if (diffMin <= 120 && diffMin > 0) {
             html += '<p class="free-classrooms">' + freeClassroomsToTV[i].classroom
                 + ' livre até às ' + freeClassroomsToTV[i].to_time + '</p>';
             if (counter == 2) break;
