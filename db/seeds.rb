@@ -50,7 +50,8 @@ puts 'Adding 50 random Users'
         email: 'admin@campus.fct.unl.pt',
         password: 'adminadmin',
         password_confirmation: 'adminadmin',
-        avatar_url: 'http://noticias.rumonet.pt/wp-content/uploads/2013/02/logo_FCTUNL.jpg'
+        avatar_url: 'http://noticias.rumonet.pt/wp-content/uploads/2013/02/logo_FCTUNL.jpg',
+        :confirmed_at => Time.now
     )
     # elsif i == 25
     #   puts 'Done 25, almost there'
@@ -64,7 +65,8 @@ puts 'Adding 50 random Users'
         email: 'renato.alexandre@campus.fct.unl.pt',
         password: 'qweqweqwe',
         password_confirmation: 'qweqweqwe',
-        avatar_url: 'http://img4.wikia.nocookie.net/__cb20121207145720/aleixo/images/7/75/Renato_disco.jpg')
+        avatar_url: 'http://img4.wikia.nocookie.net/__cb20121207145720/aleixo/images/7/75/Renato_disco.jpg',
+        :confirmed_at => Time.now)
   else
     r=Random.rand(10)
     r2=Random.rand(12)
@@ -77,7 +79,8 @@ puts 'Adding 50 random Users'
         email: first_names[(r+i)%first_names.length]+'.'+last_names[(r2+i)%last_names.length]+''+i.to_s+'@campus.fct.unl.pt',
         password: 'qweqweqwe',
         password_confirmation: 'qweqweqwe',
-        avatar_url: 'http://noticias.rumonet.pt/wp-content/uploads/2013/02/logo_FCTUNL.jpg'
+        avatar_url: 'http://noticias.rumonet.pt/wp-content/uploads/2013/02/logo_FCTUNL.jpg',
+        :confirmed_at => Time.now
     )
   end
   # puts "Adicionado o user com id=#{i}, name=#{t.name}, mail=#{t.email}"
