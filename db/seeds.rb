@@ -30,8 +30,8 @@ last_names = ['Fião',
 
 genders = ['Masculino', 'Feminino']
 
-courses = ['Informatica', 'Electrotécnica', 'Ambiente', 'Bioquimica', 'Materiais',
-           'Civil', 'Gestão Industrial', 'Biomédica', 'Quimica', 'Fisica', 'Matemática', 'Mecânica']
+courses = ['Informática', 'Electrotécnica', 'Ambiente', 'Bioquímica', 'Materiais',
+           'Civil', 'Gestão Industrial', 'Biomédica', 'Química', 'Física', 'Matemática', 'Mecânica']
 
 # USERS name:string birth_date:date gender:string course:string about_me:text
 #A data de nascimento terá de ser mudada posteriormente, para cada pessoa ter uma data realista
