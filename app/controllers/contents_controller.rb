@@ -7,10 +7,6 @@ class ContentsController < ApplicationController
   # GET /contents.json
   def index
 
-    # puts "***********************========***********************"
-    # puts @user_id.nil?
-    # puts @user_id
-
     if !current_user.nil?
       temp = current_user.bookmarked_contents
       @user_bookmarked_contents = []
@@ -19,54 +15,35 @@ class ContentsController < ApplicationController
         @user_bookmarked_contents.push(entry.content_id)
       end
 
-      # puts "=============TESTE============"
-      # @user_bookmarked_contents.each do |bookmark|
-      #   puts bookmark
-      # end
-      # puts "=============TESTE============"
     end
 
-
     if params[:user_id] # GET /users/:id/contents
-      @contents = User.find(params[:user_id]).contents
-      @user_id = params[:user_id].to_i
 
-      puts "DEVIA MOSTRAR ISTO QUANDO FAÇO USERS/id/CONTENTS"
-      puts @user_id
+      @search_only_user_contents = true
+      @display_all = false
 
-
-      # puts params[:user_id].nil?
-
-    elsif params[:tag] # quando estamos a filtrar por tag
-      @user_id = -1
-      if params[:tag][:id] != ""
-        @display_all = true
-
-        # puts "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~"
-        puts "PELES PELES PELES"
-        puts params[:id_user]
-
-        if params[:id_user] == "" or params[:id_user].to_i == -1 #mostra todos os conteudos duma tag
-          @contents = Tag.find(params[:tag][:id]).contents
-          @display_all = true
-          puts "LOAALALALALALLALALAA"
-        else #mostra os conteudos dessa tag inseridos pelo utilizador
-          @display_all = nil
-          @contents = Tag.find(params[:tag][:id]).contents.where(:user_id => params[:id_user])
-          puts "pjfmnqfofbqfqhfbiqubqwufqvfqwubfbwfvqufibqufbqf"
-        end
-
-
-
-        # @contents.each do |cont|
-        #   puts cont.title
-        #   puts cont.id
-        #   puts cont.user_id
-        # end
+      if params[:tag]
+        @selected_tag = params[:tag][:id]
+        @contents = Tag.find(params[:tag][:id]).contents.where(:user_id => current_user.id)
+      else
+        @selected_tag = ""
+        @contents = User.find(params[:user_id]).contents
       end
+
     else # GET /contents
+
+      puts "============= /contents ============"
+
+      @selected_tag = ""
       @contents = Content.all
       @display_all = true
+      @search_only_user_contents = false
+
+      if params[:tag]
+        @selected_tag = params[:tag][:id]
+        @contents = Tag.find(params[:tag][:id]).contents
+      end
+
     end
   end
 
