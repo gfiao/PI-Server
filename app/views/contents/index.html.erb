@@ -79,9 +79,8 @@
                           <span class="glyphicon glyphicon-time"></span>
                         </button>
                     <% else %>
-                        <button type="button" class="btn btn-success btn-lg navbar-btn" onclick="watchLater(<%= content.id %>)">
-                          <span class="glyphicon glyphicon-time"></span>
-                        </button>
+                        <%= link_to raw("<i class=\"glyphicon glyphicon-time\"></i>"), contents_path,
+                                    onclick: "watchLater(" + content.id.to_s + ")", class: 'btn btn-success btn-lg navbar-btn' %>
                     <% end %>
                   </td>
               <% end %>

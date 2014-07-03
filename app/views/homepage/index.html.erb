@@ -155,16 +155,18 @@
               <div class="col-md-6 col-xs-6" style="margin-left: 10px">
                 <% if !current_user.nil? %>
                     <% if @user_bookmarked_contents.include? content.id %> <!-- O utilizador ja tem este conteudo nos bookmarks -->
-                        <button type="button" disabled class="btn btn-default btn-md" onclick="watchLater(<%= content.id %>)">
+                        <button type="button" disabled class="btn btn-default btn-md">
                           <span class="glyphicon glyphicon-time"></span><span> Já agendado</span>
                         </button>
                     <% else %> <!-- O utilizador ainda nao tem este conteudo nos bookmarks -->
-                        <button type="button" class="btn btn-success btn-md" onclick="watchLater(<%= content.id %>)">
-                          <span class="glyphicon glyphicon-time"></span><span> Agendar!</span>
-                        </button>
+                        <!--<button type="button" class="btn btn-success btn-md" onclick="watchLater(<%= content.id %>)">-->
+                          <!--<span class="glyphicon glyphicon-time"></span><span> Agendar!</span>-->
+                        <!--</button>-->
+                        <%= link_to raw("<i class=\"glyphicon glyphicon-time\"> Agendar!</i>"), root_path,
+                                    onclick: "watchLater(" + content.id.to_s + ")", class: 'btn btn-success btn-md' %>
                     <% end %>
                 <% else %>
-                    <button type="button" disabled class="btn btn-default btn-md" onclick="watchLater(<%= content.id %>)">
+                    <button type="button" disabled class="btn btn-default btn-md">
                       <span class="glyphicon glyphicon-time"></span><span> Agendar!</span>
                     </button>
                 <% end %>

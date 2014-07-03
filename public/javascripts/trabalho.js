@@ -62,9 +62,9 @@ function init() {
 }
 
 function watchLater(index) {
-    var currElement;
+    var currElement = null;
 
-    console.log("CA ESTOU EU CRL: " + index);
+//    console.log("CA ESTOU EU CRL: " + index);
 
     //no caso do botão de agendar no topo da pagina inicial
     if (index == undefined)
@@ -74,8 +74,14 @@ function watchLater(index) {
     else {
         console.log("o indice NÃO é negativo!");
         var contents = $.getValues('/contents');
-        currElement = contents[index-1];
-        console.log(currElement);
+
+        //pouco eficiente, mas há pouco tempo
+        $.each(contents, function (i, el) {
+            if (el.id == index) {
+                currElement = el;
+            }
+        });
+
     }
 
     var ind;
@@ -88,13 +94,12 @@ function watchLater(index) {
     else
         ind = currElement.id;
 
-    if (index == null) {
+    if (index != undefined) {
         if (ind > 0) {
             $.ajax({
                 url: "/bookmarked_contents",
                 type: "POST",
-                data: {content_id: ind},
-                success: createAlertDiv()
+                data: {content_id: ind}
             });
         }
     }
@@ -103,9 +108,12 @@ function watchLater(index) {
             $.ajax({
                 url: "/bookmarked_contents",
                 type: "POST",
-                data: {content_id: ind}
+                data: {content_id: ind},
+                success: createAlertDiv()
             });
         }
+
+
     }
 }
 

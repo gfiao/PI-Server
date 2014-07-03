@@ -28,10 +28,11 @@ class BookmarkedContentsController < ApplicationController
     @bookmarked_content.content_id = params[:content_id]
     @bookmarked_content.user_id = current_user.id
 
-    puts @bookmarked_content
+    # puts @bookmarked_content
 
     respond_to do |format|
       if @bookmarked_content.save
+        puts "______________________________BOOKMARK________________________________"
         format.html { redirect_to @bookmarked_content, notice: 'Bookmarked content was successfully created.' }
         format.json { render :show, status: :created, location: @bookmarked_content }
       else

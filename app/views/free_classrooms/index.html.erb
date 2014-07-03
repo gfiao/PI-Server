@@ -58,16 +58,16 @@
               <% if !current_user.nil? %>
                   <td>
                     <span>
-                        <%= link_to raw("<i class=\"glyphicon glyphicon-thumbs-up\"></i>"), free_classroom_path(free_classroom, "free_classroom[likes]" => free_classroom.likes + 1),
-                                    :method => :put, class: 'btn btn-sm btn-success' %>
+                        <%= link_to raw("<i class=\"glyphicon glyphicon-thumbs-up\"></i>"), free_classroom_path(free_classroom, "free_classroom[likes]" => free_classroom.likes + 1, :redirect_to => free_classrooms_path),
+                                    :method => :put, class: 'btn btn-sm btn-success active' %>
                     </span>
                     <span>
-                        <%= link_to raw("<span class=\"glyphicon glyphicon-thumbs-down\"></span>"), free_classroom_path(free_classroom, "free_classroom[likes]" => free_classroom.likes - 1),
+                        <%= link_to raw("<span class=\"glyphicon glyphicon-thumbs-down\"></span>"), free_classroom_path(free_classroom, "free_classroom[likes]" => free_classroom.likes - 1, :redirect_to => free_classrooms_path),
                                     :method => :put, class: 'btn btn-sm btn-danger' %>
                     </span>
                   </td>
                   <% if current_user.id == 1 %>
-                      <td><%= button_to "X", free_classroom, method: :delete, class: "btn btn-danger btn-sm" %></td>
+                      <td><%= button_to "X", free_classroom_path(free_classroom.id, :redirect_to => free_classrooms_path), method: :delete, class: "btn btn-danger btn-sm" %></td>
                   <% end %>
               <% end %>
 
