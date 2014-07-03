@@ -282,10 +282,9 @@ function getPublicTrans() {
     for (var i = 0; i < transportsMTS.length; i++) {
         transTime.setHours(transportsMTS[i].hour);
         transTime.setMinutes(transportsMTS[i].minute);
-        var diff = transTime - currentTime; //diff in milliseconds
+        var diff = ((transTime - currentTime) / 1000) / 60; //diff in minutes
 
-        var diffMin = Math.round(((diff % 86400000) % 3600000) / 60000); //diff in minutes
-        if (diffMin <= 15 && diffMin > 0) {
+        if (diff <= 15 && diff > 0) {
             if (transportsMTS[i].minute == 2 || transportsMTS[i].minute == 5 || transportsMTS[i].minute == 7 || transportsMTS[i].minute == 0)
                 content += '<span class="transport-span">' + transportsMTS[i].hour + ':0' + transportsMTS[i].minute + '</span>';
             else
@@ -305,9 +304,9 @@ function getPublicTrans() {
     for (var i = 0; i < transportsTST.length; i++) {
         transTime.setHours(transportsTST[i].hour);
         transTime.setMinutes(transportsTST[i].minute);
-        diff = transTime - currentTime; //diff in milliseconds
-        diffMin = Math.round(((diff % 86400000) % 3600000) / 60000); //diff in minutes
-        if (diffMin <= 30 && diffMin > 0) {
+        diff = ((transTime - currentTime) / 1000) / 60; //diff in minutes
+
+        if (diff <= 30 && diff > 0) {
 
             if (transportsTST[i].minute == 2 || transportsTST[i].minute == 5 || transportsTST[i].minute == 7 || transportsTST[i].minute == 0)
 
@@ -671,10 +670,9 @@ function getFreeClassrooms() {
         systemDate.setHours(hour);
         systemDate.setMinutes(minute);
 
-        var diff = classroomDate - systemDate;
-        var diffMin = Math.round(((diff % 86400000) % 3600000) / 60000); //diff in minutes
+        var diff = ((classroomDate - systemDate) / 1000) / 60;   //diff in minutes
 
-        if (diffMin <= 120 && diffMin > 0) {
+        if (diff <= 120 && diff > 0) {
             html += '<p class="free-classrooms">' + freeClassroomsToTV[i].classroom
                 + ' livre até às ' + freeClassroomsToTV[i].to_time + '</p>';
             if (counter == 2) break;
