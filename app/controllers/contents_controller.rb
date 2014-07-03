@@ -31,8 +31,8 @@ class ContentsController < ApplicationController
       @contents = User.find(params[:user_id]).contents
       @user_id = params[:user_id].to_i
 
-      # puts "DEVIA MOSTRAR ISTO QUANDO FAÇO USERS/id/CONTENTS"
-      # puts @user_id
+      puts "DEVIA MOSTRAR ISTO QUANDO FAÇO USERS/id/CONTENTS"
+      puts @user_id
 
 
       # puts params[:user_id].nil?
@@ -43,11 +43,20 @@ class ContentsController < ApplicationController
         @display_all = true
 
         # puts "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~"
-        # puts "PELES PELES PELES"
-        # puts params[:id_user]
+        puts "PELES PELES PELES"
+        puts params[:id_user]
 
-        @contents = Tag.find(params[:tag][:id]).contents.where(:user_id => params[:id_user])
-        @display_all = nil
+        if params[:id_user] == "" or params[:id_user].to_i == -1 #mostra todos os conteudos duma tag
+          @contents = Tag.find(params[:tag][:id]).contents
+          @display_all = true
+          puts "LOAALALALALALLALALAA"
+        else #mostra os conteudos dessa tag inseridos pelo utilizador
+          @display_all = nil
+          @contents = Tag.find(params[:tag][:id]).contents.where(:user_id => params[:id_user])
+          puts "pjfmnqfofbqfqhfbiqubqwufqvfqwubfbwfvqufibqufbqf"
+        end
+
+
 
         # @contents.each do |cont|
         #   puts cont.title
@@ -55,7 +64,7 @@ class ContentsController < ApplicationController
         #   puts cont.user_id
         # end
       end
-    else  # GET /contents
+    else # GET /contents
       @contents = Content.all
       @display_all = true
     end
@@ -118,6 +127,7 @@ class ContentsController < ApplicationController
 # POST /contents.json
   def create
     @content = Content.new(content_params)
+    @content.date = Date.today
     @content.user_id = current_user.id
     @content.views = 0
     @content.users << current_user
@@ -177,9 +187,9 @@ class ContentsController < ApplicationController
     if params[:title]
       @content = Content.where(title: params[:title]).first
     else
-      count = Content.count
+      # count = Content.count
       exists = Content.exists?(params[:id].to_i)
-      if (params[:id].to_i <= count) and exists
+      if exists
         # puts ":::::::::::::::::::::::::::::::::::::"
         @content = Content.find(params[:id])
         @user_id = params[:user_id].to_i
@@ -189,7 +199,7 @@ class ContentsController < ApplicationController
 
 # Never trust parameters from the scary internet, only allow the white list through.
   def content_params
-    params.require(:content).permit(:title, :link_image, :description, :date, :news_text, :link, tag_ids: [:id])
+    params.require(:content).permit(:title, :link_image, :description, :news_text, :link, tag_ids: [:id])
   end
 
 end

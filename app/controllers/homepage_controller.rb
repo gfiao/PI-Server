@@ -140,8 +140,13 @@ class HomepageController < ApplicationController
         # obter a imagem da noticia
         image = doc.css('a').map { |i| i['href'] } # Array of strings
 
-        Content.create(title: item.title, link_image: image[0], description: "(sem descrição para apresentar)",
+        # gravar o conteudo na BD
+        content = Content.create(title: item.title, link_image: image[0], description: "(sem descrição para apresentar)",
                        date: item.pubDate, views: 0, news_text: item.description, user_id: 1)
+
+        #associar tag ao conteudo, neste caso, biblioteca. Tratar o caso em que vem video no link!!
+        c_id = content.id
+        TagContent.create(content_id: c_id, tag_id: 12)
 
         # feed de noticias da fct
       elsif selectedFeedIndex == 12
@@ -171,8 +176,11 @@ class HomepageController < ApplicationController
         #
         # description = doc.css('.field-field-resumo')[0]
 
-        Content.create(title: item.title, link_image: image, description: description,
+        content = Content.create(title: item.title, link_image: image, description: description,
                        date: item.pubDate, views: 0, news_text: news_text, user_id: 1)
+
+        c_id = content.id
+        TagContent.create(content_id: c_id, tag_id: 12)
 
         #   introduzir tags para o conteudo
       end

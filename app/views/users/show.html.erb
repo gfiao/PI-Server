@@ -44,7 +44,7 @@
                       <% content = Content.find_by(:id => entry.content_id) %>
                       <tr>
                         <td><%= link_to content.title, content_path(content.id) %></td>
-                        <td class="right-align"><%= button_to "Remover?", entry, method: :delete, class: "btn btn-default btn-sm" %></td>
+                        <td class="right-align"><%= button_to "Remover?", entry, method: :delete, class: "btn btn-danger btn-sm" %></td>
                       </tr>
                   <% end %>
                 </table>

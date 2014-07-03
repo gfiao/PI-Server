@@ -187,6 +187,7 @@ Tag.create(tag: 'Video')
 Tag.create(tag: 'País')
 Tag.create(tag: 'Mundo')
 Tag.create(tag: 'Desporto')
+Tag.create(tag: 'Biblioteca') #12
 
 
 #TagContent content_id:integer tag_id:integer

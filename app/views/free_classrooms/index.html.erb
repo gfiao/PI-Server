@@ -23,11 +23,16 @@
     <tr>
       <th>Edificio</th>
       <th>Sala</th>
-      <th>De</th>
-      <th>Até</th>
-      <th>Teste</th>
+      <!--<th>De</th>-->
+      <th>Livre por mais (hh:mm)</th>
+      <!--<th>Teste</th>-->
       <th>Feedback</th>
-      <th></th>
+      <% if !current_user.nil? %>
+          <th></th>
+          <% if current_user.id == 1 %>
+              <th></th>
+          <% end %>
+      <% end %>
     </tr>
 
 
@@ -37,24 +42,35 @@
 
     <% @free_classrooms.each do |free_classroom| %>
         <% if free_classroom.to_time > Date.today %>
-            <% diff = free_classroom.to_time - Time.now %>
+            <%#= free_classroom.to_time %>
+            <!--<br>-->
+            <%#= DateTime.now.utc+1.hours %>
+            <!--<br><br>-->
+            <% diff = free_classroom.to_time - (DateTime.now.utc+1.hours) %>
             <tr>
               <td><%= Classroom.find_by(id: free_classroom.classroom_id).building %></td>
               <td><%= Classroom.find_by(id: free_classroom.classroom_id).classroom %></td>
-              <td><%= free_classroom.from_time.to_s(:short) %></td>
-              <td><%= free_classroom.to_time.to_s(:short) %></td>
+              <!--<td><%#= free_classroom.from_time.to_s(:short) %></td>-->
+              <!--<td><%#= free_classroom.to_time.to_s(:short) %></td>-->
               <td><%= seconds_to_time(diff.to_i) %></td>
               <td><%= free_classroom.likes %></td>
-              <td>
-                <span>
-                  <%= link_to raw("<i class=\"glyphicon glyphicon-thumbs-up\"></i>"), free_classroom_path(free_classroom, "free_classroom[likes]" => free_classroom.likes + 1),
-                              :method => :put, class: 'btn btn-sm btn-default' %>
-                </span>
-                <span>
-                  <%= link_to raw("<span class=\"glyphicon glyphicon-thumbs-down\"></span>"), free_classroom_path(free_classroom, "free_classroom[likes]" => free_classroom.likes - 1),
-                              :method => :put, class: 'btn btn-sm btn-default' %>
-                </span>
-              </td>
+
+              <% if !current_user.nil? %>
+                  <td>
+                    <span>
+                        <%= link_to raw("<i class=\"glyphicon glyphicon-thumbs-up\"></i>"), free_classroom_path(free_classroom, "free_classroom[likes]" => free_classroom.likes + 1),
+                                    :method => :put, class: 'btn btn-sm btn-success' %>
+                    </span>
+                    <span>
+                        <%= link_to raw("<span class=\"glyphicon glyphicon-thumbs-down\"></span>"), free_classroom_path(free_classroom, "free_classroom[likes]" => free_classroom.likes - 1),
+                                    :method => :put, class: 'btn btn-sm btn-danger' %>
+                    </span>
+                  </td>
+                  <% if current_user.id == 1 %>
+                      <td><%= button_to "X", free_classroom, method: :delete, class: "btn btn-danger btn-sm" %></td>
+                  <% end %>
+              <% end %>
+
             </tr>
         <% end %>
     <% end %>
