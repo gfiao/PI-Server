@@ -41,12 +41,12 @@
     <% end %>
 
     <% @free_classrooms.each do |free_classroom| %>
-        <% if free_classroom.to_time > Date.today %>
+        <% diff = free_classroom.to_time - (DateTime.now) %>
+        <% if diff > 0 %>
             <%#= free_classroom.to_time %>
             <!--<br>-->
             <%#= DateTime.now.utc+1.hours %>
             <!--<br><br>-->
-            <% diff = free_classroom.to_time - (DateTime.now.utc+1.hours) %>
             <tr>
               <td><%= Classroom.find_by(id: free_classroom.classroom_id).building %></td>
               <td><%= Classroom.find_by(id: free_classroom.classroom_id).classroom %></td>

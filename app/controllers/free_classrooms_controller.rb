@@ -26,7 +26,7 @@ class FreeClassroomsController < ApplicationController
   def show
 
     # apenas o administrador pode ver/editar
-    if @content.nil?
+    if @free_classroom.nil?
       flash[:error] = "Esse conteúdo não existe!"
       redirect_to root_url
     else
@@ -61,9 +61,9 @@ class FreeClassroomsController < ApplicationController
     @free_classroom = FreeClassroom.new(free_classroom_params)
     @free_classroom.user_id = current_user.id
 
-    puts "======================================"
-    puts params[:from_time]
-    puts "======================================"
+    # puts "======================================"
+    # puts params[:from_time]
+    # puts "======================================"
 
     # @free_classroom.from_time = @free_classroom.from_time.change(day: Date.today.day)
     # @free_classroom.from_time = Date.today
