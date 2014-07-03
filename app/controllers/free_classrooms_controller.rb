@@ -52,7 +52,15 @@ class FreeClassroomsController < ApplicationController
   def edit
 
     # dar permissão ao administrador para alterar????
-    redirect_to root_url
+
+    if !current_user.nil?
+      if current_user.id != 1
+        redirect_to root_url
+      end
+    else
+      redirect_to root_url
+    end
+
   end
 
   # POST /free_classrooms
@@ -85,6 +93,7 @@ class FreeClassroomsController < ApplicationController
   # PATCH/PUT /free_classrooms/1.json
   def update
 
+    puts "================0000000000000000000000000000==============="
 
     respond_to do |format|
       if @free_classroom.update(free_classroom_params)

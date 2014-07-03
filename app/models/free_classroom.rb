@@ -3,15 +3,15 @@ class FreeClassroom < ActiveRecord::Base
   after_initialize :init
   validate :validate_end_date_before_start_date
 
+  has_many :user_votes
+  has_many :users, through: :user_likes
+
   belongs_to :user
   belongs_to :classroom
 
   validates :from_time, :to_time, presence: true
   validates_associated :user, :classroom
   validates_presence_of :user, :classroom
-
-  # validates_uniqueness_of :user_id, :scope => [:classroom_id, :from_time, :to_time],
-  #                         :message => 'Esta sala já existe'
 
   validates_uniqueness_of :classroom_id, :scope => [:from_time, :to_time],
                           :message => 'Esta sala já existe'

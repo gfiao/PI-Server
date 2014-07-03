@@ -10,7 +10,8 @@ class User < ActiveRecord::Base
   has_many :user_contents
   has_many :contents, through: :user_contents
 
-  has_many :free_classrooms
+  has_many :user_votes
+  has_many :free_classrooms, through: :user_votes
   #has_many :classrooms, through: :free_classrooms
 
   has_many :scores

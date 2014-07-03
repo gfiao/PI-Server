@@ -4,9 +4,12 @@ class ScoresController < ApplicationController
   # GET /scores
   # GET /scores.json
   def index
-
     if user_signed_in?
-      @scores = current_user.scores
+      if current_user.id == 1
+        @scores = Score.all.order(score: :desc)
+      else
+        @scores = current_user.scores
+      end
     else
       @scores = Score.all
     end
