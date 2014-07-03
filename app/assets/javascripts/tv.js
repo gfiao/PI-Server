@@ -23,9 +23,12 @@ var ementasJantar = [];
 var restaurants = ["Cantina", "Casa do Pessoal", "My Spot Bar"]; //vai ter o nome de cada restaurante
 
 var globalCounter;
+var globalCounter2;
 var countRestaurant;
 var countPublicTrans;
 var countMeteo;
+var countFreeClassrooms;
+var counthHighscores;
 var firstTimeCantina;
 var firstTimeWeather;
 var footerNews;
@@ -49,9 +52,12 @@ $(document).ready(function () {
 
 function start() {
     globalCounter = 0;
+    globalCounter2 = 0;
     countRestaurant = 0;
     countPublicTrans = 0;
     countMeteo = 0;
+    countFreeClassrooms = 0;
+    counthHighscores = 0;
     footerNews = [];
     firstTimeCantina = true;
     firstTimeWeather = true;
@@ -64,7 +70,8 @@ function start() {
     fetchFooterNews();
     createFooter();
     animatePanel();
-    getFreeClassrooms();
+    animatePanel2();
+//    getFreeClassrooms();
 
     getCurrentVideo();
 }
@@ -78,6 +85,24 @@ jQuery.extend({
             dataType: 'json',
             async: false,
             cache: false,
+            success: function (data) {
+                result = data;
+            }
+        });
+        return result;
+    }
+});
+
+jQuery.extend({
+    getValuesParams: function (url, admin) {
+        var result = null;
+        $.ajax({
+            url: url,
+            type: 'get',
+            dataType: 'json',
+            async: false,
+            cache: false,
+            data: {type: admin},
             success: function (data) {
                 result = data;
             }
@@ -131,6 +156,37 @@ function animatePanel() {
     //A ESTE COMENTARIO NESSA ALTURA
 }
 
+function animatePanel2() {
+    var intervalID;
+    var toShow;
+
+    intervalID = setInterval(function () {
+
+        //recomeça de novo
+        if (globalCounter2 == 100)
+            globalCounter2 = 0;
+
+        //obtem o conteudo a mostrar
+        toShow = fetchContent2();
+
+        $('#toAnimate2').removeClass('fadeInRight');
+        $('#toAnimate2').addClass('animated fadeOutRight');
+
+        setTimeout(function () { //timeout para garantir que o novo texto aparece entre os dois fades
+            $("#toAnimate2").empty();
+            $("#toAnimate2").append(toShow);
+            $('#toAnimate2').removeClass('fadeOutRight');
+            $('#toAnimate2').addClass('fadeInRight');
+        }, 650);
+
+    }, /*18000*/ 5000); //time in ms
+
+    //QUALQUER CODIGO QUE VENHA APOS O FIM DO SET_INTERVAL,
+    //É EXECUTADO LOGO AO INICIO. QUANDO O SET_INTERVAL CHEGA AO FIM,
+    //OU SEJA, É CHAMADO O CLEAR_INTERVAL, O MÉTODO TERMINA, NÃO CHEGANDO
+    //A ESTE COMENTARIO NESSA ALTURA
+}
+
 //******************* FUNÇOES AUXILIARES *******************
 
 //FUNÇAO QUE USA OS PARAMETROS DA PRIORIDADE
@@ -143,6 +199,15 @@ function fetchContent() {
 
     else
         return getMeteo();
+}
+
+//FUNÇAO QUE USA OS PARAMETROS DA PRIORIDADE
+function fetchContent2() {
+    if ((globalCounter2 % 3) == 0)
+        return getFreeClassrooms();
+
+    else
+        return getHighscores();
 }
 
 //passar parametro para indicar se é almoço ou jantar
@@ -284,7 +349,7 @@ function getPublicTrans() {
         transTime.setMinutes(transportsMTS[i].minute);
         var diff = ((transTime - currentTime) / 1000) / 60; //diff in minutes
 
-        if (diff <= 15 && diff > 0) {
+        if (diff <= 30 && diff > 0) {
             if (transportsMTS[i].minute == 2 || transportsMTS[i].minute == 5 || transportsMTS[i].minute == 7 || transportsMTS[i].minute == 0)
                 content += '<span class="transport-span">' + transportsMTS[i].hour + ':0' + transportsMTS[i].minute + '</span>';
             else
@@ -294,6 +359,8 @@ function getPublicTrans() {
             counter++;
         }
     }
+    if (counter == 0)
+        content += '<p style="text-align: center">Não há transportes para mostrar.</p>';
     content += '</div></br>';
 
     currentTime.setHours(hour);
@@ -322,6 +389,8 @@ function getPublicTrans() {
             counter++;
         }
     }
+    if (counter == 0)
+        content += '<p style="text-align: center">Não há transportes para mostrar.</p>';
     content += '</div>';
 
 
@@ -341,19 +410,19 @@ function getMeteo() {
     if (weather[0].description = 'Predominantemente Nublado')
         weather[0].description = 'Muito Nublado';
 
-    var content = '<h1 style="font-size: 130%;text-align: center;">Meteorologia</h2></br>';
+    var content = '<h1 style="text-align: center;">Meteorologia</h1>';
 
-    content += '<h1 style="font-size: 130%; text-align: center">Almada</h3></br>';
+    content += '<h1 style=" text-align: center">Almada</h1>';
 
     content += '<div style="text-align: center;font-size: 130%">' + weather[0].description + '  ' +
-        '<img src="' + weather[0].image_url + '"></div>';
-
+        '<img src="' + weather[0].image_url + '"></div></br>';
+    content += '<div>';
     content += '<span class="meteo-span">Min:</span>';
     content += '<span class="meteo-span">Max:</span>';
     content += '</br>';
     content += '<span class="meteo-span"><b>' + weather[0].min_temp + 'º</b></span>';
     content += '<span class="meteo-span"><b>' + weather[0].max_temp + 'º</b></span>';
-
+    content += '</div>';
 
     globalCounter++;
     return content;
@@ -680,5 +749,41 @@ function getFreeClassrooms() {
         }
     }
     html += '</div>';
-    $('#right-panel-bottom').append(html);
+
+    globalCounter2++;
+//    $('#right-panel-bottom').append(html);
+    return html;
+}
+
+
+//Objecto a ser inserido na TV
+function Highscore(user_name, score) {
+    this.user_name = user_name;
+    this.score = score;
+}
+function getHighscores() {
+    var scores = $.getValues('/scores');
+    var users = $.getValuesParams('/users', 'admin');
+    var scoresTV = [];
+//    console.log(scores);
+    for (var i = 0; i < 3; i++)
+        for (var j = 0; j < users.length; j++)
+            if (scores[i].user_id == users[j].id) {
+                var score = new Highscore(users[j].name, scores[i].score);
+                scoresTV.push(score);
+                break;
+            }
+//    console.log(scoresTV);
+
+    var html = '<div id=""><p style="font-size: 300%; text-align: center">' +
+        'Melhores pontuações 2048:</p>';
+
+    html += '<p class="scores">1º: ' + scoresTV[0].user_name + ' - ' + scoresTV[0].score + '</p>';
+    html += '<p class="scores">2º: ' + scoresTV[1].user_name + ' - ' + scoresTV[1].score + '</p>';
+    html += '<p class="scores">3º: ' + scoresTV[2].user_name + ' - ' + scoresTV[2].score + '</p>';
+    html += '</div>';
+
+    globalCounter2++;
+    return html;
+
 }
