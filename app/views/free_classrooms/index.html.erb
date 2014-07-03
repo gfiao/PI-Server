@@ -23,9 +23,7 @@
     <tr>
       <th>Edificio</th>
       <th>Sala</th>
-      <!--<th>De</th>-->
       <th>Livre por mais (hh:mm)</th>
-      <!--<th>Teste</th>-->
       <th>Feedback</th>
       <% if !current_user.nil? %>
           <th></th>
@@ -35,7 +33,6 @@
       <% end %>
     </tr>
 
-
     <% def seconds_to_time(seconds) %>
         <% [seconds / 3600, seconds / 60 % 60].map { |t| t.to_s.rjust(2, '0') }.join(':') %>
     <% end %>
@@ -43,27 +40,42 @@
     <% @free_classrooms.each do |free_classroom| %>
         <% diff = free_classroom.to_time - (DateTime.now) %>
         <% if diff > 0 %>
-            <%#= free_classroom.to_time %>
-            <!--<br>-->
-            <%#= DateTime.now.utc+1.hours %>
-            <!--<br><br>-->
             <tr>
               <td><%= Classroom.find_by(id: free_classroom.classroom_id).building %></td>
               <td><%= Classroom.find_by(id: free_classroom.classroom_id).classroom %></td>
-              <!--<td><%#= free_classroom.from_time.to_s(:short) %></td>-->
-              <!--<td><%#= free_classroom.to_time.to_s(:short) %></td>-->
               <td><%= seconds_to_time(diff.to_i) %></td>
               <td><%= free_classroom.likes %></td>
 
               <% if !current_user.nil? %>
+                  <% vote = UserVote.find_by(user_id: current_user.id, free_classroom_id: free_classroom.id) %>
                   <td>
                     <span>
-                        <%= link_to raw("<i class=\"glyphicon glyphicon-thumbs-up\"></i>"), free_classroom_path(free_classroom, "free_classroom[likes]" => free_classroom.likes + 1, :redirect_to => free_classrooms_path),
-                                    :method => :put, class: 'btn btn-sm btn-success active' %>
+                      <% if !vote.nil? %>
+                        <% if vote.status.eql? "upvote" %>
+                            <%= link_to raw("<i class=\"glyphicon glyphicon-thumbs-up\"></i>"), free_classroom_path(free_classroom, "free_classroom[likes]" => free_classroom.likes + 1, "status" => "upvote", :redirect_to => free_classrooms_path),
+                                        :method => :put, :disabled => true, class: 'btn btn-sm btn-success' %>
+                        <% else %>
+                        <%= link_to raw("<i class=\"glyphicon glyphicon-thumbs-up\"></i>"), free_classroom_path(free_classroom, "free_classroom[likes]" => free_classroom.likes + 1, "status" => "upvote", :redirect_to => free_classrooms_path),
+                                    :method => :put, class: 'btn btn-sm btn-success' %>
+                      <% end %>
+                      <% else %>
+                        <%= link_to raw("<i class=\"glyphicon glyphicon-thumbs-up\"></i>"), free_classroom_path(free_classroom, "free_classroom[likes]" => free_classroom.likes + 1, "status" => "upvote", :redirect_to => free_classrooms_path),
+                                    :method => :put, class: 'btn btn-sm btn-success' %>
+                      <% end %>
                     </span>
                     <span>
-                        <%= link_to raw("<span class=\"glyphicon glyphicon-thumbs-down\"></span>"), free_classroom_path(free_classroom, "free_classroom[likes]" => free_classroom.likes - 1, :redirect_to => free_classrooms_path),
-                                    :method => :put, class: 'btn btn-sm btn-danger' %>
+                      <% if !vote.nil? %>
+                        <% if vote.status.eql? "downvote" %>
+                            <%= link_to raw("<span class=\"glyphicon glyphicon-thumbs-down\"></span>"), free_classroom_path(free_classroom, "free_classroom[likes]" => free_classroom.likes - 1, "status" => "downvote", :redirect_to => free_classrooms_path),
+                                        :method => :put, :disabled => true, class: 'btn btn-sm btn-danger' %>
+                        <% else %>
+                            <%= link_to raw("<span class=\"glyphicon glyphicon-thumbs-down\"></span>"), free_classroom_path(free_classroom, "free_classroom[likes]" => free_classroom.likes - 1, "status" => "downvote", :redirect_to => free_classrooms_path),
+                                        :method => :put, class: 'btn btn-sm btn-danger' %>
+                      <% end %>
+                      <% else %>
+                            <%= link_to raw("<span class=\"glyphicon glyphicon-thumbs-down\"></span>"), free_classroom_path(free_classroom, "free_classroom[likes]" => free_classroom.likes - 1, "status" => "downvote", :redirect_to => free_classrooms_path),
+                                        :method => :put, class: 'btn btn-sm btn-danger' %>
+                      <% end %>
                     </span>
                   </td>
                   <% if current_user.id == 1 %>

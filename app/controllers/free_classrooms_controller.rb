@@ -5,7 +5,13 @@ class FreeClassroomsController < ApplicationController
   # GET /free_classrooms
   # GET /free_classrooms.json
   def index
-    # @free_classrooms = FreeClassroom.alls
+
+    # @is_upvote_disabled = false
+    # @is_downvote_disabled = false
+
+    # @upvote_status = 'btn btn-sm btn-success' #adicionar 'active' para mostrar que tá seleccionado
+    # @downvote_status = 'btn btn-sm btn-danger' #adicionar 'active' para mostrar que tá seleccionado
+
     if params[:classroom]
       @selected_building = params[:classroom][:building]
       if params[:classroom][:building] != ""
@@ -95,6 +101,56 @@ class FreeClassroomsController < ApplicationController
 
     puts "================0000000000000000000000000000==============="
 
+    vote = UserVote.find_by(user_id: current_user.id, free_classroom_id: @free_classroom.id)
+    puts vote.nil?
+    puts params[:status]
+
+    # upvote_btn_selected = 'btn btn-sm btn-success active'
+    # upvote_btn_not_selected = 'btn btn-sm btn-success'
+    # downvote_btn_selected = 'btn btn-sm btn-danger active'
+    # downvote_btn_not_selected = 'btn btn-sm btn-danger'
+
+    if vote.nil?
+      UserVote.create(user_id: current_user.id, free_classroom_id: @free_classroom.id, status: params[:status])
+    else
+
+      puts "========================="
+      puts "previous_state: #{vote.status}"
+      puts "vote: #{params[:status]}"
+
+
+      #o utilizador ja tinha votado mas retirou o seu voto, encontra-se "neutro"
+      #nenhum dos botoes tá seleccionado, ou desactivado
+      if vote.status == "neutral"
+        if params[:status] == "upvote" #carregou upvote; seleccionar o upvote
+          # @is_upvote_disabled = true
+          vote.status = "upvote"
+          vote.save
+        else #carregou downvote
+          vote.status = "downvote"
+          vote.save
+        end
+      elsif vote.status == "downvote" #o utilizador ja tinha feito downvote
+        if params[:status] == "upvote" #carregou upvote
+          vote.status = "neutral"
+          vote.save
+        else #carregou downvote
+          #acho que nao faz nada, o botao deve estar desactivado!!
+        end
+      else #o utilizador ja tinha feito upvote
+        if params[:status] == "upvote" #carregou upvote
+          #acho que nao faz nada, o botão deve estar desactivado!!
+        else #carregou downvote
+          vote.status = "neutral"
+          vote.save
+        end
+      end
+
+      puts "next_state: #{vote.status}"
+      puts "========================="
+    end
+
+
     respond_to do |format|
       if @free_classroom.update(free_classroom_params)
         format.html { redirect_to free_classrooms_path, notice: 'Free classroom was successfully updated.' }
@@ -129,6 +185,5 @@ class FreeClassroomsController < ApplicationController
   def free_classroom_params
     #params.require(:free_classroom).permit(:user_id, :classroom_id, :time)
     params.require(:free_classroom).permit(:classroom_id, :from_time, :to_time, :likes)
-
   end
 end
