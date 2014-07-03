@@ -6,7 +6,7 @@
     <%= form_tag(free_classrooms_path, :method => "get", id: "building-form") do %>
         <div class="col-xs-5 col-md-3">
           <%= collection_select :classroom, :building, Classroom.select(:building).uniq, :building,
-                                :building, {:selected => :building, include_blank: 'Todos'}, class: 'form-control' %>
+                                :building, {:selected => @selected_building, include_blank: 'Todos'}, class: 'form-control' %>
         </div>
         <div class="col-md-2">
           <%= submit_tag "Filtrar", class: 'btn btn-default' %>
