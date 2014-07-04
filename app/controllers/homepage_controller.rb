@@ -56,139 +56,147 @@ class HomepageController < ApplicationController
     require 'nokogiri'
 
     # por enquanto apenas o jornal I, pois funciona bem. adicionar mais links mais tarde caso haja mais feeds bacanos hehe
-    feeds = ["http://feeds.feedburner.com/jornali?format=xml", #0
-             "http://www.di.fct.unl.pt/eventos/rss.xml", #1
-             "http://www.di.fct.unl.pt/noticias/rss.xml", #2
-             "http://feeds.feedburner.com/PublicoRSS?format=xml", #3
-             "", #4
-             "http://feeds.jn.pt/JN-ULTIMAS", #5
-             "http://expresso.sapo.pt/static/rss/atualidade--arquivo_23412.xml", #6
-             "http://feeds.dn.pt/DN-Portugal", #7
-             "http://www.rtp.pt/noticias/index.php?headline=204&visual=58", #8
-             "http://feeds.destakes.com/destakes/canal/imprensa?format=xml", #9
-             "http://expresso.sapo.pt/static/rss/desporto_23414.xml", #10
-             "http://feeds.feedburner.com/BlogueDaBibliotecaFct/unl?format=xml", #11
-             "http://www.fct.unl.pt/noticias/rss.xml"] #12
+    allFeeds = ["http://feeds.feedburner.com/jornali?format=xml", #0
+                "http://www.di.fct.unl.pt/eventos/rss.xml", #1
+                "http://www.di.fct.unl.pt/noticias/rss.xml", #2
+                "http://feeds.feedburner.com/PublicoRSS?format=xml", #3
+                "", #4
+                "http://feeds.jn.pt/JN-ULTIMAS", #5
+                "http://expresso.sapo.pt/static/rss/atualidade--arquivo_23412.xml", #6
+                "http://feeds.dn.pt/DN-Portugal", #7
+                "http://www.rtp.pt/noticias/index.php?headline=204&visual=58", #8
+                "http://feeds.destakes.com/destakes/canal/imprensa?format=xml", #9
+                "http://expresso.sapo.pt/static/rss/desporto_23414.xml", #10
+                "http://feeds.feedburner.com/BlogueDaBibliotecaFct/unl?format=xml", #11
+                "http://www.fct.unl.pt/noticias/rss.xml"] #12
+
+    # os feeds para mostrar!!
+    feedsToShow = [11, 12]
 
     # alterar esta variavel consoante o feed que queremos usar
-    selectedFeedIndex = 12
+    # selectedFeedIndex = 12
 
-    rss = RSS::Parser.parse(feeds[selectedFeedIndex], false)
-    puts "============================ INICIO FEEDS ==========================="
+    feedsToShow.each do |ind|
 
-    puts rss.items
-    # puts rss.title
-    # puts rss.language
-    # puts rss.lastBuildDate
-    puts rss.image
+      rss = RSS::Parser.parse(allFeeds[ind], false)
+      puts "============================ INICIO FEEDS ==========================="
 
-    # puts "\n********** intervalo **********\n"
+      # puts rss.items
+      # puts rss.title
+      # puts rss.language
+      # puts rss.lastBuildDate
+      # puts rss.image
 
-    rss.items.each do |item|
-      puts "\n********** inicio de um item do feed **********"
-      puts "#{item.pubDate} - #{item.title} (#{item.category})"
+      # puts "\n********** intervalo **********\n"
 
-      puts item.description
-      puts "\n"
-
-      description = item.description
-
-      # se for feed do jornal i, fazer parse da descriçao
-      if selectedFeedIndex == 0
-        doc = Nokogiri::HTML(description)
-
-        # obter a imagem da noticia
-        image = doc.css('img').map { |i| i['src'] } # Array of strings
-
-        # obter a descrição
-        description_div = doc.css('.field-type-text')[0]
-
-        if !description_div.nil?
-          description = description_div.css('.even')[0].text
-        else
-          description = item.title
-        end
-
-
-        # #obter texto da noticia
-        text_div = doc.css('.field-type-text-with-summary')[0]
-        paragraphs = text_div.css('.even')
-
-        news_text = ""
-        paragraphs.css('p').each do |paragraph|
-          news_text.concat(paragraph.text + "\n")
-        end
-
-        puts "\n********** DESCRIÇÃO **********"
-        puts "#{description}\n"
-
-        puts "\n********** TEXTO DA NOTICIA **********"
-        puts "#{paragraphs}\n"
-
-        puts "\n********** IMAGEM **********"
-        puts "#{image}\n"
-
-        Content.create(title: item.title, link_image: image[0], description: description,
-                       date: item.pubDate, views: 0, news_text: news_text, user_id: 1)
-
-        puts "\n********** fim de um item do feed **********"
-
-        # feed da biblioteca
-      elsif selectedFeedIndex == 11
-        doc = Nokogiri::HTML(description)
-
-        # obter a imagem da noticia
-        image = doc.css('a').map { |i| i['href'] } # Array of strings
-
-        # gravar o conteudo na BD
-        content = Content.create(title: item.title, link_image: image[0], description: "(sem descrição para apresentar)",
-                       date: item.pubDate, views: 0, news_text: item.description, user_id: 1)
-
-        #associar tag ao conteudo, neste caso, biblioteca. Tratar o caso em que vem video no link!!
-        c_id = content.id
-        TagContent.create(content_id: c_id, tag_id: 12)
-
-        # feed de noticias da fct
-      elsif selectedFeedIndex == 12
-        doc = Nokogiri::HTML(description)
-
-        #OBTER IMAGEM (ATENÇAO QUE ALGUMAS NOTICIAS NAO TÊM IMAGEM)
-        image_div = doc.css('.field-field-imagem')[0]
-        if image_div.nil?
-          image = 'fct.gif'
-        else
-          image = image_div.css('img').map { |i| i['src'] }
-          puts image
-          image = image[0]
-        end
-
-        description_div = doc.css('.field-field-resumo')[0]
-        description = description_div.css('p').to_s
-
-        page_no_description = doc.css('.field-field-resumo').remove
-        news_text = page_no_description.css('p').to_s
-
-        # paragraphs.each do |parag|
-        #   puts parag
-        # end
-
-
+      rss.items.each do |item|
+        # puts "\n********** inicio de um item do feed **********"
+        # puts "#{item.pubDate} - #{item.title} (#{item.category})"
         #
-        # description = doc.css('.field-field-resumo')[0]
+        # puts item.description
+        # puts "\n"
 
-        content = Content.create(title: item.title, link_image: image, description: description,
-                       date: item.pubDate, views: 0, news_text: news_text, user_id: 1)
+        description = item.description
 
-        c_id = content.id
-        
-        library_tag = Tag.find_by(tag: "Biblioteca")
-        TagContent.create(content_id: c_id, tag_id: library_tag.id)
+        # se for feed do jornal i, fazer parse da descriçao
+        if ind == 0
+          doc = Nokogiri::HTML(description)
 
-        #   introduzir tags para o conteudo
+          # obter a imagem da noticia
+          image = doc.css('img').map { |i| i['src'] } # Array of strings
+
+          # obter a descrição
+          description_div = doc.css('.field-type-text')[0]
+
+          if !description_div.nil?
+            description = description_div.css('.even')[0].text
+          else
+            description = item.title
+          end
+
+
+          # #obter texto da noticia
+          text_div = doc.css('.field-type-text-with-summary')[0]
+          paragraphs = text_div.css('.even')
+
+          news_text = ""
+          paragraphs.css('p').each do |paragraph|
+            news_text.concat(paragraph.text + "\n")
+          end
+
+          puts "\n********** DESCRIÇÃO **********"
+          puts "#{description}\n"
+
+          puts "\n********** TEXTO DA NOTICIA **********"
+          puts "#{paragraphs}\n"
+
+          puts "\n********** IMAGEM **********"
+          puts "#{image}\n"
+
+          Content.create(title: item.title, link_image: image[0], description: description,
+                         date: item.pubDate, views: 0, news_text: news_text, user_id: 1)
+
+          puts "\n********** fim de um item do feed **********"
+
+          # feed da biblioteca
+        elsif ind == 11
+          doc = Nokogiri::HTML(description)
+
+          # obter a imagem da noticia
+          image = doc.css('a').map { |i| i['href'] } # Array of strings
+
+          # gravar o conteudo na BD
+          content = Content.create(title: item.title, link_image: image[0], description: "(sem descrição para apresentar)",
+                                   date: item.pubDate, views: 0, news_text: item.description, user_id: 1)
+
+          #associar tag ao conteudo, neste caso, biblioteca. Tratar o caso em que vem video no link!!
+          c_id = content.id
+
+          library_tag = Tag.find_by(tag: "Biblioteca")
+          TagContent.create(content_id: c_id, tag_id: library_tag.id)
+
+          # feed de noticias da fct
+        elsif ind == 12
+          doc = Nokogiri::HTML(description)
+
+          #OBTER IMAGEM (ATENÇAO QUE ALGUMAS NOTICIAS NAO TÊM IMAGEM)
+          image_div = doc.css('.field-field-imagem')[0]
+          if image_div.nil?
+            image = 'fct.gif'
+          else
+            image = image_div.css('img').map { |i| i['src'] }
+            puts image
+            image = image[0]
+          end
+
+          description_div = doc.css('.field-field-resumo')[0]
+          description = description_div.css('p').to_s
+
+          page_no_description = doc.css('.field-field-resumo').remove
+          news_text = page_no_description.css('p').to_s
+
+          # paragraphs.each do |parag|
+          #   puts parag
+          # end
+
+
+          #
+          # description = doc.css('.field-field-resumo')[0]
+
+          content = Content.create(title: item.title, link_image: image, description: description,
+                                   date: item.pubDate, views: 0, news_text: news_text, user_id: 1)
+
+          c_id = content.id
+
+          library_tag = Tag.find_by(tag: "Geral FCT")
+          TagContent.create(content_id: c_id, tag_id: library_tag.id)
+
+          #   introduzir tags para o conteudo
+        end
+
+
+        #   Content.create(title, link_image, description, date, views, news_text, user_id)
       end
-
-
-      #   Content.create(title, link_image, description, date, views, news_text, user_id)
     end
     puts "============================ FIM FEEDS ==========================="
 

@@ -61,6 +61,10 @@ class UsersController < ApplicationController
   def create
     @user = User.new(user_params)
 
+    if params[:avatar_url] == ""
+      @user.avatar_url = "fct.gif"
+    end
+
     respond_to do |format|
       if @user.save
         format.html { redirect_to @user, notice: 'User was successfully created.' }

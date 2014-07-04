@@ -204,6 +204,11 @@ UserContent.create(user_id: 3, content_id: 4)
 UserContent.create(user_id: 2, content_id: 5)
 UserContent.create(user_id: 3, content_id: 6)
 UserContent.create(user_id: 1, content_id: 7)
+UserContent.create(user_id: 1, content_id: 8)
+UserContent.create(user_id: 1, content_id: 9)
+UserContent.create(user_id: 1, content_id: 10)
+UserContent.create(user_id: 1, content_id: 11)
+UserContent.create(user_id: 1, content_id: 12)
 
 #Video link:string category_id:integer
 puts 'Adding Videos'

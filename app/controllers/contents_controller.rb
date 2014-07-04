@@ -22,7 +22,7 @@ class ContentsController < ApplicationController
       @search_only_user_contents = true
       @display_all = false
 
-      if params[:tag]
+      if params[:tag][:id] != ""
         @selected_tag = params[:tag][:id]
         @contents = Tag.find(params[:tag][:id]).contents.where(:user_id => current_user.id)
       else
@@ -114,8 +114,8 @@ class ContentsController < ApplicationController
     end
 
     if !params[:video].nil?
-      Video.create(:link => params[:video][:link])
-      @content.video = Video.find_by(:link => params[:video][:link])
+      Video.create(:link => params[:video][:link_video])
+      @content.video = Video.find_by(:link => params[:video][:link_video])
     end
 
     params[:content][:tag_ids].each do |tag|
