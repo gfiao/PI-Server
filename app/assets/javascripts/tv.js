@@ -263,7 +263,7 @@ function getEmenta() {
     var ementaContent;
 
     // a hora é menor que 18:00, mostramos a ementa do almoço
-    if (hour < 18) {
+    if (hour < 16) {
 
         //a cada iteração, mostra a ementa de cada um dos restaurantes
         var index = countRestaurant % 3;
