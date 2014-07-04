@@ -52,18 +52,18 @@ puts 'Adding 50 random Users'
         avatar_url: 'http://noticias.rumonet.pt/wp-content/uploads/2013/02/logo_FCTUNL.jpg',
         :confirmed_at => Time.now
     )
-  # elsif i == 50
-  #   t = User.create(
-  #       name: 'Renato Alexandre',
-  #       birth_date: Date.today,
-  #       gender: 'Feminino',
-  #       course: 'Informática',
-  #       about_me: 'Curto bué de gajas de Erasmus :D',
-  #       email: 'renato.alexandre@campus.fct.unl.pt',
-  #       password: 'qweqweqwe',
-  #       password_confirmation: 'qweqweqwe',
-  #       avatar_url: 'http://img4.wikia.nocookie.net/__cb20121207145720/aleixo/images/7/75/Renato_disco.jpg',
-  #       :confirmed_at => Time.now)
+    # elsif i == 50
+    #   t = User.create(
+    #       name: 'Renato Alexandre',
+    #       birth_date: Date.today,
+    #       gender: 'Feminino',
+    #       course: 'Informática',
+    #       about_me: 'Curto bué de gajas de Erasmus :D',
+    #       email: 'renato.alexandre@campus.fct.unl.pt',
+    #       password: 'qweqweqwe',
+    #       password_confirmation: 'qweqweqwe',
+    #       avatar_url: 'http://img4.wikia.nocookie.net/__cb20121207145720/aleixo/images/7/75/Renato_disco.jpg',
+    #       :confirmed_at => Time.now)
   else
     r=Random.rand(10)
     r2=Random.rand(12)
@@ -280,15 +280,31 @@ TagContent.create(content_id: 12, tag_id: 21)
 
 #Classrooms building:string classroom:string
 puts 'Adding Classrooms'
-Classroom.create(building: 'Ed.7', classroom: '2.3')
-Classroom.create(building: 'Ed.7', classroom: '1D')
+Classroom.create(building: 'Ed.7', classroom: '1A')
+Classroom.create(building: 'Ed.7', classroom: '1B')
 Classroom.create(building: 'Ed.7', classroom: '1C')
+Classroom.create(building: 'Ed.7', classroom: '1D')
+Classroom.create(building: 'Ed.7', classroom: '2A')
 Classroom.create(building: 'Ed.7', classroom: '2B')
+Classroom.create(building: 'Ed.7', classroom: '2.3')
 Classroom.create(building: 'Ed.7', classroom: '1.13')
-Classroom.create(building: 'Ed.2', classroom: '119')
-Classroom.create(building: 'Ed.2', classroom: '121')
+Classroom.create(building: 'Ed.7', classroom: '1.14')
+Classroom.create(building: 'Ed.7', classroom: '1.15')
+Classroom.create(building: 'Ed.7', classroom: '1.16')
+Classroom.create(building: 'Ed.7', classroom: '1.17')
+Classroom.create(building: 'Ed.7', classroom: '1.18')
+Classroom.create(building: 'Ed.7', classroom: '1.19')
+
+Classroom.create(building: 'Ed.2', classroom: '114')
 Classroom.create(building: 'Ed.2', classroom: '115')
+Classroom.create(building: 'Ed.2', classroom: '116')
+Classroom.create(building: 'Ed.2', classroom: '119')
 Classroom.create(building: 'Ed.2', classroom: '120')
+Classroom.create(building: 'Ed.2', classroom: '121')
+Classroom.create(building: 'Ed.2', classroom: '122')
+Classroom.create(building: 'Ed.2', classroom: '123')
+Classroom.create(building: 'Ed.2', classroom: '124')
+
 
 #FreeClassroom user_id:integer classroom_id:integer from_time:datetime likes:integer, to_time:datetime
 puts 'Adding Free Classrooms'
@@ -332,6 +348,9 @@ FooterNews.create(category: 'Faculdade', news: 'A Época Especial irá decorrer 
 FooterNews.create(category: 'Faculdade', news: 'A data limite para a entrega de dissertações e teses é 22 de Setembro.', date: Date.today())
 FooterNews.create(category: 'País', news: 'Isaltino Morais saiu da prisão e ficou em liberdade condicional, mas não pode sair do país.', date: Date.today())
 FooterNews.create(category: 'País', news: 'Berardo exige ao Governo da Madeira indemnizações de um milhão de euros.', date: Date.today())
+FooterNews.create(category: 'País', news: 'Conselho de Estado apela a "pontes de diálogo construtivo"', date: Date.today())
+FooterNews.create(category: 'País', news: 'PT já não vai ter 37% da Oi.', date: Date.today())
+FooterNews.create(category: 'País', news: 'Cartazes polémicos dividem (ainda mais) o PS.', date: Date.today())
 
 #cena temporaria para o indice inicial do que esta na TV (começa a zero para indicar que a TV está desligada)
 CurrentVideo.create(index: 0)
@@ -361,6 +380,21 @@ puts 'Adding TransportHours'
 TransportHour.create(transport_id: Transport.find_by(carreira: 0).id, hour_id: Hour.find_by(hour: 10, minute: 12).id)
 TransportHour.create(transport_id: Transport.find_by(carreira: 0).id, hour_id: Hour.find_by(hour: 10, minute: 17).id)
 TransportHour.create(transport_id: Transport.find_by(carreira: 0).id, hour_id: Hour.find_by(hour: 10, minute: 22).id)
+
+TransportHour.create(transport_id: Transport.find_by(carreira: 0).id, hour_id: Hour.find_by(hour: 12, minute: 12).id)
+TransportHour.create(transport_id: Transport.find_by(carreira: 0).id, hour_id: Hour.find_by(hour: 12, minute: 17).id)
+TransportHour.create(transport_id: Transport.find_by(carreira: 0).id, hour_id: Hour.find_by(hour: 12, minute: 22).id)
+TransportHour.create(transport_id: Transport.find_by(carreira: 0).id, hour_id: Hour.find_by(hour: 12, minute: 27).id)
+TransportHour.create(transport_id: Transport.find_by(carreira: 0).id, hour_id: Hour.find_by(hour: 12, minute: 32).id)
+
+TransportHour.create(transport_id: Transport.find_by(carreira: 0).id, hour_id: Hour.find_by(hour: 10, minute: 27).id)
+TransportHour.create(transport_id: Transport.find_by(carreira: 0).id, hour_id: Hour.find_by(hour: 10, minute: 32).id)
+
+
+TransportHour.create(transport_id: Transport.find_by(carreira: 126).id, hour_id: Hour.find_by(hour: 12, minute: 30).id)
+TransportHour.create(transport_id: Transport.find_by(carreira: 194).id, hour_id: Hour.find_by(hour: 12, minute: 40).id)
+
+
 TransportHour.create(transport_id: Transport.find_by(carreira: 0).id, hour_id: Hour.find_by(hour: 14, minute: 52).id)
 TransportHour.create(transport_id: Transport.find_by(carreira: 0).id, hour_id: Hour.find_by(hour: 15, minute: 32).id)
 TransportHour.create(transport_id: Transport.find_by(carreira: 0).id, hour_id: Hour.find_by(hour: 15, minute: 37).id)

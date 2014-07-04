@@ -147,7 +147,7 @@ function animatePanel() {
             $('#toAnimate').addClass('fadeInRight');
         }, 650);
 
-    }, /*18000*/ 5000); //time in ms
+    }, 18000); //time in ms
 
     //QUALQUER CODIGO QUE VENHA APOS O FIM DO SET_INTERVAL,
     //É EXECUTADO LOGO AO INICIO. QUANDO O SET_INTERVAL CHEGA AO FIM,
@@ -178,7 +178,7 @@ function animatePanelBottom() {
             $('#toAnimateBottom').addClass('fadeInRight');
         }, 650);
 
-    }, /*18000*/ 5000); //time in ms
+    }, 15000); //time in ms
 
     //QUALQUER CODIGO QUE VENHA APOS O FIM DO SET_INTERVAL,
     //É EXECUTADO LOGO AO INICIO. QUANDO O SET_INTERVAL CHEGA AO FIM,
@@ -551,7 +551,7 @@ function appendVideos() {
     });
 
     $('#view-area').carousel({
-        interval: 2000 // (12000 = o valor ideal) in milliseconds
+        interval: 12000 // (12000 = o valor ideal) in milliseconds
     });
 }
 
@@ -673,7 +673,7 @@ function createFooter() {
             $("#news-container").addClass('animated fadeInDown');
         }, 650);
 
-    }, 8000); //time in ms
+    }, 9000); //time in ms
 
 }
 
