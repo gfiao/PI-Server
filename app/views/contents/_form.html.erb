@@ -38,7 +38,8 @@
     </div>
 
     <div class="field form-group">
-      <%= f.association :tags, label_method: :tag, value_method: :id, as: :check_boxes %>
+      <%= f.association :tags, label_method: :tag, value_method: :id, as: :check_boxes, :item_wrapper_class => 'checkbox_container' %>
+      <%#= f.collection_check_boxes :id, Tag.all, :value_method, :text_method, :item_wrapper_class => 'checkbox_container' %>
     </div>
 
 
@@ -49,4 +50,5 @@
     <div class="actions" style="margin-top: 2%">
       <%= f.submit 'Adicionar conteudo', class: "btn btn-default" %>
     </div>
+
 <% end %>

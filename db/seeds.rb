@@ -7,17 +7,15 @@
 #   Mayor.create(name: 'Emanuel', city: cities.first)
 
 
-first_names = ['Zé',
+first_names = ['José',
                'António',
                'Carlos',
                'Eduardo',
                'Paulo',
-               'Paulão',
                'Leonardo',
                'Guilherme',
                'Rafael',
-               'Pedro',
-               'José']
+               'Pedro']
 
 last_names = ['Fião',
               'Bizarra',
@@ -54,20 +52,18 @@ puts 'Adding 50 random Users'
         avatar_url: 'http://noticias.rumonet.pt/wp-content/uploads/2013/02/logo_FCTUNL.jpg',
         :confirmed_at => Time.now
     )
-    # elsif i == 25
-    #   puts 'Done 25, almost there'
-  elsif i == 50
-    t = User.create(
-        name: 'Renato Alexandre',
-        birth_date: Date.today,
-        gender: 'Feminino',
-        course: 'Informática',
-        about_me: 'Curto bué de gajas de Erasmus :D',
-        email: 'renato.alexandre@campus.fct.unl.pt',
-        password: 'qweqweqwe',
-        password_confirmation: 'qweqweqwe',
-        avatar_url: 'http://img4.wikia.nocookie.net/__cb20121207145720/aleixo/images/7/75/Renato_disco.jpg',
-        :confirmed_at => Time.now)
+  # elsif i == 50
+  #   t = User.create(
+  #       name: 'Renato Alexandre',
+  #       birth_date: Date.today,
+  #       gender: 'Feminino',
+  #       course: 'Informática',
+  #       about_me: 'Curto bué de gajas de Erasmus :D',
+  #       email: 'renato.alexandre@campus.fct.unl.pt',
+  #       password: 'qweqweqwe',
+  #       password_confirmation: 'qweqweqwe',
+  #       avatar_url: 'http://img4.wikia.nocookie.net/__cb20121207145720/aleixo/images/7/75/Renato_disco.jpg',
+  #       :confirmed_at => Time.now)
   else
     r=Random.rand(10)
     r2=Random.rand(12)
@@ -90,12 +86,20 @@ end
 
 #Content title:string link_image:string description:text date:date news_text:text
 puts 'Adding News Content'
-Content.create(title: 'Leslie Lamport vem à FCT!', link_image: 'LeslieLamport_960.jpg',
-               description: 'Leslie Lamport vem dar uma palestra à grandiosa FCT', date: Date.today(), views: 3,
-               news_text: 'Hehe placeholder!', user_id: 1)
+Content.create(title: 'Leslie Lamport dar uma palestra à FCT, dia 17 de Setembro de 2014', link_image: 'LeslieLamport_960.jpg',
+               description: 'Leslie Lamport vem dar uma palestra à nossa faculdade, no âmbito das Distinguished Lecture Series do DI', date: Date.today(), views: 8,
+               news_text: 'Title: to be announced
 
-Content.create(title: 'Barbara Liskov vem à FCT!', link_image: 'top-prize.jpg',
-               description: 'Barbara Liskov, vencedora do Turing Award, vem dar uma palestra à grandiosa FCT',
+Dr Leslie Lamport short bio:
+
+Leslie Lamport is a Principal Researcher at Microsoft Research. He received the IEEE Emanuel R. Piore Award for his contributions to the theory and practice of concurrent programming and fault-tolerant computing.  He was also awarded the Edsger W. Dijkstra Prize in Distributed Computing for his paper “Reaching Agreement in the Presence of Faults.” He won the IEEE John von Neumann Medal and was also elected to the U.S. National Academy of Engineering and the U.S. National Academy of Sciences.
+
+Prior to his current position, his career included extended tenures at SRI International and Digital Equipment Corporation (later Compaq Corporation). The author or co-author of nearly 150 publications on concurrent and distributed computing and their applications, he holds a B.S. degree in mathematics from Massachusetts Institute of Technology as well as M.S. and Ph.D. degrees in mathematics from Brandeis University.
+
+Leslie Lamport was awarded the 2013 A.M. Turing Award.', user_id: 1)
+
+Content.create(title: 'Barbara Liskov deu uma palestra na FCT', link_image: 'top-prize.jpg',
+               description: 'Barbara Liskov, vencedora do Turing Award, veio dar uma palestra à FCT, no âmbito das Distinguished Lecture Series do DI',
                date: Date.today(), views: 10, news_text: 'Inaugural Lecture "Programming the Turing Machine", by Prof. Barbara Liskov, Massachusetts Institute of Technology
 October, 3th, 2012 - 14h30m (Main Auditorium FCT/UNL)
 
@@ -115,7 +119,7 @@ Barbara Liskov is an Institute Professor at MIT and also Associate Provost for F
 distributed systems, replication algorithms to provide fault-tolerance, programming methodology, and programming languages. Her current research projects include
 Byzantine-fault-tolerant storage systems and online storage systems that provide confidentiality and integrity for the stored information.', user_id: 2)
 
-Content.create(title: 'Video de apresentação do MIEI', link_image: 'fct.gif',
+Content.create(title: 'Video de apresentação do MIEI', link_image: 'http://www.portaldojardim.com/pdj/wp-content/uploads/poli_beja.jpg',
                description: 'Video de apresentação do MIEI visa dar a conhecer o curso.',
                date: Date.today(), views: 15, news_text: 'O Departamento de Informática da FCT-UNL criou um video de
                 apresentação do Mestrado Integrado em Engenharia Informática', user_id: 1)
@@ -139,6 +143,57 @@ Content.create(title: 'Apresentação da FCT!', link_image: 'fct.gif',
                description: 'Video de apresentação da FCT.',
                date: Date.today(), views: 15, news_text: 'Apresentação da Faculdade de Ciências e Tecnologia da Universidade Nova de Lisboa.
                Acede já ao canal de Youtube da faculdade para veres o que melhor se faz de investigação na FCT', user_id: 1)
+
+# NUCLEOS
+Content.create(title: 'NGe - Núcleo de Geologia da FCT', link_image: 'http://ae.fct.unl.pt/sites/default/files/nucleos/logo_0.jpg',
+               description: 'Vê aqui mais informação sobre o NGe da tua faculdade!',
+               date: Date.today(), views: 0, news_text: '<h2>NGe - Núcleo de Geologia</h2><br>
+<div class="field field-name-field-email field-type-text field-label-inline clearfix"><div class="field-label">Email:&nbsp;</div><div class="field-items"><div class="field-item even">nge.aefct@gmail.com</div></div></div><br>
+<div class="field field-name-field-telefone field-type-text field-label-inline clearfix"><div class="field-label">Telefone:&nbsp;</div><div class="field-items"><div class="field-item even">914148578, 212 948 509, ext(13513)</div></div></div><br>
+<div class="field field-name-field-site field-type-link-field field-label-inline clearfix"><div class="field-label">Página Web:&nbsp;</div><div class="field-items"><div class="field-item even"><a href="http://nucleos.ae.fct.unl.pt/nge">http://nucleos.ae.fct.unl.pt/nge</a></div></div></div><br>
+<div class="field field-name-body field-type-text-with-summary field-label-hidden"><div class="field-items"><div class="field-item even"><p>Fundado a 28 de Outubro de 2000, é o destino perfeito para quem gosta da área da geologia e quer levar o seu conhecimento um pouco mais avante. Através dos ocasionais passeios, pode-se aliar descontração a aprendizagem divertida.</p>
+<!-- Facebook Badge END --></div></div></div>', user_id: 1)
+
+Content.create(title: 'NAve - Núcleo de Aventura da FCT', link_image: 'http://ae.fct.unl.pt/sites/default/files/nucleos/logo_nave_verde.gif',
+               description: 'Vê aqui mais informação sobre o NAve da tua faculdade!',
+               date: Date.today(), views: 0, news_text: '<h2>NAve - Núcleo de Aventura da FCT/UNL</h2><br>
+<div class="field field-name-field-email field-type-text field-label-inline clearfix"><div class="field-label">Email:&nbsp;</div><div class="field-items"><div class="field-item even">info@NAve.pt</div></div></div><br>
+<div class="field field-name-field-site field-type-link-field field-label-inline clearfix"><div class="field-label">Página Web:&nbsp;</div><div class="field-items"><div class="field-item even"><a href="http://www.NAve.pt">http://www.NAve.pt</a></div></div></div><br>
+<div class="field field-name-body field-type-text-with-summary field-label-hidden"><div class="field-items"><div class="field-item even"><p>É um dos núcleos mais voltados para a componente desportiva. Permite a prática e iniciação aos desportos radicais. Com acordos com várias entidades, o NAve conseguiu a sua autonomia, e promove regularmente cursos de formação de escalada, <em>rappel</em>, caminhadas e outras atividades. É uma presença constante nos eventos da Faculdade. As suas atividades culminam com a Nave Snowtrip, viagem de inverno realizada anualmente.</p>
+<div>
+<hr></div>
+</div></div></div>
+', user_id: 1)
+
+Content.create(title: 'NTT - Novo Núcleo de Teatro', link_image: 'http://ae.fct.unl.pt/sites/default/files/nucleos/sitesmall_0.png',
+               description: 'Vê aqui mais informação sobre o NNT da tua faculdade!',
+               date: Date.today(), views: 0, news_text: '<h2>NNT - Novo Núcleo de Teatro da FCT/UNL</h2><br>
+<div class="field field-name-field-email field-type-text field-label-inline clearfix"><div class="field-label">Email:&nbsp;</div><div class="field-items"><div class="field-item even">nntaefct@gmail.com</div></div></div><br>
+<div class="field field-name-field-site field-type-link-field field-label-inline clearfix"><div class="field-label">Página Web:&nbsp;</div><div class="field-items"><div class="field-item even"><a href="http://novonucleoteatro.blogspot.com/">http://novonucleoteatro.blogspot.com/</a></div></div></div><br>
+<div class="field field-name-body field-type-text-with-summary field-label-hidden"><div class="field-items"><div class="field-item even"><p>Formado em 1995, o núcleo conta com a realização de vários workshops de Expressão Corporal, Interpretação, Voz e Iniciação ao Teatro. Colaborou com vários nomes como Paula Freitas, Ávila Costa, Luis Castanheira, Alexandre Calado, Sandra Hung e João Tempera. Já foram colocados em cenas conhecidos textos, como por exemplo, “O Destino morreu de Repente”, “As três irmãs” e “O Pelicano”. Atualmente projeta-se muito para o exterior do campus, levando o nome da FCT/UNL longe.<br>
+Este ano irão participar na divulgação do seu trabalho, França, entre várias encenações que têm planeadas.</p>
+</div></div></div>', user_id: 1)
+
+Content.create(title: 'NBN - Núcleo de Biomédica da Nova', link_image: 'http://ae.fct.unl.pt/sites/default/files/nucleos/nbn.png',
+               description: 'Vê aqui mais informação sobre o NBN da tua faculdade!',
+               date: Date.today(), views: 0, news_text: '<h2>Núcleo de Biomédica da Nova</h2><br>
+<div class="field field-name-field-email field-type-text field-label-inline clearfix"><div class="field-label">Email:&nbsp;</div><div class="field-items"><div class="field-item even">ae-nbnova@fct.unl.pt</div></div></div><br>
+<div class="field field-name-field-site field-type-link-field field-label-inline clearfix"><div class="field-label">Página Web:&nbsp;</div><div class="field-items"><div class="field-item even"><a href="http://www.miebmfct.net">http://www.miebmfct.net</a></div></div></div><br>
+<div class="field field-name-body field-type-text-with-summary field-label-hidden"><div class="field-items"><div class="field-item even"><p>Foi criado em 2003 para estimular uma área que, na altura, se encontrava em crescimento inicial e porque era necessário divulgar temáticas aos interessados na área.<br>
+Desde a sua criação que estabeleceu contatos com diversas entidades relacionadas com a engenharia biomédica e realizou variadas ações de valorização profissional, entre eles os cursos de primeiros socorros em parceria com a AMI, palestras e seminários.</p>
+<p>&nbsp;</p>
+</div></div></div>', user_id: 1)
+
+Content.create(title: 'NEEC - Núcleo de Engenharia Electrotécnica e de Computadores', link_image: 'http://ae.fct.unl.pt/sites/default/files/nucleos/neec.jpg',
+               description: 'Vê aqui mais informação sobre o NAve da tua faculdade!',
+               date: Date.today(), views: 0, news_text: '<h2>NEEC - Núcleo de Engenharia Electrotécnica e de Computadores</h2><br>
+<div class="field field-name-field-email field-type-text field-label-inline clearfix"><div class="field-label">Email:&nbsp;</div><div class="field-items"><div class="field-item even">geral@neec-fct.org</div></div></div><br>
+<div class="field field-name-field-site field-type-link-field field-label-inline clearfix"><div class="field-label">Página Web:&nbsp;</div><div class="field-items"><div class="field-item even"><a href="http://www.neec-fct.org">http://www.neec-fct.org</a></div></div></div><br>
+<div class="field field-name-body field-type-text-with-summary field-label-hidden"><div class="field-items"><div class="field-item even"><p>Principalmente focado para a área da Engenharia Eletrotécnica, mas no entanto, aceita qualquer estudante com interesse na área. Tem como objetivo dar a possibilidade de realizar projetos e para os seus membros crescerem profissionalmente. Este núcleo tem vários tipos de atividades, desde o clube de robótica até à realização de <em>workshops</em> variados.</p>
+<div>
+<hr></div>
+</div></div></div>', user_id: 1)
+
 
 #UserContent user_id:integer content_id:integer
 # puts 'Associating content to users'
@@ -176,18 +231,28 @@ BookmarkedContent.create(user_id: 29, content_id: 3)
 
 #Tag tag:string
 puts 'Adding new Tags'
-Tag.create(tag: 'Informática')
-Tag.create(tag: 'Bioquimica')
-Tag.create(tag: 'Ambiente')
-Tag.create(tag: 'Electrotécnica')
-Tag.create(tag: 'Matemática')
-Tag.create(tag: 'Física')
-Tag.create(tag: 'Geral FCT')
-Tag.create(tag: 'Video')
-Tag.create(tag: 'País')
-Tag.create(tag: 'Mundo')
-Tag.create(tag: 'Desporto')
-Tag.create(tag: 'Biblioteca') #12
+Tag.create(tag: 'Informática') #1
+Tag.create(tag: 'Bioquímica') #2
+Tag.create(tag: 'Ambiente') #3
+Tag.create(tag: 'Electrotécnica') #4
+Tag.create(tag: 'Matemática') #5
+Tag.create(tag: 'Física') #6
+Tag.create(tag: 'Geral FCT') #7
+Tag.create(tag: 'Vídeo') #8
+Tag.create(tag: 'País') #9
+Tag.create(tag: 'Mundo') #10
+Tag.create(tag: 'Desporto') #11
+Tag.create(tag: 'Cultura') #12
+Tag.create(tag: 'Biblioteca') #13
+Tag.create(tag: 'AE-FCT Geral') #14
+Tag.create(tag: 'NuDança - Núcleo Dança') #15
+Tag.create(tag: 'NuFoto - Núcleo Foto') #16
+Tag.create(tag: 'NTA - Núcleo Tiro com Arco') #17
+Tag.create(tag: 'NAve - Núcleo Aventura') #18
+Tag.create(tag: 'NGe - Núcleo Geologia') #19
+Tag.create(tag: 'NTT - Núcleo Teatro') #20
+Tag.create(tag: 'NEEC - Núcleo Electrotécnica') #21
+Tag.create(tag: 'NBN - Núcleo Biomédica') #22
 
 
 #TagContent content_id:integer tag_id:integer
@@ -202,6 +267,16 @@ TagContent.create(content_id: 4, tag_id: 7)
 TagContent.create(content_id: 4, tag_id: 8)
 TagContent.create(content_id: 5, tag_id: 7)
 TagContent.create(content_id: 5, tag_id: 8)
+TagContent.create(content_id: 6, tag_id: 7)
+TagContent.create(content_id: 6, tag_id: 8)
+TagContent.create(content_id: 7, tag_id: 7)
+TagContent.create(content_id: 7, tag_id: 8)
+
+TagContent.create(content_id: 8, tag_id: 19)
+TagContent.create(content_id: 9, tag_id: 18)
+TagContent.create(content_id: 10, tag_id: 20)
+TagContent.create(content_id: 11, tag_id: 22)
+TagContent.create(content_id: 12, tag_id: 21)
 
 #Classrooms building:string classroom:string
 puts 'Adding Classrooms'

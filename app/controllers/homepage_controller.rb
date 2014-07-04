@@ -180,7 +180,9 @@ class HomepageController < ApplicationController
                        date: item.pubDate, views: 0, news_text: news_text, user_id: 1)
 
         c_id = content.id
-        TagContent.create(content_id: c_id, tag_id: 12)
+        
+        library_tag = Tag.find_by(tag: "Biblioteca")
+        TagContent.create(content_id: c_id, tag_id: library_tag.id)
 
         #   introduzir tags para o conteudo
       end
