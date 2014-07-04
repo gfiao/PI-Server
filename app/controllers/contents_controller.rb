@@ -109,6 +109,10 @@ class ContentsController < ApplicationController
     @content.views = 0
     @content.users << current_user
 
+    if params[:link_image].nil?
+      @content.link_image = 'fct.gif'
+    end
+
     if !params[:video].nil?
       Video.create(:link => params[:video][:link])
       @content.video = Video.find_by(:link => params[:video][:link])

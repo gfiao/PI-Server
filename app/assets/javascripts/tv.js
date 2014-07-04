@@ -23,7 +23,7 @@ var ementasJantar = [];
 var restaurants = ["Cantina", "Casa do Pessoal", "My Spot Bar"]; //vai ter o nome de cada restaurante
 
 var globalCounter;
-var globalCounter2;
+var globalCounterBottom;
 var countRestaurant;
 var countPublicTrans;
 var countMeteo;
@@ -52,7 +52,7 @@ $(document).ready(function () {
 
 function start() {
     globalCounter = 0;
-    globalCounter2 = 0;
+    globalCounterBottom = 0;
     countRestaurant = 0;
     countPublicTrans = 0;
     countMeteo = 0;
@@ -70,8 +70,7 @@ function start() {
     fetchFooterNews();
     createFooter();
     animatePanel();
-    animatePanel2();
-//    getFreeClassrooms();
+    animatePanelBottom();
 
     getCurrentVideo();
 }
@@ -156,27 +155,27 @@ function animatePanel() {
     //A ESTE COMENTARIO NESSA ALTURA
 }
 
-function animatePanel2() {
+function animatePanelBottom() {
     var intervalID;
     var toShow;
 
     intervalID = setInterval(function () {
 
         //recomeça de novo
-        if (globalCounter2 == 100)
-            globalCounter2 = 0;
+        if (globalCounterBottom == 100)
+            globalCounterBottom = 0;
 
         //obtem o conteudo a mostrar
         toShow = fetchContent2();
 
-        $('#toAnimate2').removeClass('fadeInRight');
-        $('#toAnimate2').addClass('animated fadeOutRight');
+        $('#toAnimateBottom').removeClass('fadeInRight');
+        $('#toAnimateBottom').addClass('animated fadeOutRight');
 
         setTimeout(function () { //timeout para garantir que o novo texto aparece entre os dois fades
-            $("#toAnimate2").empty();
-            $("#toAnimate2").append(toShow);
-            $('#toAnimate2').removeClass('fadeOutRight');
-            $('#toAnimate2').addClass('fadeInRight');
+            $("#toAnimateBottom").empty();
+            $("#toAnimateBottom").append(toShow);
+            $('#toAnimateBottom').removeClass('fadeOutRight');
+            $('#toAnimateBottom').addClass('fadeInRight');
         }, 650);
 
     }, /*18000*/ 5000); //time in ms
@@ -203,7 +202,7 @@ function fetchContent() {
 
 //FUNÇAO QUE USA OS PARAMETROS DA PRIORIDADE
 function fetchContent2() {
-    if ((globalCounter2 % 3) == 0)
+    if ((globalCounterBottom % 2) == 0)
         return getFreeClassrooms();
 
     else
@@ -410,9 +409,9 @@ function getMeteo() {
     if (weather[0].description = 'Predominantemente Nublado')
         weather[0].description = 'Muito Nublado';
 
-    var content = '<h1 style="text-align: center;">Meteorologia</h1>';
+    var content = '<h1 style="text-align: center;">Meteorologia</h1></br>';
 
-    content += '<h1 style=" text-align: center">Almada</h1>';
+    content += '<h1 style=" text-align: center">Almada</h1></br>';
 
     content += '<div style="text-align: center;font-size: 130%">' + weather[0].description + '  ' +
         '<img src="' + weather[0].image_url + '"></div></br>';
@@ -498,7 +497,7 @@ function appendVideos() {
 
         if (i == 0) {
             $('#tv-carousel').append('<div id = "video_' + i + '" class="item active itemsCar">' +
-                '<iframe src="' + video.link + '?autoplay=0&controls=0&modestbranding=1&showinfo=0&loop=1" style="width: 100%; height:100%;"' +
+                '<iframe src="' + video.link + '?autoplay=1&controls=0&modestbranding=1&showinfo=0&loop=1" style="width: 100%; height:100%;"' +
                 'frameborder = "0" ' +
                 'width = 100%' +
                 'height: 100%' +
@@ -506,7 +505,7 @@ function appendVideos() {
                 'allowfullscreen >' +
                 ' </iframe>' +
 
-                '<div class="carousel-caption" style="opacity: 0.8; background-color: #000000">' +
+                '<div class="carousel-caption" style="opacity: 0.95; background-color: #000000;">' +
                 '<h1>' + caption + '</h1>' +
                 '</div>' +
 
@@ -514,7 +513,7 @@ function appendVideos() {
         }
         else
             $('#tv-carousel').append('<div id = "video_' + i + '" class="item itemsCar">' +
-                '<iframe src="' + video.link + '?autoplay=0&controls=0&modestbranding=1&showinfo=0&loop=1" style="width: 100%; height:100%;" ' +
+                '<iframe src="' + video.link + '?autoplay=1&controls=0&modestbranding=1&showinfo=0&loop=1" style="width: 100%; height:100%;" ' +
                 'frameborder = "0" ' +
                 'width = 100%' +
                 'height: 100%' +
@@ -522,7 +521,7 @@ function appendVideos() {
                 'allowfullscreen >' +
                 ' </iframe>' +
 
-                '<div class="carousel-caption" style="opacity: 0.8; background-color: #000000">' +
+                '<div class="carousel-caption" style="opacity: 0.95; background-color: #000000;">' +
                 '<h1>' + caption + '</h1>' +
                 '</div>' +
 
@@ -535,7 +534,7 @@ function appendVideos() {
             if (imagem.link_image.indexOf('http') >= 0) {
                 $('#tv-carousel').append('<div id = "image_' + i + '" class="item itemsCar">' +
                     '<img src="' + imagem.link_image + '" style="width: 100%; height:100%;" > ' +
-                    '<div class="carousel-caption" style="opacity: 0.8; background-color: #000000">' +
+                    '<div class="carousel-caption" style="opacity: 0.95; background-color: #000000;">' +
                     '<h1>' + imagem.title + '</h1>' +
                     '</div>' +
                     '</div>');
@@ -544,7 +543,7 @@ function appendVideos() {
                 if (imagem.link_image != 'fct.gif')
                     $('#tv-carousel').append('<div id = "image_' + i + '" class="item itemsCar">' +
                         '<img src="/assets/' + imagem.link_image + '" style="width: 100%; height:100%;" > ' +
-                        '<div class="carousel-caption" style="opacity: 0.8; background-color: #000000">' +
+                        '<div class="carousel-caption" style="opacity: 0.95; background-color: #000000;">' +
                         '<h1>' + imagem.title + '</h1>' +
                         '</div>' +
                         '</div>');
@@ -750,7 +749,7 @@ function getFreeClassrooms() {
     }
     html += '</div>';
 
-    globalCounter2++;
+    globalCounterBottom++;
 //    $('#right-panel-bottom').append(html);
     return html;
 }
@@ -783,7 +782,7 @@ function getHighscores() {
     html += '<p class="scores">3º: ' + scoresTV[2].user_name + ' - ' + scoresTV[2].score + '</p>';
     html += '</div>';
 
-    globalCounter2++;
+    globalCounterBottom++;
     return html;
 
 }
